@@ -218,3 +218,15 @@ def test_off_topic_filter():
     assert looks_off_topic("File:Small glass figurines of rabbits, a frog.JPG", "glass frog on leaf")
     assert not looks_off_topic("File:Hyalinobatrachium fleischmanni.jpg", "glass frog on leaf")
     assert not looks_off_topic("File:Insect nervous system diagram.png", "insect nervous system diagram")
+
+
+def test_karaoke_captions_follow_word_timings(tmp_path):
+    from biotube.render import word_groups, write_karaoke_ass
+
+    words = [{"t": 0.0, "d": 0.3, "w": "Esta"}, {"t": 0.35, "d": 0.3, "w": "rana"},
+             {"t": 1.2, "d": 0.3, "w": "duerme"}]  # pausa larga antes de "duerme"
+    groups = word_groups(words)
+    assert [len(g) for g in groups] == [2, 1], "la pausa corta el grupo"
+    text = write_karaoke_ass(words, tmp_path / "k.ass", total=2.0).read_text()
+    assert "0:00:00.35" in text and "0:00:01.20" in text, "cada palabra empieza cuando la voz la dice"
+    assert text.count("Dialogue") == 3

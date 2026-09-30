@@ -58,8 +58,10 @@ class ShortScript(BaseModel):
     hook: str = Field(description="1 frase que atrapa en los primeros 2 segundos")
     fact: str = Field(description="El hecho explicado, 60-100 palabras")
     cta: str = Field(description="Llamada a la acción corta, idealmente enlazando al documental")
-    visual_queries: list[str] = Field(description="2-4 búsquedas de imagen en inglés")
-    on_screen_texts: list[str] = Field(description="Un rótulo corto por imagen")
+    visual_queries: list[str] = Field(
+        description="5-7 búsquedas de imagen; prioriza nombres científicos (Género especie) y géneros cercanos"
+    )
+    on_screen_texts: list[str] = Field(description="1 titular corto (máx. 5 palabras) que se muestra durante el gancho")
 
     @property
     def narration(self) -> str:

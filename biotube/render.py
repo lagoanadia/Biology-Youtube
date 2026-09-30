@@ -18,6 +18,7 @@ Separar audio y vídeo y juntarlos al final evita desincronizaciones.
 from __future__ import annotations
 
 import hashlib
+import math
 import random
 import re
 from pathlib import Path
@@ -126,7 +127,7 @@ def thumbnail(img_path: str, text: str, out: Path) -> Path:
 
 # ------------------------------------------------------------------ ffmpeg
 
-def still_clip(bg: Image.Image, overlay: Image.Image, seconds: float, out: Path, seed: int) -> Path:
+def still_clip(bg: Image.Image, overlay: Image.Image, seconds: float, out: Path, seed: int, zoom: float = 0.07) -> Path:
     """Clip mudo con zoom lento sobre `bg` y `overlay` fijo encima."""
     work = out.with_suffix("")
     bg_path, ov_path = work.with_name(work.name + "_bg.jpg"), work.with_name(work.name + "_ov.png")
@@ -135,7 +136,7 @@ def still_clip(bg: Image.Image, overlay: Image.Image, seconds: float, out: Path,
     w, h = bg.size
     frames = max(1, round(seconds * FPS))
     zoom_in = seed % 2 == 0
-    z = f"1+0.07*on/{frames}" if zoom_in else f"1.07-0.07*on/{frames}"
+    z = f"1+{zoom}*on/{frames}" if zoom_in else f"{1 + zoom}-{zoom}*on/{frames}"
     # Pequeño desplazamiento horizontal alterno para que no parezca siempre igual
     drift = random.Random(seed).choice([-1, 1])
     x = f"(iw-iw/zoom)/2+{drift}*(iw-iw/zoom)/2*on/{frames}"
@@ -177,7 +178,8 @@ def _music_track() -> Path | None:
     return random.choice(tracks) if tracks else None
 
 
-def final_mix(video: Path, voice: Path, out: Path, subtitles: Path | None = None) -> Path:
+def final_mix(video: Path, voice: Path, out: Path, subtitles: Path | None = None, progress_bar: float | None = None) -> Path:
+    """`progress_bar` = duración total en segundos -> dibuja una barra que avanza abajo (shorts)."""
     music = _music_track()
     args = ["-i", str(video), "-i", str(voice)]
     if music:
@@ -188,7 +190,14 @@ def final_mix(video: Path, voice: Path, out: Path, subtitles: Path | None = None
     audio += "loudnorm=I=-14:TP=-1.5:LRA=11[a]"
     if subtitles:
         sub = subtitles.resolve().as_posix().replace(":", r"\:")
-        graph = f"[0:v]ass='{sub}'[v];{audio}"
+        video_chain = f"[0:v]ass='{sub}'[s];"
+        if progress_bar:
+            d = f"{progress_bar:.3f}"
+            video_chain += (f"color=c=0xFFCC00:s=1080x12:d={d}:r={FPS}[bar];"
+                            f"[s][bar]overlay=x='-w+w*t/{d}':y=H-h:shortest=1[v];")
+        else:
+            video_chain = video_chain.replace("[s];", "[v];")
+        graph = video_chain + audio
         vmap, vcodec = "[v]", ["-c:v", "libx264", "-preset", "veryfast", "-crf", "20"]
     else:
         graph, vmap, vcodec = audio, "0:v", ["-c:v", "copy"]
@@ -306,36 +315,119 @@ def render_documentary(pkg: VideoPackage, out_dir: Path, tts_provider: str | Non
     }
 
 
+SHOT_SECONDS = 2.6       # en shorts, una imagen nueva cada ~2,6 s (ritmo rápido)
+
+
+def word_groups(words: list[dict], max_words: int = 3, pause: float = 0.22) -> list[list[dict]]:
+    """Agrupa palabras de 1 a 3, cortando también donde la voz hace una pausa (comas, puntos)."""
+    groups: list[list[dict]] = []
+    for w in words:
+        if groups and len(groups[-1]) < max_words:
+            prev = groups[-1][-1]
+            if w["t"] - (prev["t"] + prev["d"]) < pause:
+                groups[-1].append(w)
+                continue
+        groups.append([w])
+    return groups
+
+
+def write_karaoke_ass(words: list[dict], out: Path, total: float, hook_words: int = 0) -> Path:
+    """Subtítulos sincronizados palabra a palabra: el grupo visible y la palabra que suena en amarillo."""
+    header = (
+        "[Script Info]\nScriptType: v4.00+\nPlayResX: 1080\nPlayResY: 1920\nWrapStyle: 0\n\n"
+        "[V4+ Styles]\nFormat: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, "
+        "Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, "
+        "Alignment, MarginL, MarginR, MarginV, Encoding\n"
+        "Style: Cap,DejaVu Sans,104,&H00FFFFFF,&H00FFFFFF,&H00000000,&H96000000,-1,0,0,0,100,100,0,0,1,8,3,2,50,50,560,1\n\n"
+        "[Events]\nFormat: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text\n"
+    )
+    yellow, white = "{\\c&H00CCFF&}", "{\\c&HFFFFFF&}"
+    lines, n = [], 0
+    groups = word_groups(words)
+    for gi, group in enumerate(groups):
+        group_end = groups[gi + 1][0]["t"] if gi + 1 < len(groups) else min(total, group[-1]["t"] + group[-1]["d"] + 0.4)
+        for k, w in enumerate(group):
+            start = w["t"]
+            end = group[k + 1]["t"] if k + 1 < len(group) else group_end
+            parts = []
+            for j, other in enumerate(group):
+                txt = re.sub(r"[{}\\]", "", other["w"]).upper()
+                in_hook = n - k + j < hook_words
+                parts.append((yellow if j == k or in_hook else white) + txt)
+            pop = "{\\fscx112\\fscy112\\t(0,90,\\fscx100\\fscy100)}" if k == 0 else ""
+            lines.append(f"Dialogue: 0,{_ass_time(start)},{_ass_time(end)},Cap,,0,0,0,,{pop}{' '.join(parts)}")
+            n += 1
+    out.write_text(header + "\n".join(lines) + "\n", encoding="utf-8")
+    return out
+
+
+def headline_overlay(text: str, channel: str) -> Image.Image:
+    """Titular grande arriba durante el gancho (solo en el primer plano del short)."""
+    w, h = SHORT_SIZE
+    layer = Image.new("RGBA", SHORT_SIZE, (0, 0, 0, 0))
+    draw = ImageDraw.Draw(layer)
+    if text:
+        font = _font(78)
+        wrapped = _wrap(draw, text.upper(), font, int(w * 0.86))
+        box = draw.multiline_textbbox((w / 2, 250), wrapped, font=font, anchor="ma", align="center", spacing=10)
+        draw.rounded_rectangle([box[0] - 30, box[1] - 24, box[2] + 30, box[3] + 30], 22, fill=(0, 0, 0, 170))
+        draw.multiline_text((w / 2, 250), wrapped, font=font, fill=ACCENT, anchor="ma", align="center", spacing=10)
+    draw.text((w / 2, h - 150), channel, font=_font(34), fill=(255, 255, 255, 200), anchor="ma")
+    return layer
+
+
+def gather_images(queries: list[str], n: int, fallback: list[str], short_index: int) -> list[dict]:
+    """Consigue hasta n imágenes DISTINTAS repartiendo entre las búsquedas (round-robin)."""
+    images, used, dead = [], set(), set()
+    rounds = 0
+    while len(images) < n and len(dead) < len(queries) and rounds < n * 2:
+        for q in queries:
+            if len(images) >= n or q in dead:
+                continue
+            img = fetch_image(q, exclude=used, fallback_queries=fallback if not images else None)
+            if img["provider"] == "placeholder" or img.get("source_url") in used:
+                dead.add(q)
+                continue
+            used.add(img["source_url"])
+            images.append(img | {"short": short_index, "query": q})
+        rounds += 1
+    if not images:
+        images.append(fetch_image(queries[0]) | {"short": short_index, "query": queries[0]})
+    return images
+
+
 def render_short(pkg: VideoPackage, index: int, out_dir: Path, tts_provider: str | None = None) -> dict:
     cfg = load_config()
     short = pkg.shorts[index]
+    channel = cfg["channel"]["name"]
     work = out_dir / f"work_short{index + 1}"
     work.mkdir(parents=True, exist_ok=True)
 
-    mp3 = cfg.path("cache") / "tts" / f"{_h(short.narration + 'short' + str(tts_provider))}.mp3"
-    voice_len = synthesize(short.narration, mp3, short=True, provider=tts_provider)
-    total = voice_len + 0.4
+    from .tts import load_words, voice_for
 
-    queries = short.visual_queries or [pkg.documentary.species[0]]
-    per_image = total / len(queries)
-    clips, images, used = [], [], set()
-    for j, q in enumerate(queries):
-        img = fetch_image(q, exclude=used, fallback_queries=pkg.documentary.species)
-        if img.get("source_url"):
-            used.add(img["source_url"])
-        images.append(img | {"short": index, "query": q})
-        text = short.on_screen_texts[j] if j < len(short.on_screen_texts) else ""
+    voice_name, _ = voice_for(short=True)
+    mp3 = cfg.path("cache") / "tts" / f"{_h(short.narration + voice_name + str(tts_provider))}.mp3"
+    voice_len = synthesize(short.narration, mp3, short=True, provider=tts_provider)
+    total = voice_len + 0.5
+
+    # Planos: uno cada ~SHOT_SECONDS; si hay menos fotos que planos, se reutilizan con otro encuadre
+    n_shots = max(3, math.ceil(total / SHOT_SECONDS))
+    queries = short.visual_queries or pkg.documentary.species
+    images = gather_images(queries, n_shots, pkg.documentary.species, index)
+    per_shot = total / n_shots
+    headline = short.on_screen_texts[0] if short.on_screen_texts else ""
+    empty = headline_overlay("", channel)
+    clips = []
+    for j in range(n_shots):
+        img = images[j % len(images)]
+        overlay = headline_overlay(headline, channel) if j == 0 else empty
         bg = compose_portrait(Image.open(img["path"]))
-        clips.append(still_clip(bg, short_overlay(text, cfg["channel"]["name"]), per_image, work / f"i{j}.mp4", seed=index * 10 + j))
+        clips.append(still_clip(bg, overlay, per_shot, work / f"i{j:02d}.mp4", seed=index * 31 + j, zoom=0.14))
 
     video = concat(clips, work / "video.mp4")
     voice = pad_audio(mp3, total, work / "voice.wav")
-
-    # Subtítulos: el gancho en amarillo, el resto en blanco
-    chunks = caption_chunks(short.narration, voice_len)
-    hook_share = len(short.hook) / max(len(short.narration), 1)
-    ass = write_ass(chunks, work / "captions.ass", highlight_until=voice_len * hook_share)
-    final = final_mix(video, voice, out_dir / f"short_{index + 1}.mp4", subtitles=ass)
+    ass = write_karaoke_ass(load_words(mp3), work / "captions.ass", total, hook_words=len(short.hook.split()))
+    final = final_mix(video, voice, out_dir / f"short_{index + 1}.mp4", subtitles=ass, progress_bar=total)
     return {"path": str(final), "seconds": round(ffmpeg.duration(final), 2), "images": images}
 
 

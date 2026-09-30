@@ -1,6 +1,6 @@
 # Configuración central del canal. Todo el sistema lee de aquí.
 channel:
-  name: "BioRaro"
+  name: "BioNiche"
   language: "es"              # idioma de guiones y metadatos (es / en)
   region: "ES"                 # región para la investigación en YouTube
   default_hashtags: ["#biologia", "#naturaleza", "#ciencia"]
@@ -20,13 +20,13 @@ content:
 
 voice:
   provider: "edge"              # edge (gratis, voz neural) | silent (pruebas sin red)
-  voice_es: "es-ES-AlvaroNeural"
+  voice_es: "fr-FR-RemyMultilingualNeural"   # voz multilingüe elegida para BioNiche (lee español)
   voice_en: "en-US-AndrewNeural"
   rate: "+0%"
   rate_shorts: "+8%"            # los shorts van un poco más rápidos
 
 media:
-  providers: ["wikimedia", "pexels"]   # en orden de preferencia
+  providers: ["inaturalist", "openverse", "wikimedia", "pexels"]   # en orden de preferencia
   images_per_scene: 1
   # Solo licencias que permiten uso comercial (necesario para monetizar)
   allowed_licenses: ["cc0", "pd", "public domain", "cc by", "cc by-sa", "pexels"]

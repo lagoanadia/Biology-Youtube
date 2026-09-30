@@ -202,38 +202,42 @@ documentary_metadata:
   hashtags: ["#ranadecristal", "#anfibios", "#biologia"]
   thumbnail_text: SE VUELVE INVISIBLE
 shorts:
-  - hook: Esta rana esconde su sangre para volverse invisible.
+  - hook: Esta rana tiene un truco que, en ti, sería una urgencia médica.
     fact: >-
-      Cuando la rana de cristal duerme, retira alrededor del 89 % de sus glóbulos rojos de la circulación
-      y los guarda en el hígado. Sin sangre roja circulando, su cuerpo se vuelve mucho más transparente
-      y su silueta se funde con la hoja. Lo publicó la revista Science en 2022.
-    cta: Síguenos y mira el documental completo en el canal.
-    visual_queries: [Hyalinobatrachium fleischmanni, glass frog on leaf, Hyalinobatrachium fleischmanni sleeping]
-    on_screen_texts: [Rana de cristal, 89 % escondida, Casi invisible]
-  - hook: Puedes ver latir el corazón de esta rana.
+      Mira. Es la rana de cristal, y su barriga es transparente: se le ve hasta el corazón latiendo.
+      Pero tiene un problema… la sangre es roja, y la delataría. Así que, cuando se echa a dormir, hace algo increíble:
+      saca casi el noventa por ciento de sus glóbulos rojos de la circulación… y los esconde en el hígado.
+      Sin sangre a la vista, se vuelve casi invisible sobre la hoja. Y lo más raro de todo: no se le forma ni un coágulo.
+    cta: Sigue a BioNiche para más secretos así.
+    visual_queries: [Hyalinobatrachium fleischmanni, Hyalinobatrachium, Centrolenidae, Hyalinobatrachium valerioi, Cochranella, Espadarana prosoblepon]
+    on_screen_texts: [La rana invisible]
+  - hook: ¿Puedes ver el corazón de este animal? Porque yo sí.
     fact: >-
-      La rana de cristal tiene la piel del vientre transparente: se le ven el corazón, el hígado, el intestino
-      e incluso los huevos en las hembras. Durante el día duerme pegada a una hoja, y su translucidez hace
-      que los bordes de su cuerpo tomen el color de la hoja. Así su contorno desaparece.
-    cta: Descubre su secreto en nuestro documental. Síguenos para más.
-    visual_queries: [glass frog ventral view transparent, glass frog on leaf]
-    on_screen_texts: [Un vientre transparente, Contorno invisible]
-  - hook: Esta rana hace cada día algo que a ti te provocaría un trombo.
+      Es una rana de cristal, de Centroamérica, y es más pequeña que tu pulgar. Por arriba es verde lima, normal.
+      Pero dale la vuelta… y verás su corazón, su hígado, su intestino, e incluso los huevos, en las hembras.
+      ¿Y para qué tanta transparencia? Un estudio de 2020 lo descubrió: al ser translúcida, los bordes de su cuerpo
+      toman el color de la hoja. Su silueta se difumina… y para un pájaro, sin silueta, no hay rana.
+    cta: Si te ha sorprendido, sigue a BioNiche.
+    visual_queries: [Hyalinobatrachium, Hyalinobatrachium fleischmanni, Centrolenidae, Teratohyla spinosa, Sachatamia albomaculata, Hyalinobatrachium colymbiphyllum]
+    on_screen_texts: [Se le ve el corazón]
+  - hook: Si tú hicieras esto con tu sangre, acabarías en el hospital.
     fact: >-
-      Al dormir, la rana de cristal acumula casi toda su sangre roja en el hígado durante horas.
-      En una persona eso sería una receta para formar coágulos. A ella no le pasa nada.
-      Los investigadores quieren entender cómo lo evita, porque podría inspirar nuevos anticoagulantes.
-    cta: La historia completa, en el documental del canal. Síguenos.
-    visual_queries: [Hyalinobatrachium fleischmanni sleeping, red blood cells microscope]
-    on_screen_texts: [Sangre acumulada, Sin coágulos]
-  - hook: En esta rana, el que cuida a los bebés es papá.
+      Cada vez que la rana de cristal se duerme, amontona casi toda su sangre roja en el hígado. Durante horas.
+      En una persona, la sangre tan apretada formaría coágulos… y los coágulos pueden provocar trombosis o infartos.
+      Pero ella se despierta, la sangre vuelve a circular… y aquí no ha pasado nada.
+      Cómo lo consigue sigue siendo un misterio. Por eso la estudian los médicos: podría inspirar nuevos anticoagulantes.
+    cta: Sigue a BioNiche para no perderte el siguiente.
+    visual_queries: [Hyalinobatrachium fleischmanni, red blood cells, Hyalinobatrachium, Centrolenidae, Hyalinobatrachium valerioi]
+    on_screen_texts: [Sangre escondida, cero coágulos]
+  - hook: En esta especie, el que cuida de los bebés es papá.
     fact: >-
-      Los machos de la rana de cristal de Fleischmann vigilan sus puestas durante días en el envés de las hojas,
-      las protegen de insectos que se alimentan de los huevos y las mantienen hidratadas con su propio cuerpo.
-      Cuando los renacuajos están listos, caen directamente al arroyo de abajo.
-    cta: Síguenos para más biología sorprendente.
-    visual_queries: [glass frog eggs male, glass frog tadpoles stream]
-    on_screen_texts: [Papá guardaespaldas, Salto al arroyo]
+      Los machos de la rana de cristal se pasan días vigilando los huevos, pegados a una hoja encima de un arroyo.
+      Los defienden de los insectos que se los quieren comer… y hasta los mantienen hidratados con su propio cuerpo.
+      Un guardaespaldas de dos centímetros. Y cuando los renacuajos están listos, ¿sabes qué hacen?
+      Se dejan caer de la hoja… directos al agua. Así empieza su vida.
+    cta: Sigue a BioNiche para más historias como esta.
+    visual_queries: [Hyalinobatrachium valerioi, Hyalinobatrachium fleischmanni, Centrolenidae, tropical stream rainforest, Hyalinobatrachium]
+    on_screen_texts: [Papá guardaespaldas]
 shorts_metadata:
   - title: "La rana que esconde su sangre 🐸"
     description: Así se vuelve invisible mientras duerme.

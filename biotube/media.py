@@ -154,7 +154,69 @@ def search_pexels(query: str, limit: int = 10, portrait: bool = False) -> list[d
     ]
 
 
-SEARCHERS = {"wikimedia": search_wikimedia, "pexels": search_pexels}
+INAT_LICENSES = {"cc0": "CC0", "cc-by": "CC BY", "cc-by-sa": "CC BY-SA"}
+OPENVERSE_LICENSES = {"cc0": "CC0", "pdm": "Public domain", "by": "CC BY", "by-sa": "CC BY-SA"}
+LATIN_BINOMIAL = re.compile(r"\b([A-Z][a-z]+ [a-z]{3,})\b")
+
+
+def search_inaturalist(query: str, limit: int = 12, portrait: bool = False) -> list[dict]:
+    """Fotos de observaciones verificadas ("research grade") de iNaturalist.
+
+    Solo sirve si la búsqueda contiene un nombre científico (Género especie),
+    pero entonces es la mejor fuente: fotos reales del ser vivo, con licencia libre.
+    """
+    match = LATIN_BINOMIAL.search(query)
+    if not match:
+        return []
+    data = _get_json("https://api.inaturalist.org/v1/observations", {
+        "taxon_name": match.group(1), "photo_license": ",".join(INAT_LICENSES), "quality_grade": "research",
+        "photos": "true", "per_page": limit, "order_by": "votes",
+    })
+    results = []
+    for obs in data.get("results", []):
+        for photo in obs.get("photos", [])[:2]:
+            lic = INAT_LICENSES.get(photo.get("license_code") or "")
+            dims = photo.get("original_dimensions") or {}
+            if not lic or dims.get("width", 0) < 800:
+                continue
+            results.append({
+                "provider": "inaturalist",
+                "download_url": photo["url"].replace("/square.", "/large."),
+                "source_url": f"https://www.inaturalist.org/photos/{photo['id']}",
+                "license": lic,
+                "attribution": f"{photo.get('attribution', '')}, vía iNaturalist (https://www.inaturalist.org/photos/{photo['id']})",
+                "width": dims.get("width"), "height": dims.get("height"),
+            })
+    return results
+
+
+def search_openverse(query: str, limit: int = 20, portrait: bool = False) -> list[dict]:
+    """Openverse: buscador de imágenes con licencia Creative Commons (Flickr y otros)."""
+    data = _get_json("https://api.openverse.org/v1/images/", {
+        "q": query, "license": ",".join(OPENVERSE_LICENSES), "page_size": limit, "mature": "false",
+    })
+    results = []
+    for r in data.get("results", []):
+        lic = OPENVERSE_LICENSES.get(r.get("license", ""))
+        # Wikimedia ya tiene su propio buscador; PhyloPic son siluetas, no fotos
+        if not lic or (r.get("width") or 0) < 800 or r.get("source") in ("wikimedia", "phylopic"):
+            continue
+        if looks_off_topic(r.get("title") or "", query):
+            continue
+        full = f"{lic} {r.get('license_version') or ''}".strip()
+        results.append({
+            "provider": "openverse",
+            "download_url": r["url"],
+            "source_url": r.get("foreign_landing_url") or r["url"],
+            "license": full,
+            "attribution": f"{r.get('creator') or 'Autor desconocido'}, {full}, vía {r.get('source')} ({r.get('foreign_landing_url')})",
+            "width": r.get("width"), "height": r.get("height"),
+        })
+    return results
+
+
+SEARCHERS = {"inaturalist": search_inaturalist, "openverse": search_openverse,
+             "wikimedia": search_wikimedia, "pexels": search_pexels}
 
 
 def placeholder(text: str, out: Path, size: tuple[int, int]) -> dict:
@@ -173,12 +235,22 @@ def placeholder(text: str, out: Path, size: tuple[int, int]) -> dict:
     return {"provider": "placeholder", "path": str(out), "license": "own", "attribution": None, "source_url": None}
 
 
+def load_blocklist() -> set[str]:
+    """URLs vetadas a mano en data/image_blocklist.txt (tras revisar la hoja de contactos)."""
+    path = load_config().path("database").parent / "image_blocklist.txt"
+    if not path.exists():
+        return set()
+    lines = path.read_text(encoding="utf-8").splitlines()
+    return {line.strip() for line in lines if line.strip() and not line.startswith("#")}
+
+
 def fetch_image(query: str, *, portrait: bool = False, exclude: set[str] | None = None,
                 fallback_queries: list[str] | None = None) -> dict:
     """Devuelve la primera imagen válida no usada todavía (`exclude` = source_urls).
 
     Si la búsqueda no da nada, prueba `fallback_queries` (p. ej. el nombre científico).
     """
+    exclude = set(exclude or set()) | load_blocklist()
     for q in [query, *(fallback_queries or [])]:
         found = _fetch_one(q, portrait=portrait, exclude=exclude)
         if found["provider"] != "placeholder":

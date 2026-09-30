@@ -117,7 +117,13 @@ y los metadatos SEO de todos los vídeos.
 
 Reglas de cada short:
 - Estructura estricta: `hook` (1 frase, <2 s, sin saludos) -> `fact` (un único hecho, bien explicado) \
--> `cta` (invita a ver el documental completo o a seguir el canal).
+-> `cta` (invita a seguir el canal por su nombre).
+- Escribe como habla una persona, no como un libro: frases cortas, "mira", preguntas al espectador \
+("¿y sabes qué hace?"), puntos suspensivos donde haya que hacer una pausa dramática. \
+La voz sintética usa la puntuación para entonar: puntúa pensando en cómo suena.
+- Entre 80 y 110 palabras (30-45 s): los shorts cortos se ven hasta el final más a menudo.
+- `visual_queries`: 5-7 búsquedas, sobre todo nombres científicos de la especie y de parientes cercanos \
+(se usan para encontrar fotos reales en iNaturalist); una imagen cambia cada ~2,5 s.
 - Máximo {max_words} palabras en total (hook+fact+cta) para no pasar de {cfg["content"]["short_max_seconds"]} s.
 - Cada short se entiende sin haber visto nada más. No repitas el mismo hecho en dos shorts.
 - Prioriza las escenas con key_fact=true.
