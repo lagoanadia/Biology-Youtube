@@ -94,7 +94,8 @@ Especies: {", ".join(topic.species) or "a determinar"}
 Categoría: {topic.category} / {topic.subcategory}
 Idioma de la narración y los rótulos: {lang}
 Duración objetivo: {lo}-{hi} minutos a {wpm} palabras/minuto \
-=> entre {lo * wpm} y {hi * wpm} palabras de narración en total.
+=> entre {(lo + 1) * wpm} y {hi * wpm} palabras de narración en total \
+(dejamos 1 minuto de margen: por debajo de {lo} min YouTube no permite anuncios a mitad de vídeo).
 Escenas: entre 18 y 30, de 40-90 palabras cada una. Marca `key_fact=true` en 4-6 escenas \
 con los hechos más sorprendentes (se reutilizarán en shorts).
 

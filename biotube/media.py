@@ -33,6 +33,17 @@ COMMONS_API = "https://commons.wikimedia.org/w/api.php"
 THUMB_STEPS = (960, 1280, 1920)
 
 
+# Palabras en el nombre del fichero que delatan que NO es el ser vivo real
+# (salvo que la búsqueda las pida explícitamente, p. ej. "diagram").
+OFF_TOPIC_WORDS = ("figurine", "statue", "sculpture", "toy", "plush", "logo", "stamp", "coin", "poster",
+                   "cartoon", "emoji", "flag", "map", "diagram", "drawing", "illustration", "museum")
+
+
+def looks_off_topic(title: str, query: str) -> bool:
+    t, q = title.lower(), query.lower()
+    return any(w in t and w not in q for w in OFF_TOPIC_WORDS)
+
+
 def commons_thumb_url(original_url: str, original_width: int) -> str | None:
     """URL de la miniatura estándar más grande que sea MENOR que el original.
 
@@ -99,6 +110,8 @@ def search_wikimedia(query: str, limit: int = 12, portrait: bool = False) -> lis
         thumb = commons_thumb_url(info.get("url", ""), info.get("width", 0))
         if info.get("mime") not in ("image/jpeg", "image/png") or not thumb:
             continue
+        if looks_off_topic(page.get("title", ""), query):
+            continue
         if not license_ok(lic):
             continue
         artist = _strip_html(meta.get("Artist", {}).get("value", "")) or "Autor desconocido"
@@ -160,8 +173,20 @@ def placeholder(text: str, out: Path, size: tuple[int, int]) -> dict:
     return {"provider": "placeholder", "path": str(out), "license": "own", "attribution": None, "source_url": None}
 
 
-def fetch_image(query: str, *, portrait: bool = False, exclude: set[str] | None = None) -> dict:
-    """Devuelve la primera imagen válida no usada todavía (`exclude` = source_urls)."""
+def fetch_image(query: str, *, portrait: bool = False, exclude: set[str] | None = None,
+                fallback_queries: list[str] | None = None) -> dict:
+    """Devuelve la primera imagen válida no usada todavía (`exclude` = source_urls).
+
+    Si la búsqueda no da nada, prueba `fallback_queries` (p. ej. el nombre científico).
+    """
+    for q in [query, *(fallback_queries or [])]:
+        found = _fetch_one(q, portrait=portrait, exclude=exclude)
+        if found["provider"] != "placeholder":
+            return found
+    return found
+
+
+def _fetch_one(query: str, *, portrait: bool = False, exclude: set[str] | None = None) -> dict:
     cfg = load_config()
     cache_dir = cfg.path("cache") / "images"
     cache_dir.mkdir(parents=True, exist_ok=True)

@@ -269,7 +269,7 @@ def render_documentary(pkg: VideoPackage, out_dir: Path, tts_provider: str | Non
         mp3 = cfg.path("cache") / "tts" / f"{_h(scene.narration + str(tts_provider))}.mp3"
         voice_len = synthesize(scene.narration, mp3, provider=tts_provider)
         seconds = voice_len + SCENE_GAP
-        img = fetch_image(scene.visual_query, exclude=used)
+        img = fetch_image(scene.visual_query, exclude=used, fallback_queries=pkg.documentary.species)
         if img.get("source_url"):
             used.add(img["source_url"])
         images.append(img | {"scene": i, "query": scene.visual_query})
@@ -320,7 +320,7 @@ def render_short(pkg: VideoPackage, index: int, out_dir: Path, tts_provider: str
     per_image = total / len(queries)
     clips, images, used = [], [], set()
     for j, q in enumerate(queries):
-        img = fetch_image(q, exclude=used)
+        img = fetch_image(q, exclude=used, fallback_queries=pkg.documentary.species)
         if img.get("source_url"):
             used.add(img["source_url"])
         images.append(img | {"short": index, "query": q})
@@ -356,5 +356,26 @@ def render_package(pkg: VideoPackage, tts_provider: str | None = None, only_shor
         im for v in shorts.values() for im in v["images"]
     ]
     pkg.assets = assets
+    contact_sheet(assets["images"], out_dir / "contact_sheet.jpg")
     save_package(pkg)
     return pkg
+
+
+def contact_sheet(images: list[dict], out: Path, cols: int = 6) -> Path:
+    """Mosaico con todas las imágenes elegidas y su búsqueda: revisión humana en 10 segundos."""
+    tile_w, tile_h, label_h = 320, 180, 44
+    rows = max(1, -(-len(images) // cols))
+    sheet = Image.new("RGB", (cols * tile_w, rows * (tile_h + label_h)), (20, 20, 20))
+    draw = ImageDraw.Draw(sheet)
+    font = _font(15)
+    for i, img in enumerate(images):
+        x, y = (i % cols) * tile_w, (i // cols) * (tile_h + label_h)
+        if Path(img.get("path", "")).is_file():
+            sheet.paste(cover(Image.open(img["path"]), (tile_w - 4, tile_h - 4)), (x + 2, y + 2))
+        else:
+            draw.text((x + tile_w / 2, y + tile_h / 2), "imagen no disponible", font=font, fill="gray", anchor="mm")
+        where = f"escena {img['scene'] + 1}" if "scene" in img else f"short {img.get('short', 0) + 1}"
+        label = f"{where} · {img['provider']}\n{img.get('query', '')[:38]}"
+        draw.multiline_text((x + 6, y + tile_h + 2), label, font=font, fill="white", spacing=2)
+    sheet.save(out, quality=85)
+    return out

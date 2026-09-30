@@ -76,7 +76,8 @@ jobs:
           retention-days: 30
 
       - name: Guardar estado (temas usados + paquetes)
-        if: success()
+        # En simulación no se guarda nada: los temas siguen pendientes
+        if: success() && !(github.event_name == 'workflow_dispatch' && inputs.dry_run)
         run: |
           git config user.name "biotube-bot"
           git config user.email "biotube-bot@users.noreply.github.com"

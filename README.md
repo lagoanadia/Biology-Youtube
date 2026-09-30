@@ -117,7 +117,7 @@ python -m biotube check examples/rana-de-cristal.yaml
 python -m biotube dashboard --demo                         # output/dashboard_demo.html
 ```
 
-Sin internet: `--tts silent` genera el vídeo con audio en silencio (útil para probar el montaje).
+Sin internet: `--tts silent` genera el vídeo con audio en silencio y `--placeholder-images` usa fondos generados en vez de descargar fotos (útil para probar el montaje). Renderizar un documental tarda unos 15-20 minutos en un portátil normal: el zoom se calcula a doble resolución para que no tiemble.
 
 ### Flujo recomendado (semi-automático)
 
@@ -126,6 +126,7 @@ python -m biotube recommend                 # ¿qué tema toca?
 python -m biotube generate                  # Claude escribe el paquete -> data/packages/<id>.json
 #   >>> LEE y corrige el JSON (datos, tono, títulos) <<<
 python -m biotube render <id>
+#   >>> mira output/<id>/contact_sheet.jpg: todas las imágenes elegidas en un mosaico <<<
 python -m biotube publish <id> --dry-run    # muestra el calendario y guarda output/<id>/upload_plan.json
 python -m biotube publish <id>              # sube y programa
 ```
@@ -202,6 +203,8 @@ Música: pon mp3 de la *Biblioteca de audio de YouTube* (libres para monetizar) 
 ### Licencias de imágenes
 
 Solo sirven licencias que permitan **uso comercial**: CC0, dominio público, CC BY, CC BY-SA y la licencia de Pexels. Las marcadas **NC** (no comercial) o **ND** (sin obras derivadas) se descartan; hay un test que lo comprueba. Las atribuciones se añaden a la descripción automáticamente (CC BY lo exige).
+
+La búsqueda por texto a veces falla (buscando "glass frog" puede salir una figurita de cristal): el código descarta ficheros cuyo nombre contiene palabras como *figurine*, *statue* o *stamp*, prueba después con el nombre científico y genera `contact_sheet.jpg` para que revises las imágenes en segundos.
 
 Wikimedia limita las descargas: el código usa sus tamaños de miniatura estándar (960/1280/1920 px), espera 1 s entre descargas y respeta la cabecera `Retry-After` cuando responde 429.
 

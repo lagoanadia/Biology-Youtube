@@ -180,3 +180,41 @@ def test_commons_thumb_url_uses_standard_step():
     assert commons_thumb_url(url, 2048) == "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Rana.jpg/1920px-Rana.jpg"
     assert commons_thumb_url(url, 1500).endswith("/1280px-Rana.jpg")
     assert commons_thumb_url(url, 900) is None  # demasiado pequeña para vídeo HD
+
+
+def test_scriptwriter_builds_valid_request(monkeypatch):
+    """Intercepta la petición HTTP a Claude (sin red ni clave) y comprueba su forma."""
+    import json
+
+    import anthropic
+    import httpx2
+
+    from biotube import scriptwriter
+    from biotube.models import DocumentaryScript
+
+    captured = {}
+
+    def handler(request):
+        captured["body"] = json.loads(request.content)
+        captured["beta"] = request.headers.get("anthropic-beta")
+        return httpx2.Response(400, json={"type": "error", "error": {"type": "invalid_request_error", "message": "test"}})
+
+    client = anthropic.Anthropic(api_key="test", max_retries=0,
+                                 http_client=httpx2.Client(transport=httpx2.MockTransport(handler)))
+    monkeypatch.setattr(scriptwriter, "_client", lambda: client)
+    with pytest.raises(anthropic.BadRequestError):
+        scriptwriter._structured_call("hola", DocumentaryScript)
+
+    body = captured["body"]
+    assert body["stream"] is True and body["thinking"] == {"type": "adaptive"}
+    assert body["fallbacks"] == "default" and captured["beta"] == "server-side-fallback-2026-07-01"
+    schema = body["output_config"]["format"]["schema"]
+    assert schema["additionalProperties"] is False and "scenes" in schema["required"]
+
+
+def test_off_topic_filter():
+    from biotube.media import looks_off_topic
+
+    assert looks_off_topic("File:Small glass figurines of rabbits, a frog.JPG", "glass frog on leaf")
+    assert not looks_off_topic("File:Hyalinobatrachium fleischmanni.jpg", "glass frog on leaf")
+    assert not looks_off_topic("File:Insect nervous system diagram.png", "insect nervous system diagram")
