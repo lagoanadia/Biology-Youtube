@@ -222,7 +222,7 @@ shorts:
       Look. It's a glass frog, and its belly is completely see-through. You can literally watch its heart beat.
       Pretty cool… except that heart pumps red blood, and red stands out like a stop sign.
       So when it falls asleep, it pulls almost ninety percent of its red blood cells out of circulation… and hides them in its liver.
-      No red, no outline. On a leaf, it basically disappears. And the craziest part? Not a single blood clot.
+      Without that red, its outline fades away. On a leaf, it basically disappears. And the craziest part? Not a single blood clot.
     cta: Follow BioNiche for more secrets like this.
     visual_queries: [Hyalinobatrachium fleischmanni, Hyalinobatrachium, Centrolenidae, Cochranella, Espadarana prosoblepon, Sachatamia albomaculata]
     on_screen_texts: [The invisible frog]
@@ -235,7 +235,7 @@ shorts:
       - {text: "So when it falls asleep,", visual: glass frog sleeping on leaf}
       - {text: "it pulls almost ninety percent of its red blood cells out of circulation…", visual: blood flowing in capillaries, sticker: "90%"}
       - {text: "and hides them in its liver.", visual: glass frog organs}
-      - {text: "No red, no outline. On a leaf, it basically disappears.", visual: glass frog silhouette through leaf, sticker: "INVISIBLE"}
+      - {text: "Without that red, its outline fades away. On a leaf, it basically disappears.", visual: glass frog silhouette through leaf, sticker: "INVISIBLE"}
       - {text: "And the craziest part? Not a single blood clot.", visual: red blood cells microscope, sticker: "0 CLOTS"}
       - {text: "Follow BioNiche for more secrets like this.", visual: glass frog on leaf}
   - hook: Can you see this animal's heart? Because I can.

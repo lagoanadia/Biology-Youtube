@@ -191,8 +191,9 @@ def clip_preview(clip: dict) -> dict:
 def xfade_concat(files: list[Path], lengths: list[float], out: Path, transition: str, d: float) -> Path:
     """Une planos con un fundido rápido entre cada par (xfade).
 
-    Cada plano (menos el último) viene alargado `d` segundos, así el fundido empieza
-    exactamente en el corte y el vídeo total dura lo mismo que la voz.
+    Cada plano (menos el primero) viene alargado `d` segundos por delante: el fundido
+    ocupa los `d` segundos ANTERIORES al corte y termina justo cuando empieza la frase,
+    así la imagen nueva ya está entera en su palabra y el total dura lo mismo que la voz.
     """
     if len(files) == 1 or transition == "cut" or d <= 0:
         return concat(files, out)
@@ -605,7 +606,7 @@ def beat_shots(pkg: VideoPackage, index: int, words: list[dict], total: float, w
     for b, (start, end) in enumerate(beat_times(short.beats, words, total)):
         if b:
             cuts.append(start)
-        if beat_sticker := short.beats[b].sticker:
+        if (beat_sticker := short.beats[b].sticker) and _edit("stickers", False):
             stickers.append((start + 0.15, min(end, start + 1.8), beat_sticker))
         beat = short.beats[b]
         overlay = headline_overlay(headline, channel) if b == 0 else empty
@@ -619,11 +620,10 @@ def beat_shots(pkg: VideoPackage, index: int, words: list[dict], total: float, w
             used.add(asset["source_url"])
         meta = {k: asset.get(k) for k in ("provider", "license", "attribution", "source_url")}
         path = work / f"b{b:02d}.mp4"
-        last_beat = b == len(short.beats) - 1
         if asset["type"] == "clip":
             if b:
                 clip_cuts.append(start)
-            length = dur + (0 if last_beat else fade)  # margen para el fundido con el siguiente plano
+            length = dur + (fade if clips else 0)  # empieza `fade` s antes: el fundido termina justo en el corte
             clips.append(video_clip(asset["path"], overlay, length, SHORT_SIZE, path, start=asset.get("start", 0), punch=True))
             lengths.append(length)
             images.append(clip_preview({"clip": asset["path"]}) | meta | {"short": index, "query": beat.text[:40]})
@@ -632,7 +632,7 @@ def beat_shots(pkg: VideoPackage, index: int, words: list[dict], total: float, w
         parts = 2 if dur > MAX_SHOT else 1
         bg = compose_portrait(Image.open(asset["path"]))
         for k in range(parts):  # misma foto, dos encuadres (zoom in / zoom out)
-            length = dur / parts + (0 if last_beat and k == parts - 1 else fade)
+            length = dur / parts + (fade if clips else 0)
             clips.append(still_clip(bg, overlay if k == 0 else empty, length, work / f"b{b:02d}_{k}.mp4",
                                     seed=b * 2 + k, zoom=0.12, punch=True))
             lengths.append(length)
@@ -665,7 +665,8 @@ def render_short(pkg: VideoPackage, index: int, out_dir: Path, tts_provider: str
         events = [(0.0, "impact.mp3", _edit("impact_volume", 0.5))]
         mode = _edit("whoosh_on", "clips")
         whoosh_cuts = cuts if mode == "all" else clip_cuts if mode == "clips" else []
-        events += [(t - 0.12, "whoosh2.mp3", _edit("whoosh_volume", 0.3)) for t in whoosh_cuts]
+        lead = _edit("transition_seconds", 0.2) if _edit("transition", "fade") != "cut" else 0.12
+        events += [(t - lead - 0.05, "whoosh2.mp3", _edit("whoosh_volume", 0.3)) for t in whoosh_cuts]
         events += [(t0, "pop.mp3", _edit("pop_volume", 0.5)) for t0, _, _ in stickers]
         fx = sfx_track([e for e in events if e[2] > 0], total, work / "sfx.wav")
         final = final_mix(video, voice, out_dir / f"short_{index + 1}.mp4", subtitles=ass, progress_bar=total,

@@ -35,7 +35,7 @@ media:
   allowed_licenses: ["cc0", "pd", "public domain", "cc by", "cc by-sa", "pexels"]
 
 editing:                       # intensidad de la edición de los shorts
-  punch_zoom: 0.08              # zoom de entrada de cada plano (0 = sin punch-in; 0.18 = agresivo)
+  punch_zoom: 0                 # zoom de entrada de cada plano (0 = sin punch-in; 0.18 = agresivo)
   flashes: false                # destello blanco en los cortes
   transition: "fade"            # fundido entre planos (xfade de ffmpeg: fade, smoothleft, zoomin...) | "cut"
   transition_seconds: 0.2       # duración del fundido (rápido = 0.15-0.25)
@@ -43,7 +43,8 @@ editing:                       # intensidad de la edición de los shorts
   whoosh_volume: 0.22
   pop_volume: 0.5               # sonido de las pegatinas
   impact_volume: 0.5            # golpe grave al empezar (0 = sin golpe)
-  music_volume: 0.06            # música de fondo (baja sola cuando habla la voz); 0 = sin música
+  music_volume: 0.22            # música de fondo (baja sola cuando habla la voz); 0 = sin música
+  stickers: false               # pegatinas animadas ("90%", "INVISIBLE"...)
   sticker_bounce: 1.1           # 1.25 = rebote exagerado
 
 schedule:

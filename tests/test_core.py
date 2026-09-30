@@ -274,7 +274,7 @@ def test_xfade_keeps_total_duration(tmp_path):
     from biotube import ffmpeg
     from biotube.render import xfade_concat
 
-    files, lengths = [], [1.2, 1.2, 1.0]  # los dos primeros llevan +0,2 s para el fundido
+    files, lengths = [], [1.0, 1.2, 1.2]  # los planos 2 y 3 llevan +0,2 s por delante para el fundido
     for i, L in enumerate(lengths):
         f = tmp_path / f"c{i}.mp4"
         ffmpeg.run(["-f", "lavfi", "-i", f"color=c=red:s=320x568:r=30", "-t", str(L), "-pix_fmt", "yuv420p", str(f)])
