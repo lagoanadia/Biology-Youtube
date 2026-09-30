@@ -281,3 +281,14 @@ def test_xfade_keeps_total_duration(tmp_path):
         files.append(f)
     out = xfade_concat(files, lengths, tmp_path / "out.mp4", "fade", 0.2)
     assert abs(ffmpeg.duration(out) - 3.0) < 0.1, "1.0 + 1.0 + 1.0 s: el fundido no descuadra la voz"
+
+
+def test_load_words_splits_grouped_events(tmp_path):
+    import json
+
+    from biotube.tts import load_words, words_path
+
+    audio = tmp_path / "a.mp3"
+    words_path(audio).write_text(json.dumps([{"t": 1.0, "d": 1.0, "w": "In 2020"}, {"t": 2.1, "d": 0.3, "w": "scientists"}]))
+    w = load_words(audio)
+    assert [x["w"] for x in w] == ["In", "2020", "scientists"] and abs(w[1]["t"] - (1.0 + 2 / 6)) < 1e-9

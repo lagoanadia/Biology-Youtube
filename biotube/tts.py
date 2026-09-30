@@ -16,6 +16,7 @@ from __future__ import annotations
 import asyncio
 import json
 import ssl
+import time
 from pathlib import Path
 
 from . import ffmpeg
@@ -44,7 +45,16 @@ def _synth_edge(text: str, out: Path, voice: str, rate: str) -> list[dict]:
                     words.append({"t": chunk["offset"] / TICKS, "d": chunk["duration"] / TICKS, "w": chunk["text"]})
         return words
 
-    return asyncio.run(_run())
+    for attempt in range(4):  # el servicio a veces falla de forma puntual ("No audio was received")
+        try:
+            return asyncio.run(_run())
+        except Exception as e:  # noqa: BLE001 - reintentamos cualquier fallo de red/servicio
+            if attempt == 3:
+                raise
+            wait = 3 * (attempt + 1)
+            print(f"[tts] fallo de la voz ({e.__class__.__name__}), reintento en {wait}s...")
+            time.sleep(wait)
+    return []
 
 
 def _synth_silent(text: str, out: Path, voice: str, rate: str) -> list[dict]:
@@ -85,5 +95,21 @@ def words_path(audio: Path) -> Path:
 
 
 def load_words(audio: Path) -> list[dict]:
+    """Tiempos por palabra. La voz a veces agrupa varias palabras en un solo evento
+    (p. ej. "in 2020"): las separamos repartiendo el tiempo para que cuadren con el texto."""
     path = words_path(audio)
-    return json.loads(path.read_text(encoding="utf-8")) if path.exists() else []
+    if not path.exists():
+        return []
+    out = []
+    for w in json.loads(path.read_text(encoding="utf-8")):
+        parts = w["w"].split()
+        if len(parts) <= 1:
+            out.append(w)
+            continue
+        total_chars = sum(len(p) for p in parts)
+        t = w["t"]
+        for part in parts:
+            d = w["d"] * len(part) / total_chars
+            out.append({"t": t, "d": d, "w": part})
+            t += d
+    return out

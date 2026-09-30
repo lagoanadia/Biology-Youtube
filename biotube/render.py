@@ -164,7 +164,7 @@ def still_clip(bg: Image.Image, overlay: Image.Image, seconds: float, out: Path,
 
 
 def video_clip(src: str, overlay: Image.Image, seconds: float, size: tuple[int, int], out: Path, start: float = 0.0,
-               punch: bool = False) -> Path:
+               punch: bool = False, fit: bool = False) -> Path:
     """Clip mudo a partir de un vídeo de stock: recorte a `size`, 30 fps y rótulos encima."""
     ov_path = out.with_name(out.stem + "_ov.png")
     overlay.save(ov_path)
@@ -172,7 +172,13 @@ def video_clip(src: str, overlay: Image.Image, seconds: float, size: tuple[int, 
     amount = _edit("punch_zoom", 0.08)
     punch_f = (f",zoompan=z='if(lt(on,{PUNCH_FRAMES}),{1 + amount}-{amount}*on/{PUNCH_FRAMES},1)'"
                f":x='(iw-iw/zoom)/2':y='(ih-ih/zoom)/2':d=1:s={w}x{h}:fps={FPS}") if punch and amount else ""
-    vf = (f"[0:v]scale={w}:{h}:force_original_aspect_ratio=increase,crop={w}:{h},fps={FPS},setsar=1{punch_f}[v0];"
+    if fit:  # clip de baja resolución: centrado a lo ancho sobre una copia desenfocada (como las fotos)
+        base = (f"[0:v]fps={FPS},split[a][b];[a]scale={w}:{h}:force_original_aspect_ratio=increase,crop={w}:{h},"
+                f"boxblur=25:2,eq=brightness=-0.12[bg];[b]scale={w}:-2[fg];"
+                f"[bg][fg]overlay=0:(H-h)*0.4,setsar=1{punch_f}[v0];")
+    else:
+        base = f"[0:v]scale={w}:{h}:force_original_aspect_ratio=increase,crop={w}:{h},fps={FPS},setsar=1{punch_f}[v0];"
+    vf = (base +
           f"[v0][1:v]overlay=0:0,format=yuv420p[v]")
     ffmpeg.run(["-ss", f"{start:.2f}", "-stream_loop", "-1", "-i", src, "-loop", "1", "-i", str(ov_path), "-filter_complex", vf,
                 "-map", "[v]", "-t", f"{seconds:.3f}", "-an", "-c:v", "libx264", "-preset", "veryfast",
@@ -628,7 +634,8 @@ def beat_shots(pkg: VideoPackage, index: int, words: list[dict], total: float, w
             if b:
                 clip_cuts.append(start)
             length = dur + (fade if clips else 0)  # empieza `fade` s antes: el fundido termina justo en el corte
-            clips.append(video_clip(asset["path"], overlay, length, SHORT_SIZE, path, start=asset.get("start", 0), punch=True))
+            clips.append(video_clip(asset["path"], overlay, length, SHORT_SIZE, path, start=asset.get("start", 0),
+                                    punch=True, fit=asset.get("fit", False)))
             lengths.append(length)
             images.append(clip_preview({"clip": asset["path"]}) | meta | {"short": index, "query": beat.text[:40]})
             continue

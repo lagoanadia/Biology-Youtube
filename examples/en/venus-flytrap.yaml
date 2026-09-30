@@ -1,0 +1,590 @@
+id: venus-flytrap-can-count
+language: en
+documentary:
+  topic: The Venus flytrap can count
+  working_title: The plant that counts to five
+  category: planta
+  subcategory: carnivoras
+  hook_type: pregunta
+  species:
+  - Dionaea muscipula
+  scenes:
+  - narration: 'Can a plant count? This isn''t a metaphor. It''s a plant that keeps track of how many times you touch it, and makes different decisions depending on the number. One touch: nothing. Two touches:
+      the trap snaps shut. Five touches: it starts digesting you. Today we''re finding out how the Venus flytrap does math without a single neuron.'
+    visual_query: Dionaea muscipula
+    on_screen_text: A plant that counts
+    key_fact: false
+  - narration: Charles Darwin was obsessed with it. In his 1875 book, Insectivorous Plants, he called it one of the most wonderful plants in the world. Its scientific name is Dionaea muscipula. You've probably
+      seen one at a garden center, but in the wild it's a real rarity.
+    visual_query: Charles Darwin
+    on_screen_text: Darwin's favorite
+    key_fact: false
+  - narration: It only grows naturally in a small area of coastal North and South Carolina, within about a hundred kilometers of the city of Wilmington. It lives in wetlands and pine savannas with very
+      poor soil, especially poor in nitrogen. And that's the key to everything. If the soil won't give you nitrogen, you have to get it some other way. For example, by eating insects.
+    visual_query: Dionaea muscipula
+    on_screen_text: It only lives here
+    key_fact: true
+  - narration: These savannas depend on fire. Natural, low-intensity fires clear away the shrubs that would otherwise grow up and shade the flytraps. Without fire, other plants cover them and they disappear.
+      So, strangely enough, this plant needs its home to burn every now and then.
+    visual_query: longleaf pine savanna
+    on_screen_text: A plant that needs fire
+    key_fact: false
+  - narration: The trap is actually a modified leaf, with two lobes joined by a hinge. Along the edges are spikes that interlock when it closes, like the bars of a cell. And on the inside of each lobe there
+      are usually three very fine hairs. These are the trigger hairs, the buttons that set the whole mechanism in motion.
+    visual_query: Dionaea muscipula
+    on_screen_text: Three trigger hairs
+    key_fact: false
+  - narration: Each hair works like a lever. At its base is a cluster of sensory cells that get squeezed when the hair bends. That squeeze opens channels in their membranes, ions rush in, and a mechanical
+      push turns into an electrical signal. It's the same basic principle our ears and skin use to sense touch.
+    visual_query: Dionaea muscipula
+    on_screen_text: From touch to electricity
+    key_fact: false
+  - narration: This is where the counting starts. When an insect brushes a trigger hair, the plant fires an electrical signal called an action potential, which is basically similar to the signals in our
+      own nerves. But one touch isn't enough to close the trap. It needs a second touch within about twenty or thirty seconds. If that happens, the trap slams shut in a fraction of a second.
+    visual_query: Dionaea muscipula
+    on_screen_text: One touch isn't enough
+    key_fact: true
+  - narration: Why not close on the first touch? Because closing costs a lot of energy, and a false alarm would be a waste. A raindrop or a falling bit of leaf could set the trap off for nothing. Asking
+      for two touches in a row is like asking for confirmation. Yes, this thing is moving. Yes, it's alive.
+    visual_query: Dionaea muscipula
+    on_screen_text: Avoiding false alarms
+    key_fact: false
+  - narration: 'But how does the plant remember the first touch without a brain? In 2020, a team in Japan saw it for the first time, using flytraps engineered to glow when calcium rises inside their cells.
+      The first touch raises the calcium level, but not enough. If a second touch arrives before it drops, the calcium crosses a threshold, and the trap closes. That''s its memory: a chemical signal that
+      fades over time.'
+    visual_query: Dionaea muscipula
+    on_screen_text: A calcium memory
+    key_fact: true
+  - narration: Closing the trap is one of the fastest movements in the plant kingdom. It takes about a tenth of a second, and it uses no muscles at all. The lobes store tension in their curved shape, a
+      bit like a bent sheet of plastic. When the plant shifts water pressure in its tissues, that curve suddenly flips. Physicists call it snap buckling, and they described it in the journal Nature in 2005.
+    visual_query: Dionaea muscipula
+    on_screen_text: Physics, not muscles
+    key_fact: true
+  - narration: Interestingly, the trap doesn't close all the way at first. It leaves gaps between the spikes. Darwin suspected this lets the smallest insects escape, since they aren't worth the effort of
+      digesting. If nothing struggles inside, the trap eventually reopens, usually within a day or two.
+    visual_query: Dionaea muscipula
+    on_screen_text: An escape hatch
+    key_fact: false
+  - narration: But the counting doesn't stop. A trapped insect struggles and keeps brushing the hairs, again and again. A 2016 study in the journal Current Biology, led by researchers at the University
+      of Würzburg in Germany, showed that the plant keeps counting those touches. After about three, the trap seals and defense hormones switch on. And at around five, it starts producing digestive enzymes.
+    visual_query: Dionaea muscipula
+    on_screen_text: Five touches = digestion
+    key_fact: true
+  - narration: It's a brilliant way to save energy. The more the prey moves, the bigger and more nutritious it usually is, and the more it's worth digesting. The plant adjusts its spending based on the
+      signals it gets, almost like it's working with a budget. No wasting enzymes on a false alarm.
+    visual_query: Dionaea muscipula
+    on_screen_text: A plant on a budget
+    key_fact: false
+  - narration: Once the trap is fully sealed, it becomes a green stomach. Glands on the inside release an acidic fluid full of enzymes that break down the soft parts of the insect. Digestion takes about
+      one to two weeks, depending on the size of the prey. In the end only the empty exoskeleton is left, and rain or wind carries it away when the trap reopens.
+    visual_query: Dionaea muscipula
+    on_screen_text: A green stomach
+    key_fact: false
+  - narration: And by the way, despite its name, flies aren't its main meal. When researchers checked what was inside wild traps, they mostly found ants, spiders, beetles and grasshoppers, animals that
+      walk along the ground and over leaves. Flying insects were only a small part of its diet. Maybe it should be called the Venus ant-trap.
+    visual_query: Dionaea muscipula
+    on_screen_text: Flytrap? More like ant-trap
+    key_fact: true
+  - narration: Darwin already suspected that what these plants are really after is nitrogen. In experiments with sundews, close relatives of the flytrap, he offered them bits of meat, egg white, sugar and
+      even glass. Only the nitrogen-rich foods triggered a strong digestive response. More than a century later, biochemistry proved him right.
+    visual_query: Drosera rotundifolia
+    on_screen_text: It's all about nitrogen
+    key_fact: false
+  - narration: And here's a curious detail from that 2016 study. The more touches the plant counts, the more transporters it builds to absorb sodium from its prey. That's strange, because for most plants
+      sodium is more of a problem than a nutrient. Scientists are still working out exactly what it uses it for.
+    visual_query: Dionaea muscipula
+    on_screen_text: The sodium mystery
+    key_fact: true
+  - narration: Each trap has a limited life. It can only close and digest a few times before it turns black and dies, and the plant keeps growing new ones. That's why setting them off with your finger for
+      fun is a bad idea. You make the plant spend energy and give it nothing in return.
+    visual_query: Dionaea muscipula
+    on_screen_text: Don't poke it for fun
+    key_fact: false
+  - narration: There's an obvious problem here. If the plant eats insects, how does it get pollinated without eating its pollinators? Part of the answer is distance. Its white flowers grow on top of a tall
+      stalk, high above the traps. And a 2018 study found that the insects visiting its flowers and the ones ending up in its traps are mostly different species.
+    visual_query: Dionaea muscipula
+    on_screen_text: It spares its pollinators
+    key_fact: true
+  - narration: In the wild, the flytrap is in trouble. The International Union for Conservation of Nature lists it as vulnerable. Its habitat has shrunk because of development, drained wetlands and fire
+      suppression. And then there's poaching. So many were dug up to be sold that in 2014, North Carolina made illegally collecting them from the wild a felony.
+    visual_query: Dionaea muscipula
+    on_screen_text: A vulnerable species
+    key_fact: false
+  - narration: 'So if you want one at home, get one grown in a nursery, never from the wild. And three quick tips: rainwater or distilled water, lots of light, and no fertilizer. It evolved in poor soil,
+      and tap water with too many minerals can harm it.'
+    visual_query: Dionaea muscipula
+    on_screen_text: Buy nursery-grown
+    key_fact: false
+  - narration: The flytrap teaches us something bigger. Plants use electrical and chemical signals to process information. They don't think like we do, but they record, combine and respond to the world
+      around them. Saying it counts is a useful simplification. What it really does is add up signals until they cross a threshold. Although honestly, that sounds a lot like counting.
+    visual_query: Dionaea muscipula
+    on_screen_text: Adding up signals
+    key_fact: false
+  - narration: 'If you enjoyed meeting the plant that can count, subscribe to BioNiche. Every week we bring you a secret of nature that almost nobody knows. And tell me in the comments: which other amazing
+      plant should we investigate next?'
+    visual_query: Dionaea muscipula
+    on_screen_text: Which plant is next?
+    key_fact: false
+  sources:
+  - title: Böhm J. et al. (2016). The Venus flytrap Dionaea muscipula counts prey-induced action potentials to induce sodium uptake. Current Biology 26(3):286-295
+    reference: https://doi.org/10.1016/j.cub.2015.11.057
+  - title: Suda H. et al. (2020). Calcium dynamics during trap closure visualized in transgenic Venus flytrap. Nature Plants 6:1219-1224
+    reference: https://doi.org/10.1038/s41477-020-00773-1
+  - title: Forterre Y. et al. (2005). How the Venus flytrap snaps. Nature 433:421-425
+    reference: https://doi.org/10.1038/nature03185
+  - title: Youngsteadt E. et al. (2018). Venus flytrap rarely traps its pollinators. The American Naturalist 191(5):539-546
+    reference: https://doi.org/10.1086/696124
+  - title: 'Ellison A.M., Gotelli N.J. (2009). Energetics and the evolution of carnivorous plants: Darwin''s ''most wonderful plants in the world''. Journal of Experimental Botany 60(1):19-42'
+    reference: https://doi.org/10.1093/jxb/ern179
+  - title: Darwin C. (1875). Insectivorous Plants. John Murray, London
+    reference: http://darwin-online.org.uk/
+documentary_metadata:
+  title: 'Venus Flytrap: The Plant That Can Count to Five'
+  description: 'One touch, nothing. Two touches, it snaps shut. Five touches, it starts digesting. The Venus flytrap keeps count without a single neuron.
+
+    Here''s how it works, according to science.
+
+
+    Discover how Dionaea muscipula uses electrical signals and calcium as memory, why its snap is pure physics, how it decides when to spend energy on digestion, and why it doesn''t eat its own pollinators.'
+  tags:
+  - Venus flytrap
+  - Dionaea muscipula
+  - carnivorous plant
+  - carnivorous plants
+  - plant intelligence
+  - plant electrical signals
+  - botany
+  - biology
+  - plant facts
+  - nature
+  - science
+  - plant documentary
+  hashtags:
+  - '#venusflytrap'
+  - '#botany'
+  - '#biology'
+  thumbnail_text: IT CAN COUNT
+shorts:
+- hook: This plant can count to five.
+  fact: It's a Venus flytrap, and inside each trap are tiny trigger hairs. When an insect touches one hair, nothing happens. But if it touches a second hair within about twenty seconds, the trap snaps shut.
+    And then the plant keeps counting. Every time the trapped insect struggles, that's another touch. After about five touches, the plant starts making digestive juices. So the more the prey moves, the
+    more the plant invests in eating it. It's doing math without a brain.
+  cta: Follow BioNiche for more weird nature.
+  visual_queries:
+  - Dionaea muscipula
+  on_screen_texts:
+  - It can count
+  beats:
+  - text: This plant can count to five.
+    visual: flytrap close-up
+  - text: It's a Venus flytrap, and inside each trap are tiny trigger hairs.
+    visual: flytrap trigger hairs
+  - text: When an insect touches one hair, nothing happens.
+    visual: insect on flytrap
+  - text: But if it touches a second hair within about twenty seconds, the trap snaps shut.
+    visual: flytrap closing on prey
+  - text: And then the plant keeps counting.
+    visual: closed flytrap with prey
+  - text: Every time the trapped insect struggles, that's another touch.
+    visual: prey struggling in trap
+  - text: After about five touches, the plant starts making digestive juices.
+    visual: flytrap digesting
+  - text: So the more the prey moves, the more the plant invests in eating it.
+    visual: flytrap with insect
+  - text: It's doing math without a brain.
+    visual: flytraps
+  - text: Follow BioNiche for more weird nature.
+    visual: flytrap
+- hook: How does a plant remember something without a brain?
+  fact: A Venus flytrap only closes after two touches. So it has to remember the first one. In 2020, scientists in Japan made flytraps that glow when calcium builds up inside their cells. The first touch
+    raises the calcium, but not enough. If a second touch comes before it fades, the calcium crosses a limit. And the trap snaps shut. So its memory is just a chemical signal that fades after a few seconds.
+    No brain required.
+  cta: Follow BioNiche for more plant secrets.
+  visual_queries:
+  - Dionaea muscipula
+  on_screen_texts:
+  - Plant memory
+  beats:
+  - text: How does a plant remember something without a brain?
+    visual: flytrap close-up
+  - text: A Venus flytrap only closes after two touches.
+    visual: flytrap trigger hairs
+  - text: So it has to remember the first one.
+    visual: open flytrap
+  - text: In 2020, scientists in Japan made flytraps that glow when calcium builds up inside their cells.
+    visual: flytrap green
+  - text: The first touch raises the calcium, but not enough.
+    visual: flytrap open trap
+  - text: If a second touch comes before it fades, the calcium crosses a limit.
+    visual: flytrap trigger
+  - text: And the trap snaps shut.
+    visual: flytrap closing
+  - text: So its memory is just a chemical signal that fades after a few seconds.
+    visual: flytrap
+  - text: No brain required.
+    visual: flytrap group
+  - text: Follow BioNiche for more plant secrets.
+    visual: flytrap
+- hook: This trap closes in a tenth of a second, and it has zero muscles.
+  fact: So how does it move that fast? Each half of the trap is curved outward, like a bent sheet of plastic. It's storing energy the whole time. When the trap is triggered, the plant quickly shifts water
+    inside its tissues. That makes the curve suddenly flip the other way. And the trap slams shut. Physicists call it snap buckling. They described it in the journal Nature in 2005. It's pure physics turned
+    into a trap.
+  cta: Follow BioNiche for more.
+  visual_queries:
+  - Dionaea muscipula
+  on_screen_texts:
+  - 0.1 seconds
+  beats:
+  - text: This trap closes in a tenth of a second, and it has zero muscles.
+    visual: flytrap closing
+  - text: So how does it move that fast?
+    visual: open flytrap
+  - text: Each half of the trap is curved outward, like a bent sheet of plastic.
+    visual: flytrap lobes
+  - text: It's storing energy the whole time.
+    visual: flytrap
+  - text: When the trap is triggered, the plant quickly shifts water inside its tissues.
+    visual: flytrap trigger
+  - text: That makes the curve suddenly flip the other way.
+    visual: flytrap snapping shut
+  - text: And the trap slams shut.
+    visual: closed flytrap
+  - text: Physicists call it snap buckling. They described it in the journal Nature in 2005.
+    visual: flytrap closed prey
+  - text: It's pure physics turned into a trap.
+    visual: flytraps
+  - text: Follow BioNiche for more.
+    visual: flytrap
+- hook: This carnivorous plant never eats its own pollinators.
+  fact: The Venus flytrap needs insects to pollinate its flowers. But it also eats insects. So how does it avoid eating its helpers? Its flowers grow on a tall stalk, high above the traps. And in 2018,
+    scientists compared the insects visiting the flowers with the ones caught in the traps. They were mostly completely different species. One group helps it reproduce. The other group becomes dinner.
+  cta: Follow BioNiche for more nature secrets.
+  visual_queries:
+  - Dionaea muscipula
+  on_screen_texts:
+  - Flowers up high
+  beats:
+  - text: This carnivorous plant never eats its own pollinators.
+    visual: flytrap flower
+  - text: The Venus flytrap needs insects to pollinate its flowers.
+    visual: flytrap flower insect
+  - text: But it also eats insects.
+    visual: flytrap with prey
+  - text: So how does it avoid eating its helpers?
+    visual: flytrap
+  - text: Its flowers grow on a tall stalk, high above the traps.
+    visual: flytrap flower stalk
+  - text: And in 2018, scientists compared the insects visiting the flowers with the ones caught in the traps.
+    visual: flytrap flower
+  - text: They were mostly completely different species.
+    visual: flytrap with insect
+  - text: One group helps it reproduce.
+    visual: flytrap flower
+  - text: The other group becomes dinner.
+    visual: flytrap closed prey
+  - text: Follow BioNiche for more nature secrets.
+    visual: flytrap
+shorts_metadata:
+- title: This Plant Can Count to Five 🌱
+  description: This Plant Can Count to Five 🌱
+  tags:
+  - venus flytrap
+  - carnivorous plant
+  - Dionaea muscipula
+  - plants
+  hashtags:
+  - '#venusflytrap'
+  - '#plants'
+  thumbnail_text: IT COUNTS
+- title: How Does a Plant Remember Without a Brain?
+  description: How Does a Plant Remember Without a Brain?
+  tags:
+  - venus flytrap
+  - plant memory
+  - calcium
+  - botany
+  hashtags:
+  - '#venusflytrap'
+  - '#plants'
+  thumbnail_text: MEMORY
+- title: It Closes in 0.1 Seconds With Zero Muscles
+  description: It Closes in 0.1 Seconds With Zero Muscles
+  tags:
+  - venus flytrap
+  - physics
+  - carnivorous plant
+  hashtags:
+  - '#venusflytrap'
+  - '#plants'
+  thumbnail_text: 0.1 SEC
+- title: The Carnivore That Spares Its Pollinators
+  description: The Carnivore That Spares Its Pollinators
+  tags:
+  - venus flytrap
+  - pollination
+  - carnivorous plant
+  hashtags:
+  - '#venusflytrap'
+  - '#plants'
+  thumbnail_text: POLLINATORS
+curated:
+  short0.beat0:
+    type: photo
+    url: https://live.staticflickr.com/5167/5255303432_a3e303b26b_b.jpg
+    license: CC BY 2.0
+    source_url: https://www.flickr.com/photos/23233631@N00/5255303432
+    attribution: platycryptus, CC BY 2.0, vía flickr (https://www.flickr.com/photos/23233631@N00/5255303432)
+  short0.beat1:
+    type: clip
+    start: 58
+    fit: true
+    url: https://upload.wikimedia.org/wikipedia/commons/transcoded/1/17/Venus1min.webm/Venus1min.webm.480p.vp9.webm
+    license: CC BY-SA 4.0
+    source_url: https://commons.wikimedia.org/wiki/File:Venus1min.webm
+    attribution: Venus1min.webm, CC BY-SA 4.0, vía Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Venus1min.webm)
+  short0.beat2:
+    type: photo
+    url: https://live.staticflickr.com/4112/5069358550_b5b02ec4bb_b.jpg
+    license: CC BY 2.0
+    source_url: https://www.flickr.com/photos/45170709@N06/5069358550
+    attribution: derekGavey, CC BY 2.0, vía flickr (https://www.flickr.com/photos/45170709@N06/5069358550)
+  short0.beat3:
+    type: clip
+    start: 33
+    fit: true
+    url: https://upload.wikimedia.org/wikipedia/commons/transcoded/5/57/Venus_fly_trap_capturing_prey.webm/Venus_fly_trap_capturing_prey.webm.480p.vp9.webm
+    license: CC BY 2.0
+    source_url: https://commons.wikimedia.org/wiki/File:Venus_fly_trap_capturing_prey.webm
+    attribution: Venus fly trap capturing prey.webm, CC BY 2.0, vía Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Venus_fly_trap_capturing_prey.webm)
+  short0.beat4:
+    type: photo
+    url: https://live.staticflickr.com/5323/8971564990_1ea3cda6cd_b.jpg
+    license: CC BY 2.0
+    source_url: https://www.flickr.com/photos/44093058@N06/8971564990
+    attribution: blondinrikard, CC BY 2.0, vía flickr (https://www.flickr.com/photos/44093058@N06/8971564990)
+  short0.beat5:
+    type: clip
+    start: 52
+    fit: true
+    url: https://upload.wikimedia.org/wikipedia/commons/transcoded/5/57/Venus_fly_trap_capturing_prey.webm/Venus_fly_trap_capturing_prey.webm.480p.vp9.webm
+    license: CC BY 2.0
+    source_url: https://commons.wikimedia.org/wiki/File:Venus_fly_trap_capturing_prey.webm
+    attribution: Venus fly trap capturing prey.webm, CC BY 2.0, vía Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Venus_fly_trap_capturing_prey.webm)
+  short0.beat6:
+    type: photo
+    url: https://live.staticflickr.com/3673/9312492900_63e2ab1230_b.jpg
+    license: CC BY 2.0
+    source_url: https://www.flickr.com/photos/51942038@N04/9312492900
+    attribution: Wilson Hui, CC BY 2.0, vía flickr (https://www.flickr.com/photos/51942038@N04/9312492900)
+  short0.beat7:
+    type: clip
+    start: 70
+    fit: true
+    url: https://upload.wikimedia.org/wikipedia/commons/transcoded/5/57/Venus_fly_trap_capturing_prey.webm/Venus_fly_trap_capturing_prey.webm.480p.vp9.webm
+    license: CC BY 2.0
+    source_url: https://commons.wikimedia.org/wiki/File:Venus_fly_trap_capturing_prey.webm
+    attribution: Venus fly trap capturing prey.webm, CC BY 2.0, vía Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Venus_fly_trap_capturing_prey.webm)
+  short0.beat8:
+    type: photo
+    url: https://inaturalist-open-data.s3.amazonaws.com/photos/495017028/large.jpg
+    license: CC BY
+    source_url: https://www.inaturalist.org/photos/495017028
+    attribution: Tom Field, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/495017028)
+  short0.beat9:
+    type: photo
+    url: https://inaturalist-open-data.s3.amazonaws.com/photos/465086279/large.jpeg
+    license: CC BY
+    source_url: https://www.inaturalist.org/photos/465086279
+    attribution: Reid Hardin, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/465086279)
+  short1.beat0:
+    type: photo
+    url: https://live.staticflickr.com/7299/8971565248_24f9bd42c1_b.jpg
+    license: CC BY 2.0
+    source_url: https://www.flickr.com/photos/44093058@N06/8971565248
+    attribution: blondinrikard, CC BY 2.0, vía flickr (https://www.flickr.com/photos/44093058@N06/8971565248)
+  short1.beat1:
+    type: photo
+    url: https://inaturalist-open-data.s3.amazonaws.com/photos/135651482/large.jpeg
+    license: CC0
+    source_url: https://www.inaturalist.org/photos/135651482
+    attribution: no rights reserved, CC0, vía iNaturalist (https://www.inaturalist.org/photos/135651482)
+  short1.beat2:
+    type: photo
+    url: https://inaturalist-open-data.s3.amazonaws.com/photos/67856062/large.jpeg
+    license: CC0
+    source_url: https://www.inaturalist.org/photos/67856062
+    attribution: no rights reserved, CC0, vía iNaturalist (https://www.inaturalist.org/photos/67856062)
+  short1.beat3:
+    type: photo
+    url: https://live.staticflickr.com/5576/14448534553_421011c64d_b.jpg
+    license: CC BY 2.0
+    source_url: https://www.flickr.com/photos/104206495@N05/14448534553
+    attribution: Free the Image, CC BY 2.0, vía flickr (https://www.flickr.com/photos/104206495@N05/14448534553)
+  short1.beat4:
+    type: photo
+    url: https://inaturalist-open-data.s3.amazonaws.com/photos/67856389/large.jpeg
+    license: CC0
+    source_url: https://www.inaturalist.org/photos/67856389
+    attribution: no rights reserved, CC0, vía iNaturalist (https://www.inaturalist.org/photos/67856389)
+  short1.beat5:
+    type: clip
+    start: 58
+    fit: true
+    url: https://upload.wikimedia.org/wikipedia/commons/transcoded/1/17/Venus1min.webm/Venus1min.webm.480p.vp9.webm
+    license: CC BY-SA 4.0
+    source_url: https://commons.wikimedia.org/wiki/File:Venus1min.webm
+    attribution: Venus1min.webm, CC BY-SA 4.0, vía Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Venus1min.webm)
+  short1.beat6:
+    type: clip
+    start: 33
+    fit: true
+    url: https://upload.wikimedia.org/wikipedia/commons/transcoded/5/57/Venus_fly_trap_capturing_prey.webm/Venus_fly_trap_capturing_prey.webm.480p.vp9.webm
+    license: CC BY 2.0
+    source_url: https://commons.wikimedia.org/wiki/File:Venus_fly_trap_capturing_prey.webm
+    attribution: Venus fly trap capturing prey.webm, CC BY 2.0, vía Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Venus_fly_trap_capturing_prey.webm)
+  short1.beat7:
+    type: photo
+    url: https://live.staticflickr.com/3673/9312492900_63e2ab1230_b.jpg
+    license: CC BY 2.0
+    source_url: https://www.flickr.com/photos/51942038@N04/9312492900
+    attribution: Wilson Hui, CC BY 2.0, vía flickr (https://www.flickr.com/photos/51942038@N04/9312492900)
+  short1.beat8:
+    type: photo
+    url: https://inaturalist-open-data.s3.amazonaws.com/photos/465086233/large.jpeg
+    license: CC BY
+    source_url: https://www.inaturalist.org/photos/465086233
+    attribution: Reid Hardin, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/465086233)
+  short1.beat9:
+    type: photo
+    url: https://inaturalist-open-data.s3.amazonaws.com/photos/495017012/large.jpg
+    license: CC BY
+    source_url: https://www.inaturalist.org/photos/495017012
+    attribution: Tom Field, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/495017012)
+  short2.beat0:
+    type: clip
+    start: 33
+    fit: true
+    url: https://upload.wikimedia.org/wikipedia/commons/transcoded/5/57/Venus_fly_trap_capturing_prey.webm/Venus_fly_trap_capturing_prey.webm.480p.vp9.webm
+    license: CC BY 2.0
+    source_url: https://commons.wikimedia.org/wiki/File:Venus_fly_trap_capturing_prey.webm
+    attribution: Venus fly trap capturing prey.webm, CC BY 2.0, vía Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Venus_fly_trap_capturing_prey.webm)
+  short2.beat1:
+    type: photo
+    url: https://live.staticflickr.com/7299/8971565248_24f9bd42c1_b.jpg
+    license: CC BY 2.0
+    source_url: https://www.flickr.com/photos/44093058@N06/8971565248
+    attribution: blondinrikard, CC BY 2.0, vía flickr (https://www.flickr.com/photos/44093058@N06/8971565248)
+  short2.beat2:
+    type: photo
+    url: https://inaturalist-open-data.s3.amazonaws.com/photos/67856062/large.jpeg
+    license: CC0
+    source_url: https://www.inaturalist.org/photos/67856062
+    attribution: no rights reserved, CC0, vía iNaturalist (https://www.inaturalist.org/photos/67856062)
+  short2.beat3:
+    type: photo
+    url: https://inaturalist-open-data.s3.amazonaws.com/photos/135651482/large.jpeg
+    license: CC0
+    source_url: https://www.inaturalist.org/photos/135651482
+    attribution: no rights reserved, CC0, vía iNaturalist (https://www.inaturalist.org/photos/135651482)
+  short2.beat4:
+    type: photo
+    url: https://live.staticflickr.com/5576/14448534553_421011c64d_b.jpg
+    license: CC BY 2.0
+    source_url: https://www.flickr.com/photos/104206495@N05/14448534553
+    attribution: Free the Image, CC BY 2.0, vía flickr (https://www.flickr.com/photos/104206495@N05/14448534553)
+  short2.beat5:
+    type: clip
+    start: 62
+    fit: false
+    url: https://upload.wikimedia.org/wikipedia/commons/transcoded/6/6e/Venus_Flytrap_%28time_lapse%29.webm/Venus_Flytrap_%28time_lapse%29.webm.1080p.vp9.webm
+    license: CC BY 3.0
+    source_url: https://commons.wikimedia.org/wiki/File:Venus_Flytrap_(time_lapse).webm
+    attribution: Venus Flytrap (time lapse).webm, CC BY 3.0, vía Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Venus_Flytrap_(time_lapse).webm)
+  short2.beat6:
+    type: photo
+    url: https://live.staticflickr.com/5323/8971564990_1ea3cda6cd_b.jpg
+    license: CC BY 2.0
+    source_url: https://www.flickr.com/photos/44093058@N06/8971564990
+    attribution: blondinrikard, CC BY 2.0, vía flickr (https://www.flickr.com/photos/44093058@N06/8971564990)
+  short2.beat7:
+    type: photo
+    url: https://live.staticflickr.com/3673/9312492900_63e2ab1230_b.jpg
+    license: CC BY 2.0
+    source_url: https://www.flickr.com/photos/51942038@N04/9312492900
+    attribution: Wilson Hui, CC BY 2.0, vía flickr (https://www.flickr.com/photos/51942038@N04/9312492900)
+  short2.beat8:
+    type: photo
+    url: https://inaturalist-open-data.s3.amazonaws.com/photos/312064314/large.jpg
+    license: CC BY
+    source_url: https://www.inaturalist.org/photos/312064314
+    attribution: Rosario Douglas, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/312064314)
+  short2.beat9:
+    type: photo
+    url: https://inaturalist-open-data.s3.amazonaws.com/photos/56503709/large.jpeg
+    license: CC BY
+    source_url: https://www.inaturalist.org/photos/56503709
+    attribution: sudomir, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/56503709)
+  short3.beat0:
+    type: photo
+    url: https://live.staticflickr.com/65535/49917906482_b1bfe05c12_b.jpg
+    license: Public domain 1.0
+    source_url: https://www.flickr.com/photos/41464593@N02/49917906482
+    attribution: USFWS/Southeast, Public domain 1.0, vía flickr (https://www.flickr.com/photos/41464593@N02/49917906482)
+  short3.beat1:
+    type: photo
+    url: https://live.staticflickr.com/65535/49917227673_5203ce0021_b.jpg
+    license: Public domain 1.0
+    source_url: https://www.flickr.com/photos/41464593@N02/49917227673
+    attribution: USFWS/Southeast, Public domain 1.0, vía flickr (https://www.flickr.com/photos/41464593@N02/49917227673)
+  short3.beat2:
+    type: clip
+    start: 52
+    fit: true
+    url: https://upload.wikimedia.org/wikipedia/commons/transcoded/5/57/Venus_fly_trap_capturing_prey.webm/Venus_fly_trap_capturing_prey.webm.480p.vp9.webm
+    license: CC BY 2.0
+    source_url: https://commons.wikimedia.org/wiki/File:Venus_fly_trap_capturing_prey.webm
+    attribution: Venus fly trap capturing prey.webm, CC BY 2.0, vía Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Venus_fly_trap_capturing_prey.webm)
+  short3.beat3:
+    type: photo
+    url: https://live.staticflickr.com/4112/5069358550_b5b02ec4bb_b.jpg
+    license: CC BY 2.0
+    source_url: https://www.flickr.com/photos/45170709@N06/5069358550
+    attribution: derekGavey, CC BY 2.0, vía flickr (https://www.flickr.com/photos/45170709@N06/5069358550)
+  short3.beat4:
+    type: photo
+    url: https://inaturalist-open-data.s3.amazonaws.com/photos/372085027/large.jpg
+    license: CC0
+    source_url: https://www.inaturalist.org/photos/372085027
+    attribution: no rights reserved, CC0, vía iNaturalist (https://www.inaturalist.org/photos/372085027)
+  short3.beat5:
+    type: photo
+    url: https://inaturalist-open-data.s3.amazonaws.com/photos/432274864/large.jpeg
+    license: CC0
+    source_url: https://www.inaturalist.org/photos/432274864
+    attribution: no rights reserved, CC0, vía iNaturalist (https://www.inaturalist.org/photos/432274864)
+  short3.beat6:
+    type: photo
+    url: https://live.staticflickr.com/4073/5068749781_a76e57f9b2_b.jpg
+    license: CC BY 2.0
+    source_url: https://www.flickr.com/photos/45170709@N06/5068749781
+    attribution: derekGavey, CC BY 2.0, vía flickr (https://www.flickr.com/photos/45170709@N06/5068749781)
+  short3.beat7:
+    type: photo
+    url: https://live.staticflickr.com/3310/3589733575_ab91ede7d3_b.jpg
+    license: CC BY 2.0
+    source_url: https://www.flickr.com/photos/27500829@N07/3589733575
+    attribution: Alex Telford, CC BY 2.0, vía flickr (https://www.flickr.com/photos/27500829@N07/3589733575)
+  short3.beat8:
+    type: clip
+    start: 70
+    fit: true
+    url: https://upload.wikimedia.org/wikipedia/commons/transcoded/5/57/Venus_fly_trap_capturing_prey.webm/Venus_fly_trap_capturing_prey.webm.480p.vp9.webm
+    license: CC BY 2.0
+    source_url: https://commons.wikimedia.org/wiki/File:Venus_fly_trap_capturing_prey.webm
+    attribution: Venus fly trap capturing prey.webm, CC BY 2.0, vía Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Venus_fly_trap_capturing_prey.webm)
+  short3.beat9:
+    type: photo
+    url: https://inaturalist-open-data.s3.amazonaws.com/photos/495017028/large.jpg
+    license: CC BY
+    source_url: https://www.inaturalist.org/photos/495017028
+    attribution: Tom Field, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/495017028)
