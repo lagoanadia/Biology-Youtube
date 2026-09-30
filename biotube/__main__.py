@@ -8,6 +8,7 @@ Comandos principales (en el orden en que se usan):
   render PKG               Crea los MP4, miniatura y subtítulos
   check PKG                Revisión de monetización (licencias, duración, lenguaje...)
   publish PKG [--dry-run]  Sube y programa en YouTube
+  kit PKG                  Guía para subir a mano desde YouTube Studio (sin API)
   weekly [--packages N]    Todo lo anterior seguido (lo que ejecuta el cron)
   analytics fetch|demo     Descarga métricas reales o genera datos de demo
   dashboard [--demo]       Genera el dashboard HTML
@@ -131,6 +132,12 @@ def cmd_publish(args):
     publish_package(_load(args.package), dry_run=args.dry_run)
 
 
+def cmd_kit(args):
+    from .publisher import write_upload_kit
+
+    print(f"Guía de subida: {write_upload_kit(_load(args.package))}")
+
+
 def cmd_weekly(args):
     """Pipeline completo. Pensado para ejecutarse 1 vez por semana (cron / GitHub Actions)."""
     from .analytics import fetch_stats
@@ -187,6 +194,7 @@ def main(argv=None):
     s = sub.add_parser("check"); s.add_argument("package"); s.set_defaults(func=cmd_check)
     s = sub.add_parser("publish"); s.add_argument("package"); s.add_argument("--dry-run", action="store_true")
     s.set_defaults(func=cmd_publish)
+    s = sub.add_parser("kit"); s.add_argument("package"); s.set_defaults(func=cmd_kit)
     s = sub.add_parser("weekly"); s.add_argument("--packages", type=int, default=load_config()["schedule"]["packages_per_week"])
     s.add_argument("--dry-run", action="store_true"); s.add_argument("--skip-fetch", action="store_true")
     s.set_defaults(func=cmd_weekly)

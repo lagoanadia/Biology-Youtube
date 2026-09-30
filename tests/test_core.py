@@ -16,7 +16,7 @@ from biotube.shorts import split_offline
 from biotube.store import load_package
 from biotube.topics import Topic, pick_next_topic
 
-EXAMPLES = sorted(Path(__file__).resolve().parent.parent.glob("examples/*.yaml"))
+EXAMPLES = sorted(Path(__file__).resolve().parent.parent.glob("examples/**/*.yaml"))
 LICENSES = ["cc0", "pd", "public domain", "cc by", "cc by-sa", "pexels"]
 
 

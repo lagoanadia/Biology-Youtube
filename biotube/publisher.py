@@ -14,6 +14,7 @@ Con --dry-run se hace todo excepto hablar con YouTube: sirve para revisar.
 from __future__ import annotations
 
 import json
+from pathlib import Path
 from datetime import datetime, timezone
 
 from . import analytics
@@ -45,7 +46,8 @@ def build_upload_plan(pkg: VideoPackage, now: datetime | None = None) -> list[di
     )
     slots = plan_package(len(pkg.shorts), after=max(last, now or datetime.now(timezone.utc)),
                          taken_doc_days=taken_docs, taken_short_days=taken_shorts)
-    lang, defaults = pkg.language, cfg["channel"]["default_hashtags"]
+    lang = pkg.language
+    defaults = cfg["channel"].get(f"default_hashtags_{lang}") or cfg["channel"]["default_hashtags"]
     chapters = [tuple(c) for c in pkg.assets.get("chapters_seconds", [])]
 
     plan = [{
@@ -131,3 +133,45 @@ def publish_package(pkg: VideoPackage, dry_run: bool = False) -> VideoPackage:
     save_package(pkg)
     analytics.register_package(pkg)
     return pkg
+
+
+def write_upload_kit(pkg: VideoPackage) -> Path:
+    """Guía para subir A MANO desde YouTube Studio (sin API ni OAuth): todo listo para copiar y pegar."""
+    from zoneinfo import ZoneInfo
+
+    cfg = load_config()
+    tz = ZoneInfo(cfg["schedule"]["timezone"])
+    es = pkg.language == "es"
+    plan = build_upload_plan(pkg)
+    sep = "=" * 70
+    lines = [
+        ("GUÍA DE SUBIDA MANUAL" if es else "MANUAL UPLOAD GUIDE") + f" · {pkg.id}",
+        "YouTube Studio → Crear → Subir vídeos" if es else "YouTube Studio → Create → Upload videos",
+        ("Sube primero el documental. Cuando tengas su enlace, pégalo en la descripción de cada short donde pone {DOC_URL}."
+         if es else "Upload the documentary first. Then paste its link into each short's description where it says {DOC_URL}."),
+        ("En cada vídeo: Audiencia → 'No, no es contenido para niños'. Detalles → Mostrar más → Contenido alterado → 'Sí' "
+         "(la voz es sintética). Categoría: Educación." if es else
+         "For every video: Audience → 'No, it's not made for kids'. Show more → Altered content → 'Yes' (synthetic voice). "
+         "Category: Education."),
+        "",
+    ]
+    for item in plan:
+        when = datetime.fromisoformat(item["publish_at"].replace("Z", "+00:00")).astimezone(tz)
+        if item["kind"] == "documentary":
+            heading = "DOCUMENTAL" if es else "DOCUMENTARY"
+        else:
+            heading = f"SHORT {item['index'] + 1}"
+        lines += [
+            sep,
+            heading,
+            ("Archivo: " if es else "File: ") + Path(item["file"] or "?").name,
+            ("Programar para: " if es else "Schedule for: ") + when.strftime("%Y-%m-%d %H:%M"),
+        ]
+        if item.get("thumbnail"):
+            lines.append(("Miniatura: " if es else "Thumbnail: ") + Path(item["thumbnail"]).name)
+        lines += ["", ("TÍTULO:" if es else "TITLE:"), item["title"], "",
+                  ("DESCRIPCIÓN:" if es else "DESCRIPTION:"), item["description"], "",
+                  ("ETIQUETAS:" if es else "TAGS:"), ", ".join(item["tags"]), ""]
+    out = cfg.path("output") / pkg.id / ("SUBIR_A_YOUTUBE.txt" if es else "UPLOAD_TO_YOUTUBE.txt")
+    out.write_text("\n".join(lines), encoding="utf-8")
+    return out

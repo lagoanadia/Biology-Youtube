@@ -4,6 +4,7 @@ channel:
   language: "es"              # idioma de guiones y metadatos (es / en)
   region: "ES"                 # región para la investigación en YouTube
   default_hashtags: ["#biologia", "#naturaleza", "#ciencia"]
+  default_hashtags_en: ["#biology", "#nature", "#science"]
   # Categoría de YouTube 27 = Education (mejor CPM que "People & Blogs")
   category_id: "27"
 
@@ -21,7 +22,7 @@ content:
 voice:
   provider: "edge"              # edge (gratis, voz neural) | silent (pruebas sin red)
   voice_es: "fr-FR-RemyMultilingualNeural"   # voz multilingüe elegida para BioNiche (lee español)
-  voice_en: "en-US-AndrewNeural"
+  voice_en: "en-US-AndrewMultilingualNeural"   # la voz más natural en inglés
   rate: "+0%"
   rate_shorts: "+8%"            # los shorts van un poco más rápidos
 

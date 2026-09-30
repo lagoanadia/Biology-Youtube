@@ -265,31 +265,63 @@ def _h(text: str) -> str:
     return hashlib.sha1(text.encode()).hexdigest()[:10]
 
 
+DOC_SHOT_SECONDS = 5.5    # en el documental, un plano nuevo cada ~5,5 s
+
+
+def scene_images(query: str, n: int, fallback: list[str], used: set[str]) -> list[dict]:
+    """Hasta n imágenes distintas para una escena (sin repetir las ya usadas en el vídeo)."""
+    shots: list[dict] = []
+    for _ in range(n):
+        img = fetch_image(query, exclude=used, fallback_queries=fallback)
+        if img["provider"] == "placeholder" or img.get("source_url") in used:
+            break
+        used.add(img["source_url"])
+        shots.append(img)
+    return shots or [fetch_image(query, fallback_queries=fallback)]
+
+
+def srt_from_words(words: list[dict], offset: float = 0.0, max_words: int = 7) -> list[tuple[float, float, str]]:
+    """Subtítulos .srt con los tiempos reales de la voz (bloques de hasta 7 palabras)."""
+    chunks = []
+    for group in word_groups(words, max_words=max_words, pause=0.35):
+        start = group[0]["t"] + offset
+        end = group[-1]["t"] + group[-1]["d"] + offset
+        chunks.append((start, end, " ".join(w["w"] for w in group)))
+    return chunks
+
+
 def render_documentary(pkg: VideoPackage, out_dir: Path, tts_provider: str | None = None) -> dict:
     cfg = load_config()
     channel, lang = cfg["channel"]["name"], pkg.language
     work = out_dir / "work_doc"
     work.mkdir(parents=True, exist_ok=True)
 
+    from .tts import load_words, voice_for
+
+    voice_name, _ = voice_for(short=False, lang=lang)
     clips, wavs, durations, images, srt_chunks = [], [], [], [], []
     used: set[str] = set()
     t = 0.0
     for i, scene in enumerate(pkg.documentary.scenes):
-        mp3 = cfg.path("cache") / "tts" / f"{_h(scene.narration + str(tts_provider))}.mp3"
-        voice_len = synthesize(scene.narration, mp3, provider=tts_provider)
+        mp3 = cfg.path("cache") / "tts" / f"{_h(scene.narration + voice_name + str(tts_provider))}.mp3"
+        voice_len = synthesize(scene.narration, mp3, provider=tts_provider, lang=lang)
         seconds = voice_len + SCENE_GAP
-        img = fetch_image(scene.visual_query, exclude=used, fallback_queries=pkg.documentary.species)
-        if img.get("source_url"):
-            used.add(img["source_url"])
-        images.append(img | {"scene": i, "query": scene.visual_query})
 
-        bg = cover(Image.open(img["path"]), DOC_SIZE)
-        clips.append(still_clip(bg, doc_overlay(scene.on_screen_text, channel), seconds, work / f"s{i:03d}.mp4", seed=i))
+        # Varios planos por escena (uno cada ~DOC_SHOT_SECONDS) para que la imagen no se quede quieta
+        n_shots = max(1, round(seconds / DOC_SHOT_SECONDS))
+        shots = scene_images(scene.visual_query, n_shots, pkg.documentary.species, used)
+        for img in shots:
+            images.append(img | {"scene": i, "query": scene.visual_query})
+        overlay = doc_overlay(scene.on_screen_text, channel)
+        for j in range(n_shots):
+            img = shots[j % len(shots)]
+            bg = cover(Image.open(img["path"]), DOC_SIZE)
+            clips.append(still_clip(bg, overlay, seconds / n_shots, work / f"s{i:03d}_{j}.mp4", seed=i * 7 + j, zoom=0.09))
         wavs.append(pad_audio(mp3, seconds, work / f"s{i:03d}.wav"))
-        srt_chunks += caption_chunks(scene.narration, voice_len, words_per_chunk=8, offset=t)
+        srt_chunks += srt_from_words(load_words(mp3), offset=t)
         durations.append(seconds)
         t += seconds
-        print(f"  escena {i + 1}/{len(pkg.documentary.scenes)} ({seconds:.1f}s)")
+        print(f"  escena {i + 1}/{len(pkg.documentary.scenes)} ({seconds:.1f}s, {n_shots} planos)")
 
     bg, layer = end_card(channel, lang)
     clips.append(still_clip(bg, layer, END_CARD_SECONDS, work / "end.mp4", seed=99))
@@ -405,9 +437,9 @@ def render_short(pkg: VideoPackage, index: int, out_dir: Path, tts_provider: str
 
     from .tts import load_words, voice_for
 
-    voice_name, _ = voice_for(short=True)
+    voice_name, _ = voice_for(short=True, lang=pkg.language)
     mp3 = cfg.path("cache") / "tts" / f"{_h(short.narration + voice_name + str(tts_provider))}.mp3"
-    voice_len = synthesize(short.narration, mp3, short=True, provider=tts_provider)
+    voice_len = synthesize(short.narration, mp3, short=True, provider=tts_provider, lang=pkg.language)
     total = voice_len + 0.5
 
     # Planos: uno cada ~SHOT_SECONDS; si hay menos fotos que planos, se reutilizan con otro encuadre

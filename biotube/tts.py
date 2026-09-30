@@ -59,18 +59,19 @@ def _synth_silent(text: str, out: Path, voice: str, rate: str) -> list[dict]:
 PROVIDERS = {"edge": _synth_edge, "silent": _synth_silent}
 
 
-def voice_for(short: bool = False) -> tuple[str, str]:
+def voice_for(short: bool = False, lang: str | None = None) -> tuple[str, str]:
+    """Voz según el idioma del vídeo (voice_es, voice_en... en config.yaml)."""
     cfg = load_config()
-    lang = cfg["channel"]["language"]
+    lang = lang or cfg["channel"]["language"]
     voice = cfg["voice"].get(f"voice_{lang}", cfg["voice"]["voice_es"])
     rate = cfg["voice"]["rate_shorts" if short else "rate"]
     return voice, rate
 
 
-def synthesize(text: str, out: Path, *, short: bool = False, provider: str | None = None) -> float:
+def synthesize(text: str, out: Path, *, short: bool = False, provider: str | None = None, lang: str | None = None) -> float:
     """Genera `out` (mp3) + `out.words.json` y devuelve la duración en segundos. Cachea por fichero."""
     provider = provider or load_config()["voice"]["provider"]
-    voice, rate = voice_for(short)
+    voice, rate = voice_for(short, lang)
     out.parent.mkdir(parents=True, exist_ok=True)
     words_file = words_path(out)
     if not out.exists() or out.stat().st_size == 0 or not words_file.exists():

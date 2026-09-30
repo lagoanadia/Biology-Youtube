@@ -131,6 +131,21 @@ python -m biotube publish <id> --dry-run    # muestra el calendario y guarda out
 python -m biotube publish <id>              # sube y programa
 ```
 
+### Subir a mano (sin API ni OAuth)
+
+Si todavía no has configurado Google Cloud, o `auth` te da problemas, puedes publicar desde el navegador:
+
+```bash
+python -m biotube render examples/rana-de-cristal.yaml
+python -m biotube kit rana-de-cristal-esconde-su-sangre   # -> output/<id>/SUBIR_A_YOUTUBE.txt
+```
+
+El fichero trae, para cada vídeo, el archivo a subir, el título, la descripción completa (capítulos, fuentes y créditos de las fotos), las etiquetas y la fecha recomendada. En YouTube Studio: **Crear → Subir vídeos**, arrastra el MP4, copia y pega, y en "Visibilidad" elige **Programar**.
+
+### Versiones en inglés
+
+`examples/en/glass-frog.yaml` es la versión en inglés (`language: en`). La voz se elige según el idioma de cada paquete (`voice_es` / `voice_en` en `config.yaml`). Consejo: si publicas en los dos idiomas, mejor en **dos canales distintos**; mezclar idiomas en un canal confunde al algoritmo de recomendación.
+
 ### Piloto automático
 
 ```bash

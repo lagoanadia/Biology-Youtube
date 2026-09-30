@@ -235,6 +235,9 @@ def placeholder(text: str, out: Path, size: tuple[int, int]) -> dict:
     return {"provider": "placeholder", "path": str(out), "license": "own", "attribution": None, "source_url": None}
 
 
+_SEARCH_CACHE: dict[tuple, list[dict]] = {}
+
+
 def load_blocklist() -> set[str]:
     """URLs vetadas a mano en data/image_blocklist.txt (tras revisar la hoja de contactos)."""
     path = load_config().path("database").parent / "image_blocklist.txt"
@@ -267,7 +270,10 @@ def _fetch_one(query: str, *, portrait: bool = False, exclude: set[str] | None =
 
     for provider in cfg["media"]["providers"]:
         try:
-            candidates = SEARCHERS[provider](query, portrait=portrait)
+            key = (provider, query, portrait)
+            if key not in _SEARCH_CACHE:  # una búsqueda por consulta, no una por plano
+                _SEARCH_CACHE[key] = SEARCHERS[provider](query, portrait=portrait)
+            candidates = _SEARCH_CACHE[key]
         except (requests.RequestException, ValueError) as e:
             print(f"[media] {provider} falló para '{query}': {e}")
             continue
