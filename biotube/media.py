@@ -36,7 +36,8 @@ THUMB_STEPS = (960, 1280, 1920)
 # Palabras en el nombre del fichero que delatan que NO es el ser vivo real
 # (salvo que la búsqueda las pida explícitamente, p. ej. "diagram").
 OFF_TOPIC_WORDS = ("figurine", "statue", "sculpture", "toy", "plush", "logo", "stamp", "coin", "poster",
-                   "cartoon", "emoji", "flag", "map", "diagram", "drawing", "illustration", "museum")
+                   "cartoon", "emoji", "flag", "map", "diagram", "drawing", "illustration", "museum", "screenshot",
+                   "bottle", "jar", "dish", "ornament", "candy", "painting", "engraving", "costume", "glassware")
 
 
 def looks_off_topic(title: str, query: str) -> bool:

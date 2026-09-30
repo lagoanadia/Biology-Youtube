@@ -24,7 +24,8 @@ class Source(BaseModel):
 class Scene(BaseModel):
     narration: str = Field(description="Texto que lee el narrador en esta escena")
     visual_query: str = Field(
-        description="Búsqueda EN INGLÉS para encontrar una imagen libre (ej: 'Ampulex compressa wasp')"
+        description="Búsqueda de imagen: preferentemente un nombre científico (Género especie) de la especie "
+        "o de un pariente cercano; si no, términos en inglés concretos (ej: 'Aurelia aurita')"
     )
     on_screen_text: str = Field(description="Rótulo corto en pantalla, máximo 8 palabras")
     key_fact: bool = Field(description="True si la escena contiene un hecho sorprendente reutilizable en un short")

@@ -43,14 +43,14 @@ documentary:
         A study published in 2020 showed that their translucency does something clever: the edges of their body
         take on the color of the leaf beneath them, so their outline blurs away.
         And for a bird hunting for frogs, the outline is exactly what gives prey away.
-      visual_query: glass frog on leaf
+      visual_query: Teratohyla spinosa
       on_screen_text: An outline that fades away
       key_fact: true
     - narration: >-
         But there was a problem. Blood is red, and it absorbs a lot of light. A circulatory system full of red blood cells
         would draw a network of lines and blotches right through the animal. For years, nobody knew how glass frogs
         got around this. Until 2022. And the answer turned out to be astonishing.
-      visual_query: red blood cells
+      visual_query: red blood cells scanning electron micrograph
       on_screen_text: The blood problem
       key_fact: false
     - narration: >-
@@ -64,7 +64,7 @@ documentary:
         How do you see the blood inside a sleeping frog without waking it up? They used a technique called photoacoustic imaging.
         You shine a gentle laser on the animal. The red blood cells absorb that light, warm up by a tiny fraction of a degree,
         and give off ultrasound. By listening to those sounds, you can map where the blood is, without ever touching the frog.
-      visual_query: laser light laboratory
+      visual_query: Cochranella
       on_screen_text: Listening to blood
       key_fact: true
     - narration: >-
@@ -80,7 +80,7 @@ documentary:
         Other animals do something similar with a different organ: the spleen. Horses, dogs and seals store reserves
         of red blood cells there, and release them when they need extra oxygen, like when running or diving.
         The glass frog flips that idea around: not to perform better, but to hide.
-      visual_query: Weddell seal
+      visual_query: Leptonychotes weddellii
       on_screen_text: A blood storage unit
       key_fact: true
     - narration: >-
@@ -102,7 +102,7 @@ documentary:
         would be a recipe for clots, and clots can cause thrombosis or heart attacks.
         This frog does it every single day, for hours, and stays perfectly healthy.
         Understanding how it manages that could one day inspire new anticoagulant drugs.
-      visual_query: blood clot
+      visual_query: fibrin blood clot electron micrograph
       on_screen_text: No clots
       key_fact: true
     - narration: >-
@@ -152,7 +152,7 @@ documentary:
         Transparency is extremely rare in land animals. In the ocean it's much more common: jellyfish, fish larvae,
         tiny crustaceans. In water it's easier to be see-through, because body tissues are similar to the water around them.
         On land, with air and direct sunlight, it's far, far harder. That's what makes glass frogs so special.
-      visual_query: transparent jellyfish
+      visual_query: Aurelia aurita
       on_screen_text: See-through on land
       key_fact: false
     - narration: >-
@@ -174,7 +174,7 @@ documentary:
         Many glass frog species are threatened. They depend on clean streams and intact forests,
         and they suffer from deforestation, water pollution and chytridiomycosis, a disease caused by a fungus
         that has driven the decline of hundreds of amphibian species around the world.
-      visual_query: tropical cloud forest
+      visual_query: Monteverde cloud forest
       on_screen_text: Amphibians in danger
       key_fact: false
     - narration: >-
