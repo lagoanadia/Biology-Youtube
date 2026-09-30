@@ -39,11 +39,12 @@ editing:                       # intensidad de la edición de los shorts
   flashes: false                # destello blanco en los cortes
   transition: "fade"            # fundido entre planos (xfade de ffmpeg: fade, smoothleft, zoomin...) | "cut"
   transition_seconds: 0.2       # duración del fundido (rápido = 0.15-0.25)
-  whoosh_on: "all"              # "all" = en cada transición | "clips" = solo al entrar un vídeo | "none"
+  whoosh_on: "none"             # "all" = en cada transición | "clips" = solo al entrar un vídeo | "none"
   whoosh_volume: 0.22
   pop_volume: 0.5               # sonido de las pegatinas
   impact_volume: 0.5            # golpe grave al empezar (0 = sin golpe)
-  music_volume: 0.22            # música de fondo (baja sola cuando habla la voz); 0 = sin música
+  music_volume: 0.07            # música de fondo, casi imperceptible (baja sola cuando habla la voz); 0 = sin música
+  music_start: 5                # segundo del fichero de música por el que empezar (evita introducciones)
   stickers: false               # pegatinas animadas ("90%", "INVISIBLE"...)
   sticker_bounce: 1.1           # 1.25 = rebote exagerado
 

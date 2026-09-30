@@ -251,8 +251,12 @@ def final_mix(video: Path, voice: Path, out: Path, subtitles: Path | None = None
     parts, mix_inputs = ["[1:a]asplit=2[vo][key]"], ["[vo]"]
     n = 2
     if music:
-        args += ["-stream_loop", "-1", "-i", str(music)]
-        parts.append(f"[{n}:a]volume={_edit('music_volume', 0.14)}[mraw];[mraw][key]sidechaincompress=threshold=0.03:ratio=8:attack=15:release=350[m]")
+        total = ffmpeg.duration(voice)
+        args += ["-ss", str(_edit("music_start", 0)), "-stream_loop", "-1", "-i", str(music)]
+        # fundidos de entrada/salida: la música "está" sin que se note cuándo empieza o acaba
+        parts.append(f"[{n}:a]volume={_edit('music_volume', 0.07)},afade=t=in:d=1.5,"
+                     f"afade=t=out:st={max(total - 2, 0):.2f}:d=2[mraw];"
+                     "[mraw][key]sidechaincompress=threshold=0.03:ratio=8:attack=15:release=350[m]")
         mix_inputs.append("[m]")
         n += 1
     else:
