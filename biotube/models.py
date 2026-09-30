@@ -61,6 +61,10 @@ class Beat(BaseModel):
         description="Qué se ve mientras suena este trozo: nombre científico o término concreto que "
         "muestre exactamente lo que se dice (ej: 'Hyalinobatrachium ventral view', 'red blood cells microscope')"
     )
+    sticker: str = Field(
+        default="",
+        description="Opcional: rótulo-pegatina de 1-3 palabras que salta en pantalla (ej: '90%', 'INVISIBLE'); vacío si no",
+    )
 
 
 class ShortScript(BaseModel):

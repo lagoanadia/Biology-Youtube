@@ -260,3 +260,11 @@ def test_beat_times_follow_voice():
              {"t": 1.0, "d": 0.2, "w": "se"}, {"t": 1.3, "d": 0.2, "w": "ve-through"}, {"t": 1.6, "d": 0.2, "w": "hoy"}]
     times = beat_times(beats, words, total=2.0)
     assert times[0][0] == 0.0 and abs(times[1][0] - 0.95) < 1e-9 and times[1][1] == 2.0
+
+
+def test_sfx_track_places_events(tmp_path):
+    from biotube import ffmpeg
+    from biotube.render import sfx_track
+
+    out = sfx_track([(0.0, "impact.mp3", 0.9), (1.0, "whoosh.mp3", 0.5), (2.0, "pop.mp3", 0.8)], 3.0, tmp_path / "fx.wav")
+    assert out is not None and abs(ffmpeg.duration(out) - 3.0) < 0.05

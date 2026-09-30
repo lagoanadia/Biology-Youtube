@@ -219,23 +219,24 @@ documentary_metadata:
 shorts:
   - hook: This frog has a trick that would send you straight to the hospital.
     fact: >-
-      Look. It's a glass frog, and its belly is see-through: you can even watch its heart beating.
-      But there's a problem… blood is red, and it would give the frog away. So when it goes to sleep, it does something incredible:
-      it pulls almost ninety percent of its red blood cells out of circulation… and hides them in its liver.
-      With no blood in sight, it becomes nearly invisible on the leaf. And the weirdest part? Not a single blood clot.
+      Look. It's a glass frog, and its belly is completely see-through. You can literally watch its heart beat.
+      Pretty cool… except that heart pumps red blood, and red stands out like a stop sign.
+      So when it falls asleep, it pulls almost ninety percent of its red blood cells out of circulation… and hides them in its liver.
+      No red, no outline. On a leaf, it basically disappears. And the craziest part? Not a single blood clot.
     cta: Follow BioNiche for more secrets like this.
     visual_queries: [Hyalinobatrachium fleischmanni, Hyalinobatrachium, Centrolenidae, Cochranella, Espadarana prosoblepon, Sachatamia albomaculata]
     on_screen_texts: [The invisible frog]
     beats:
       - {text: "This frog has a trick that would send you straight to the hospital.", visual: glass frog face}
-      - {text: "Look. It's a glass frog, and its belly is see-through:", visual: glass frog ventral view}
-      - {text: "you can even watch its heart beating.", visual: glass frog heart visible}
-      - {text: "But there's a problem… blood is red, and it would give the frog away.", visual: red blood cells microscope}
-      - {text: "So when it goes to sleep, it does something incredible:", visual: glass frog sleeping on leaf}
-      - {text: "it pulls almost ninety percent of its red blood cells out of circulation…", visual: blood flowing in capillaries}
+      - {text: "Look. It's a glass frog, and its belly is completely see-through.", visual: glass frog ventral view, sticker: "SEE-THROUGH"}
+      - {text: "You can literally watch its heart beat.", visual: glass frog heart visible}
+      - {text: "Pretty cool… except that heart pumps red blood,", visual: red blood cells microscope}
+      - {text: "and red stands out like a stop sign.", visual: glass frog red blood vessel visible, sticker: "RED = SPOTTED"}
+      - {text: "So when it falls asleep,", visual: glass frog sleeping on leaf}
+      - {text: "it pulls almost ninety percent of its red blood cells out of circulation…", visual: blood flowing in capillaries, sticker: "90%"}
       - {text: "and hides them in its liver.", visual: glass frog organs}
-      - {text: "With no blood in sight, it becomes nearly invisible on the leaf.", visual: glass frog silhouette through leaf}
-      - {text: "And the weirdest part? Not a single blood clot.", visual: red blood cells microscope}
+      - {text: "No red, no outline. On a leaf, it basically disappears.", visual: glass frog silhouette through leaf, sticker: "INVISIBLE"}
+      - {text: "And the craziest part? Not a single blood clot.", visual: red blood cells microscope, sticker: "0 CLOTS"}
       - {text: "Follow BioNiche for more secrets like this.", visual: glass frog on leaf}
   - hook: Can you see this animal's heart? Because I can.
     fact: >-
@@ -268,14 +269,15 @@ curated:
   # Visuales elegidos a mano mirando cada foto/clip (short 1). Fotos de iNaturalist, clips de Wikimedia Commons.
   short0.beat0: {type: photo, url: "https://inaturalist-open-data.s3.amazonaws.com/photos/57846555/large.jpg", license: CC BY-SA, source_url: "https://www.inaturalist.org/photos/57846555", attribution: "Matteo Cassella, CC BY-SA, vía iNaturalist (https://www.inaturalist.org/photos/57846555)"}
   short0.beat1: {type: photo, url: "https://inaturalist-open-data.s3.amazonaws.com/photos/255407956/large.jpg", license: CC BY, source_url: "https://www.inaturalist.org/photos/255407956", attribution: "Alberto Sánchez, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/255407956)"}
-  short0.beat2: {type: photo, url: "https://inaturalist-open-data.s3.amazonaws.com/photos/474623180/large.jpg", license: CC0, source_url: "https://www.inaturalist.org/photos/474623180", attribution: "CC0, vía iNaturalist (https://www.inaturalist.org/photos/474623180)"}
+  short0.beat2: {type: photo, url: "https://inaturalist-open-data.s3.amazonaws.com/photos/474623180/large.jpg", license: CC0, source_url: "https://www.inaturalist.org/photos/474623180", attribution: "iNaturalist user, CC0, vía iNaturalist (https://www.inaturalist.org/photos/474623180)"}
   short0.beat3: {type: clip, start: 20, url: "https://upload.wikimedia.org/wikipedia/commons/transcoded/8/83/Blood_on_1000x_Microscope_HD_1080p.ogv/Blood_on_1000x_Microscope_HD_1080p.ogv.1080p.vp9.webm", license: CC BY 3.0, source_url: "https://commons.wikimedia.org/wiki/File:Blood_on_1000x_Microscope_HD_1080p.ogv", attribution: "Aurel Manea, CC BY 3.0, vía Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Blood_on_1000x_Microscope_HD_1080p.ogv)"}
-  short0.beat4: {type: photo, url: "https://inaturalist-open-data.s3.amazonaws.com/photos/418870647/large.jpeg", license: CC BY, source_url: "https://www.inaturalist.org/photos/418870647", attribution: "Borja Fierro, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/418870647)"}
-  short0.beat5: {type: clip, start: 2, url: "https://upload.wikimedia.org/wikipedia/commons/transcoded/7/72/Flujo_sangu%C3%ADneo_en_branquias_de_larvas_de_axolote_ambystoma_mexicanum.webm/Flujo_sangu%C3%ADneo_en_branquias_de_larvas_de_axolote_ambystoma_mexicanum.webm.1080p.vp9.webm", license: CC BY-SA 4.0, source_url: "https://commons.wikimedia.org/wiki/File:Flujo_sangu%C3%ADneo_en_branquias_de_larvas_de_axolote_ambystoma_mexicanum.webm", attribution: "Micro.Cosmonauta, CC BY-SA 4.0, vía Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Flujo_sangu%C3%ADneo_en_branquias_de_larvas_de_axolote_ambystoma_mexicanum.webm)"}
-  short0.beat6: {type: photo, url: "https://inaturalist-open-data.s3.amazonaws.com/photos/530968732/large.jpg", license: CC BY, source_url: "https://www.inaturalist.org/photos/530968732", attribution: "Artur Alves, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/530968732)"}
-  short0.beat7: {type: photo, url: "https://inaturalist-open-data.s3.amazonaws.com/photos/399304102/large.jpg", license: CC BY, source_url: "https://www.inaturalist.org/photos/399304102", attribution: "Nick Tobler, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/399304102)"}
-  short0.beat8: {type: clip, start: 90, url: "https://upload.wikimedia.org/wikipedia/commons/transcoded/8/83/Blood_on_1000x_Microscope_HD_1080p.ogv/Blood_on_1000x_Microscope_HD_1080p.ogv.1080p.vp9.webm", license: CC BY 3.0, source_url: "https://commons.wikimedia.org/wiki/File:Blood_on_1000x_Microscope_HD_1080p.ogv", attribution: "Aurel Manea, CC BY 3.0, vía Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Blood_on_1000x_Microscope_HD_1080p.ogv)"}
-  short0.beat9: {type: photo, url: "https://inaturalist-open-data.s3.amazonaws.com/photos/399304662/large.jpg", license: CC BY, source_url: "https://www.inaturalist.org/photos/399304662", attribution: "Nick Tobler, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/399304662)"}
+  short0.beat4: {type: photo, url: "https://inaturalist-open-data.s3.amazonaws.com/photos/530968732/large.jpg", license: CC BY, source_url: "https://www.inaturalist.org/photos/530968732", attribution: "Artur Alves, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/530968732)"}
+  short0.beat5: {type: photo, url: "https://inaturalist-open-data.s3.amazonaws.com/photos/418870647/large.jpeg", license: CC BY, source_url: "https://www.inaturalist.org/photos/418870647", attribution: "Borja Fierro, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/418870647)"}
+  short0.beat6: {type: clip, start: 2, url: "https://upload.wikimedia.org/wikipedia/commons/transcoded/7/72/Flujo_sangu%C3%ADneo_en_branquias_de_larvas_de_axolote_ambystoma_mexicanum.webm/Flujo_sangu%C3%ADneo_en_branquias_de_larvas_de_axolote_ambystoma_mexicanum.webm.1080p.vp9.webm", license: CC BY-SA 4.0, source_url: "https://commons.wikimedia.org/wiki/File:Flujo_sangu%C3%ADneo_en_branquias_de_larvas_de_axolote_ambystoma_mexicanum.webm", attribution: "Micro.Cosmonauta, CC BY-SA 4.0, vía Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Flujo_sangu%C3%ADneo_en_branquias_de_larvas_de_axolote_ambystoma_mexicanum.webm)"}
+  short0.beat7: {type: photo, url: "https://inaturalist-open-data.s3.amazonaws.com/photos/214525877/large.jpg", license: CC BY, source_url: "https://www.inaturalist.org/photos/214525877", attribution: "Jared Shorma, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/214525877)"}
+  short0.beat8: {type: photo, url: "https://inaturalist-open-data.s3.amazonaws.com/photos/399304102/large.jpg", license: CC BY, source_url: "https://www.inaturalist.org/photos/399304102", attribution: "Nick Tobler, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/399304102)"}
+  short0.beat9: {type: clip, start: 90, url: "https://upload.wikimedia.org/wikipedia/commons/transcoded/8/83/Blood_on_1000x_Microscope_HD_1080p.ogv/Blood_on_1000x_Microscope_HD_1080p.ogv.1080p.vp9.webm", license: CC BY 3.0, source_url: "https://commons.wikimedia.org/wiki/File:Blood_on_1000x_Microscope_HD_1080p.ogv", attribution: "Aurel Manea, CC BY 3.0, vía Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Blood_on_1000x_Microscope_HD_1080p.ogv)"}
+  short0.beat10: {type: photo, url: "https://inaturalist-open-data.s3.amazonaws.com/photos/399304662/large.jpg", license: CC BY, source_url: "https://www.inaturalist.org/photos/399304662", attribution: "Nick Tobler, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/399304662)"}
 shorts_metadata:
   - title: "The Frog That Hides Its Blood 🐸"
     description: How it turns invisible while it sleeps.

@@ -39,6 +39,7 @@ SHORT_SIZE = (1080, 1920)
 SCENE_GAP = 0.35          # pausa entre escenas (s)
 END_CARD_SECONDS = 12     # YouTube permite "pantalla final" en los últimos 5-20 s
 ACCENT = (255, 204, 0)
+PUNCH, PUNCH_FRAMES = 0.18, 6
 
 
 # ------------------------------------------------------------------ imágenes
@@ -127,7 +128,8 @@ def thumbnail(img_path: str, text: str, out: Path) -> Path:
 
 # ------------------------------------------------------------------ ffmpeg
 
-def still_clip(bg: Image.Image, overlay: Image.Image, seconds: float, out: Path, seed: int, zoom: float = 0.07) -> Path:
+def still_clip(bg: Image.Image, overlay: Image.Image, seconds: float, out: Path, seed: int, zoom: float = 0.07,
+               punch: bool = False) -> Path:
     """Clip mudo con zoom lento sobre `bg` y `overlay` fijo encima."""
     work = out.with_suffix("")
     bg_path, ov_path = work.with_name(work.name + "_bg.jpg"), work.with_name(work.name + "_ov.png")
@@ -137,6 +139,8 @@ def still_clip(bg: Image.Image, overlay: Image.Image, seconds: float, out: Path,
     frames = max(1, round(seconds * FPS))
     zoom_in = seed % 2 == 0
     z = f"1+{zoom}*on/{frames}" if zoom_in else f"{1 + zoom}-{zoom}*on/{frames}"
+    if punch:  # "punch-in": entra con zoom fuerte y se asienta en 6 fotogramas (0,2 s)
+        z = f"if(lt(on,{PUNCH_FRAMES}),{1 + PUNCH}-{PUNCH}*on/{PUNCH_FRAMES},{z.replace('on', f'(on-{PUNCH_FRAMES})')})"
     # Pequeño desplazamiento horizontal alterno para que no parezca siempre igual
     drift = random.Random(seed).choice([-1, 1])
     x = f"(iw-iw/zoom)/2+{drift}*(iw-iw/zoom)/2*on/{frames}"
@@ -152,12 +156,15 @@ def still_clip(bg: Image.Image, overlay: Image.Image, seconds: float, out: Path,
     return out
 
 
-def video_clip(src: str, overlay: Image.Image, seconds: float, size: tuple[int, int], out: Path, start: float = 0.0) -> Path:
+def video_clip(src: str, overlay: Image.Image, seconds: float, size: tuple[int, int], out: Path, start: float = 0.0,
+               punch: bool = False) -> Path:
     """Clip mudo a partir de un vídeo de stock: recorte a `size`, 30 fps y rótulos encima."""
     ov_path = out.with_name(out.stem + "_ov.png")
     overlay.save(ov_path)
     w, h = size
-    vf = (f"[0:v]scale={w}:{h}:force_original_aspect_ratio=increase,crop={w}:{h},fps={FPS},setsar=1[v0];"
+    punch_f = (f",zoompan=z='if(lt(on,{PUNCH_FRAMES}),{1 + PUNCH}-{PUNCH}*on/{PUNCH_FRAMES},1)'"
+               f":x='(iw-iw/zoom)/2':y='(ih-ih/zoom)/2':d=1:s={w}x{h}:fps={FPS}") if punch else ""
+    vf = (f"[0:v]scale={w}:{h}:force_original_aspect_ratio=increase,crop={w}:{h},fps={FPS},setsar=1{punch_f}[v0];"
           f"[v0][1:v]overlay=0:0,format=yuv420p[v]")
     ffmpeg.run(["-ss", f"{start:.2f}", "-stream_loop", "-1", "-i", src, "-loop", "1", "-i", str(ov_path), "-filter_complex", vf,
                 "-map", "[v]", "-t", f"{seconds:.3f}", "-an", "-c:v", "libx264", "-preset", "veryfast",
@@ -199,31 +206,72 @@ def _music_track() -> Path | None:
     return random.choice(tracks) if tracks else None
 
 
-def final_mix(video: Path, voice: Path, out: Path, subtitles: Path | None = None, progress_bar: float | None = None) -> Path:
-    """`progress_bar` = duración total en segundos -> dibuja una barra que avanza abajo (shorts)."""
+def final_mix(video: Path, voice: Path, out: Path, subtitles: Path | None = None, progress_bar: float | None = None,
+              sfx: Path | None = None, flashes: list[float] | None = None) -> Path:
+    """Mezcla final.
+
+    - `progress_bar`: duración total -> barra amarilla que avanza abajo (shorts).
+    - `sfx`: pista de efectos de sonido ya montada (whooshes, pops...).
+    - `flashes`: instantes (s) de los cortes -> destello blanco de 2 fotogramas.
+    La música (assets/music) baja sola cuando habla la voz ("ducking" con sidechaincompress).
+    """
     music = _music_track()
     args = ["-i", str(video), "-i", str(voice)]
+    parts, mix_inputs = ["[1:a]asplit=2[vo][key]"], ["[vo]"]
+    n = 2
     if music:
         args += ["-stream_loop", "-1", "-i", str(music)]
-        audio = "[2:a]volume=0.08[m];[1:a][m]amix=inputs=2:duration=first:dropout_transition=0[mix];[mix]"
+        parts.append(f"[{n}:a]volume=0.22[mraw];[mraw][key]sidechaincompress=threshold=0.03:ratio=8:attack=15:release=350[m]")
+        mix_inputs.append("[m]")
+        n += 1
     else:
-        audio = "[1:a]"
-    audio += "loudnorm=I=-14:TP=-1.5:LRA=11[a]"
+        parts.append("[key]anullsink")
+    if sfx:
+        args += ["-i", str(sfx)]
+        parts.append(f"[{n}:a]volume=0.9[fx]")
+        mix_inputs.append("[fx]")
+        n += 1
+    audio = ";".join(parts) + ";" + "".join(mix_inputs) + (
+        f"amix=inputs={len(mix_inputs)}:duration=first:normalize=0[mix];[mix]loudnorm=I=-14:TP=-1.5:LRA=11[a]")
+
     if subtitles:
         sub = subtitles.resolve().as_posix().replace(":", r"\:")
-        video_chain = f"[0:v]ass='{sub}'[s];"
+        chain = f"[0:v]ass='{sub}'[s0];"
+        last = "s0"
+        if flashes:
+            cond = "+".join(f"between(t,{t:.3f},{t + 0.066:.3f})" for t in flashes)
+            chain += (f"color=c=white:s=1080x1920:r={FPS},format=rgba,colorchannelmixer=aa=0.55[fl];"
+                      f"[{last}][fl]overlay=enable='{cond}':shortest=1[s1];")
+            last = "s1"
         if progress_bar:
             d = f"{progress_bar:.3f}"
-            video_chain += (f"color=c=0xFFCC00:s=1080x12:d={d}:r={FPS}[bar];"
-                            f"[s][bar]overlay=x='-w+w*t/{d}':y=H-h:shortest=1[v];")
+            chain += (f"color=c=0xFFCC00:s=1080x12:d={d}:r={FPS}[bar];"
+                      f"[{last}][bar]overlay=x='-w+w*t/{d}':y=H-h:shortest=1[v];")
         else:
-            video_chain = video_chain.replace("[s];", "[v];")
-        graph = video_chain + audio
+            chain += f"[{last}]null[v];"
+        graph = chain + audio
         vmap, vcodec = "[v]", ["-c:v", "libx264", "-preset", "veryfast", "-crf", "20"]
     else:
         graph, vmap, vcodec = audio, "0:v", ["-c:v", "copy"]
     ffmpeg.run([*args, "-filter_complex", graph, "-map", vmap, "-map", "[a]", *vcodec,
                 "-c:a", "aac", "-b:a", "192k", "-ar", "44100", "-shortest", "-movflags", "+faststart", str(out)])
+    return out
+
+
+def sfx_track(events: list[tuple[float, str, float]], total: float, out: Path) -> Path | None:
+    """Monta una pista de efectos: events = [(segundo, fichero en assets/sfx, volumen)]."""
+    folder = Path(__file__).resolve().parent.parent / "assets" / "sfx"
+    events = [(t, folder / name, vol) for t, name, vol in events if (folder / name).exists()]
+    if not events:
+        return None
+    args, chains = [], []
+    for i, (t, path, vol) in enumerate(events):
+        args += ["-i", str(path)]
+        ms = max(int(t * 1000), 0)
+        chains.append(f"[{i}:a]aformat=sample_rates=44100:channel_layouts=mono,volume={vol},adelay={ms}:all=1[e{i}]")
+    graph = ";".join(chains) + ";" + "".join(f"[e{i}]" for i in range(len(events))) + \
+        f"amix=inputs={len(events)}:normalize=0:duration=longest,apad=whole_dur={total:.3f},atrim=0:{total:.3f}[a]"
+    ffmpeg.run([*args, "-filter_complex", graph, "-map", "[a]", "-c:a", "pcm_s16le", str(out)])
     return out
 
 
@@ -392,14 +440,16 @@ def word_groups(words: list[dict], max_words: int = 3, pause: float = 0.22) -> l
     return groups
 
 
-def write_karaoke_ass(words: list[dict], out: Path, total: float, hook_words: int = 0) -> Path:
+def write_karaoke_ass(words: list[dict], out: Path, total: float, hook_words: int = 0,
+                      stickers: list[tuple[float, float, str]] | None = None) -> Path:
     """Subtítulos sincronizados palabra a palabra: el grupo visible y la palabra que suena en amarillo."""
     header = (
         "[Script Info]\nScriptType: v4.00+\nPlayResX: 1080\nPlayResY: 1920\nWrapStyle: 0\n\n"
         "[V4+ Styles]\nFormat: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, "
         "Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, "
         "Alignment, MarginL, MarginR, MarginV, Encoding\n"
-        "Style: Cap,DejaVu Sans,104,&H00FFFFFF,&H00FFFFFF,&H00000000,&H96000000,-1,0,0,0,100,100,0,0,1,8,3,2,50,50,560,1\n\n"
+        "Style: Cap,DejaVu Sans,104,&H00FFFFFF,&H00FFFFFF,&H00000000,&H96000000,-1,0,0,0,100,100,0,0,1,8,3,2,50,50,560,1\n"
+        "Style: Sticker,DejaVu Sans,118,&H00FFFFFF,&H00FFFFFF,&H002B2BE0,&H002B2BE0,-1,0,0,0,100,100,2,0,3,22,0,8,50,50,380,1\n\n"
         "[Events]\nFormat: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text\n"
     )
     yellow, white = "{\\c&H00CCFF&}", "{\\c&HFFFFFF&}"
@@ -418,6 +468,11 @@ def write_karaoke_ass(words: list[dict], out: Path, total: float, hook_words: in
             pop = "{\\fscx112\\fscy112\\t(0,90,\\fscx100\\fscy100)}" if k == 0 else ""
             lines.append(f"Dialogue: 0,{_ass_time(start)},{_ass_time(end)},Cap,,0,0,0,,{pop}{' '.join(parts)}")
             n += 1
+    for start, end, text in stickers or []:
+        # pegatina roja inclinada que "salta": escala 0 -> 125 % -> 100 %
+        anim = "{\\frz-5\\fscx0\\fscy0\\t(0,120,\\fscx125\\fscy125)\\t(120,220,\\fscx100\\fscy100)\\fad(0,120)}"
+        clean = re.sub(r"[{}\\]", "", text).upper()
+        lines.append(f"Dialogue: 1,{_ass_time(start)},{_ass_time(end)},Sticker,,0,0,0,,{anim}{clean}")
     out.write_text(header + "\n".join(lines) + "\n", encoding="utf-8")
     return out
 
@@ -512,8 +567,12 @@ def beat_shots(pkg: VideoPackage, index: int, words: list[dict], total: float, w
     short = pkg.shorts[index]
     headline = short.on_screen_texts[0] if short.on_screen_texts else ""
     empty = headline_overlay("", channel)
-    clips, images, used = [], [], set()
+    clips, images, used, cuts, stickers = [], [], set(), [], []
     for b, (start, end) in enumerate(beat_times(short.beats, words, total)):
+        if b:
+            cuts.append(start)
+        if beat_sticker := short.beats[b].sticker:
+            stickers.append((start + 0.15, min(end, start + 1.8), beat_sticker))
         beat = short.beats[b]
         overlay = headline_overlay(headline, channel) if b == 0 else empty
         dur = max(end - start, 0.3)
@@ -527,7 +586,7 @@ def beat_shots(pkg: VideoPackage, index: int, words: list[dict], total: float, w
         meta = {k: asset.get(k) for k in ("provider", "license", "attribution", "source_url")}
         path = work / f"b{b:02d}.mp4"
         if asset["type"] == "clip":
-            clips.append(video_clip(asset["path"], overlay, dur, SHORT_SIZE, path, start=asset.get("start", 0)))
+            clips.append(video_clip(asset["path"], overlay, dur, SHORT_SIZE, path, start=asset.get("start", 0), punch=True))
             images.append(clip_preview({"clip": asset["path"]}) | meta | {"short": index, "query": beat.text[:40]})
             continue
         images.append({"path": asset["path"]} | meta | {"short": index, "query": beat.text[:40]})
@@ -535,8 +594,10 @@ def beat_shots(pkg: VideoPackage, index: int, words: list[dict], total: float, w
         bg = compose_portrait(Image.open(asset["path"]))
         for k in range(parts):  # misma foto, dos encuadres (zoom in / zoom out)
             clips.append(still_clip(bg, overlay if k == 0 else empty, dur / parts, work / f"b{b:02d}_{k}.mp4",
-                                    seed=b * 2 + k, zoom=0.12))
-    return concat(clips, work / "video.mp4"), images
+                                    seed=b * 2 + k, zoom=0.12, punch=True))
+            if k:
+                cuts.append(start + dur / parts * k)
+    return concat(clips, work / "video.mp4"), images, cuts, stickers
 
 
 def render_short(pkg: VideoPackage, index: int, out_dir: Path, tts_provider: str | None = None) -> dict:
@@ -554,10 +615,17 @@ def render_short(pkg: VideoPackage, index: int, out_dir: Path, tts_provider: str
     total = voice_len + 0.5
 
     if short.beats:
-        video, images = beat_shots(pkg, index, load_words(mp3), total, work, channel)
+        video, images, cuts, stickers = beat_shots(pkg, index, load_words(mp3), total, work, channel)
         voice = pad_audio(mp3, total, work / "voice.wav")
-        ass = write_karaoke_ass(load_words(mp3), work / "captions.ass", total, hook_words=len(short.hook.split()))
-        final = final_mix(video, voice, out_dir / f"short_{index + 1}.mp4", subtitles=ass, progress_bar=total)
+        ass = write_karaoke_ass(load_words(mp3), work / "captions.ass", total, hook_words=len(short.hook.split()),
+                                stickers=stickers)
+        # Efectos: golpe grave en el gancho, whoosh en cada corte (alternando dos), pop en cada pegatina
+        events = [(0.0, "impact.mp3", 0.9)]
+        events += [(t - 0.12, "whoosh.mp3" if i % 2 else "whoosh2.mp3", 0.55) for i, t in enumerate(cuts)]
+        events += [(t0, "pop.mp3", 0.8) for t0, _, _ in stickers]
+        fx = sfx_track(events, total, work / "sfx.wav")
+        final = final_mix(video, voice, out_dir / f"short_{index + 1}.mp4", subtitles=ass, progress_bar=total,
+                          sfx=fx, flashes=cuts)
         return {"path": str(final), "seconds": round(ffmpeg.duration(final), 2), "images": images}
 
     # Planos: uno cada ~SHOT_SECONDS; si hay menos fotos que planos, se reutilizan con otro encuadre
