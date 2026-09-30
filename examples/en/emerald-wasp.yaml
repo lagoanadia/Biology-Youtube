@@ -1,0 +1,577 @@
+id: emerald-wasp-zombie-cockroaches
+language: en
+documentary:
+  topic: The emerald wasp that turns cockroaches into zombies
+  working_title: The wasp that operates on brains
+  category: animal
+  subcategory: insectos
+  hook_type: shock
+  species:
+  - Ampulex compressa
+  - Periplaneta americana
+  scenes:
+  - narration: Imagine someone stings you twice. And from that moment on, you stop wanting to escape. You can walk. You can run. Your muscles work perfectly. You just don't want to. And you obediently follow
+      whoever stung you, all the way to the place where you'll become food for their baby. This isn't a horror movie. It happens every day to cockroaches across the tropics. And the one responsible is barely
+      two centimeters long.
+    visual_query: Ampulex compressa
+    on_screen_text: Two stings. Zero willpower.
+    key_fact: false
+  - narration: 'Today we''re meeting the emerald cockroach wasp, Ampulex compressa, one of the most sophisticated behavior manipulators in the animal kingdom. Don''t worry, it''s harmless to people. Its
+      obsession is something else: cockroaches. And at the end of the video, I''ll tell you why neuroscientists have studied it for decades, and what its venom can teach us about something as human as motivation.'
+    visual_query: Ampulex compressa
+    on_screen_text: Ampulex compressa
+    key_fact: false
+  - narration: At first glance it looks like a jewel. Its body has a metallic blue-green shine, and parts of its legs are a bright orange-red. It lives in tropical parts of Africa, South Asia and several
+      Pacific islands. In 1941 it was even brought to Hawaii, in the hope that it would control cockroach pests. It didn't wipe them out, but it stayed.
+    visual_query: Ampulex compressa
+    on_screen_text: A tropical jewel
+    key_fact: false
+  - narration: The whole drama of this story is about reproduction. For each of her eggs, the female needs a live, fresh cockroach. And a cockroach is not easy prey. It's much bigger than the wasp, it's
+      incredibly fast, and its legs are covered in spines that it uses to kick back. A straight-up fight would be far too risky.
+    visual_query: Periplaneta americana
+    on_screen_text: Prey bigger than itself
+    key_fact: false
+  - narration: 'You might be wondering: why not just kill it? Because a dead cockroach rots in a few days, and the wasp''s baby needs fresh food for more than a week. Paralyzing it completely doesn''t work
+      either, like other wasps do. A motionless cockroach is too heavy to drag into a hiding place. The emerald wasp needs something far more subtle: a cockroach that''s alive and can walk, but won''t run
+      away.'
+    visual_query: Periplaneta americana
+    on_screen_text: Alive, but not escaping
+    key_fact: false
+  - narration: So the wasp doesn't fight. It operates. First, it jumps on the cockroach, grabs it with its jaws, and stings it in the chest, right into a nerve center that controls the front legs. The venom
+      temporarily blocks the nerve signals. For a few minutes, those legs go limp. The cockroach can no longer defend itself properly.
+    visual_query: Ampulex compressa
+    on_screen_text: 'Sting 1: the chest'
+    key_fact: true
+  - narration: 'That brief paralysis is the window it needs. Now comes the most precise part of all: the second sting, straight into the head. The wasp pushes its stinger in through the neck and guides
+      it toward specific regions of the cockroach''s brain. And it doesn''t do it blindly. Its stinger has tiny sensory receptors that help it recognize nerve tissue. It''s literally a surgical tool with
+      sensors on the tip.'
+    visual_query: Ampulex compressa
+    on_screen_text: 'Sting 2: the brain'
+    key_fact: true
+  - narration: It doesn't always win, though. In 2018, biologist Kenneth Catania at Vanderbilt University filmed these fights with high-speed cameras. He found that cockroaches that stay alert, protect
+      their neck and kick the wasp's head with their spiny back legs often manage to get away. The perfect victim, for the wasp, is the one that reacts too late.
+    visual_query: Periplaneta americana
+    on_screen_text: The cockroach fights back
+    key_fact: false
+  - narration: But when the wasp succeeds, what happens next is unsettling. The cockroach isn't paralyzed. First, for about half an hour, it grooms itself compulsively, cleaning its antennae and legs over
+      and over. Then it enters a state scientists call hypokinesia. It can move, but it has lost the drive to do so. It no longer tries to escape.
+    visual_query: Periplaneta americana
+    on_screen_text: Hypokinesia
+    key_fact: false
+  - narration: And here's the eerie part. It's not that it can't. If you flip it on its back, it can turn itself over. If you drop it in water, it will swim, although it gives up sooner than a normal cockroach.
+      But its escape reflex, the one that makes cockroaches bolt the moment something comes near, is almost switched off. The venom hasn't shut down its body. It has shut down its will to use it.
+    visual_query: Periplaneta americana
+    on_screen_text: It can run. It won't.
+    key_fact: true
+  - narration: While the cockroach is in this trance, the wasp does something that looks cruel but makes sense. It bites off half of each antenna and drinks a little of the fluid that comes out, the insect's
+      version of blood. Researchers think this helps the wasp replace fluids and nutrients it needs to make eggs.
+    visual_query: Ampulex compressa
+    on_screen_text: A quick snack
+    key_fact: false
+  - narration: Next, it looks for a hiding place, like a crack or a small burrow. And since the cockroach is too heavy to fly with, the wasp does something almost comical. It grabs what's left of one antenna
+      and pulls, like walking a dog on a leash. And the cockroach follows. Walking. On its own legs. Toward its fate.
+    visual_query: Ampulex compressa
+    on_screen_text: Walked on a leash
+    key_fact: true
+  - narration: Inside the burrow, the wasp lays a single egg, about two millimeters long, stuck to one of the cockroach's middle legs. Then it leaves and blocks the entrance with pebbles and bits of debris.
+      Not to keep the cockroach in, since it has no intention of leaving, but to keep predators and other parasites out.
+    visual_query: Ampulex compressa
+    on_screen_text: One egg, one pantry
+    key_fact: false
+  - narration: About three days later, the egg hatches. At first, the larva feeds from the outside, through a tiny hole in the leg. A few days later, it moves inside the cockroach's body. And here evolution
+      has fine-tuned things even further. The larva feeds in an order that keeps the cockroach alive for as long as possible. A pantry that never goes bad.
+    visual_query: Periplaneta americana
+    on_screen_text: A pantry that doesn't spoil
+    key_fact: true
+  - narration: There's another detail that wasn't discovered until 2013. A cockroach is full of bacteria, so a larva living inside it risks getting infected. The solution? The larva releases a liquid packed
+      with antimicrobial compounds, and uses it to disinfect its little room. German researchers identified substances in it like mellein and micromolide. A larva that makes its own disinfectant.
+    visual_query: Ampulex compressa
+    on_screen_text: A larva that disinfects
+    key_fact: true
+  - narration: After a few more days, the cockroach dies, and the larva spins a cocoon inside the empty body. There it completes its metamorphosis. About a month after the egg was laid, a shiny new adult
+      wasp climbs out of its host, ready to start the cycle all over again.
+    visual_query: Ampulex compressa
+    on_screen_text: One month later
+    key_fact: false
+  - narration: Okay, but how exactly does it do it? This is where neuroscience comes in. The venom from the head sting contains, among other molecules, dopamine, a chemical messenger that also exists in
+      our own brains. The dopamine in the venom seems to be behind the compulsive grooming. And the loss of drive is linked to a region called the subesophageal ganglion, which in insects helps start and
+      keep up movement.
+    visual_query: Ampulex compressa
+    on_screen_text: A chemical cocktail
+    key_fact: false
+  - narration: Professor Frederic Libersat's lab at Ben-Gurion University in Israel has run some elegant experiments with these cockroaches. By recording their neurons before and after the sting, they found
+      that the venom reduces activity in that ganglion. In other words, the venom doesn't destroy neurons. It turns down their volume.
+    visual_query: Periplaneta americana
+    on_screen_text: Neurons on low volume
+    key_fact: true
+  - narration: 'So why should we care? Because it''s a natural example of something that''s still a mystery in our own species: how a brain decides to start acting. What we call motivation. We have to be
+      careful, since a cockroach brain and ours are very different. But simple systems often teach us the basic rules of complex ones.'
+    visual_query: Periplaneta americana
+    on_screen_text: The mystery of motivation
+    key_fact: false
+  - narration: 'The emerald wasp isn''t nature''s only manipulator. There are fungi that make ants climb before they die, and worms that push crickets to jump into water. But few do it with this much precision:
+      two stings, in two exact spots, with a chemical cocktail refined over millions of years of evolution.'
+    visual_query: Ophiocordyceps unilateralis
+    on_screen_text: Not the only one
+    key_fact: false
+  - narration: And one last note for anyone afraid of wasps. This species is solitary, it doesn't build nests to defend, and it has zero interest in people. Its whole world begins and ends with cockroaches.
+      In fact, because of that, some people see it almost as an ally.
+    visual_query: Ampulex compressa
+    on_screen_text: Harmless to you
+    key_fact: false
+  - narration: 'So the next time you see a cockroach sprint away, remember that somewhere in the tropics, another one has literally lost the will to run. If this surprised you, subscribe to BioNiche. Every
+      week we share a secret of nature that almost nobody knows. And tell me in the comments: which other master manipulator of nature should we investigate next?'
+    visual_query: Ampulex compressa
+    on_screen_text: Which one is next?
+    key_fact: false
+  sources:
+  - title: Libersat F., Gal R. (2014). Wasp voodoo rituals, venom-cocktails, and the zombification of cockroach hosts. Integrative and Comparative Biology 54(2):129-142
+    reference: https://doi.org/10.1093/icb/icu006
+  - title: Gal R., Libersat F. (2010). A wasp manipulates neuronal activity in the sub-esophageal ganglion to decrease the drive for walking in its cockroach prey. PLoS ONE 5(4):e10019
+    reference: https://doi.org/10.1371/journal.pone.0010019
+  - title: Herzner G. et al. (2013). Larvae of the parasitoid wasp Ampulex compressa sanitize their host, the American cockroach, with a blend of antimicrobials. PNAS 110(4):1369-1374
+    reference: https://doi.org/10.1073/pnas.1213384110
+  - title: Gal R. et al. (2014). Sensory arsenal on the stinger of the parasitoid jewel wasp and its possible role in identifying cockroach brains. PLoS ONE 9(2):e89683
+    reference: https://doi.org/10.1371/journal.pone.0089683
+  - title: 'Catania K.C. (2018). How not to be turned into a zombie cockroach: behavioral defenses of the American cockroach against the jewel wasp. Brain, Behavior and Evolution'
+    reference: https://scholar.google.com/scholar?q=How+not+to+be+turned+into+a+zombie+cockroach
+documentary_metadata:
+  title: 'Emerald Wasp: The Insect That Turns Cockroaches Into Zombies'
+  description: 'With two stings, a two-centimeter wasp takes away a cockroach''s will to escape, then leads it by the antenna like a dog on a leash.
+
+    This is one of the most precise cases of manipulation in nature.
+
+
+    In this documentary we find out how the emerald cockroach wasp (Ampulex compressa) finds its prey''s brain, what''s in its venom, why the cockroach isn''t paralyzed but unmotivated, and how its larva
+    disinfects its host from the inside. And what all of it teaches us about motivation in the brain.'
+  tags:
+  - Ampulex compressa
+  - emerald cockroach wasp
+  - jewel wasp
+  - zombie cockroach
+  - parasitoid wasp
+  - behavior manipulation
+  - neuroscience
+  - venom
+  - insects
+  - biology
+  - animal documentary
+  - nature
+  - science
+  - animal facts
+  hashtags:
+  - '#emeraldwasp'
+  - '#insects'
+  - '#biology'
+  thumbnail_text: ZOMBIE COCKROACH
+shorts:
+- hook: This wasp turns cockroaches into zombies with just two stings.
+  fact: It's called the emerald cockroach wasp. First it stings the cockroach in the chest. That makes its front legs go limp for a few minutes. Then comes the second sting, right into the brain. And here's
+    the creepy part. The cockroach isn't paralyzed. It can still walk and even flip itself over. It just loses the will to run away. The venom doesn't switch off its body. It switches off its motivation.
+  cta: Follow BioNiche for more weird nature.
+  visual_queries:
+  - Ampulex compressa
+  on_screen_texts:
+  - Zombie maker
+  beats:
+  - text: This wasp turns cockroaches into zombies with just two stings.
+    visual: Ampulex compressa
+  - text: It's called the emerald cockroach wasp.
+    visual: Ampulex compressa
+  - text: First it stings the cockroach in the chest.
+    visual: Ampulex compressa
+  - text: That makes its front legs go limp for a few minutes.
+    visual: Ampulex compressa
+  - text: Then comes the second sting, right into the brain.
+    visual: Ampulex compressa
+  - text: And here's the creepy part.
+    visual: Ampulex compressa
+  - text: The cockroach isn't paralyzed. It can still walk and even flip itself over.
+    visual: Ampulex compressa
+  - text: It just loses the will to run away.
+    visual: Ampulex compressa
+  - text: The venom doesn't switch off its body. It switches off its motivation.
+    visual: Ampulex compressa
+  - text: Follow BioNiche for more weird nature.
+    visual: Ampulex compressa
+- hook: This wasp walks its prey like a dog on a leash.
+  fact: The emerald cockroach wasp can't carry a cockroach. It's way too heavy. So after stinging its brain, the wasp bites off half of each antenna. Then it grabs what's left of one antenna and pulls.
+    And the cockroach just follows it. Walking on its own legs. All the way to a small burrow. There the wasp lays a single egg on it. Then it seals the entrance with little pebbles.
+  cta: Follow BioNiche for more.
+  visual_queries:
+  - Ampulex compressa
+  on_screen_texts:
+  - On a leash
+  beats:
+  - text: This wasp walks its prey like a dog on a leash.
+    visual: Ampulex compressa
+  - text: The emerald cockroach wasp can't carry a cockroach. It's way too heavy.
+    visual: Ampulex compressa
+  - text: So after stinging its brain, the wasp bites off half of each antenna.
+    visual: Ampulex compressa
+  - text: Then it grabs what's left of one antenna and pulls.
+    visual: Ampulex compressa
+  - text: And the cockroach just follows it.
+    visual: Ampulex compressa
+  - text: Walking on its own legs.
+    visual: Ampulex compressa
+  - text: All the way to a small burrow.
+    visual: Ampulex compressa
+  - text: There the wasp lays a single egg on it.
+    visual: Ampulex compressa
+  - text: Then it seals the entrance with little pebbles.
+    visual: Ampulex compressa
+  - text: Follow BioNiche for more.
+    visual: Ampulex compressa
+- hook: This wasp has sensors on its stinger to find a brain.
+  fact: For its second sting, the emerald cockroach wasp aims for the cockroach's brain. It pushes its stinger in through the neck. But it can't see what it's doing. So how does it find the right spot?
+    In 2014, scientists found tiny sensors on the tip of its stinger. They seem to help it feel the difference between brain tissue and everything else. It's basically a surgical tool with a built-in sense
+    of touch. Evolution made a tiny brain surgeon.
+  cta: Follow BioNiche for more.
+  visual_queries:
+  - Ampulex compressa
+  on_screen_texts:
+  - Brain surgeon
+  beats:
+  - text: This wasp has sensors on its stinger to find a brain.
+    visual: Ampulex compressa
+  - text: For its second sting, the emerald cockroach wasp aims for the cockroach's brain.
+    visual: Ampulex compressa
+  - text: It pushes its stinger in through the neck.
+    visual: Ampulex compressa
+  - text: But it can't see what it's doing.
+    visual: Ampulex compressa
+  - text: So how does it find the right spot?
+    visual: Ampulex compressa
+  - text: In 2014, scientists found tiny sensors on the tip of its stinger.
+    visual: Ampulex compressa
+  - text: They seem to help it feel the difference between brain tissue and everything else.
+    visual: Ampulex compressa
+  - text: It's basically a surgical tool with a built-in sense of touch.
+    visual: Ampulex compressa
+  - text: Evolution made a tiny brain surgeon.
+    visual: Ampulex compressa
+  - text: Follow BioNiche for more.
+    visual: Ampulex compressa
+- hook: This baby wasp makes its own disinfectant.
+  fact: The emerald cockroach wasp lays its egg on a living cockroach. When the larva hatches, it moves inside the cockroach's body. That's a risky place to live, because it's full of bacteria. So the larva
+    does something clever. It releases a liquid packed with antibacterial chemicals. And it cleans its own little room from the inside. Scientists in Germany discovered this in 2013. About a month later,
+    a shiny new wasp climbs out.
+  cta: Follow BioNiche for more nature secrets.
+  visual_queries:
+  - Ampulex compressa
+  on_screen_texts:
+  - Built-in disinfectant
+  beats:
+  - text: This baby wasp makes its own disinfectant.
+    visual: Ampulex compressa
+  - text: The emerald cockroach wasp lays its egg on a living cockroach.
+    visual: Ampulex compressa
+  - text: When the larva hatches, it moves inside the cockroach's body.
+    visual: Ampulex compressa
+  - text: That's a risky place to live, because it's full of bacteria.
+    visual: Ampulex compressa
+  - text: So the larva does something clever.
+    visual: Ampulex compressa
+  - text: It releases a liquid packed with antibacterial chemicals.
+    visual: Ampulex compressa
+  - text: And it cleans its own little room from the inside.
+    visual: Ampulex compressa
+  - text: Scientists in Germany discovered this in 2013.
+    visual: Ampulex compressa
+  - text: About a month later, a shiny new wasp climbs out.
+    visual: Ampulex compressa
+  - text: Follow BioNiche for more nature secrets.
+    visual: Ampulex compressa
+shorts_metadata:
+- title: This Wasp Turns Cockroaches Into Zombies 🧟
+  description: This Wasp Turns Cockroaches Into Zombies 🧟
+  tags:
+  - emerald cockroach wasp
+  - Ampulex compressa
+  - insects
+  - zombie cockroach
+  hashtags:
+  - '#insects'
+  - '#biology'
+  thumbnail_text: ZOMBIE
+- title: The Wasp That Walks Cockroaches on a Leash
+  description: The Wasp That Walks Cockroaches on a Leash
+  tags:
+  - emerald cockroach wasp
+  - Ampulex compressa
+  - insects
+  - zombie cockroach
+  hashtags:
+  - '#insects'
+  - '#biology'
+  thumbnail_text: ON A LEASH
+- title: This Wasp's Stinger Can Feel a Brain 🧠
+  description: This Wasp's Stinger Can Feel a Brain 🧠
+  tags:
+  - emerald cockroach wasp
+  - Ampulex compressa
+  - insects
+  - zombie cockroach
+  hashtags:
+  - '#insects'
+  - '#biology'
+  thumbnail_text: BRAIN SURGEON
+- title: This Baby Wasp Makes Its Own Disinfectant
+  description: This Baby Wasp Makes Its Own Disinfectant
+  tags:
+  - emerald cockroach wasp
+  - Ampulex compressa
+  - insects
+  - zombie cockroach
+  hashtags:
+  - '#insects'
+  - '#biology'
+  thumbnail_text: DISINFECTANT
+curated:
+  short0.beat0:
+    type: photo
+    url: https://inaturalist-open-data.s3.amazonaws.com/photos/109205046/large.png
+    license: CC BY
+    source_url: https://www.inaturalist.org/photos/109205046
+    attribution: Lawrence Hylton, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/109205046)
+  short0.beat1:
+    type: photo
+    url: https://live.staticflickr.com/8588/15683609164_acc3a2cd28_b.jpg
+    license: CC BY-SA 2.0
+    source_url: https://www.flickr.com/photos/60678622@N04/15683609164
+    attribution: LennyWorthington, CC BY-SA 2.0, vía flickr (https://www.flickr.com/photos/60678622@N04/15683609164)
+  short0.beat2:
+    type: photo
+    url: https://inaturalist-open-data.s3.amazonaws.com/photos/237162793/large.jpeg
+    license: CC BY
+    source_url: https://www.inaturalist.org/photos/237162793
+    attribution: Chayant Gonsalves, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/237162793)
+  short0.beat3:
+    type: photo
+    url: https://inaturalist-open-data.s3.amazonaws.com/photos/158554258/large.jpeg
+    license: CC BY-SA
+    source_url: https://www.inaturalist.org/photos/158554258
+    attribution: Vihansith Kulatunga, CC BY-SA, vía iNaturalist (https://www.inaturalist.org/photos/158554258)
+  short0.beat4:
+    type: photo
+    url: https://inaturalist-open-data.s3.amazonaws.com/photos/343785505/large.jpeg
+    license: CC BY
+    source_url: https://www.inaturalist.org/photos/343785505
+    attribution: Rodrigo Paiva Lázaro, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/343785505)
+  short0.beat5:
+    type: photo
+    url: https://inaturalist-open-data.s3.amazonaws.com/photos/52584264/large.jpg
+    license: CC BY
+    source_url: https://www.inaturalist.org/photos/52584264
+    attribution: Ashwin Viswanathan, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/52584264)
+  short0.beat6:
+    type: clip
+    start: 12
+    fit: true
+    url: https://upload.wikimedia.org/wikipedia/commons/transcoded/d/d2/Do-Quiescence-and-Wasp-Venom-Induced-Lethargy-Share-Common-Neuronal-Mechanisms-in-Cockroaches-pone.0168032.s002.ogv/Do-Quiescence-and-Wasp-Venom-Induced-Lethargy-Share-Common-Neuronal-Mechanisms-in-Cockroaches-pone.0168032.s002.ogv.480p.vp9.webm
+    license: CC BY 4.0
+    source_url: https://commons.wikimedia.org/wiki/File:Do-Quiescence-and-Wasp-Venom-Induced-Lethargy-Share-Common-Neuronal-Mechanisms-in-Cockroaches-pone.0168032.s002.ogv
+    attribution: Emanuel et al. (2016), PLOS ONE, supplementary video, CC BY 4.0, vía Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Do-Quiescence-and-Wasp-Venom-Induced-Lethargy-Share-Common-Neuronal-Mechanisms-in-Cockroaches-pone.0168032.s002.ogv)
+  short0.beat7:
+    type: clip
+    start: 3
+    fit: true
+    url: https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b2/Do-Quiescence-and-Wasp-Venom-Induced-Lethargy-Share-Common-Neuronal-Mechanisms-in-Cockroaches-pone.0168032.s001.ogv/Do-Quiescence-and-Wasp-Venom-Induced-Lethargy-Share-Common-Neuronal-Mechanisms-in-Cockroaches-pone.0168032.s001.ogv.480p.vp9.webm
+    license: CC BY 4.0
+    source_url: https://commons.wikimedia.org/wiki/File:Do-Quiescence-and-Wasp-Venom-Induced-Lethargy-Share-Common-Neuronal-Mechanisms-in-Cockroaches-pone.0168032.s001.ogv
+    attribution: Emanuel et al. (2016), PLOS ONE, supplementary video, CC BY 4.0, vía Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Do-Quiescence-and-Wasp-Venom-Induced-Lethargy-Share-Common-Neuronal-Mechanisms-in-Cockroaches-pone.0168032.s001.ogv)
+  short0.beat8:
+    type: photo
+    url: https://inaturalist-open-data.s3.amazonaws.com/photos/347213335/large.jpeg
+    license: CC BY
+    source_url: https://www.inaturalist.org/photos/347213335
+    attribution: Carlos Alexandre Mattos Raposo, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/347213335)
+  short0.beat9:
+    type: photo
+    url: https://live.staticflickr.com/7557/16120179397_fb1b84b202_b.jpg
+    license: CC BY-SA 2.0
+    source_url: https://www.flickr.com/photos/60678622@N04/16120179397
+    attribution: LennyWorthington, CC BY-SA 2.0, vía flickr (https://www.flickr.com/photos/60678622@N04/16120179397)
+  short1.beat0:
+    type: photo
+    url: https://inaturalist-open-data.s3.amazonaws.com/photos/334485745/large.jpeg
+    license: CC0
+    source_url: https://www.inaturalist.org/photos/334485745
+    attribution: no rights reserved, CC0, vía iNaturalist (https://www.inaturalist.org/photos/334485745)
+  short1.beat1:
+    type: photo
+    url: https://inaturalist-open-data.s3.amazonaws.com/photos/158554291/large.jpeg
+    license: CC BY-SA
+    source_url: https://www.inaturalist.org/photos/158554291
+    attribution: Vihansith Kulatunga, CC BY-SA, vía iNaturalist (https://www.inaturalist.org/photos/158554291)
+  short1.beat2:
+    type: photo
+    url: https://inaturalist-open-data.s3.amazonaws.com/photos/237162793/large.jpeg
+    license: CC BY
+    source_url: https://www.inaturalist.org/photos/237162793
+    attribution: Chayant Gonsalves, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/237162793)
+  short1.beat3:
+    type: photo
+    url: https://inaturalist-open-data.s3.amazonaws.com/photos/334485725/large.jpeg
+    license: CC0
+    source_url: https://www.inaturalist.org/photos/334485725
+    attribution: no rights reserved, CC0, vía iNaturalist (https://www.inaturalist.org/photos/334485725)
+  short1.beat4:
+    type: photo
+    url: https://inaturalist-open-data.s3.amazonaws.com/photos/237162829/large.jpeg
+    license: CC BY
+    source_url: https://www.inaturalist.org/photos/237162829
+    attribution: Chayant Gonsalves, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/237162829)
+  short1.beat5:
+    type: clip
+    start: 20
+    fit: true
+    url: https://upload.wikimedia.org/wikipedia/commons/transcoded/d/d2/Do-Quiescence-and-Wasp-Venom-Induced-Lethargy-Share-Common-Neuronal-Mechanisms-in-Cockroaches-pone.0168032.s002.ogv/Do-Quiescence-and-Wasp-Venom-Induced-Lethargy-Share-Common-Neuronal-Mechanisms-in-Cockroaches-pone.0168032.s002.ogv.480p.vp9.webm
+    license: CC BY 4.0
+    source_url: https://commons.wikimedia.org/wiki/File:Do-Quiescence-and-Wasp-Venom-Induced-Lethargy-Share-Common-Neuronal-Mechanisms-in-Cockroaches-pone.0168032.s002.ogv
+    attribution: Emanuel et al. (2016), PLOS ONE, supplementary video, CC BY 4.0, vía Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Do-Quiescence-and-Wasp-Venom-Induced-Lethargy-Share-Common-Neuronal-Mechanisms-in-Cockroaches-pone.0168032.s002.ogv)
+  short1.beat6:
+    type: photo
+    url: https://inaturalist-open-data.s3.amazonaws.com/photos/335004120/large.jpeg
+    license: CC BY
+    source_url: https://www.inaturalist.org/photos/335004120
+    attribution: Slunky, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/335004120)
+  short1.beat7:
+    type: photo
+    url: https://inaturalist-open-data.s3.amazonaws.com/photos/335004116/large.jpeg
+    license: CC BY
+    source_url: https://www.inaturalist.org/photos/335004116
+    attribution: Slunky, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/335004116)
+  short1.beat8:
+    type: photo
+    url: https://inaturalist-open-data.s3.amazonaws.com/photos/335004051/large.jpeg
+    license: CC BY
+    source_url: https://www.inaturalist.org/photos/335004051
+    attribution: Slunky, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/335004051)
+  short1.beat9:
+    type: photo
+    url: https://inaturalist-open-data.s3.amazonaws.com/photos/38377979/large.jpg
+    license: CC0
+    source_url: https://www.inaturalist.org/photos/38377979
+    attribution: no rights reserved, CC0, vía iNaturalist (https://www.inaturalist.org/photos/38377979)
+  short2.beat0:
+    type: photo
+    url: https://inaturalist-open-data.s3.amazonaws.com/photos/343785505/large.jpeg
+    license: CC BY
+    source_url: https://www.inaturalist.org/photos/343785505
+    attribution: Rodrigo Paiva Lázaro, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/343785505)
+  short2.beat1:
+    type: photo
+    url: https://inaturalist-open-data.s3.amazonaws.com/photos/52584264/large.jpg
+    license: CC BY
+    source_url: https://www.inaturalist.org/photos/52584264
+    attribution: Ashwin Viswanathan, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/52584264)
+  short2.beat2:
+    type: photo
+    url: https://inaturalist-open-data.s3.amazonaws.com/photos/237162793/large.jpeg
+    license: CC BY
+    source_url: https://www.inaturalist.org/photos/237162793
+    attribution: Chayant Gonsalves, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/237162793)
+  short2.beat3:
+    type: photo
+    url: https://inaturalist-open-data.s3.amazonaws.com/photos/109205046/large.png
+    license: CC BY
+    source_url: https://www.inaturalist.org/photos/109205046
+    attribution: Lawrence Hylton, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/109205046)
+  short2.beat4:
+    type: photo
+    url: https://inaturalist-open-data.s3.amazonaws.com/photos/28767889/large.jpg
+    license: CC BY
+    source_url: https://www.inaturalist.org/photos/28767889
+    attribution: Steve Kerr, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/28767889)
+  short2.beat5:
+    type: photo
+    url: https://inaturalist-open-data.s3.amazonaws.com/photos/343785517/large.jpeg
+    license: CC BY
+    source_url: https://www.inaturalist.org/photos/343785517
+    attribution: Rodrigo Paiva Lázaro, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/343785517)
+  short2.beat6:
+    type: photo
+    url: https://inaturalist-open-data.s3.amazonaws.com/photos/39998413/large.jpeg
+    license: CC BY
+    source_url: https://www.inaturalist.org/photos/39998413
+    attribution: Franz Anthony, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/39998413)
+  short2.beat7:
+    type: photo
+    url: https://inaturalist-open-data.s3.amazonaws.com/photos/347213335/large.jpeg
+    license: CC BY
+    source_url: https://www.inaturalist.org/photos/347213335
+    attribution: Carlos Alexandre Mattos Raposo, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/347213335)
+  short2.beat8:
+    type: photo
+    url: https://live.staticflickr.com/8588/15683609164_acc3a2cd28_b.jpg
+    license: CC BY-SA 2.0
+    source_url: https://www.flickr.com/photos/60678622@N04/15683609164
+    attribution: LennyWorthington, CC BY-SA 2.0, vía flickr (https://www.flickr.com/photos/60678622@N04/15683609164)
+  short2.beat9:
+    type: photo
+    url: https://inaturalist-open-data.s3.amazonaws.com/photos/336116061/large.jpeg
+    license: CC0
+    source_url: https://www.inaturalist.org/photos/336116061
+    attribution: no rights reserved, CC0, vía iNaturalist (https://www.inaturalist.org/photos/336116061)
+  short3.beat0:
+    type: photo
+    url: https://live.staticflickr.com/7557/16120179397_fb1b84b202_b.jpg
+    license: CC BY-SA 2.0
+    source_url: https://www.flickr.com/photos/60678622@N04/16120179397
+    attribution: LennyWorthington, CC BY-SA 2.0, vía flickr (https://www.flickr.com/photos/60678622@N04/16120179397)
+  short3.beat1:
+    type: photo
+    url: https://inaturalist-open-data.s3.amazonaws.com/photos/52584264/large.jpg
+    license: CC BY
+    source_url: https://www.inaturalist.org/photos/52584264
+    attribution: Ashwin Viswanathan, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/52584264)
+  short3.beat2:
+    type: photo
+    url: https://inaturalist-open-data.s3.amazonaws.com/photos/9777415/large.jpg
+    license: CC BY-SA
+    source_url: https://www.inaturalist.org/photos/9777415
+    attribution: Meghan Cassidy, CC BY-SA, vía iNaturalist (https://www.inaturalist.org/photos/9777415)
+  short3.beat3:
+    type: photo
+    url: https://live.staticflickr.com/2735/4482205077_ac5a6b5664_b.jpg
+    license: CC BY 2.0
+    source_url: https://www.flickr.com/photos/48784416@N06/4482205077
+    attribution: adonofrio (Biology101.org), CC BY 2.0, vía flickr (https://www.flickr.com/photos/48784416@N06/4482205077)
+  short3.beat4:
+    type: photo
+    url: https://inaturalist-open-data.s3.amazonaws.com/photos/335004120/large.jpeg
+    license: CC BY
+    source_url: https://www.inaturalist.org/photos/335004120
+    attribution: Slunky, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/335004120)
+  short3.beat5:
+    type: photo
+    url: https://live.staticflickr.com/3021/2967859329_733bab6453_b.jpg
+    license: CC BY 2.0
+    source_url: https://www.flickr.com/photos/27219740@N07/2967859329
+    attribution: If you dream it..., CC BY 2.0, vía flickr (https://www.flickr.com/photos/27219740@N07/2967859329)
+  short3.beat6:
+    type: photo
+    url: https://inaturalist-open-data.s3.amazonaws.com/photos/335004051/large.jpeg
+    license: CC BY
+    source_url: https://www.inaturalist.org/photos/335004051
+    attribution: Slunky, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/335004051)
+  short3.beat7:
+    type: photo
+    url: https://live.staticflickr.com/3341/3617772958_0db68e3d6c_b.jpg
+    license: CC BY 2.0
+    source_url: https://www.flickr.com/photos/30369883@N03/3617772958
+    attribution: Idaho National Laboratory, CC BY 2.0, vía flickr (https://www.flickr.com/photos/30369883@N03/3617772958)
+  short3.beat8:
+    type: photo
+    url: https://inaturalist-open-data.s3.amazonaws.com/photos/335004116/large.jpeg
+    license: CC BY
+    source_url: https://www.inaturalist.org/photos/335004116
+    attribution: Slunky, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/335004116)
+  short3.beat9:
+    type: photo
+    url: https://live.staticflickr.com/8588/15683609164_acc3a2cd28_b.jpg
+    license: CC BY-SA 2.0
+    source_url: https://www.flickr.com/photos/60678622@N04/15683609164
+    attribution: LennyWorthington, CC BY-SA 2.0, vía flickr (https://www.flickr.com/photos/60678622@N04/15683609164)
