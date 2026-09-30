@@ -1,0 +1,55 @@
+# Configuración central del canal. Todo el sistema lee de aquí.
+channel:
+  name: "BioRaro"
+  language: "es"              # idioma de guiones y metadatos (es / en)
+  region: "ES"                 # región para la investigación en YouTube
+  default_hashtags: ["#biologia", "#naturaleza", "#ciencia"]
+  # Categoría de YouTube 27 = Education (mejor CPM que "People & Blogs")
+  category_id: "27"
+
+llm:
+  model: "claude-opus-5-5"
+  effort: "high"               # low | medium | high | xhigh | max
+  max_tokens: 64000
+
+content:
+  documentary_minutes: [8, 12]  # rango objetivo del documental
+  words_per_minute: 150         # ritmo de narración para estimar duración
+  shorts_per_video: 4           # 3 o 4
+  short_max_seconds: 58         # margen bajo el límite de 60 s
+
+voice:
+  provider: "edge"              # edge (gratis, voz neural) | silent (pruebas sin red)
+  voice_es: "es-ES-AlvaroNeural"
+  voice_en: "en-US-AndrewNeural"
+  rate: "+0%"
+  rate_shorts: "+8%"            # los shorts van un poco más rápidos
+
+media:
+  providers: ["wikimedia", "pexels"]   # en orden de preferencia
+  images_per_scene: 1
+  # Solo licencias que permiten uso comercial (necesario para monetizar)
+  allowed_licenses: ["cc0", "pd", "public domain", "cc by", "cc by-sa", "pexels"]
+
+schedule:
+  timezone: "Europe/Madrid"
+  packages_per_week: 2                 # 2 documentales/semana -> 2-3 días con estreno
+  documentary_days: ["tue", "fri"]
+  documentary_time: "17:00"
+  shorts_time: "13:00"
+  # Los shorts de un paquete se reparten en los días siguientes al documental
+  shorts_gap_days: 1
+
+youtube:
+  privacy_until_publish: "private"     # se sube privado y YouTube lo publica en publishAt
+  contains_synthetic_media: true       # voz sintética -> declararlo es lo honesto y seguro
+  made_for_kids: false
+  daily_quota_units: 10000             # cuota por defecto de la API
+  upload_cost_units: 1600
+
+paths:
+  output: "output"
+  cache: "cache"
+  database: "data/analytics.db"
+  packages: "data/packages"
+  topic_bank: "data/topic_bank.yaml"

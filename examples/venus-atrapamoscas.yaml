@@ -1,0 +1,263 @@
+id: venus-atrapamoscas-sabe-contar
+language: es
+documentary:
+  topic: La Venus atrapamoscas sabe contar
+  working_title: La planta que cuenta hasta cinco
+  category: planta
+  subcategory: carnivoras
+  hook_type: pregunta
+  species: [Dionaea muscipula]
+  scenes:
+    - narration: >-
+        ¿Puede una planta contar? No es una metáfora. Hablamos de una planta que lleva la cuenta
+        de cuántas veces la tocas, y que, según el número, toma decisiones distintas.
+        Un toque: nada. Dos toques: cierra la trampa. Cinco toques: empieza a digerirte.
+        Hoy vamos a descubrir cómo la Venus atrapamoscas hace cálculos sin tener ni una sola neurona.
+      visual_query: Dionaea muscipula
+      on_screen_text: Una planta que cuenta
+      key_fact: false
+    - narration: >-
+        Charles Darwin estaba fascinado con ella. En su libro Plantas insectívoras, de 1875,
+        la describió como una de las plantas más maravillosas del mundo. Su nombre científico es Dionaea muscipula.
+        Probablemente la hayas visto en una tienda de jardinería, pero en estado salvaje es una auténtica rareza.
+      visual_query: Charles Darwin portrait
+      on_screen_text: La favorita de Darwin
+      key_fact: false
+    - narration: >-
+        Solo crece de forma natural en una pequeña región de la costa de Carolina del Norte y Carolina del Sur,
+        en Estados Unidos, en un radio de algo más de cien kilómetros alrededor de la ciudad de Wilmington.
+        Vive en humedales y sabanas de pinos con suelos muy pobres en nutrientes, sobre todo en nitrógeno.
+        Y ahí está la clave de todo: si el suelo no te da nitrógeno, tienes que conseguirlo de otra forma.
+        Por ejemplo, comiendo insectos.
+      visual_query: Venus flytrap in the wild North Carolina
+      on_screen_text: Solo vive aquí
+      key_fact: true
+    - narration: >-
+        Estas sabanas dependen del fuego. Los incendios naturales de baja intensidad eliminan los arbustos
+        que, si no, crecerían y harían sombra a las atrapamoscas. Sin fuego, otras plantas las tapan y desaparecen.
+        Es una planta que, paradójicamente, necesita que su casa arda de vez en cuando.
+      visual_query: longleaf pine savanna
+      on_screen_text: Una planta que necesita fuego
+      key_fact: false
+    - narration: >-
+        La trampa es en realidad una hoja modificada, con dos lóbulos unidos por una bisagra.
+        En los bordes tiene unas púas que, al cerrarse, se entrecruzan como los barrotes de una celda.
+        Y en la cara interior de cada lóbulo hay normalmente tres pelos muy finos: los pelos sensores.
+        Son los botones que ponen en marcha todo el mecanismo.
+      visual_query: Venus flytrap trigger hairs
+      on_screen_text: Tres pelos sensores
+      key_fact: false
+    - narration: >-
+        Cada pelo funciona como una palanca. En su base hay un grupo de células sensoriales que se deforman
+        cuando el pelo se dobla. Esa deformación abre canales en sus membranas, entran iones,
+        y un empujón mecánico se convierte en una señal eléctrica. Es el mismo principio básico
+        que usan las células de nuestro oído o de nuestra piel para sentir el tacto.
+      visual_query: Dionaea muscipula trigger hair macro
+      on_screen_text: Del tacto a la electricidad
+      key_fact: false
+    - narration: >-
+        Aquí empieza la cuenta. Cuando un insecto roza un pelo sensor, la planta genera una señal eléctrica,
+        un potencial de acción, parecido en lo esencial a los impulsos de nuestras neuronas.
+        Pero con un solo toque, la trampa no se cierra. Necesita un segundo toque en unos veinte o treinta segundos.
+        Si llega, la trampa se cierra en una fracción de segundo.
+      visual_query: Dionaea muscipula trap
+      on_screen_text: Un toque no basta
+      key_fact: true
+    - narration: >-
+        ¿Por qué no cerrarse al primer toque? Porque cerrarse cuesta mucha energía, y una falsa alarma sería un desperdicio:
+        una gota de lluvia o un trocito de hoja podrían disparar la trampa en vano.
+        Pedir dos toques seguidos es como pedir una confirmación: sí, esto se mueve. Esto está vivo.
+      visual_query: Venus flytrap rain drops
+      on_screen_text: Evitar falsas alarmas
+      key_fact: false
+    - narration: >-
+        Pero, ¿cómo recuerda la planta el primer toque si no tiene cerebro? En 2020, un equipo japonés
+        lo vio por primera vez usando atrapamoscas modificadas que brillan cuando aumenta el calcio dentro de sus células.
+        El primer toque sube el nivel de calcio, pero no lo suficiente. Si llega un segundo toque antes de que baje,
+        el calcio supera un umbral, y la trampa se cierra. Esa es su memoria: una señal química que se desvanece con el tiempo.
+      visual_query: Venus flytrap close-up
+      on_screen_text: Una memoria de calcio
+      key_fact: true
+    - narration: >-
+        El cierre es uno de los movimientos más rápidos del reino vegetal: tarda en torno a una décima de segundo.
+        Y no usa músculos. Los lóbulos tienen una curvatura almacenada, como una lámina de plástico doblada.
+        Cuando la planta cambia la presión del agua en sus tejidos, esa curvatura se invierte de golpe.
+        Los físicos lo llaman inestabilidad de pandeo, y lo describieron en la revista Nature en 2005.
+      visual_query: Venus flytrap closing
+      on_screen_text: Física, no músculos
+      key_fact: true
+    - narration: >-
+        Curiosamente, al principio la trampa no se cierra del todo. Deja huecos entre las púas.
+        Darwin ya sospechaba que esto permite escapar a los insectos más pequeños, que no merecen el esfuerzo de digerirlos.
+        Si no hay presa que forcejee, la trampa acaba reabriéndose, normalmente en uno o dos días.
+      visual_query: Dionaea muscipula closed trap
+      on_screen_text: Una puerta de escape
+      key_fact: false
+    - narration: >-
+        Pero la cuenta sigue. Un insecto atrapado forcejea y vuelve a rozar los pelos una y otra vez.
+        Un estudio publicado en 2016 en la revista Current Biology, liderado por investigadores de la Universidad de Wurzburgo,
+        en Alemania, demostró que la planta sigue contando esos toques. A partir de unos tres, la trampa se sella
+        y se activan hormonas de defensa. Y hacia el quinto, empieza a fabricar enzimas digestivas.
+      visual_query: Venus flytrap with insect
+      on_screen_text: Cinco toques = digestión
+      key_fact: true
+    - narration: >-
+        Es un sistema de ahorro brillante. Cuanto más se mueve la presa, más grande y nutritiva suele ser,
+        y más vale la pena invertir en digerirla. La planta ajusta su gasto según las señales que recibe,
+        como si hiciera un presupuesto. Nada de gastar enzimas en una falsa alarma.
+      visual_query: Dionaea muscipula fly
+      on_screen_text: Una planta ahorradora
+      key_fact: false
+    - narration: >-
+        Cuando la trampa se sella por completo, se convierte en un estómago verde. Unas glándulas en su interior
+        segregan un fluido ácido lleno de enzimas que descomponen las partes blandas del insecto.
+        La digestión dura aproximadamente de una a dos semanas, según el tamaño de la presa.
+        Al final solo queda el exoesqueleto vacío, que la lluvia o el viento se llevan cuando la trampa se abre.
+      visual_query: Venus flytrap digesting
+      on_screen_text: Un estómago verde
+      key_fact: false
+    - narration: >-
+        Por cierto, a pesar de su nombre, las moscas no son su plato principal. Cuando los investigadores
+        analizaron qué había dentro de trampas silvestres, encontraron sobre todo hormigas, arañas,
+        escarabajos y saltamontes: animales que caminan por el suelo y por las hojas.
+        Los insectos voladores eran una parte pequeña de su dieta. Quizá debería llamarse atrapahormigas.
+      visual_query: Venus flytrap ant
+      on_screen_text: ¿Atrapamoscas? Más bien atrapahormigas
+      key_fact: true
+    - narration: >-
+        Darwin ya intuyó que el alimento que buscan estas plantas es, sobre todo, nitrógeno. En sus experimentos con las droseras,
+        parientes cercanas de la atrapamoscas, les ofreció trocitos de carne, clara de huevo, azúcar e incluso cristal.
+        Solo las sustancias ricas en nitrógeno provocaban una respuesta digestiva intensa.
+        Más de un siglo después, la bioquímica le ha dado la razón.
+      visual_query: Drosera rotundifolia
+      on_screen_text: Todo por el nitrógeno
+      key_fact: false
+    - narration: >-
+        Y un detalle curioso del estudio de 2016: cuantos más toques cuenta, más transportadores fabrica la planta
+        para absorber sodio de su presa. Es raro, porque para la mayoría de las plantas el sodio es más un problema que un nutriente.
+        Todavía se investiga para qué lo usa exactamente.
+      visual_query: Dionaea muscipula leaf
+      on_screen_text: El misterio del sodio
+      key_fact: true
+    - narration: >-
+        Cada trampa tiene una vida limitada: solo puede cerrarse y digerir unas pocas veces antes de ennegrecerse y morir,
+        y la planta va produciendo trampas nuevas. Por eso no es buena idea dispararlas con el dedo por diversión:
+        le haces gastar energía sin darle nada a cambio.
+      visual_query: Venus flytrap black trap
+      on_screen_text: No la toques por diversión
+      key_fact: false
+    - narration: >-
+        Hay un problema evidente: si la planta se come a los insectos, ¿cómo consigue polinizadores sin comérselos?
+        Parte de la respuesta es la distancia. Sus flores blancas crecen en lo alto de un tallo largo, muy por encima de las trampas.
+        Y un estudio de 2018 encontró que los insectos que visitan sus flores y los que acaban en sus trampas
+        son, en su mayoría, especies distintas.
+      visual_query: Dionaea muscipula flower
+      on_screen_text: No se come a sus polinizadores
+      key_fact: true
+    - narration: >-
+        En la naturaleza, la atrapamoscas está en apuros. La Unión Internacional para la Conservación de la Naturaleza la considera vulnerable.
+        Su hábitat se ha reducido por la urbanización, el drenaje de humedales y la supresión de incendios.
+        Y además está el furtivismo: tantas se arrancaban para venderlas que, en 2014,
+        Carolina del Norte convirtió en delito grave recolectarlas ilegalmente en estado silvestre.
+      visual_query: wetland North Carolina
+      on_screen_text: Especie vulnerable
+      key_fact: false
+    - narration: >-
+        Así que si quieres una en casa, que sea de vivero, cultivada, nunca silvestre. Y tres consejos rápidos:
+        agua de lluvia o destilada, mucha luz y nada de abono. Evolucionó en suelos pobres,
+        y el agua del grifo con demasiadas sales puede dañarla.
+      visual_query: Venus flytrap pot
+      on_screen_text: Cómprala de vivero
+      key_fact: false
+    - narration: >-
+        La atrapamoscas nos enseña algo más grande: las plantas usan señales eléctricas y químicas para procesar información.
+        No piensan como nosotros, pero registran, integran y responden al mundo.
+        Decir que cuenta es una simplificación útil: lo que hace es sumar señales hasta superar umbrales.
+        Aunque, siendo sinceros, eso se parece bastante a contar.
+      visual_query: Dionaea muscipula plant
+      on_screen_text: Sumar señales
+      key_fact: false
+    - narration: >-
+        Si te ha gustado descubrir la planta que sabe contar, suscríbete: cada semana traemos un secreto de la naturaleza
+        que casi nadie conoce. Y déjame en los comentarios: ¿qué otra planta sorprendente quieres que investiguemos?
+      visual_query: Dionaea muscipula
+      on_screen_text: ¿Qué planta investigamos?
+      key_fact: false
+  sources:
+    - title: "Böhm J. et al. (2016). The Venus flytrap Dionaea muscipula counts prey-induced action potentials to induce sodium uptake. Current Biology 26(3):286-295"
+      reference: "https://doi.org/10.1016/j.cub.2015.11.057"
+    - title: "Suda H. et al. (2020). Calcium dynamics during trap closure visualized in transgenic Venus flytrap. Nature Plants 6:1219-1224"
+      reference: "https://doi.org/10.1038/s41477-020-00773-1"
+    - title: "Forterre Y. et al. (2005). How the Venus flytrap snaps. Nature 433:421-425"
+      reference: "https://doi.org/10.1038/nature03185"
+    - title: "Youngsteadt E. et al. (2018). Venus flytrap rarely traps its pollinators. The American Naturalist 191(5):539-546"
+      reference: "https://doi.org/10.1086/696124"
+    - title: "Ellison A.M., Gotelli N.J. (2009). Energetics and the evolution of carnivorous plants: Darwin's 'most wonderful plants in the world'. Journal of Experimental Botany 60(1):19-42"
+      reference: "https://doi.org/10.1093/jxb/ern179"
+    - title: "Darwin C. (1875). Insectivorous Plants. John Murray, Londres"
+      reference: "http://darwin-online.org.uk/"
+documentary_metadata:
+  title: "Venus atrapamoscas: la planta que sabe contar hasta cinco"
+  description: >-
+    Un toque, nada. Dos toques, se cierra. Cinco toques, empieza a digerir. La Venus atrapamoscas lleva la cuenta… sin neuronas.
+    Te explicamos cómo lo hace y qué dice la ciencia.
+
+    Descubre cómo la Dionaea muscipula usa señales eléctricas y calcio como memoria, por qué su cierre es pura física,
+    cómo decide cuándo gastar energía en digerir y por qué no se come a sus propios polinizadores.
+  tags: [Dionaea muscipula, Venus atrapamoscas, planta carnívora, plantas carnívoras, plantas inteligentes, señales eléctricas en plantas, botánica, biología, curiosidades de plantas, naturaleza, ciencia, documental de plantas]
+  hashtags: ["#plantascarnivoras", "#botanica", "#biologia"]
+  thumbnail_text: SABE CONTAR
+shorts:
+  - hook: Esta planta sabe contar hasta cinco.
+    fact: >-
+      La Venus atrapamoscas no se cierra al primer toque de sus pelos sensores. Necesita un segundo toque en unos treinta segundos.
+      Y cuando la presa sigue forcejeando, la planta sigue contando: hacia el quinto toque empieza a fabricar enzimas digestivas.
+      Cuantos más toques, más invierte en digerir.
+    cta: Descubre cómo lo hace en nuestro documental. Síguenos para más.
+    visual_queries: [Dionaea muscipula, Venus flytrap trigger hairs, Venus flytrap with insect]
+    on_screen_texts: [1 toque, 2 toques, 5 toques]
+  - hook: ¿Cómo recuerda algo una planta sin cerebro?
+    fact: >-
+      En 2020, científicos japoneses usaron atrapamoscas que brillan cuando sube el calcio en sus células.
+      El primer toque eleva el calcio, pero no lo bastante. Si llega un segundo toque antes de que baje, supera un umbral
+      y la trampa se cierra. Su memoria es una señal química que se borra sola en unos segundos.
+    cta: Más secretos de esta planta en nuestro documental. Síguenos.
+    visual_queries: [Venus flytrap close-up, Dionaea muscipula trap]
+    on_screen_texts: [Memoria de calcio, Umbral superado]
+  - hook: Esta trampa se cierra en una décima de segundo, y sin músculos.
+    fact: >-
+      Los lóbulos de la Venus atrapamoscas tienen una curvatura almacenada, como una lámina de plástico doblada.
+      Cuando la planta mueve agua en sus tejidos, la curvatura se invierte de golpe: es la inestabilidad de pandeo,
+      descrita en la revista Nature en 2005. Pura física convertida en trampa.
+    cta: La historia completa, en el documental del canal. Síguenos.
+    visual_queries: [Venus flytrap closing, Dionaea muscipula closed trap]
+    on_screen_texts: ["0,1 segundos", Física pura]
+  - hook: Esta planta carnívora no se come a quien la poliniza.
+    fact: >-
+      La Venus atrapamoscas tiene sus flores en lo alto de un tallo largo, muy por encima de las trampas.
+      Un estudio de 2018 comparó los insectos que visitan sus flores con los que acaban atrapados,
+      y resultaron ser, en su mayoría, especies distintas. Unos la ayudan a reproducirse; los otros son la cena.
+    cta: Síguenos y descubre más en nuestro documental.
+    visual_queries: [Dionaea muscipula flower, Venus flytrap with insect]
+    on_screen_texts: [Flores arriba, Trampas abajo]
+shorts_metadata:
+  - title: "La planta que sabe contar hasta 5 🌱"
+    description: Dos toques para cerrarse, cinco para digerir.
+    tags: [Venus atrapamoscas, Dionaea muscipula, planta carnívora]
+    hashtags: ["#plantascarnivoras", "#botanica"]
+    thumbnail_text: CUENTA
+  - title: "¿Cómo recuerda una planta sin cerebro?"
+    description: La memoria de calcio de la Venus atrapamoscas.
+    tags: [Venus atrapamoscas, calcio, memoria vegetal, botánica]
+    hashtags: ["#botanica", "#ciencia"]
+    thumbnail_text: MEMORIA
+  - title: "Se cierra en 0,1 s… sin músculos"
+    description: La física de la trampa de la Venus atrapamoscas.
+    tags: [Venus atrapamoscas, física, planta carnívora]
+    hashtags: ["#ciencia", "#plantas"]
+    thumbnail_text: 0,1 s
+  - title: "La carnívora que no se come a sus polinizadores"
+    description: Flores arriba, trampas abajo.
+    tags: [Venus atrapamoscas, polinización, planta carnívora]
+    hashtags: ["#botanica", "#naturaleza"]
+    thumbnail_text: POLINIZADORES

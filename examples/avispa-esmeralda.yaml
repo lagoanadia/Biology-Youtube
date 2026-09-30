@@ -1,0 +1,269 @@
+id: avispa-esmeralda-cucarachas-zombi
+language: es
+documentary:
+  topic: La avispa esmeralda que convierte cucarachas en zombis
+  working_title: La avispa que opera cerebros
+  category: animal
+  subcategory: insectos
+  hook_type: shock
+  species: [Ampulex compressa, Periplaneta americana]
+  scenes:
+    - narration: >-
+        Imagina que alguien te pica dos veces. Y que, a partir de ese momento, dejas de querer escapar.
+        Puedes andar. Puedes correr. Tus músculos funcionan perfectamente. Pero no quieres.
+        Y sigues, obediente, a quien te ha picado, hasta el lugar donde vas a servir de alimento a su cría.
+        No es una película de terror. Le ocurre cada día a cucarachas de medio mundo tropical.
+        Y la responsable mide poco más de dos centímetros.
+      visual_query: Ampulex compressa
+      on_screen_text: Dos picaduras. Cero voluntad.
+      key_fact: false
+    - narration: >-
+        Hoy vamos a conocer a la avispa esmeralda, Ampulex compressa, uno de los manipuladores de comportamiento
+        más sofisticados del reino animal. Tranquilidad: para las personas es inofensiva. Su obsesión es otra: las cucarachas.
+        Y al final del vídeo te contaré por qué los neurocientíficos llevan décadas estudiándola,
+        y qué intentan aprender de su veneno sobre algo tan humano como la motivación.
+      visual_query: Ampulex compressa emerald cockroach wasp
+      on_screen_text: Ampulex compressa
+      key_fact: false
+    - narration: >-
+        A primera vista parece una joya. Su cuerpo tiene un brillo verde azulado metálico,
+        y parte de sus patas es de un rojo anaranjado intenso. Vive en regiones tropicales de África,
+        del sur de Asia y de varias islas del Pacífico. En 1941 incluso se llevó a Hawái,
+        con la esperanza de que controlara las plagas de cucarachas. No acabó con ellas, pero allí se quedó.
+      visual_query: Ampulex compressa jewel wasp
+      on_screen_text: Una joya tropical
+      key_fact: false
+    - narration: >-
+        Todo el drama de esta historia gira alrededor de la reproducción. La hembra necesita,
+        para cada uno de sus huevos, una cucaracha viva y fresca. Y la cucaracha no es una presa fácil:
+        es bastante más grande que la avispa, es rapidísima y tiene patas cubiertas de espinas
+        con las que se defiende a patadas. Un combate cuerpo a cuerpo sería demasiado arriesgado.
+      visual_query: Periplaneta americana
+      on_screen_text: Una presa más grande que ella
+      key_fact: false
+    - narration: >-
+        Y te preguntarás: ¿por qué no matarla directamente? Porque una cucaracha muerta se pudre en pocos días,
+        y la cría de la avispa necesita comida fresca durante más de una semana. Tampoco le sirve paralizarla del todo,
+        como hacen otras avispas: una cucaracha inmóvil es demasiado pesada para arrastrarla hasta un escondite.
+        La avispa esmeralda necesita algo mucho más sutil: una cucaracha viva, que camine… pero que no huya.
+      visual_query: Periplaneta americana adult
+      on_screen_text: Viva, pero sin huir
+      key_fact: false
+    - narration: >-
+        Así que la avispa no pelea: opera. Primero salta sobre la cucaracha, la sujeta con sus mandíbulas
+        y le clava el aguijón en el tórax, justo en un ganglio nervioso que controla las patas delanteras.
+        El veneno bloquea temporalmente la transmisión de los impulsos nerviosos.
+        Durante unos minutos, esas patas quedan flácidas. La cucaracha ya no puede defenderse bien.
+      visual_query: Ampulex compressa attacking cockroach
+      on_screen_text: "Picadura 1: el tórax"
+      key_fact: true
+    - narration: >-
+        Esa parálisis breve es la ventana que necesita. Ahora viene la parte más precisa de todas:
+        la segunda picadura, directamente en la cabeza. La avispa introduce el aguijón por el cuello
+        y lo dirige hacia regiones concretas del cerebro de la cucaracha. Y no lo hace a ciegas:
+        su aguijón tiene pequeños receptores sensoriales que le ayudan a reconocer el tejido nervioso.
+        Es, literalmente, un instrumento quirúrgico con sensores en la punta.
+      visual_query: Ampulex compressa stinger
+      on_screen_text: "Picadura 2: el cerebro"
+      key_fact: true
+    - narration: >-
+        Eso sí, no siempre gana. En 2018, el biólogo Kenneth Catania, de la Universidad Vanderbilt,
+        grabó estos combates con cámaras de alta velocidad. Vio que las cucarachas que se mantienen alerta,
+        protegen el cuello y lanzan patadas con sus patas traseras espinosas contra la cabeza de la avispa
+        consiguen librarse muchas veces. La víctima perfecta, para la avispa, es la que reacciona tarde.
+      visual_query: American cockroach defensive behavior
+      on_screen_text: La cucaracha que se defiende
+      key_fact: false
+    - narration: >-
+        Pero cuando la avispa lo consigue, lo que ocurre es desconcertante. La cucaracha no queda paralizada.
+        Primero, durante una media hora, se pone a acicalarse de forma compulsiva: se limpia las antenas
+        y las patas una y otra vez. Después entra en un estado que los científicos llaman hipocinesia:
+        puede moverse, pero ha perdido la iniciativa para hacerlo. Ya no intenta huir.
+      visual_query: cockroach grooming antennae
+      on_screen_text: Hipocinesia
+      key_fact: false
+    - narration: >-
+        Y aquí está lo inquietante: no es que no pueda. Si la pones boca arriba, es capaz de darse la vuelta.
+        Si la echas al agua, llega a nadar, aunque se rinde antes que una cucaracha normal.
+        Pero su reacción de huida, ese reflejo que hace que las cucarachas salgan disparadas
+        en cuanto algo se les acerca, está muy apagada. El veneno no ha apagado su cuerpo.
+        Ha apagado sus ganas de usarlo.
+      visual_query: Periplaneta americana cockroach
+      on_screen_text: Puede huir. Pero no quiere.
+      key_fact: true
+    - narration: >-
+        Mientras la cucaracha está en ese trance, la avispa hace algo que parece crueldad gratuita,
+        pero tiene su lógica: le corta la mitad de cada antena con las mandíbulas
+        y bebe la hemolinfa, la sangre de los insectos, que sale por el corte.
+        Los investigadores creen que así repone líquidos y nutrientes que necesita para producir huevos.
+      visual_query: Ampulex compressa cockroach antenna
+      on_screen_text: Un aperitivo de hemolinfa
+      key_fact: false
+    - narration: >-
+        Después busca un escondite: una grieta o una pequeña madriguera. Y como la cucaracha pesa demasiado
+        para llevarla volando, la avispa hace algo casi cómico: la agarra por lo que queda de una antena
+        y tira de ella, como quien pasea a un perro con correa. Y la cucaracha la sigue.
+        Caminando. Por su propio pie. Hacia su final.
+      visual_query: Ampulex compressa leading cockroach
+      on_screen_text: Paseada con correa
+      key_fact: true
+    - narration: >-
+        Ya dentro de la madriguera, la avispa pone un único huevo, de unos dos milímetros,
+        pegado a una de las patas centrales de la cucaracha. Luego sale y tapa la entrada
+        con piedrecitas y restos que encuentra alrededor. No lo hace para que la cucaracha no escape,
+        porque ya no tiene intención de hacerlo, sino para que no entren depredadores ni otros parásitos.
+      visual_query: Ampulex compressa egg
+      on_screen_text: Un huevo, una despensa
+      key_fact: false
+    - narration: >-
+        Unos tres días después, el huevo eclosiona. La larva primero se alimenta desde fuera,
+        a través de un pequeño agujero en la pata. Pasados unos días, se introduce dentro del cuerpo de la cucaracha.
+        Y aquí la evolución ha afinado todavía más: la larva va comiendo los órganos internos
+        en un orden que mantiene a la cucaracha con vida el mayor tiempo posible.
+        Una despensa que no se estropea.
+      visual_query: parasitoid wasp larva
+      on_screen_text: Una despensa que no caduca
+      key_fact: true
+    - narration: >-
+        Hay otro detalle que no se descubrió hasta 2013. Una cucaracha está llena de bacterias,
+        así que una larva metida dentro corre el riesgo de infectarse. ¿La solución?
+        La larva segrega un líquido cargado de compuestos antimicrobianos con el que desinfecta su habitación.
+        Investigadores alemanes identificaron en él sustancias como la meleína y la micromolida.
+        Una larva que fabrica su propio desinfectante.
+      visual_query: Ampulex compressa larva
+      on_screen_text: Una larva que desinfecta
+      key_fact: true
+    - narration: >-
+        Tras unos días dentro, la cucaracha muere, y la larva teje un capullo en el interior del cuerpo vacío.
+        Allí completa la metamorfosis. Aproximadamente un mes después de la puesta,
+        una avispa adulta, brillante y reluciente, sale del cadáver de su anfitriona
+        lista para empezar el ciclo de nuevo.
+      visual_query: Ampulex compressa emerging cocoon
+      on_screen_text: Un mes después...
+      key_fact: false
+    - narration: >-
+        Vale, pero ¿cómo lo consigue exactamente? Aquí entra la neurociencia. El veneno de la picadura en la cabeza
+        contiene, entre otras moléculas, dopamina, un mensajero químico que también existe en nuestro cerebro.
+        La dopamina del veneno parece estar detrás del acicalado compulsivo.
+        Y la pérdida de iniciativa se relaciona con una zona llamada ganglio subesofágico,
+        que en los insectos ayuda a iniciar y mantener el movimiento.
+      visual_query: insect nervous system diagram
+      on_screen_text: Un cóctel químico
+      key_fact: false
+    - narration: >-
+        El laboratorio del profesor Frederic Libersat, en la Universidad Ben-Gurión de Israel,
+        ha hecho experimentos muy elegantes con estas cucarachas. Registrando la actividad de sus neuronas
+        antes y después de la picadura, comprobaron que el veneno reduce la actividad de ese ganglio.
+        Es decir: el veneno no destruye neuronas. Las baja de volumen.
+      visual_query: neuron electrophysiology recording
+      on_screen_text: Neuronas a bajo volumen
+      key_fact: true
+    - narration: >-
+        ¿Y por qué nos importa todo esto? Porque es un ejemplo natural de algo que sigue siendo un misterio
+        también en nuestra especie: cómo decide un cerebro empezar a actuar. Lo que llamamos motivación.
+        Hay que ser prudentes: el cerebro de una cucaracha y el nuestro son muy distintos.
+        Pero los sistemas sencillos a menudo nos enseñan las reglas básicas de los complejos.
+      visual_query: human brain illustration
+      on_screen_text: El misterio de la motivación
+      key_fact: false
+    - narration: >-
+        La avispa esmeralda no es la única manipuladora de la naturaleza. Hay hongos que hacen
+        que las hormigas trepen antes de morir, y gusanos que empujan a los grillos a lanzarse al agua.
+        Pero pocos lo hacen con esta precisión: dos picaduras, en dos puntos exactos,
+        con un cóctel químico refinado durante millones de años de evolución.
+      visual_query: Ophiocordyceps unilateralis ant
+      on_screen_text: No es la única
+      key_fact: false
+    - narration: >-
+        Y un último apunte para quien le tenga miedo a las avispas: esta especie es solitaria,
+        no forma nidos que defender y no tiene ningún interés en las personas.
+        Su mundo empieza y termina en las cucarachas. De hecho, gracias a ellas,
+        en algunos lugares se la ve casi como una aliada.
+      visual_query: Ampulex compressa on leaf
+      on_screen_text: Inofensiva para ti
+      key_fact: false
+    - narration: >-
+        Así que la próxima vez que veas una cucaracha huir a toda velocidad, piensa que en algún lugar del trópico
+        hay otra que ha perdido, literalmente, las ganas de correr. Si te ha sorprendido, suscríbete:
+        cada semana contamos un secreto de la naturaleza que casi nadie conoce.
+        Y cuéntame en los comentarios: ¿qué otro manipulador de la naturaleza quieres que investiguemos?
+      visual_query: Ampulex compressa
+      on_screen_text: ¿Cuál investigamos ahora?
+      key_fact: false
+  sources:
+    - title: "Libersat F., Gal R. (2014). Wasp voodoo rituals, venom-cocktails, and the zombification of cockroach hosts. Integrative and Comparative Biology 54(2):129-142"
+      reference: "https://doi.org/10.1093/icb/icu006"
+    - title: "Gal R., Libersat F. (2010). A wasp manipulates neuronal activity in the sub-esophageal ganglion to decrease the drive for walking in its cockroach prey. PLoS ONE 5(4):e10019"
+      reference: "https://doi.org/10.1371/journal.pone.0010019"
+    - title: "Herzner G. et al. (2013). Larvae of the parasitoid wasp Ampulex compressa sanitize their host, the American cockroach, with a blend of antimicrobials. PNAS 110(4):1369-1374"
+      reference: "https://doi.org/10.1073/pnas.1213384110"
+    - title: "Gal R. et al. (2014). Sensory arsenal on the stinger of the parasitoid jewel wasp and its possible role in identifying cockroach brains. PLoS ONE 9(2):e89683"
+      reference: "https://doi.org/10.1371/journal.pone.0089683"
+    - title: "Catania K.C. (2018). How not to be turned into a zombie cockroach: behavioral defenses of the American cockroach against the jewel wasp. Brain, Behavior and Evolution"
+      reference: "https://scholar.google.com/scholar?q=How+not+to+be+turned+into+a+zombie+cockroach"
+documentary_metadata:
+  title: "Avispa esmeralda: el insecto que convierte cucarachas en zombis"
+  description: >-
+    Con dos picaduras, una avispa de dos centímetros le quita a una cucaracha las ganas de huir… y se la lleva de la antena como a un perro.
+    Así funciona uno de los casos de manipulación más precisos de la naturaleza.
+
+    En este documental descubrimos cómo la avispa esmeralda (Ampulex compressa) localiza el cerebro de su presa,
+    qué contiene su veneno, por qué la cucaracha no está paralizada sino "desmotivada" y cómo su larva desinfecta
+    el interior de su anfitriona. Y qué nos enseña todo esto sobre la motivación en el cerebro.
+  tags: [Ampulex compressa, avispa esmeralda, avispa joya, cucaracha zombi, parasitoide, insectos parásitos, manipulación del comportamiento, neurociencia, veneno, biología, documental de animales, naturaleza, ciencia, curiosidades de animales]
+  hashtags: ["#avispaesmeralda", "#insectos", "#biologia"]
+  thumbnail_text: CUCARACHA ZOMBI
+shorts:
+  - hook: Esta avispa convierte a una cucaracha en un zombi con solo dos picaduras.
+    fact: >-
+      La primera, en el tórax, le paraliza las patas delanteras unos minutos. La segunda va directa al cerebro.
+      Y aquí viene lo raro: la cucaracha no queda paralizada. Puede andar, puede darse la vuelta, incluso nadar.
+      Pero pierde las ganas de huir. El veneno no apaga su cuerpo: apaga su motivación.
+    cta: La historia completa está en nuestro documental. Síguenos para más biología rara.
+    visual_queries: [Ampulex compressa, Periplaneta americana, Ampulex compressa attacking cockroach]
+    on_screen_texts: [Dos picaduras, Una presa sin voluntad, Puede huir... pero no quiere]
+  - hook: Esta avispa pasea a su presa como si fuera un perro.
+    fact: >-
+      La avispa esmeralda no puede cargar con una cucaracha: pesa demasiado. Así que, tras picarle en el cerebro,
+      le corta media antena, la agarra por lo que queda y tira. Y la cucaracha la sigue, caminando por su propio pie,
+      hasta una madriguera donde servirá de alimento a la cría de la avispa.
+    cta: ¿Sabías esto? Síguenos y mira el documental completo en el canal.
+    visual_queries: [Ampulex compressa leading cockroach, Ampulex compressa cockroach antenna]
+    on_screen_texts: [Paseo con correa, Por su propio pie]
+  - hook: Esta avispa tiene sensores en el aguijón para encontrar un cerebro.
+    fact: >-
+      Para su segunda picadura, la avispa esmeralda mete el aguijón por el cuello de una cucaracha
+      y busca regiones concretas de su cerebro. Un estudio de 2014 describió pequeños receptores sensoriales
+      en la punta del aguijón que parecen ayudarla a reconocer el tejido nervioso. Un bisturí con tacto propio.
+    cta: Hay mucho más en el documental del canal. Síguenos para no perdértelo.
+    visual_queries: [Ampulex compressa stinger, Ampulex compressa]
+    on_screen_texts: [Un aguijón con sensores, Cirugía natural]
+  - hook: Esta larva fabrica su propio desinfectante… dentro de una cucaracha.
+    fact: >-
+      La cría de la avispa esmeralda crece dentro de una cucaracha viva, un lugar lleno de bacterias.
+      Para no infectarse, segrega un líquido con compuestos antimicrobianos, como la meleína y la micromolida,
+      y con él desinfecta todo a su alrededor. Lo descubrieron investigadores alemanes en 2013.
+    cta: El ciclo completo, en nuestro documental. Síguenos para más biología rara.
+    visual_queries: [Ampulex compressa larva, parasitoid wasp larva]
+    on_screen_texts: [Una habitación desinfectada, Química de supervivencia]
+shorts_metadata:
+  - title: "Avispa esmeralda: la cucaracha zombi 🧟"
+    description: Dos picaduras y la cucaracha pierde las ganas de huir.
+    tags: [Ampulex compressa, avispa esmeralda, cucaracha zombi, insectos]
+    hashtags: ["#insectos", "#biologia"]
+    thumbnail_text: ZOMBI
+  - title: "La avispa que pasea cucarachas con correa"
+    description: No puede cargarla, así que la lleva de la antena.
+    tags: [Ampulex compressa, avispa esmeralda, cucaracha, parasitoide]
+    hashtags: ["#insectos", "#naturaleza"]
+    thumbnail_text: CON CORREA
+  - title: "Avispa con sensores en el aguijón 🧠"
+    description: Un aguijón que reconoce el cerebro de su presa.
+    tags: [Ampulex compressa, aguijón, neurociencia, insectos]
+    hashtags: ["#ciencia", "#insectos"]
+    thumbnail_text: CIRUGÍA
+  - title: "Esta larva se desinfecta dentro de una cucaracha"
+    description: Antimicrobianos caseros para sobrevivir dentro de su presa.
+    tags: [Ampulex compressa, larva, antimicrobianos, parasitoide]
+    hashtags: ["#biologia", "#ciencia"]
+    thumbnail_text: DESINFECTANTE

@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Analítica del canal</title>
+<style>
+:root {
+  color-scheme: light;
+  --page: #f9f9f7; --surface: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e; --muted: #898781;
+  --grid: #e1e0d9; --axis: #c3c2b7; --ring: rgba(11,11,11,0.10);
+  --s-doc: #2a78d6; --s-short: #eb6834; --good: #006300; --warn-bg: #fff4d6;
+}
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) {
+    color-scheme: dark;
+    --page: #0d0d0d; --surface: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7; --muted: #898781;
+    --grid: #2c2c2a; --axis: #383835; --ring: rgba(255,255,255,0.10);
+    --s-doc: #3987e5; --s-short: #d95926; --good: #0ca30c; --warn-bg: #3a300f;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #0d0d0d; --surface: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7; --muted: #898781;
+  --grid: #2c2c2a; --axis: #383835; --ring: rgba(255,255,255,0.10);
+  --s-doc: #3987e5; --s-short: #d95926; --good: #0ca30c; --warn-bg: #3a300f;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink); font: 15px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+main { max-width: 1120px; margin: 0 auto; padding: 24px 16px 64px; }
+h1 { font-size: 22px; margin: 0 0 4px; }
+h2 { font-size: 16px; margin: 0 0 12px; }
+.sub { color: var(--ink-2); margin: 0 0 16px; }
+.banner { background: var(--warn-bg); border: 1px solid var(--ring); padding: 10px 14px; border-radius: 10px; margin-bottom: 16px; }
+.filters { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; }
+.seg { display: inline-flex; border: 1px solid var(--ring); border-radius: 8px; overflow: hidden; background: var(--surface); }
+.seg button { border: 0; background: none; color: var(--ink-2); padding: 7px 12px; font: inherit; cursor: pointer; }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--surface); }
+.card { background: var(--surface); border: 1px solid var(--ring); border-radius: 12px; padding: 16px; }
+.grid { display: grid; gap: 16px; margin-bottom: 16px; }
+.g-tiles { grid-template-columns: 1.4fr repeat(3, 1fr); }
+.g-2 { grid-template-columns: 1fr 1fr; }
+.g-3 { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 820px) { .g-tiles, .g-2, .g-3 { grid-template-columns: 1fr; } }
+.label { color: var(--ink-2); font-size: 13px; }
+.hero { font-size: 48px; font-weight: 600; line-height: 1.1; }
+.value { font-size: 26px; font-weight: 600; }
+.hint { color: var(--muted); font-size: 12px; margin-top: 4px; }
+svg { display: block; width: 100%; height: auto; overflow: visible; }
+svg text { fill: var(--muted); font-size: 11px; font-family: inherit; }
+.tip { position: fixed; pointer-events: none; background: var(--surface); border: 1px solid var(--ring); border-radius: 8px;
+       padding: 8px 10px; font-size: 13px; box-shadow: 0 4px 16px rgba(0,0,0,.12); display: none; z-index: 10; }
+.tip strong { display: block; font-size: 15px; }
+.tip .k { display: inline-block; width: 12px; height: 2px; vertical-align: middle; margin-right: 6px; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th, td { text-align: left; padding: 7px 8px; border-bottom: 1px solid var(--grid); }
+th { color: var(--ink-2); font-weight: 600; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.table-wrap { overflow-x: auto; }
+.dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; }
+ul.notes { margin: 0; padding-left: 18px; color: var(--ink-2); }
+.rec { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--grid); }
+.rec:last-child { border-bottom: 0; }
+.rec small { color: var(--muted); }
+.up { color: var(--good); }
+</style>
+</head>
+<body>
+<main>
+  <h1 id="title">Analítica</h1>
+  <p class="sub" id="subtitle"></p>
+  <div class="banner" id="demo" hidden>Datos de demostración generados automáticamente. Conecta tu canal con <code>python -m biotube analytics fetch</code> para ver datos reales.</div>
+
+  <div class="filters" role="toolbar" aria-label="Filtros">
+    <div class="seg" data-filter="range">
+      <button data-v="30">30 días</button><button data-v="90">90 días</button><button data-v="all" aria-pressed="true">Todo</button>
+    </div>
+    <div class="seg" data-filter="kind">
+      <button data-v="all" aria-pressed="true">Todos</button><button data-v="documentary">Documentales</button><button data-v="short">Shorts</button>
+    </div>
+  </div>
+
+  <section class="grid g-tiles">
+    <div class="card"><div class="label">Visualizaciones</div><div class="hero" id="t-views">–</div><div class="hint" id="t-views-hint"></div></div>
+    <div class="card"><div class="label">Suscriptores ganados</div><div class="value" id="t-subs">–</div><div class="hint" id="t-subs-hint"></div></div>
+    <div class="card"><div class="label">Ingresos estimados</div><div class="value" id="t-rev">–</div><div class="hint">Solo con el canal monetizado</div></div>
+    <div class="card"><div class="label">Vídeos publicados</div><div class="value" id="t-count">–</div><div class="hint" id="t-count-hint"></div></div>
+  </section>
+
+  <section class="grid g-2" id="trend">
+    <div class="card" data-kind="documentary"><h2>Visualizaciones diarias · documentales</h2><div id="line-doc"></div></div>
+    <div class="card" data-kind="short"><h2>Visualizaciones diarias · shorts</h2><div id="line-short"></div></div>
+  </section>
+
+  <h2 style="margin-top:24px">¿Qué funciona mejor?</h2>
+  <p class="sub">Puntuación media de rendimiento (1,0 = vídeo típico del canal; vistas en 7 días, retención y suscriptores). Con pocos vídeos el valor se acerca a 1,0 para no sacar conclusiones precipitadas.</p>
+  <section class="grid g-3">
+    <div class="card"><h2>Por subcategoría</h2><div id="bar-sub"></div></div>
+    <div class="card"><h2>Por tipo de gancho</h2><div id="bar-hook"></div></div>
+    <div class="card"><h2>Por categoría</h2><div id="bar-cat"></div></div>
+  </section>
+
+  <section class="grid g-2">
+    <div class="card"><h2>Próximos temas recomendados</h2><div id="recs"></div></div>
+    <div class="card"><h2>Conclusiones automáticas</h2><ul class="notes" id="notes"></ul></div>
+  </section>
+
+  <div class="card"><h2>Vídeos</h2><div class="table-wrap"><table id="table"></table></div></div>
+</main>
+<div class="tip" id="tip" role="status"></div>
+
+<script type="application/json" id="data">__DATA__</script>
+<script>
+const DATA = JSON.parse(document.getElementById("data").textContent);
+const state = { range: "all", kind: "all" };
+const KIND_LABEL = { documentary: "Documental", short: "Short" };
+const fmt = n => n >= 1e6 ? (n / 1e6).toFixed(1).replace(".", ",") + " M" : n >= 1e4 ? (n / 1e3).toFixed(1).replace(".", ",") + " K" : Math.round(n).toLocaleString("es-ES");
+const color = k => getComputedStyle(document.documentElement).getPropertyValue(k === "documentary" ? "--s-doc" : "--s-short").trim();
+const el = (tag, attrs = {}, parent) => { const e = document.createElementNS("http://www.w3.org/2000/svg", tag); for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v); if (parent) parent.appendChild(e); return e; };
+const tip = document.getElementById("tip");
+
+function showTip(evt, rows, heading) {
+  tip.replaceChildren();
+  const h = document.createElement("div"); h.className = "label"; h.textContent = heading; tip.appendChild(h);
+  for (const r of rows) {
+    const s = document.createElement("strong"); s.textContent = r.value; tip.appendChild(s);
+    const l = document.createElement("div"); l.className = "label";
+    if (r.color) { const k = document.createElement("span"); k.className = "k"; k.style.background = r.color; l.appendChild(k); }
+    l.appendChild(document.createTextNode(r.label)); tip.appendChild(l);
+  }
+  tip.style.display = "block";
+  const x = Math.min(evt.clientX + 14, innerWidth - tip.offsetWidth - 8);
+  tip.style.left = x + "px"; tip.style.top = (evt.clientY + 14) + "px";
+}
+const hideTip = () => tip.style.display = "none";
+
+function cutoff() {
+  if (state.range === "all") return "0000";
+  const d = new Date(); d.setDate(d.getDate() - Number(state.range)); return d.toISOString().slice(0, 10);
+}
+const kindOk = k => state.kind === "all" || state.kind === k;
+
+function lineChart(container, points, kind) {
+  container.replaceChildren();
+  const W = 520, H = 200, P = { l: 44, r: 12, t: 10, b: 26 };
+  const svg = el("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": "Visualizaciones diarias" }, container);
+  if (!points.length) { const t = el("text", { x: W / 2, y: H / 2, "text-anchor": "middle" }, svg); t.textContent = "Sin datos en este periodo"; return; }
+  const max = Math.max(...points.map(p => p.v)) || 1;
+  const nice = Math.pow(10, Math.floor(Math.log10(max))); const top = Math.ceil(max / nice) * nice;
+  const x = i => P.l + (W - P.l - P.r) * (points.length === 1 ? 0.5 : i / (points.length - 1));
+  const y = v => H - P.b - (H - P.t - P.b) * v / top;
+  for (let i = 0; i <= 4; i++) {
+    const v = top * i / 4;
+    el("line", { x1: P.l, x2: W - P.r, y1: y(v), y2: y(v), stroke: i ? "var(--grid)" : "var(--axis)", "stroke-width": 1 }, svg);
+    const t = el("text", { x: P.l - 6, y: y(v) + 4, "text-anchor": "end" }, svg); t.textContent = fmt(v);
+  }
+  [0, Math.floor((points.length - 1) / 2), points.length - 1].forEach(i => {
+    const t = el("text", { x: x(i), y: H - 6, "text-anchor": i === 0 ? "start" : i === points.length - 1 ? "end" : "middle" }, svg);
+    t.textContent = points[i].d.slice(5).split("-").reverse().join("/");
+  });
+  const c = color(kind);
+  const path = points.map((p, i) => `${i ? "L" : "M"}${x(i)},${y(p.v)}`).join("");
+  el("path", { d: `${path}L${x(points.length - 1)},${y(0)}L${x(0)},${y(0)}Z`, fill: c, opacity: 0.1 }, svg);
+  el("path", { d: path, fill: "none", stroke: c, "stroke-width": 2, "stroke-linejoin": "round", "stroke-linecap": "round" }, svg);
+  const last = points[points.length - 1];
+  el("circle", { cx: x(points.length - 1), cy: y(last.v), r: 4, fill: c, stroke: "var(--surface)", "stroke-width": 2 }, svg);
+  const hair = el("line", { y1: P.t, y2: H - P.b, stroke: "var(--axis)", "stroke-width": 1, visibility: "hidden" }, svg);
+  const dot = el("circle", { r: 4, fill: c, stroke: "var(--surface)", "stroke-width": 2, visibility: "hidden" }, svg);
+  const hit = el("rect", { x: P.l, y: P.t, width: W - P.l - P.r, height: H - P.t - P.b, fill: "transparent" }, svg);
+  hit.addEventListener("pointermove", e => {
+    const r = svg.getBoundingClientRect(); const px = (e.clientX - r.left) * W / r.width;
+    const i = Math.max(0, Math.min(points.length - 1, Math.round((px - P.l) / (W - P.l - P.r) * (points.length - 1))));
+    hair.setAttribute("x1", x(i)); hair.setAttribute("x2", x(i)); hair.setAttribute("visibility", "visible");
+    dot.setAttribute("cx", x(i)); dot.setAttribute("cy", y(points[i].v)); dot.setAttribute("visibility", "visible");
+    showTip(e, [{ value: fmt(points[i].v), label: "visualizaciones", color: c }], points[i].d);
+  });
+  hit.addEventListener("pointerleave", () => { hideTip(); hair.setAttribute("visibility", "hidden"); dot.setAttribute("visibility", "hidden"); });
+}
+
+function barChart(container, rows) {
+  container.replaceChildren();
+  if (!rows.length) { container.textContent = "Sin datos"; return; }
+  const rowH = 30, W = 340, P = { l: 96, r: 44 }, H = rows.length * rowH + 18;
+  const svg = el("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": "Puntuación media" }, container);
+  const max = Math.max(1.5, ...rows.map(r => r.w));
+  const x = v => P.l + (W - P.l - P.r) * v / max;
+  el("line", { x1: x(1), x2: x(1), y1: 0, y2: H - 16, stroke: "var(--axis)", "stroke-width": 1 }, svg);
+  const ref = el("text", { x: x(1), y: H - 4, "text-anchor": "middle" }, svg); ref.textContent = "media";
+  const c = color("documentary");
+  rows.forEach((r, i) => {
+    const cy = i * rowH + rowH / 2;
+    const name = el("text", { x: P.l - 8, y: cy + 4, "text-anchor": "end", style: "fill:var(--ink-2)" }, svg); name.textContent = r.key;
+    const w = Math.max(8, x(r.w) - P.l);
+    el("path", { d: `M${P.l},${cy - 8}h${w - 4}a4,4 0 0 1 4,4v8a4,4 0 0 1 -4,4h${-(w - 4)}z`, fill: c }, svg);
+    const val = el("text", { x: P.l + w + 6, y: cy + 4, style: "fill:var(--ink)" }, svg); val.textContent = r.w.toFixed(2).replace(".", ",");
+    const hit = el("rect", { x: 0, y: cy - rowH / 2, width: W, height: rowH, fill: "transparent", tabindex: 0 }, svg);
+    const show = e => showTip(e, [{ value: r.w.toFixed(2).replace(".", ",") + "×", label: `${r.n} vídeo(s) · media sin ajustar ${r.raw.toFixed(2).replace(".", ",")}` }], r.key);
+    hit.addEventListener("pointermove", show);
+    hit.addEventListener("focus", () => { const b = hit.getBoundingClientRect(); show({ clientX: b.left + b.width / 2, clientY: b.top }); });
+    hit.addEventListener("pointerleave", hideTip); hit.addEventListener("blur", hideTip);
+  });
+}
+
+// Misma lógica que insights.group_weights(): media encogida hacia 1.0 con K = 2
+function groupScores(videos, field) {
+  const b = {};
+  for (const v of videos) if (v.score != null && v[field]) (b[v[field]] ||= []).push(v.score);
+  return Object.entries(b).map(([key, s]) => ({ key, n: s.length, raw: s.reduce((a, c) => a + c, 0) / s.length, w: (s.reduce((a, c) => a + c, 0) + 2) / (s.length + 2) }))
+    .sort((a, c) => c.w - a.w).slice(0, 8);
+}
+
+function render() {
+  const from = cutoff();
+  const videos = DATA.videos.filter(v => kindOk(v.kind) && v.publish_at.slice(0, 10) >= from);
+  const daily = DATA.daily.filter(d => kindOk(d.kind) && d.day >= from);
+  const sum = (arr, k) => arr.reduce((a, c) => a + (c[k] || 0), 0);
+
+  document.getElementById("t-views").textContent = fmt(sum(daily, "views"));
+  document.getElementById("t-views-hint").textContent = state.range === "all" ? "Desde el primer vídeo" : `Últimos ${state.range} días`;
+  document.getElementById("t-subs").textContent = "+" + fmt(sum(daily, "subs"));
+  const perK = sum(daily, "views") ? 1000 * sum(daily, "subs") / sum(daily, "views") : 0;
+  document.getElementById("t-subs-hint").textContent = `${perK.toFixed(1).replace(".", ",")} por cada 1000 vistas`;
+  document.getElementById("t-rev").textContent = sum(daily, "revenue").toLocaleString("es-ES", { style: "currency", currency: "USD" });
+  document.getElementById("t-count").textContent = videos.length;
+  document.getElementById("t-count-hint").textContent = `${videos.filter(v => v.kind === "documentary").length} documentales · ${videos.filter(v => v.kind === "short").length} shorts`;
+
+  for (const kind of ["documentary", "short"]) {
+    const card = document.querySelector(`#trend [data-kind="${kind}"]`);
+    card.hidden = !kindOk(kind);
+    const pts = daily.filter(d => d.kind === kind).map(d => ({ d: d.day, v: d.views }));
+    lineChart(document.getElementById(kind === "documentary" ? "line-doc" : "line-short"), pts, kind);
+  }
+  document.getElementById("trend").style.gridTemplateColumns = state.kind === "all" ? "" : "1fr";
+
+  barChart(document.getElementById("bar-sub"), groupScores(videos, "subcategory"));
+  barChart(document.getElementById("bar-hook"), groupScores(videos, "hook_type"));
+  barChart(document.getElementById("bar-cat"), groupScores(videos, "category"));
+
+  const table = document.getElementById("table");
+  table.replaceChildren();
+  const head = table.insertRow();
+  [["Vídeo", ""], ["Formato", ""], ["Gancho", ""], ["Vistas", "num"], ["Vistas 7 d", "num"], ["% visto", "num"], ["Subs", "num"], ["Puntuación", "num"]]
+    .forEach(([t, c]) => { const th = document.createElement("th"); th.textContent = t; th.className = c; head.appendChild(th); });
+  [...videos].sort((a, b) => (b.score ?? 0) - (a.score ?? 0)).forEach(v => {
+    const tr = table.insertRow();
+    const name = tr.insertCell(); const dot = document.createElement("span"); dot.className = "dot"; dot.style.background = color(v.kind);
+    name.appendChild(dot); name.appendChild(document.createTextNode(v.title));
+    const cells = [KIND_LABEL[v.kind], v.hook_type, fmt(v.views), fmt(v.views_7d), Math.round(v.view_pct) + " %", fmt(v.subs), v.score == null ? "–" : v.score.toFixed(2).replace(".", ",")];
+    cells.forEach((t, i) => { const td = tr.insertCell(); td.textContent = t; if (i >= 2) td.className = "num"; });
+  });
+}
+
+document.getElementById("title").textContent = `Analítica · ${DATA.channel}`;
+document.getElementById("subtitle").textContent = `Actualizado ${DATA.generated}`;
+document.getElementById("demo").hidden = !DATA.demo;
+const recs = document.getElementById("recs");
+DATA.recommendations.forEach((r, i) => {
+  const row = document.createElement("div"); row.className = "rec";
+  const left = document.createElement("div"); left.textContent = `${i + 1}. ${r.topic}`;
+  const small = document.createElement("small"); small.textContent = ` · ${r.category} / ${r.subcategory}`; left.appendChild(small);
+  const right = document.createElement("div"); right.className = r.score > 1 ? "up" : ""; right.textContent = r.score.toFixed(2).replace(".", ",") + "×";
+  row.append(left, right); recs.appendChild(row);
+});
+if (!DATA.recommendations.length) recs.textContent = "No quedan temas pendientes en el banco.";
+const notes = document.getElementById("notes");
+(DATA.notes.length ? DATA.notes : ["Aún no hay datos suficientes."]).forEach(n => { const li = document.createElement("li"); li.textContent = n.replace(/^- /, ""); notes.appendChild(li); });
+
+document.querySelectorAll(".seg").forEach(seg => seg.addEventListener("click", e => {
+  const b = e.target.closest("button"); if (!b) return;
+  seg.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", x === b));
+  state[seg.dataset.filter] = b.dataset.v; render();
+}));
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+# Publicación automática semanal.
+# Cada lunes: descarga métricas -> elige temas -> escribe guiones con Claude ->
+# renderiza -> revisa monetización -> sube y PROGRAMA los vídeos de la semana.
+# Los estrenos ocurren luego solos (publishAt), según config.yaml -> schedule.
+name: weekly-publish
+
+on:
+  schedule:
+    - cron: "17 5 * * 1"   # lunes 05:17 UTC (minuto no redondo = menos cola en GitHub)
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Simular sin subir a YouTube"
+        type: boolean
+        default: true
+
+permissions:
+  contents: write   # para guardar el banco de temas y los paquetes publicados
+
+concurrency:
+  group: weekly-publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      # La base de datos de métricas no se sube a git (es privada): se guarda en caché
+      - uses: actions/cache@v4
+        with:
+          path: data/analytics.db
+          key: analytics-${{ github.run_id }}
+          restore-keys: analytics-
+
+      - name: Credenciales
+        env:
+          YT_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET_JSON }}
+          YT_TOKEN: ${{ secrets.YOUTUBE_TOKEN_JSON }}
+        run: |
+          mkdir -p secrets
+          printf '%s' "$YT_CLIENT_SECRET" > secrets/client_secret.json
+          printf '%s' "$YT_TOKEN" > secrets/youtube_token.json
+
+      - name: Pipeline semanal
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.dry_run }}" = "true" ]; then
+            python -m biotube weekly --dry-run
+          else
+            python -m biotube weekly
+          fi
+
+      - name: Dashboard
+        if: always()
+        run: python -m biotube dashboard --out output/dashboard.html || true
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: dashboard-y-planes
+          path: |
+            output/dashboard.html
+            output/*/upload_plan.json
+          retention-days: 30
+
+      - name: Guardar estado (temas usados + paquetes)
+        if: success()
+        run: |
+          git config user.name "biotube-bot"
+          git config user.email "biotube-bot@users.noreply.github.com"
+          git add data/topic_bank.yaml data/packages
+          git diff --cached --quiet || git commit -m "chore: publicación semanal $(date -u +%F)"
+          git push

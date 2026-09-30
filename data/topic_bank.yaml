@@ -1,0 +1,24 @@
+# Banco de temas. El sistema elige el siguiente tema según la puntuación
+# (investigación en YouTube + rendimiento de tu propio canal).
+# status: pending | used
+topics:
+  - {topic: "La avispa esmeralda que convierte cucarachas en zombis", category: animal, subcategory: insectos, species: ["Ampulex compressa"], status: used}
+  - {topic: "La Venus atrapamoscas sabe contar", category: planta, subcategory: carnivoras, species: ["Dionaea muscipula"], status: used}
+  - {topic: "La rana de cristal que esconde su sangre para volverse invisible", category: animal, subcategory: anfibios, species: ["Hyalinobatrachium fleischmanni"], status: used}
+  - {topic: "El pez que camina y respira aire: el saltarín del fango", category: animal, subcategory: peces, species: ["Periophthalmus barbarus"], status: pending}
+  - {topic: "La planta que imita a una abeja hembra para engañar a los machos", category: planta, subcategory: orquideas, species: ["Ophrys apifera"], status: pending}
+  - {topic: "El gusano de terciopelo que dispara pegamento", category: animal, subcategory: invertebrados, species: ["Euperipatoides rowelli"], status: pending}
+  - {topic: "El árbol que sangra: el drago de Socotra", category: planta, subcategory: arboles, species: ["Dracaena cinnabari"], status: pending}
+  - {topic: "El pulpo que imita a otros animales", category: animal, subcategory: cefalopodos, species: ["Thaumoctopus mimicus"], status: pending}
+  - {topic: "La planta que se 'defiende' llamando a avispas", category: planta, subcategory: defensas, species: ["Zea mays"], status: pending}
+  - {topic: "El caracol con caparazón de hierro de las fumarolas", category: animal, subcategory: moluscos, species: ["Chrysomallon squamiferum"], status: pending}
+  - {topic: "El hongo que brilla en la oscuridad", category: hongo, subcategory: bioluminiscencia, species: ["Mycena chlorophos"], status: pending}
+  - {topic: "La lagartija que dispara sangre por los ojos", category: animal, subcategory: reptiles, species: ["Phrynosoma cornutum"], status: pending}
+  - {topic: "La planta más solitaria del mundo", category: planta, subcategory: cicadas, species: ["Encephalartos woodii"], status: pending}
+  - {topic: "El escarabajo que se orienta con la Vía Láctea", category: animal, subcategory: insectos, species: ["Scarabaeus satyrus"], status: pending}
+  - {topic: "El moho mucilaginoso que resuelve laberintos", category: microorganismo, subcategory: protistas, species: ["Physarum polycephalum"], status: pending}
+  - {topic: "La flor cadáver que calienta su propio olor", category: planta, subcategory: flores, species: ["Amorphophallus titanum"], status: pending}
+  - {topic: "El pájaro que imita motosierras", category: animal, subcategory: aves, species: ["Menura novaehollandiae"], status: pending}
+  - {topic: "La babosa marina que roba cloroplastos", category: animal, subcategory: moluscos, species: ["Elysia chlorotica"], status: pending}
+  - {topic: "El árbol que camina (y por qué es un mito a medias)", category: planta, subcategory: arboles, species: ["Socratea exorrhiza"], status: pending}
+  - {topic: "La medusa 'inmortal' que rejuvenece", category: animal, subcategory: cnidarios, species: ["Turritopsis dohrnii"], status: pending}
