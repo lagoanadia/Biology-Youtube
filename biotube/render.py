@@ -500,8 +500,8 @@ def write_karaoke_ass(words: list[dict], out: Path, total: float, hook_words: in
                 txt = re.sub(r"[{}\\]", "", other["w"]).upper()
                 in_hook = n - k + j < hook_words
                 parts.append((yellow if j == k or in_hook else white) + txt)
-            pop = "{\\fscx112\\fscy112\\t(0,90,\\fscx100\\fscy100)}" if k == 0 else ""
-            lines.append(f"Dialogue: 0,{_ass_time(start)},{_ass_time(end)},Cap,,0,0,0,,{pop}{' '.join(parts)}")
+            # Posición fija (\\pos): si dos eventos coinciden un fotograma, libass NO desplaza la línea
+            lines.append(f"Dialogue: 0,{_ass_time(start)},{_ass_time(end)},Cap,,0,0,0,,{{\\an2\\pos(540,1360)}}{' '.join(parts)}")
             n += 1
     for start, end, text in stickers or []:
         # pegatina roja inclinada que "salta": escala 0 -> 125 % -> 100 %

@@ -9,6 +9,7 @@ Comandos principales (en el orden en que se usan):
   check PKG                Revisión de monetización (licencias, duración, lenguaje...)
   publish PKG [--dry-run]  Sube y programa en YouTube
   kit PKG                  Guía para subir a mano desde YouTube Studio (sin API)
+  curate "búsqueda"        Mosaico numerado de fotos candidatas para elegir a mano
   weekly [--packages N]    Todo lo anterior seguido (lo que ejecuta el cron)
   analytics fetch|demo     Descarga métricas reales o genera datos de demo
   dashboard [--demo]       Genera el dashboard HTML
@@ -138,6 +139,13 @@ def cmd_kit(args):
     print(f"Guía de subida: {write_upload_kit(_load(args.package))}")
 
 
+def cmd_curate(args):
+    from .curate import curate
+
+    grid, data = curate(args.query, args.source)
+    print(f"Mosaico: {grid}\nDatos:   {data}")
+
+
 def cmd_weekly(args):
     """Pipeline completo. Pensado para ejecutarse 1 vez por semana (cron / GitHub Actions)."""
     from .analytics import fetch_stats
@@ -194,6 +202,8 @@ def main(argv=None):
     s = sub.add_parser("check"); s.add_argument("package"); s.set_defaults(func=cmd_check)
     s = sub.add_parser("publish"); s.add_argument("package"); s.add_argument("--dry-run", action="store_true")
     s.set_defaults(func=cmd_publish)
+    s = sub.add_parser("curate"); s.add_argument("query"); s.add_argument("--source", choices=["inat", "openverse"], default="inat")
+    s.set_defaults(func=cmd_curate)
     s = sub.add_parser("kit"); s.add_argument("package"); s.set_defaults(func=cmd_kit)
     s = sub.add_parser("weekly"); s.add_argument("--packages", type=int, default=load_config()["schedule"]["packages_per_week"])
     s.add_argument("--dry-run", action="store_true"); s.add_argument("--skip-fetch", action="store_true")

@@ -238,33 +238,57 @@ shorts:
       - {text: "Without that red, its outline fades away. On a leaf, it basically disappears.", visual: glass frog silhouette through leaf, sticker: "INVISIBLE"}
       - {text: "And the craziest part? Not a single blood clot.", visual: red blood cells microscope, sticker: "0 CLOTS"}
       - {text: "Follow BioNiche for more secrets like this.", visual: glass frog on leaf}
-  - hook: Can you see this animal's heart? Because I can.
+  - hook: "Can you see this animal's heart? Because I can."
     fact: >-
-      It's a glass frog from Central America, smaller than your thumb. From above, it's lime green, totally normal.
-      But flip it over… and you'll see its heart, its liver, its gut, and even the eggs, in females.
-      So why be so transparent? A 2020 study figured it out: because it's translucent, the edges of its body
-      take on the color of the leaf. Its outline fades away… and for a bird, no outline means no frog.
-    cta: If that surprised you, follow BioNiche.
-    visual_queries: [Hyalinobatrachium, Hyalinobatrachium fleischmanni, Centrolenidae, Teratohyla spinosa, Sachatamia albomaculata, Hyalinobatrachium colymbiphyllum]
+      It's a glass frog from Central America and it's smaller than your thumb. From above it looks like any other lime-green frog. But flip it over and you can see its heart and liver and gut and in females even the eggs. So why be see-through? A 2020 study figured it out. Its translucent skin lets the edges of its body take on the color of the leaf underneath. So the outline just fades away. And a hungry bird can't catch what it can't see.
+    cta: "If that surprised you follow BioNiche."
+    visual_queries: [Hyalinobatrachium, Hyalinobatrachium fleischmanni, Centrolenidae]
     on_screen_texts: [You can see its heart]
-  - hook: If you did this with your blood, you'd end up in the hospital.
+    beats:
+      - {text: "Can you see this animal's heart? Because I can.", visual: glass frog ventral heart}
+      - {text: "It's a glass frog from Central America and it's smaller than your thumb.", visual: glass frog on fingertip}
+      - {text: "From above it looks like any other lime-green frog.", visual: glass frog top view}
+      - {text: "But flip it over and you can see its heart and liver and gut", visual: glass frog ventral organs}
+      - {text: "and in females even the eggs.", visual: glass frog female eggs visible}
+      - {text: "So why be see-through? A 2020 study figured it out.", visual: glass frog on leaf}
+      - {text: "Its translucent skin lets the edges of its body take on the color of the leaf underneath.", visual: glass frog translucent edges on leaf}
+      - {text: "So the outline just fades away.", visual: glass frog camouflaged on leaf}
+      - {text: "And a hungry bird can't catch what it can't see.", visual: Momotus motmot bird}
+      - {text: "If that surprised you follow BioNiche.", visual: glass frog on leaf}
+  - hook: "If you did this with your blood you'd end up in the hospital."
     fact: >-
-      Every time the glass frog falls asleep, it crams almost all of its red blood into its liver. For hours.
-      In a person, blood packed that tightly would form clots… and clots can cause strokes or heart attacks.
-      But the frog wakes up, the blood starts flowing again… and nothing happened.
-      How it pulls this off is still a mystery. That's why doctors are studying it: it could inspire new blood thinners.
-    cta: Follow BioNiche so you don't miss the next one.
-    visual_queries: [Hyalinobatrachium fleischmanni, Hyalinobatrachium, Centrolenidae, Cochranella, Espadarana prosoblepon]
+      Every time the glass frog falls asleep it crams almost all of its red blood into its liver. And it keeps it there for hours. In a person blood packed that tightly would start to clot and clots can cause strokes and heart attacks. But when the frog wakes up the blood just starts flowing again and nothing bad happens. How it pulls this off is still a mystery. That's why scientists are studying it because it could inspire new blood thinners.
+    cta: "Follow BioNiche so you don't miss the next one."
+    visual_queries: [Hyalinobatrachium fleischmanni, Hyalinobatrachium, Centrolenidae]
     on_screen_texts: [Hidden blood, zero clots]
-  - hook: In this species, it's dad who babysits.
+    beats:
+      - {text: "If you did this with your blood you'd end up in the hospital.", visual: hospital emergency sign}
+      - {text: "Every time the glass frog falls asleep it crams almost all of its red blood into its liver.", visual: glass frog sleeping on leaf}
+      - {text: "And it keeps it there for hours.", visual: glass frog resting on leaf}
+      - {text: "In a person blood packed that tightly would start to clot", visual: blood clot microscope}
+      - {text: "and clots can cause strokes and heart attacks.", visual: emergency room}
+      - {text: "But when the frog wakes up the blood just starts flowing again", visual: blood flowing in capillaries}
+      - {text: "and nothing bad happens.", visual: glass frog awake}
+      - {text: "How it pulls this off is still a mystery.", visual: glass frog close-up}
+      - {text: "That's why scientists are studying it because it could inspire new blood thinners.", visual: scientists laboratory}
+      - {text: "Follow BioNiche so you don't miss the next one.", visual: glass frog on leaf}
+  - hook: "In this species it's dad who babysits."
     fact: >-
-      Male glass frogs spend days guarding their eggs, stuck to a leaf hanging over a stream.
-      They defend them from insects that want to eat them… and even keep them hydrated with their own bodies.
-      A bodyguard about an inch long. And when the tadpoles are ready, you know what they do?
-      They let go of the leaf… and drop straight into the water. That's how their life begins.
-    cta: Follow BioNiche for more stories like this.
-    visual_queries: [Hyalinobatrachium valerioi, Hyalinobatrachium fleischmanni, Centrolenidae, tropical stream rainforest, Hyalinobatrachium]
+      Male glass frogs spend days guarding their eggs on a leaf hanging right over a stream. They protect them from insects that want to eat them and even keep them hydrated with their own bodies. That's a bodyguard about an inch long. And once the tadpoles are ready guess what they do? They slide off the leaf and drop straight into the water. And that's how their life begins.
+    cta: "Follow BioNiche for more stories like this."
+    visual_queries: [Hyalinobatrachium valerioi, Hyalinobatrachium fleischmanni, Centrolenidae]
     on_screen_texts: [Bodyguard dad]
+    beats:
+      - {text: "In this species it's dad who babysits.", visual: glass frog male with eggs}
+      - {text: "Male glass frogs spend days guarding their eggs", visual: glass frog guarding eggs}
+      - {text: "on a leaf hanging right over a stream.", visual: leaf with frog and eggs over stream}
+      - {text: "They protect them from insects that want to eat them", visual: glass frog on eggs}
+      - {text: "and even keep them hydrated with their own bodies.", visual: glass frog pressed against eggs}
+      - {text: "That's a bodyguard about an inch long.", visual: glass frog on finger}
+      - {text: "And once the tadpoles are ready guess what they do?", visual: glass frog eggs close-up}
+      - {text: "They slide off the leaf and drop straight into the water.", visual: tadpoles dripping from leaf}
+      - {text: "And that's how their life begins.", visual: rainforest stream}
+      - {text: "Follow BioNiche for more stories like this.", visual: glass frog on leaf}
 curated:
   # Visuales elegidos a mano mirando cada foto/clip (short 1). Fotos de iNaturalist, clips de Wikimedia Commons.
   short0.beat0: {type: photo, url: "https://inaturalist-open-data.s3.amazonaws.com/photos/57846555/large.jpg", license: CC BY-SA, source_url: "https://www.inaturalist.org/photos/57846555", attribution: "Matteo Cassella, CC BY-SA, vía iNaturalist (https://www.inaturalist.org/photos/57846555)"}
@@ -278,6 +302,36 @@ curated:
   short0.beat8: {type: photo, url: "https://inaturalist-open-data.s3.amazonaws.com/photos/399304102/large.jpg", license: CC BY, source_url: "https://www.inaturalist.org/photos/399304102", attribution: "Nick Tobler, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/399304102)"}
   short0.beat9: {type: clip, start: 90, url: "https://upload.wikimedia.org/wikipedia/commons/transcoded/8/83/Blood_on_1000x_Microscope_HD_1080p.ogv/Blood_on_1000x_Microscope_HD_1080p.ogv.1080p.vp9.webm", license: CC BY 3.0, source_url: "https://commons.wikimedia.org/wiki/File:Blood_on_1000x_Microscope_HD_1080p.ogv", attribution: "Aurel Manea, CC BY 3.0, vía Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Blood_on_1000x_Microscope_HD_1080p.ogv)"}
   short0.beat10: {type: photo, url: "https://inaturalist-open-data.s3.amazonaws.com/photos/399304662/large.jpg", license: CC BY, source_url: "https://www.inaturalist.org/photos/399304662", attribution: "Nick Tobler, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/399304662)"}
+  short1.beat0: {"type": "photo", "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/214526239/large.jpg", "license": "CC BY", "source_url": "https://www.inaturalist.org/photos/214526239", "attribution": "Jared Shorma, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/214526239)"}
+  short1.beat1: {"type": "photo", "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/246884433/large.jpeg", "license": "CC BY", "source_url": "https://www.inaturalist.org/photos/246884433", "attribution": "Stephanie Tran, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/246884433)"}
+  short1.beat2: {"type": "photo", "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/57846707/large.jpg", "license": "CC BY-SA", "source_url": "https://www.inaturalist.org/photos/57846707", "attribution": "Matteo Cassella, CC BY-SA, vía iNaturalist (https://www.inaturalist.org/photos/57846707)"}
+  short1.beat3: {"type": "photo", "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/246863859/large.jpeg", "license": "CC BY", "source_url": "https://www.inaturalist.org/photos/246863859", "attribution": "Stephanie Tran, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/246863859)"}
+  short1.beat4: {"type": "photo", "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/214526165/large.jpg", "license": "CC BY", "source_url": "https://www.inaturalist.org/photos/214526165", "attribution": "Jared Shorma, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/214526165)"}
+  short1.beat5: {"type": "photo", "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/680339526/large.jpg", "license": "CC BY", "source_url": "https://www.inaturalist.org/photos/680339526", "attribution": "Jaime Navarrete Rivas, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/680339526)"}
+  short1.beat6: {"type": "photo", "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/680339570/large.jpg", "license": "CC BY", "source_url": "https://www.inaturalist.org/photos/680339570", "attribution": "Jaime Navarrete Rivas, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/680339570)"}
+  short1.beat7: {"type": "photo", "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/241162312/large.jpeg", "license": "CC BY", "source_url": "https://www.inaturalist.org/photos/241162312", "attribution": "Jake Rehage, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/241162312)"}
+  short1.beat8: {"type": "photo", "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/251747436/large.jpg", "license": "CC BY", "source_url": "https://www.inaturalist.org/photos/251747436", "attribution": "Grete Pasch, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/251747436)"}
+  short1.beat9: {"type": "photo", "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/618272874/large.jpg", "license": "CC BY", "source_url": "https://www.inaturalist.org/photos/618272874", "attribution": "Josh Noseworthy, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/618272874)"}
+  short2.beat0: {"type": "photo", "url": "https://live.staticflickr.com/162/372817947_fbda90a5b0_b.jpg", "license": "CC BY-SA 2.0", "source_url": "https://www.flickr.com/photos/73322140@N00/372817947", "attribution": "folkstone42, CC BY-SA 2.0, vía flickr (https://www.flickr.com/photos/73322140@N00/372817947)"}
+  short2.beat1: {"type": "photo", "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/418870689/large.jpeg", "license": "CC BY", "source_url": "https://www.inaturalist.org/photos/418870689", "attribution": "Borja Fierro, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/418870689)"}
+  short2.beat2: {"type": "photo", "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/597780104/large.jpg", "license": "CC BY", "source_url": "https://www.inaturalist.org/photos/597780104", "attribution": "Blake Ross, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/597780104)"}
+  short2.beat3: {"type": "photo", "url": "https://live.staticflickr.com/4001/4337749360_8d82db35ca_b.jpg", "license": "CC BY-SA 2.0", "source_url": "https://www.flickr.com/photos/30950973@N03/4337749360", "attribution": "Pulmonary Pathology, CC BY-SA 2.0, vía flickr (https://www.flickr.com/photos/30950973@N03/4337749360)"}
+  short2.beat4: {"type": "photo", "url": "https://live.staticflickr.com/4061/4269771776_914861e0e6_b.jpg", "license": "CC BY 2.0", "source_url": "https://www.flickr.com/photos/26324140@N02/4269771776", "attribution": "VCU Libraries, CC BY 2.0, vía flickr (https://www.flickr.com/photos/26324140@N02/4269771776)"}
+  short2.beat5: {"type": "clip", "start": 10, "url": "https://upload.wikimedia.org/wikipedia/commons/transcoded/7/72/Flujo_sangu%C3%ADneo_en_branquias_de_larvas_de_axolote_ambystoma_mexicanum.webm/Flujo_sangu%C3%ADneo_en_branquias_de_larvas_de_axolote_ambystoma_mexicanum.webm.1080p.vp9.webm", "license": "CC BY-SA 4.0", "source_url": "https://commons.wikimedia.org/wiki/File:Flujo_sangu%C3%ADneo_en_branquias_de_larvas_de_axolote_ambystoma_mexicanum.webm", "attribution": "Micro.Cosmonauta, CC BY-SA 4.0, vía Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Flujo_sangu%C3%ADneo_en_branquias_de_larvas_de_axolote_ambystoma_mexicanum.webm)"}
+  short2.beat6: {"type": "photo", "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/399304635/large.jpg", "license": "CC BY", "source_url": "https://www.inaturalist.org/photos/399304635", "attribution": "Nick Tobler (Cowturtle), CC BY, vía iNaturalist (https://www.inaturalist.org/photos/399304635)"}
+  short2.beat7: {"type": "photo", "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/561844051/large.jpg", "license": "CC BY", "source_url": "https://www.inaturalist.org/photos/561844051", "attribution": "Inacio Oliveira, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/561844051)"}
+  short2.beat8: {"type": "photo", "url": "https://live.staticflickr.com/3341/3617772958_0db68e3d6c_b.jpg", "license": "CC BY 2.0", "source_url": "https://www.flickr.com/photos/30369883@N03/3617772958", "attribution": "Idaho National Laboratory, CC BY 2.0, vía flickr (https://www.flickr.com/photos/30369883@N03/3617772958)"}
+  short2.beat9: {"type": "photo", "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/329182970/large.jpg", "license": "CC0", "source_url": "https://www.inaturalist.org/photos/329182970", "attribution": "no rights reserved, CC0, vía iNaturalist (https://www.inaturalist.org/photos/329182970)"}
+  short3.beat0: {"type": "photo", "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/313292956/large.jpeg", "license": "CC BY", "source_url": "https://www.inaturalist.org/photos/313292956", "attribution": "T R Shankar Raman, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/313292956)"}
+  short3.beat1: {"type": "photo", "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/60052569/large.jpeg", "license": "CC BY", "source_url": "https://www.inaturalist.org/photos/60052569", "attribution": "Dan MacNeal, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/60052569)"}
+  short3.beat2: {"type": "photo", "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/313293065/large.jpeg", "license": "CC BY", "source_url": "https://www.inaturalist.org/photos/313293065", "attribution": "T R Shankar Raman, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/313293065)"}
+  short3.beat3: {"type": "photo", "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/60123702/large.jpg", "license": "CC BY", "source_url": "https://www.inaturalist.org/photos/60123702", "attribution": "Dan MacNeal, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/60123702)"}
+  short3.beat4: {"type": "photo", "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/313292977/large.jpeg", "license": "CC BY", "source_url": "https://www.inaturalist.org/photos/313292977", "attribution": "T R Shankar Raman, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/313292977)"}
+  short3.beat5: {"type": "photo", "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/474623191/large.jpg", "license": "CC0", "source_url": "https://www.inaturalist.org/photos/474623191", "attribution": "no rights reserved, CC0, vía iNaturalist (https://www.inaturalist.org/photos/474623191)"}
+  short3.beat6: {"type": "photo", "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/243877850/large.jpeg", "license": "CC BY", "source_url": "https://www.inaturalist.org/photos/243877850", "attribution": "Stephanie Tran, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/243877850)"}
+  short3.beat7: {"type": "photo", "url": "https://live.staticflickr.com/8800/17380603484_4c878372ab_b.jpg", "license": "CC BY-SA 2.0", "source_url": "https://www.flickr.com/photos/96826734@N08/17380603484", "attribution": "Nature.Catcher, CC BY-SA 2.0, vía flickr (https://www.flickr.com/photos/96826734@N08/17380603484)"}
+  short3.beat8: {"type": "photo", "url": "https://live.staticflickr.com/65535/52428274850_e8bacd4737_b.jpg", "license": "CC BY 2.0", "source_url": "https://www.flickr.com/photos/19451080@N00/52428274850", "attribution": "Phillie Casablanca, CC BY 2.0, vía flickr (https://www.flickr.com/photos/19451080@N00/52428274850)"}
+  short3.beat9: {"type": "photo", "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/618272854/large.jpg", "license": "CC BY", "source_url": "https://www.inaturalist.org/photos/618272854", "attribution": "Josh Noseworthy, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/618272854)"}
 shorts_metadata:
   - title: "The Frog That Hides Its Blood 🐸"
     description: How it turns invisible while it sleeps.
