@@ -240,37 +240,37 @@ shorts:
       - {text: "Follow BioNiche for more secrets like this.", visual: glass frog on leaf}
   - hook: "Can you see this animal's heart? Because I can."
     fact: >-
-      It's a glass frog from Central America and it's smaller than your thumb. From above it looks like any other lime-green frog. But flip it over and you can see its heart and liver and gut and in females even the eggs. So why be see-through? A 2020 study figured it out. Its translucent skin lets the edges of its body take on the color of the leaf underneath. So the outline just fades away. And a hungry bird can't catch what it can't see.
-    cta: "If that surprised you follow BioNiche."
+      This is a glass frog. It lives in Central America, and it's smaller than your thumb. From above, it looks like a normal green frog. But flip it over, and you can see right through it. In females, you can even see the eggs. So why is it see-through? Scientists figured it out in 2020. Its skin is so clear that the edges of its body take on the color of the leaf. That makes its outline almost disappear. And a bird can't catch a frog it can't see.
+    cta: "Follow BioNiche for more animals like this."
     visual_queries: [Hyalinobatrachium, Hyalinobatrachium fleischmanni, Centrolenidae]
     on_screen_texts: [You can see its heart]
     beats:
       - {text: "Can you see this animal's heart? Because I can.", visual: glass frog ventral heart}
-      - {text: "It's a glass frog from Central America and it's smaller than your thumb.", visual: glass frog on fingertip}
-      - {text: "From above it looks like any other lime-green frog.", visual: glass frog top view}
-      - {text: "But flip it over and you can see its heart and liver and gut", visual: glass frog ventral organs}
-      - {text: "and in females even the eggs.", visual: glass frog female eggs visible}
-      - {text: "So why be see-through? A 2020 study figured it out.", visual: glass frog on leaf}
-      - {text: "Its translucent skin lets the edges of its body take on the color of the leaf underneath.", visual: glass frog translucent edges on leaf}
-      - {text: "So the outline just fades away.", visual: glass frog camouflaged on leaf}
-      - {text: "And a hungry bird can't catch what it can't see.", visual: Momotus motmot bird}
-      - {text: "If that surprised you follow BioNiche.", visual: glass frog on leaf}
-  - hook: "If you did this with your blood you'd end up in the hospital."
+      - {text: "This is a glass frog. It lives in Central America, and it's smaller than your thumb.", visual: glass frog on fingertip}
+      - {text: "From above, it looks like a normal green frog.", visual: glass frog top view}
+      - {text: "But flip it over, and you can see right through it.", visual: glass frog ventral organs}
+      - {text: "In females, you can even see the eggs.", visual: glass frog female eggs visible}
+      - {text: "So why is it see-through? Scientists figured it out in 2020.", visual: glass frog on leaf}
+      - {text: "Its skin is so clear that the edges of its body take on the color of the leaf.", visual: glass frog translucent edges on leaf}
+      - {text: "That makes its outline almost disappear.", visual: glass frog camouflaged on leaf}
+      - {text: "And a bird can't catch a frog it can't see.", visual: Momotus motmot bird}
+      - {text: "Follow BioNiche for more animals like this.", visual: glass frog on leaf}
+  - hook: "If you did this with your blood, you'd end up in the hospital."
     fact: >-
-      Every time the glass frog falls asleep it crams almost all of its red blood into its liver. And it keeps it there for hours. In a person blood packed that tightly would start to clot and clots can cause strokes and heart attacks. But when the frog wakes up the blood just starts flowing again and nothing bad happens. How it pulls this off is still a mystery. That's why scientists are studying it because it could inspire new blood thinners.
+      When a glass frog falls asleep, it moves almost all of its red blood into its liver. And it keeps it packed in there for hours. In humans, blood packed that tight would form clots. And clots can cause strokes and heart attacks. But when the frog wakes up, its blood starts flowing normally again. And it's completely fine. Nobody knows exactly how it does this. That's why scientists are studying it. It could help create new blood thinners.
     cta: "Follow BioNiche so you don't miss the next one."
     visual_queries: [Hyalinobatrachium fleischmanni, Hyalinobatrachium, Centrolenidae]
     on_screen_texts: [Hidden blood, zero clots]
     beats:
-      - {text: "If you did this with your blood you'd end up in the hospital.", visual: hospital emergency sign}
-      - {text: "Every time the glass frog falls asleep it crams almost all of its red blood into its liver.", visual: glass frog sleeping on leaf}
-      - {text: "And it keeps it there for hours.", visual: glass frog resting on leaf}
-      - {text: "In a person blood packed that tightly would start to clot", visual: blood clot microscope}
-      - {text: "and clots can cause strokes and heart attacks.", visual: emergency room}
-      - {text: "But when the frog wakes up the blood just starts flowing again", visual: blood flowing in capillaries}
-      - {text: "and nothing bad happens.", visual: glass frog awake}
-      - {text: "How it pulls this off is still a mystery.", visual: glass frog close-up}
-      - {text: "That's why scientists are studying it because it could inspire new blood thinners.", visual: scientists laboratory}
+      - {text: "If you did this with your blood, you'd end up in the hospital.", visual: hospital emergency sign}
+      - {text: "When a glass frog falls asleep, it moves almost all of its red blood into its liver.", visual: glass frog sleeping on leaf}
+      - {text: "And it keeps it packed in there for hours.", visual: glass frog resting on leaf}
+      - {text: "In humans, blood packed that tight would form clots.", visual: blood clot microscope}
+      - {text: "And clots can cause strokes and heart attacks.", visual: emergency room}
+      - {text: "But when the frog wakes up, its blood starts flowing normally again.", visual: blood flowing in capillaries}
+      - {text: "And it's completely fine.", visual: glass frog awake}
+      - {text: "Nobody knows exactly how it does this.", visual: glass frog close-up}
+      - {text: "That's why scientists are studying it. It could help create new blood thinners.", visual: scientists laboratory}
       - {text: "Follow BioNiche so you don't miss the next one.", visual: glass frog on leaf}
   - hook: "In this species it's dad who babysits."
     fact: >-
