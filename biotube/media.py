@@ -216,6 +216,82 @@ def search_openverse(query: str, limit: int = 20, portrait: bool = False) -> lis
     return results
 
 
+# --- clips de vídeo --------------------------------------------------------------
+
+VIDEO_STOPWORDS = {"with", "from", "into", "over", "under", "the", "and", "view", "close", "macro"}
+
+
+def slug_matches(query: str, url: str) -> bool:
+    """¿El clip trata de lo que buscamos? Pexels no da títulos, pero su URL describe el vídeo
+    (".../video/water-flowing-in-a-rainforest-123/"). Exigimos que aparezca alguna palabra clave.
+    Así una búsqueda de un nombre científico raro no devuelve "una rana cualquiera"."""
+    slug = url.lower()
+    words = [w for w in re.findall(r"[a-z]+", query.lower()) if len(w) >= 4 and w not in VIDEO_STOPWORDS]
+    return any(w in slug for w in words)
+
+
+def search_pexels_videos(query: str, limit: int = 15, portrait: bool = False) -> list[dict]:
+    """Clips de Pexels (licencia libre, uso comercial permitido). Necesita PEXELS_API_KEY (gratis)."""
+    key = env("PEXELS_API_KEY")
+    if not key:
+        return []
+    data = _get_json("https://api.pexels.com/videos/search",
+                     {"query": query, "per_page": limit, "orientation": "portrait" if portrait else "landscape"},
+                     headers={"Authorization": key})
+    target = 1080 if portrait else 1920
+    results = []
+    for v in data.get("videos", []):
+        if not slug_matches(query, v.get("url", "")) or v.get("duration", 0) < 4:
+            continue
+        files = [f for f in v.get("video_files", []) if f.get("file_type") == "video/mp4" and (f.get("width") or 0) >= target * 0.66]
+        if not files:
+            continue
+        best = min(files, key=lambda f: abs((f.get("width") or 0) - target))  # la más cercana a HD, no 4K
+        results.append({
+            "provider": "pexels-video", "kind": "video",
+            "download_url": best["link"], "source_url": v["url"], "license": "pexels",
+            "attribution": f"Vídeo de {v.get('user', {}).get('name', 'Pexels')} en Pexels ({v['url']})",
+            "duration": v.get("duration"),
+        })
+    return results
+
+
+VIDEO_SEARCHERS = {"pexels": search_pexels_videos}
+
+
+def fetch_clip(query: str, *, portrait: bool = False, exclude: set[str] | None = None) -> dict | None:
+    """Primer clip de vídeo válido para la búsqueda, o None (entonces se usa una foto)."""
+    cfg = load_config()
+    exclude = set(exclude or set()) | load_blocklist()
+    folder = cfg.path("cache") / "videos"
+    folder.mkdir(parents=True, exist_ok=True)
+    for provider in cfg["media"].get("video_providers", []):
+        key = ("video", provider, query, portrait)
+        try:
+            if key not in _SEARCH_CACHE:
+                _SEARCH_CACHE[key] = VIDEO_SEARCHERS[provider](query, portrait=portrait)
+        except (requests.RequestException, ValueError) as e:
+            print(f"[media] vídeos de {provider} fallaron para '{query}': {e}")
+            continue
+        for cand in _SEARCH_CACHE[key]:
+            if cand["source_url"] in exclude:
+                continue
+            path = folder / f"{hashlib.sha1(cand['download_url'].encode()).hexdigest()[:16]}.mp4"
+            if not path.exists():
+                try:
+                    with _session().get(cand["download_url"], timeout=120, stream=True) as resp:
+                        resp.raise_for_status()
+                        with open(path, "wb") as f:
+                            for chunk in resp.iter_content(1 << 20):
+                                f.write(chunk)
+                except requests.RequestException as e:
+                    path.unlink(missing_ok=True)
+                    print(f"[media] descarga de vídeo fallida {cand['source_url']}: {e}")
+                    continue
+            return cand | {"clip": str(path)}
+    return None
+
+
 SEARCHERS = {"inaturalist": search_inaturalist, "openverse": search_openverse,
              "wikimedia": search_wikimedia, "pexels": search_pexels}
 

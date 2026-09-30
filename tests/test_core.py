@@ -230,3 +230,22 @@ def test_karaoke_captions_follow_word_timings(tmp_path):
     text = write_karaoke_ass(words, tmp_path / "k.ass", total=2.0).read_text()
     assert "0:00:00.35" in text and "0:00:01.20" in text, "cada palabra empieza cuando la voz la dice"
     assert text.count("Dialogue") == 3
+
+
+def test_video_slug_relevance():
+    from biotube.media import slug_matches
+
+    assert slug_matches("tropical stream rainforest", "https://www.pexels.com/video/water-flowing-in-a-rainforest-123/")
+    assert not slug_matches("Hyalinobatrachium fleischmanni", "https://www.pexels.com/video/a-green-frog-on-a-leaf-1/")
+
+
+def test_video_clip_crops_to_vertical(tmp_path):
+    from PIL import Image
+
+    from biotube import ffmpeg
+    from biotube.render import SHORT_SIZE, video_clip
+
+    src = tmp_path / "src.mp4"
+    ffmpeg.run(["-f", "lavfi", "-i", "testsrc=size=1280x720:rate=25", "-t", "2", "-pix_fmt", "yuv420p", str(src)])
+    out = video_clip(str(src), Image.new("RGBA", SHORT_SIZE), 3.0, SHORT_SIZE, tmp_path / "out.mp4")
+    assert abs(ffmpeg.duration(out) - 3.0) < 0.1, "el clip corto se repite hasta cubrir el plano"

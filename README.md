@@ -101,9 +101,9 @@ Se abrirá el navegador, eliges tu canal y aceptas. Se crea `secrets/youtube_tok
 
 > **Importante:** mientras la pantalla de consentimiento esté en modo "Prueba", Google caduca el refresh token a los 7 días. Pásala a "En producción" para que dure. Si solo la usas tú no hace falta completar la verificación de Google: al autorizar verás un aviso de "app no verificada" y puedes continuar.
 
-### 4. (Opcional) Pexels
+### 4. (Recomendado) Pexels: fotos y **clips de vídeo**
 
-Si Wikimedia no tiene fotos de algo, se usa Pexels. Clave gratis en <https://www.pexels.com/api/> → `PEXELS_API_KEY` en `.env`.
+Con una clave gratuita de <https://www.pexels.com/api/> (`PEXELS_API_KEY` en `.env`) el sistema mezcla **clips de vídeo** con las fotos: en el documental, el primer plano de cada escena; en los shorts, un plano de cada dos. Solo usa un clip si su descripción coincide con la búsqueda (así no mete "una rana cualquiera" cuando hablamos de una especie concreta); si no hay clip que encaje, usa foto. La licencia de Pexels permite uso comercial y monetizar.
 
 ---
 

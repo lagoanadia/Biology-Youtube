@@ -27,7 +27,7 @@ from PIL import Image, ImageDraw, ImageFilter, ImageOps
 
 from . import ffmpeg
 from .config import load_config
-from .media import _font, _wrap, fetch_image
+from .media import _font, _wrap, fetch_clip, fetch_image
 from .models import VideoPackage
 from .seo import build_chapters, fmt_timestamp
 from .store import save_package
@@ -150,6 +150,27 @@ def still_clip(bg: Image.Image, overlay: Image.Image, seconds: float, out: Path,
         "-c:v", "libx264", "-preset", "veryfast", "-crf", "20", "-r", str(FPS), str(out),
     ])
     return out
+
+
+def video_clip(src: str, overlay: Image.Image, seconds: float, size: tuple[int, int], out: Path) -> Path:
+    """Clip mudo a partir de un vídeo de stock: recorte a `size`, 30 fps y rótulos encima."""
+    ov_path = out.with_name(out.stem + "_ov.png")
+    overlay.save(ov_path)
+    w, h = size
+    vf = (f"[0:v]scale={w}:{h}:force_original_aspect_ratio=increase,crop={w}:{h},fps={FPS},setsar=1[v0];"
+          f"[v0][1:v]overlay=0:0,format=yuv420p[v]")
+    ffmpeg.run(["-stream_loop", "-1", "-i", src, "-loop", "1", "-i", str(ov_path), "-filter_complex", vf,
+                "-map", "[v]", "-t", f"{seconds:.3f}", "-an", "-c:v", "libx264", "-preset", "veryfast",
+                "-crf", "20", "-r", str(FPS), str(out)])
+    return out
+
+
+def clip_preview(clip: dict) -> dict:
+    """Guarda un fotograma del clip para la hoja de contactos."""
+    frame = Path(clip["clip"]).with_suffix(".jpg")
+    if not frame.exists():
+        ffmpeg.run(["-ss", "1", "-i", clip["clip"], "-frames:v", "1", "-vf", "scale=640:-2", str(frame)])
+    return clip | {"path": str(frame)}
 
 
 def pad_audio(src: Path, seconds: float, out: Path) -> Path:
@@ -313,10 +334,18 @@ def render_documentary(pkg: VideoPackage, out_dir: Path, tts_provider: str | Non
         for img in shots:
             images.append(img | {"scene": i, "query": scene.visual_query})
         overlay = doc_overlay(scene.on_screen_text, channel)
+        clip = fetch_clip(scene.visual_query, exclude=used)
+        if clip:
+            used.add(clip["source_url"])
+            images.append(clip_preview(clip) | {"scene": i, "query": scene.visual_query})
         for j in range(n_shots):
+            path = work / f"s{i:03d}_{j}.mp4"
+            if clip and j == 0:  # primer plano de la escena en vídeo, el resto fotos
+                clips.append(video_clip(clip["clip"], overlay, seconds / n_shots, DOC_SIZE, path))
+                continue
             img = shots[j % len(shots)]
             bg = cover(Image.open(img["path"]), DOC_SIZE)
-            clips.append(still_clip(bg, overlay, seconds / n_shots, work / f"s{i:03d}_{j}.mp4", seed=i * 7 + j, zoom=0.09))
+            clips.append(still_clip(bg, overlay, seconds / n_shots, path, seed=i * 7 + j, zoom=0.09))
         wavs.append(pad_audio(mp3, seconds, work / f"s{i:03d}.wav"))
         srt_chunks += srt_from_words(load_words(mp3), offset=t)
         durations.append(seconds)
@@ -450,11 +479,21 @@ def render_short(pkg: VideoPackage, index: int, out_dir: Path, tts_provider: str
     headline = short.on_screen_texts[0] if short.on_screen_texts else ""
     empty = headline_overlay("", channel)
     clips = []
+    photos = list(images)  # las previsualizaciones de clips solo van a la hoja de contactos
+    used_clips: set[str] = set()
     for j in range(n_shots):
-        img = images[j % len(images)]
         overlay = headline_overlay(headline, channel) if j == 0 else empty
+        path = work / f"i{j:02d}.mp4"
+        if j % 2 == 1:  # alternamos foto / vídeo cuando hay clips que encajen
+            clip = fetch_clip(queries[j % len(queries)], portrait=True, exclude=used_clips)
+            if clip:
+                used_clips.add(clip["source_url"])
+                images.append(clip_preview(clip) | {"short": index, "query": queries[j % len(queries)]})
+                clips.append(video_clip(clip["clip"], overlay, per_shot, SHORT_SIZE, path))
+                continue
+        img = photos[j % len(photos)]
         bg = compose_portrait(Image.open(img["path"]))
-        clips.append(still_clip(bg, overlay, per_shot, work / f"i{j:02d}.mp4", seed=index * 31 + j, zoom=0.14))
+        clips.append(still_clip(bg, overlay, per_shot, path, seed=index * 31 + j, zoom=0.14))
 
     video = concat(clips, work / "video.mp4")
     voice = pad_audio(mp3, total, work / "voice.wav")

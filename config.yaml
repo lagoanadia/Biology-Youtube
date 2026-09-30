@@ -29,6 +29,8 @@ voice:
 media:
   providers: ["inaturalist", "openverse", "wikimedia", "pexels"]   # en orden de preferencia
   images_per_scene: 1
+  # Clips de vídeo (necesita PEXELS_API_KEY gratis). Si no hay clip que encaje, se usa foto.
+  video_providers: ["pexels"]
   # Solo licencias que permiten uso comercial (necesario para monetizar)
   allowed_licenses: ["cc0", "pd", "public domain", "cc by", "cc by-sa", "pexels"]
 
