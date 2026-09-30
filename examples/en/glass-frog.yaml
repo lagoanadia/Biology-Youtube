@@ -228,10 +228,10 @@ shorts:
     on_screen_texts: [The invisible frog]
     beats:
       - {text: "This frog has a trick that would send you straight to the hospital.", visual: glass frog face}
-      - {text: "Look. It's a glass frog, and its belly is completely see-through.", visual: glass frog ventral view, sticker: "SEE-THROUGH"}
+      - {text: "Look. It's a glass frog, and its belly is completely see-through.", visual: glass frog ventral view}
       - {text: "You can literally watch its heart beat.", visual: glass frog heart visible}
       - {text: "Pretty cool… except that heart pumps red blood,", visual: red blood cells microscope}
-      - {text: "and red stands out like a stop sign.", visual: glass frog red blood vessel visible, sticker: "RED = SPOTTED"}
+      - {text: "and red stands out like a stop sign.", visual: glass frog red blood vessel visible}
       - {text: "So when it falls asleep,", visual: glass frog sleeping on leaf}
       - {text: "it pulls almost ninety percent of its red blood cells out of circulation…", visual: blood flowing in capillaries, sticker: "90%"}
       - {text: "and hides them in its liver.", visual: glass frog organs}

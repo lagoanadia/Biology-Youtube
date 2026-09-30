@@ -39,10 +39,15 @@ SHORT_SIZE = (1080, 1920)
 SCENE_GAP = 0.35          # pausa entre escenas (s)
 END_CARD_SECONDS = 12     # YouTube permite "pantalla final" en los últimos 5-20 s
 ACCENT = (255, 204, 0)
-PUNCH, PUNCH_FRAMES = 0.18, 6
+PUNCH_FRAMES = 6
 
 
 # ------------------------------------------------------------------ imágenes
+
+def _edit(key: str, default):
+    """Parámetro de intensidad de edición (config.yaml -> editing)."""
+    return (load_config().get("editing") or {}).get(key, default)
+
 
 def cover(img: Image.Image, size: tuple[int, int]) -> Image.Image:
     """Recorta centrado para llenar `size` sin deformar (como CSS object-fit: cover)."""
@@ -139,8 +144,10 @@ def still_clip(bg: Image.Image, overlay: Image.Image, seconds: float, out: Path,
     frames = max(1, round(seconds * FPS))
     zoom_in = seed % 2 == 0
     z = f"1+{zoom}*on/{frames}" if zoom_in else f"{1 + zoom}-{zoom}*on/{frames}"
-    if punch:  # "punch-in": entra con zoom fuerte y se asienta en 6 fotogramas (0,2 s)
-        z = f"if(lt(on,{PUNCH_FRAMES}),{1 + PUNCH}-{PUNCH}*on/{PUNCH_FRAMES},{z.replace('on', f'(on-{PUNCH_FRAMES})')})"
+    punch_amount = _edit("punch_zoom", 0.08)
+    if punch and punch_amount:  # "punch-in": entra con zoom y se asienta en 6 fotogramas (0,2 s)
+        z = (f"if(lt(on,{PUNCH_FRAMES}),{1 + punch_amount}-{punch_amount}*on/{PUNCH_FRAMES},"
+             f"{z.replace('on', f'(on-{PUNCH_FRAMES})')})")
     # Pequeño desplazamiento horizontal alterno para que no parezca siempre igual
     drift = random.Random(seed).choice([-1, 1])
     x = f"(iw-iw/zoom)/2+{drift}*(iw-iw/zoom)/2*on/{frames}"
@@ -162,8 +169,9 @@ def video_clip(src: str, overlay: Image.Image, seconds: float, size: tuple[int, 
     ov_path = out.with_name(out.stem + "_ov.png")
     overlay.save(ov_path)
     w, h = size
-    punch_f = (f",zoompan=z='if(lt(on,{PUNCH_FRAMES}),{1 + PUNCH}-{PUNCH}*on/{PUNCH_FRAMES},1)'"
-               f":x='(iw-iw/zoom)/2':y='(ih-ih/zoom)/2':d=1:s={w}x{h}:fps={FPS}") if punch else ""
+    amount = _edit("punch_zoom", 0.08)
+    punch_f = (f",zoompan=z='if(lt(on,{PUNCH_FRAMES}),{1 + amount}-{amount}*on/{PUNCH_FRAMES},1)'"
+               f":x='(iw-iw/zoom)/2':y='(ih-ih/zoom)/2':d=1:s={w}x{h}:fps={FPS}") if punch and amount else ""
     vf = (f"[0:v]scale={w}:{h}:force_original_aspect_ratio=increase,crop={w}:{h},fps={FPS},setsar=1{punch_f}[v0];"
           f"[v0][1:v]overlay=0:0,format=yuv420p[v]")
     ffmpeg.run(["-ss", f"{start:.2f}", "-stream_loop", "-1", "-i", src, "-loop", "1", "-i", str(ov_path), "-filter_complex", vf,
@@ -178,6 +186,28 @@ def clip_preview(clip: dict) -> dict:
     if not frame.exists():
         ffmpeg.run(["-ss", "1", "-i", clip["clip"], "-frames:v", "1", "-vf", "scale=640:-2", str(frame)])
     return clip | {"path": str(frame)}
+
+
+def xfade_concat(files: list[Path], lengths: list[float], out: Path, transition: str, d: float) -> Path:
+    """Une planos con un fundido rápido entre cada par (xfade).
+
+    Cada plano (menos el último) viene alargado `d` segundos, así el fundido empieza
+    exactamente en el corte y el vídeo total dura lo mismo que la voz.
+    """
+    if len(files) == 1 or transition == "cut" or d <= 0:
+        return concat(files, out)
+    args = []
+    for f in files:
+        args += ["-i", str(f)]
+    chains, last, acc = [], "0:v", 0.0
+    for i in range(1, len(files)):
+        acc += lengths[i - 1] - d  # instante del corte i
+        label = f"x{i}"
+        chains.append(f"[{last}][{i}:v]xfade=transition={transition}:duration={d:.3f}:offset={acc:.3f}[{label}]")
+        last = label
+    ffmpeg.run([*args, "-filter_complex", ";".join(chains), "-map", f"[{last}]", "-c:v", "libx264",
+                "-preset", "veryfast", "-crf", "20", "-pix_fmt", "yuv420p", "-r", str(FPS), str(out)])
+    return out
 
 
 def pad_audio(src: Path, seconds: float, out: Path) -> Path:
@@ -215,13 +245,13 @@ def final_mix(video: Path, voice: Path, out: Path, subtitles: Path | None = None
     - `flashes`: instantes (s) de los cortes -> destello blanco de 2 fotogramas.
     La música (assets/music) baja sola cuando habla la voz ("ducking" con sidechaincompress).
     """
-    music = _music_track()
+    music = _music_track() if _edit("music_volume", 0.06) > 0 else None
     args = ["-i", str(video), "-i", str(voice)]
     parts, mix_inputs = ["[1:a]asplit=2[vo][key]"], ["[vo]"]
     n = 2
     if music:
         args += ["-stream_loop", "-1", "-i", str(music)]
-        parts.append(f"[{n}:a]volume=0.22[mraw];[mraw][key]sidechaincompress=threshold=0.03:ratio=8:attack=15:release=350[m]")
+        parts.append(f"[{n}:a]volume={_edit('music_volume', 0.14)}[mraw];[mraw][key]sidechaincompress=threshold=0.03:ratio=8:attack=15:release=350[m]")
         mix_inputs.append("[m]")
         n += 1
     else:
@@ -449,7 +479,7 @@ def write_karaoke_ass(words: list[dict], out: Path, total: float, hook_words: in
         "Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, "
         "Alignment, MarginL, MarginR, MarginV, Encoding\n"
         "Style: Cap,DejaVu Sans,104,&H00FFFFFF,&H00FFFFFF,&H00000000,&H96000000,-1,0,0,0,100,100,0,0,1,8,3,2,50,50,560,1\n"
-        "Style: Sticker,DejaVu Sans,118,&H00FFFFFF,&H00FFFFFF,&H002B2BE0,&H002B2BE0,-1,0,0,0,100,100,2,0,3,22,0,8,50,50,380,1\n\n"
+        "Style: Sticker,DejaVu Sans,100,&H00FFFFFF,&H00FFFFFF,&H002B2BE0,&H002B2BE0,-1,0,0,0,100,100,2,0,3,22,0,8,50,50,380,1\n\n"
         "[Events]\nFormat: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text\n"
     )
     yellow, white = "{\\c&H00CCFF&}", "{\\c&HFFFFFF&}"
@@ -470,7 +500,9 @@ def write_karaoke_ass(words: list[dict], out: Path, total: float, hook_words: in
             n += 1
     for start, end, text in stickers or []:
         # pegatina roja inclinada que "salta": escala 0 -> 125 % -> 100 %
-        anim = "{\\frz-5\\fscx0\\fscy0\\t(0,120,\\fscx125\\fscy125)\\t(120,220,\\fscx100\\fscy100)\\fad(0,120)}"
+        bounce = int(_edit("sticker_bounce", 1.1) * 100)
+        anim = (f"{{\\frz-3\\fscx0\\fscy0\\t(0,140,\\fscx{bounce}\\fscy{bounce})"
+                f"\\t(140,240,\\fscx100\\fscy100)\\fad(0,150)}}")
         clean = re.sub(r"[{}\\]", "", text).upper()
         lines.append(f"Dialogue: 1,{_ass_time(start)},{_ass_time(end)},Sticker,,0,0,0,,{anim}{clean}")
     out.write_text(header + "\n".join(lines) + "\n", encoding="utf-8")
@@ -567,7 +599,9 @@ def beat_shots(pkg: VideoPackage, index: int, words: list[dict], total: float, w
     short = pkg.shorts[index]
     headline = short.on_screen_texts[0] if short.on_screen_texts else ""
     empty = headline_overlay("", channel)
-    clips, images, used, cuts, stickers = [], [], set(), [], []
+    trans = _edit("transition", "fade")
+    fade = _edit("transition_seconds", 0.2) if trans != "cut" else 0.0
+    clips, lengths, images, used, cuts, clip_cuts, stickers = [], [], [], set(), [], [], []
     for b, (start, end) in enumerate(beat_times(short.beats, words, total)):
         if b:
             cuts.append(start)
@@ -585,19 +619,27 @@ def beat_shots(pkg: VideoPackage, index: int, words: list[dict], total: float, w
             used.add(asset["source_url"])
         meta = {k: asset.get(k) for k in ("provider", "license", "attribution", "source_url")}
         path = work / f"b{b:02d}.mp4"
+        last_beat = b == len(short.beats) - 1
         if asset["type"] == "clip":
-            clips.append(video_clip(asset["path"], overlay, dur, SHORT_SIZE, path, start=asset.get("start", 0), punch=True))
+            if b:
+                clip_cuts.append(start)
+            length = dur + (0 if last_beat else fade)  # margen para el fundido con el siguiente plano
+            clips.append(video_clip(asset["path"], overlay, length, SHORT_SIZE, path, start=asset.get("start", 0), punch=True))
+            lengths.append(length)
             images.append(clip_preview({"clip": asset["path"]}) | meta | {"short": index, "query": beat.text[:40]})
             continue
         images.append({"path": asset["path"]} | meta | {"short": index, "query": beat.text[:40]})
         parts = 2 if dur > MAX_SHOT else 1
         bg = compose_portrait(Image.open(asset["path"]))
         for k in range(parts):  # misma foto, dos encuadres (zoom in / zoom out)
-            clips.append(still_clip(bg, overlay if k == 0 else empty, dur / parts, work / f"b{b:02d}_{k}.mp4",
+            length = dur / parts + (0 if last_beat and k == parts - 1 else fade)
+            clips.append(still_clip(bg, overlay if k == 0 else empty, length, work / f"b{b:02d}_{k}.mp4",
                                     seed=b * 2 + k, zoom=0.12, punch=True))
+            lengths.append(length)
             if k:
                 cuts.append(start + dur / parts * k)
-    return concat(clips, work / "video.mp4"), images, cuts, stickers
+    video = xfade_concat(clips, lengths, work / "video.mp4", trans, fade)
+    return video, images, cuts, clip_cuts, stickers
 
 
 def render_short(pkg: VideoPackage, index: int, out_dir: Path, tts_provider: str | None = None) -> dict:
@@ -615,17 +657,19 @@ def render_short(pkg: VideoPackage, index: int, out_dir: Path, tts_provider: str
     total = voice_len + 0.5
 
     if short.beats:
-        video, images, cuts, stickers = beat_shots(pkg, index, load_words(mp3), total, work, channel)
+        video, images, cuts, clip_cuts, stickers = beat_shots(pkg, index, load_words(mp3), total, work, channel)
         voice = pad_audio(mp3, total, work / "voice.wav")
         ass = write_karaoke_ass(load_words(mp3), work / "captions.ass", total, hook_words=len(short.hook.split()),
                                 stickers=stickers)
-        # Efectos: golpe grave en el gancho, whoosh en cada corte (alternando dos), pop en cada pegatina
-        events = [(0.0, "impact.mp3", 0.9)]
-        events += [(t - 0.12, "whoosh.mp3" if i % 2 else "whoosh2.mp3", 0.55) for i, t in enumerate(cuts)]
-        events += [(t0, "pop.mp3", 0.8) for t0, _, _ in stickers]
-        fx = sfx_track(events, total, work / "sfx.wav")
+        # Efectos de sonido; la intensidad se regula en config.yaml -> editing
+        events = [(0.0, "impact.mp3", _edit("impact_volume", 0.5))]
+        mode = _edit("whoosh_on", "clips")
+        whoosh_cuts = cuts if mode == "all" else clip_cuts if mode == "clips" else []
+        events += [(t - 0.12, "whoosh2.mp3", _edit("whoosh_volume", 0.3)) for t in whoosh_cuts]
+        events += [(t0, "pop.mp3", _edit("pop_volume", 0.5)) for t0, _, _ in stickers]
+        fx = sfx_track([e for e in events if e[2] > 0], total, work / "sfx.wav")
         final = final_mix(video, voice, out_dir / f"short_{index + 1}.mp4", subtitles=ass, progress_bar=total,
-                          sfx=fx, flashes=cuts)
+                          sfx=fx, flashes=cuts if _edit("flashes", False) else None)
         return {"path": str(final), "seconds": round(ffmpeg.duration(final), 2), "images": images}
 
     # Planos: uno cada ~SHOT_SECONDS; si hay menos fotos que planos, se reutilizan con otro encuadre

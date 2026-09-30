@@ -268,3 +268,16 @@ def test_sfx_track_places_events(tmp_path):
 
     out = sfx_track([(0.0, "impact.mp3", 0.9), (1.0, "whoosh.mp3", 0.5), (2.0, "pop.mp3", 0.8)], 3.0, tmp_path / "fx.wav")
     assert out is not None and abs(ffmpeg.duration(out) - 3.0) < 0.05
+
+
+def test_xfade_keeps_total_duration(tmp_path):
+    from biotube import ffmpeg
+    from biotube.render import xfade_concat
+
+    files, lengths = [], [1.2, 1.2, 1.0]  # los dos primeros llevan +0,2 s para el fundido
+    for i, L in enumerate(lengths):
+        f = tmp_path / f"c{i}.mp4"
+        ffmpeg.run(["-f", "lavfi", "-i", f"color=c=red:s=320x568:r=30", "-t", str(L), "-pix_fmt", "yuv420p", str(f)])
+        files.append(f)
+    out = xfade_concat(files, lengths, tmp_path / "out.mp4", "fade", 0.2)
+    assert abs(ffmpeg.duration(out) - 3.0) < 0.1, "1.0 + 1.0 + 1.0 s: el fundido no descuadra la voz"
