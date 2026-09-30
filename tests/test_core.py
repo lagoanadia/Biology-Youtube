@@ -249,3 +249,14 @@ def test_video_clip_crops_to_vertical(tmp_path):
     ffmpeg.run(["-f", "lavfi", "-i", "testsrc=size=1280x720:rate=25", "-t", "2", "-pix_fmt", "yuv420p", str(src)])
     out = video_clip(str(src), Image.new("RGBA", SHORT_SIZE), 3.0, SHORT_SIZE, tmp_path / "out.mp4")
     assert abs(ffmpeg.duration(out) - 3.0) < 0.1, "el clip corto se repite hasta cubrir el plano"
+
+
+def test_beat_times_follow_voice():
+    from biotube.models import Beat
+    from biotube.render import beat_times
+
+    beats = [Beat(text="Esta rana,", visual="x"), Beat(text="se ve-through hoy.", visual="y")]
+    words = [{"t": 0.0, "d": 0.2, "w": "Esta"}, {"t": 0.3, "d": 0.2, "w": "rana"},
+             {"t": 1.0, "d": 0.2, "w": "se"}, {"t": 1.3, "d": 0.2, "w": "ve-through"}, {"t": 1.6, "d": 0.2, "w": "hoy"}]
+    times = beat_times(beats, words, total=2.0)
+    assert times[0][0] == 0.0 and abs(times[1][0] - 0.95) < 1e-9 and times[1][1] == 2.0

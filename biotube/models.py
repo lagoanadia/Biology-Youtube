@@ -53,6 +53,16 @@ class DocumentaryScript(BaseModel):
         return self.word_count / wpm
 
 
+class Beat(BaseModel):
+    """Un trozo de la narración y lo que se ve en pantalla MIENTRAS suena."""
+
+    text: str = Field(description="Trozo literal de la narración; todos los beats juntos = hook + fact + cta")
+    visual: str = Field(
+        description="Qué se ve mientras suena este trozo: nombre científico o término concreto que "
+        "muestre exactamente lo que se dice (ej: 'Hyalinobatrachium ventral view', 'red blood cells microscope')"
+    )
+
+
 class ShortScript(BaseModel):
     """Estructura obligatoria: Gancho -> Hecho interesante -> Llamada a la acción."""
 
@@ -63,6 +73,10 @@ class ShortScript(BaseModel):
         description="5-7 búsquedas de imagen; prioriza nombres científicos (Género especie) y géneros cercanos"
     )
     on_screen_texts: list[str] = Field(description="1 titular corto (máx. 5 palabras) que se muestra durante el gancho")
+    beats: list[Beat] = Field(
+        default_factory=list,
+        description="La narración partida en 5-9 trozos, cada uno con el visual que le corresponde",
+    )
 
     @property
     def narration(self) -> str:
@@ -99,6 +113,9 @@ class VideoPackage(BaseModel):
     documentary_metadata: VideoMetadata
     shorts: list[ShortScript]
     shorts_metadata: list[VideoMetadata]
+    # Visuales elegidos a mano: {"short0.beat2": {"type": "photo"|"clip", "url"|"path": ..., "start": s,
+    #  "license": ..., "attribution": ..., "source_url": ...}}
+    curated: dict = Field(default_factory=dict)
     # Se rellena al renderizar/subir
     assets: dict = Field(default_factory=dict)
     youtube: dict = Field(default_factory=dict)

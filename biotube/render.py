@@ -152,14 +152,14 @@ def still_clip(bg: Image.Image, overlay: Image.Image, seconds: float, out: Path,
     return out
 
 
-def video_clip(src: str, overlay: Image.Image, seconds: float, size: tuple[int, int], out: Path) -> Path:
+def video_clip(src: str, overlay: Image.Image, seconds: float, size: tuple[int, int], out: Path, start: float = 0.0) -> Path:
     """Clip mudo a partir de un vídeo de stock: recorte a `size`, 30 fps y rótulos encima."""
     ov_path = out.with_name(out.stem + "_ov.png")
     overlay.save(ov_path)
     w, h = size
     vf = (f"[0:v]scale={w}:{h}:force_original_aspect_ratio=increase,crop={w}:{h},fps={FPS},setsar=1[v0];"
           f"[v0][1:v]overlay=0:0,format=yuv420p[v]")
-    ffmpeg.run(["-stream_loop", "-1", "-i", src, "-loop", "1", "-i", str(ov_path), "-filter_complex", vf,
+    ffmpeg.run(["-ss", f"{start:.2f}", "-stream_loop", "-1", "-i", src, "-loop", "1", "-i", str(ov_path), "-filter_complex", vf,
                 "-map", "[v]", "-t", f"{seconds:.3f}", "-an", "-c:v", "libx264", "-preset", "veryfast",
                 "-crf", "20", "-r", str(FPS), str(out)])
     return out
@@ -457,6 +457,88 @@ def gather_images(queries: list[str], n: int, fallback: list[str], short_index: 
     return images
 
 
+TOKEN_RE = re.compile(r"[\w'’]+(?:-[\w'’]+)*")
+MAX_SHOT = 4.0  # si una frase dura más, se parte en dos planos
+
+
+def beat_times(beats, words: list[dict], total: float) -> list[tuple[float, float]]:
+    """Inicio y fin de cada frase usando los tiempos reales de la voz.
+
+    La voz de edge-tts separa las palabras igual que TOKEN_RE, así que la frase k empieza
+    en la palabra nº (suma de palabras de las frases anteriores). Si no cuadra, reparto proporcional.
+    """
+    counts = [len(TOKEN_RE.findall(b.text)) for b in beats]
+    if sum(counts) == len(words) and words:
+        starts, idx = [], 0
+        for c in counts:
+            starts.append(0.0 if idx == 0 else words[idx]["t"] - 0.05)
+            idx += c
+    else:
+        print(f"[aviso] las frases ({sum(counts)} palabras) no cuadran con la voz ({len(words)}); reparto proporcional")
+        acc, starts = 0, []
+        for c in counts:
+            starts.append(total * acc / max(sum(counts), 1))
+            acc += c
+    ends = starts[1:] + [total]
+    return list(zip(starts, ends))
+
+
+def curated_asset(pkg: VideoPackage, key: str) -> dict | None:
+    """Foto o clip elegido a mano para una frase (package.curated). Se descarga y cachea."""
+    import requests
+
+    from .media import _session
+
+    asset = pkg.curated.get(key)
+    if not asset:
+        return None
+    asset = dict(asset)
+    if asset.get("url") and not asset.get("path"):
+        folder = load_config().path("cache") / "curated"
+        folder.mkdir(parents=True, exist_ok=True)
+        ext = ".mp4" if asset["type"] == "clip" else ".jpg"
+        path = folder / f"{_h(asset['url'])}{ext}"
+        if not path.exists():
+            resp = _session().get(asset["url"], timeout=180)
+            resp.raise_for_status()
+            path.write_bytes(resp.content)
+        asset["path"] = str(path)
+    asset.setdefault("provider", "curated")
+    return asset
+
+
+def beat_shots(pkg: VideoPackage, index: int, words: list[dict], total: float, work: Path, channel: str):
+    """Un plano (o dos, si la frase es larga) por frase, con el visual de ESA frase."""
+    short = pkg.shorts[index]
+    headline = short.on_screen_texts[0] if short.on_screen_texts else ""
+    empty = headline_overlay("", channel)
+    clips, images, used = [], [], set()
+    for b, (start, end) in enumerate(beat_times(short.beats, words, total)):
+        beat = short.beats[b]
+        overlay = headline_overlay(headline, channel) if b == 0 else empty
+        dur = max(end - start, 0.3)
+        asset = curated_asset(pkg, f"short{index}.beat{b}")
+        if asset is None:  # sin elección manual: primero clip, si no foto
+            clip = fetch_clip(beat.visual, portrait=True, exclude=used)
+            asset = ({"type": "clip", "path": clip["clip"], "start": 0} | clip) if clip else \
+                    ({"type": "photo"} | fetch_image(beat.visual, exclude=used, fallback_queries=pkg.documentary.species))
+        if asset.get("source_url"):
+            used.add(asset["source_url"])
+        meta = {k: asset.get(k) for k in ("provider", "license", "attribution", "source_url")}
+        path = work / f"b{b:02d}.mp4"
+        if asset["type"] == "clip":
+            clips.append(video_clip(asset["path"], overlay, dur, SHORT_SIZE, path, start=asset.get("start", 0)))
+            images.append(clip_preview({"clip": asset["path"]}) | meta | {"short": index, "query": beat.text[:40]})
+            continue
+        images.append({"path": asset["path"]} | meta | {"short": index, "query": beat.text[:40]})
+        parts = 2 if dur > MAX_SHOT else 1
+        bg = compose_portrait(Image.open(asset["path"]))
+        for k in range(parts):  # misma foto, dos encuadres (zoom in / zoom out)
+            clips.append(still_clip(bg, overlay if k == 0 else empty, dur / parts, work / f"b{b:02d}_{k}.mp4",
+                                    seed=b * 2 + k, zoom=0.12))
+    return concat(clips, work / "video.mp4"), images
+
+
 def render_short(pkg: VideoPackage, index: int, out_dir: Path, tts_provider: str | None = None) -> dict:
     cfg = load_config()
     short = pkg.shorts[index]
@@ -470,6 +552,13 @@ def render_short(pkg: VideoPackage, index: int, out_dir: Path, tts_provider: str
     mp3 = cfg.path("cache") / "tts" / f"{_h(short.narration + voice_name + str(tts_provider))}.mp3"
     voice_len = synthesize(short.narration, mp3, short=True, provider=tts_provider, lang=pkg.language)
     total = voice_len + 0.5
+
+    if short.beats:
+        video, images = beat_shots(pkg, index, load_words(mp3), total, work, channel)
+        voice = pad_audio(mp3, total, work / "voice.wav")
+        ass = write_karaoke_ass(load_words(mp3), work / "captions.ass", total, hook_words=len(short.hook.split()))
+        final = final_mix(video, voice, out_dir / f"short_{index + 1}.mp4", subtitles=ass, progress_bar=total)
+        return {"path": str(final), "seconds": round(ffmpeg.duration(final), 2), "images": images}
 
     # Planos: uno cada ~SHOT_SECONDS; si hay menos fotos que planos, se reutilizan con otro encuadre
     n_shots = max(3, math.ceil(total / SHOT_SECONDS))
