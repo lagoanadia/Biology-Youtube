@@ -61,8 +61,65 @@ CARD_BOX = (80, 360, 1000, 1420)  # x0, y0, x1, y1 de la tarjeta con la foto
 EMOJI_RE = re.compile("[\u2600-\u27BF\uFE0F\U0001F000-\U0001FFFF]")
 
 
+# Estilo "documentary": fondo negro cálido, imagen entera (sin recortar) en un marco con zoom lento,
+# título con serifa, marca espaciada arriba y subtítulos blancos finos
+DOC_BG, DOC_GOLD = (14, 13, 12), (200, 180, 140)
+FRAME_W, FRAME_H, FRAME_CY = 1000, 880, 900  # la imagen cabe en un cuadro de 1000x880 centrado en y=900
+
+
 def minimal() -> bool:
     return _edit("style", "default") == "minimal"
+
+
+def documentary() -> bool:
+    return _edit("style", "default") == "documentary"
+
+
+def _serif(size: int, weight: str = "SemiBold") -> ImageFont.FreeTypeFont:
+    path = FONTS_DIR / "PlayfairDisplay.ttf"
+    if not path.exists():
+        return _font(size)
+    font = ImageFont.truetype(str(path), size)
+    font.set_variation_by_name(weight)
+    return font
+
+
+def _even(n: float) -> int:
+    return max(2, int(n) // 2 * 2)
+
+
+def frame_size(width: int, height: int) -> tuple[int, int]:
+    """Tamaño del marco: la imagen entera dentro de FRAME_W x FRAME_H, sin recortar."""
+    k = min(FRAME_W / width, FRAME_H / height)
+    return _even(width * k), _even(height * k)
+
+
+def framed_clip(src: str, is_video: bool, overlay: Image.Image, seconds: float, out: Path,
+                start: float = 0.0, seed: int = 0) -> Path:
+    """Estilo documentary: foto o clip ENTERO en un marco sobre fondo oscuro.
+    En las fotos solo se mueve el contenido del marco (zoom lento tipo Ken Burns), no el fondo."""
+    bg_path, ov_path = out.with_name(out.stem + "_bg.png"), out.with_name(out.stem + "_ov.png")
+    Image.new("RGB", SHORT_SIZE, DOC_BG).save(bg_path)
+    overlay.save(ov_path)
+    frames = max(1, round(seconds * FPS))
+    if is_video:
+        fit = (f"[1:v]fps={FPS},scale={FRAME_W}:{FRAME_H}:force_original_aspect_ratio=decrease,"
+               "scale=trunc(iw/2)*2:trunc(ih/2)*2,setsar=1[p];")
+        inputs = ["-ss", f"{start:.2f}", "-stream_loop", "-1", "-i", src]
+    else:
+        with Image.open(src) as im:
+            fw, fh = frame_size(*im.size)
+        zoom = 0.05
+        z = f"1+{zoom}*on/{frames}" if seed % 2 == 0 else f"{1 + zoom}-{zoom}*on/{frames}"
+        fit = (f"[1:v]scale={fw * 2}:{fh * 2},zoompan=z='{z}':x='(iw-iw/zoom)/2':y='(ih-ih/zoom)/2'"
+               f":d=1:s={fw}x{fh}:fps={FPS},setsar=1[p];")
+        inputs = ["-loop", "1", "-framerate", str(FPS), "-i", src]
+    vf = fit + (f"[0:v][p]overlay=x=(W-w)/2:y={FRAME_CY}-h/2[a];"
+                "[a][2:v]overlay=0:0,format=yuv420p[v]")
+    ffmpeg.run(["-loop", "1", "-framerate", str(FPS), "-i", str(bg_path), *inputs, "-loop", "1", "-i", str(ov_path),
+                "-filter_complex", vf, "-map", "[v]", "-frames:v", str(frames), "-an",
+                "-c:v", "libx264", "-preset", "veryfast", "-crf", "20", "-r", str(FPS), str(out)])
+    return out
 
 
 def _min_font(size: int, weight: str = "SemiBold") -> ImageFont.FreeTypeFont:
@@ -320,7 +377,8 @@ def final_mix(video: Path, voice: Path, out: Path, subtitles: Path | None = None
             last = "s1"
         if progress_bar:
             d = f"{progress_bar:.3f}"
-            color, height = ("0x%02X%02X%02X" % MIN_ACCENT, 6) if minimal() else ("0xFFCC00", 12)
+            color, height = ("0x%02X%02X%02X" % MIN_ACCENT, 6) if minimal() else \
+                ("0x%02X%02X%02X" % DOC_GOLD, 4) if documentary() else ("0xFFCC00", 12)
             chain += (f"color=c={color}:s=1080x{height}:d={d}:r={FPS}[bar];"
                       f"[{last}][bar]overlay=x='-w+w*t/{d}':y=H-h:shortest=1[v];")
         else:
@@ -536,6 +594,11 @@ def write_karaoke_ass(words: list[dict], out: Path, total: float, hook_words: in
         header = header.replace("Style: Cap,DejaVu Sans,104,&H00FFFFFF,&H00FFFFFF,&H00000000,&H96000000,-1,0,0,0,100,100,0,0,1,8,3,",
                                 "Style: Cap,Poppins SemiBold,78,&H00282828,&H00282828,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,0,0,")
         pos, upper = "\\an2\\pos(540,1640)", str
+    if documentary():  # blanco fino, sin contorno; la palabra que suena en blanco y el resto en gris
+        yellow, white = "{\\c&HFFFFFF&}", "{\\c&H8C8C8C&}"
+        header = header.replace("Style: Cap,DejaVu Sans,104,&H00FFFFFF,&H00FFFFFF,&H00000000,&H96000000,-1,0,0,0,100,100,0,0,1,8,3,",
+                                "Style: Cap,Poppins Medium,76,&H00FFFFFF,&H00FFFFFF,&H00000000,&H00000000,0,0,0,0,100,100,1,0,1,0,0,")
+        pos, upper = "\\an2\\pos(540,1480)", str
     lines, n = [], 0
     groups = word_groups(words)
     for gi, group in enumerate(groups):
@@ -567,6 +630,18 @@ def headline_overlay(text: str, channel: str) -> Image.Image:
     w, h = SHORT_SIZE
     layer = Image.new("RGBA", SHORT_SIZE, (0, 0, 0, 0))
     draw = ImageDraw.Draw(layer)
+    if documentary():  # marca espaciada arriba + título con serifa encima del marco
+        if channel:
+            label = " ".join(channel.upper())
+            draw.text((w / 2, 170), label, font=_min_font(28, "Medium"), fill=DOC_GOLD, anchor="ma")
+            draw.line([(w / 2 - 40, 225), (w / 2 + 40, 225)], fill=DOC_GOLD, width=2)
+        text = EMOJI_RE.sub("", text).strip()
+        if text:
+            font = _serif(64)
+            wrapped = _wrap(draw, text, font, int(w * 0.84))
+            draw.multiline_text((w / 2, FRAME_CY - FRAME_H / 2 - 30), wrapped, font=font, fill="white",
+                                anchor="md", align="center", spacing=8)
+        return layer
     if minimal():  # texto oscuro, sin caja ni mayúsculas; los emojis no existen en Poppins
         text = EMOJI_RE.sub("", text).strip()
         if text:
@@ -682,6 +757,19 @@ def beat_shots(pkg: VideoPackage, index: int, words: list[dict], total: float, w
             used.add(asset["source_url"])
         meta = {k: asset.get(k) for k in ("provider", "license", "attribution", "source_url")}
         path = work / f"b{b:02d}.mp4"
+        if documentary():  # un solo plano por frase, imagen entera en su marco
+            length = dur + (fade if clips else 0)
+            is_video = asset["type"] == "clip"
+            clips.append(framed_clip(asset["path"], is_video, overlay, length, path,
+                                     start=asset.get("start", 0), seed=b))
+            lengths.append(length)
+            if is_video:
+                if b:
+                    clip_cuts.append(start)
+                images.append(clip_preview({"clip": asset["path"]}) | meta | {"short": index, "query": beat.text[:40]})
+            else:
+                images.append({"path": asset["path"]} | meta | {"short": index, "query": beat.text[:40]})
+            continue
         if asset["type"] == "clip":
             if b:
                 clip_cuts.append(start)

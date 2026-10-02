@@ -88,3 +88,10 @@ shadow, Poppins captions (dark gray, active word soft rose, no uppercase/outline
 (emojis stripped), 6 px rose progress bar, gentle zoom without drift. Rendered with overrides:
 `cfg['channel']['name']=''; cfg['editing'].update(style='minimal', music_volume=0, whoosh_on='none', impact_volume=0)`.
 Fonts: `assets/fonts/Poppins-*.ttf` (SIL OFL, passed to libass with `fontsdir`).
+
+## "documentary" style (trial for BioNiche shorts, not yet approved)
+Opt-in via `editing.style: documentary` (+ `transition_seconds: 0.5`). Warm black background, the WHOLE photo/clip
+(never cropped) in a frame ≤1000×880 centered at y=900 with a slow Ken Burns zoom inside the frame only
+(`framed_clip`), letter-spaced gold "B I O N I C H E" label, Playfair Display serif title, Poppins Medium captions
+(active word white, rest gray, `\pos(540,1480)`), 4 px muted-gold progress bar. Audio unchanged (approved mix).
+Output to `output/<id>/documentary/` so the approved render isn't overwritten. Context: the plant short had 79 % swipe-away.
