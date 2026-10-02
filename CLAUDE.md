@@ -81,3 +81,10 @@ python -m pytest -q                                             # must stay gree
 ## Status / next steps
 - ✅ 12 English shorts rendered and approved: glass frog, Venus flytrap, emerald wasp (4 each).
 - ⏭️ English documentaries for the same 3 topics, using the same per-sentence visual curation.
+
+## TikTok "minimal" style (beauty / TikTok Shop, `tiktok/*.yaml`)
+Opt-in via `editing.style: minimal` (BioNiche keeps `default`). Cream background, photo in a rounded card with soft
+shadow, Poppins captions (dark gray, active word soft rose, no uppercase/outline, `\pos(540,1640)`), small dark title
+(emojis stripped), 6 px rose progress bar, gentle zoom without drift. Rendered with overrides:
+`cfg['channel']['name']=''; cfg['editing'].update(style='minimal', music_volume=0, whoosh_on='none', impact_volume=0)`.
+Fonts: `assets/fonts/Poppins-*.ttf` (SIL OFL, passed to libass with `fontsdir`).

@@ -23,7 +23,7 @@ import random
 import re
 from pathlib import Path
 
-from PIL import Image, ImageDraw, ImageFilter, ImageOps
+from PIL import Image, ImageDraw, ImageFilter, ImageFont, ImageOps
 
 from . import ffmpeg
 from .config import load_config
@@ -54,8 +54,41 @@ def cover(img: Image.Image, size: tuple[int, int]) -> Image.Image:
     return ImageOps.fit(img.convert("RGB"), size, Image.LANCZOS, centering=(0.5, 0.45))
 
 
+FONTS_DIR = Path(__file__).resolve().parent.parent / "assets" / "fonts"
+# Estilo "minimal" (editing.style): fondo crema, foto en tarjeta, texto gris oscuro y acento rosa suave
+MIN_BG, MIN_INK, MIN_ACCENT = (245, 240, 235), (40, 40, 40), (214, 112, 128)
+CARD_BOX = (80, 360, 1000, 1420)  # x0, y0, x1, y1 de la tarjeta con la foto
+EMOJI_RE = re.compile("[\u2600-\u27BF\uFE0F\U0001F000-\U0001FFFF]")
+
+
+def minimal() -> bool:
+    return _edit("style", "default") == "minimal"
+
+
+def _min_font(size: int, weight: str = "SemiBold") -> ImageFont.FreeTypeFont:
+    path = FONTS_DIR / f"Poppins-{weight}.ttf"
+    return ImageFont.truetype(str(path), size) if path.exists() else _font(size)
+
+
+def compose_card(img: Image.Image) -> Image.Image:
+    """Estilo minimal: la foto en una tarjeta con esquinas redondeadas y sombra suave sobre fondo liso."""
+    x0, y0, x1, y1 = CARD_BOX
+    bg = Image.new("RGB", SHORT_SIZE, MIN_BG)
+    # Sombra: rectángulo oscuro semitransparente, desenfocado y algo desplazado hacia abajo
+    shadow = Image.new("RGBA", SHORT_SIZE, (0, 0, 0, 0))
+    ImageDraw.Draw(shadow).rounded_rectangle([x0, y0 + 18, x1, y1 + 18], 44, fill=(0, 0, 0, 55))
+    bg.paste(shadow.filter(ImageFilter.GaussianBlur(28)), (0, 0), shadow.filter(ImageFilter.GaussianBlur(28)))
+    photo = cover(img, (x1 - x0, y1 - y0))
+    mask = Image.new("L", photo.size, 0)
+    ImageDraw.Draw(mask).rounded_rectangle([0, 0, photo.width - 1, photo.height - 1], 44, fill=255)
+    bg.paste(photo, (x0, y0), mask)
+    return bg
+
+
 def compose_portrait(img: Image.Image) -> Image.Image:
     """Para shorts: foto horizontal centrada sobre una copia desenfocada de sí misma."""
+    if minimal():
+        return compose_card(img)
     w, h = SHORT_SIZE
     bg = cover(img, SHORT_SIZE).filter(ImageFilter.GaussianBlur(40))
     bg = Image.blend(bg, Image.new("RGB", SHORT_SIZE, (0, 0, 0)), 0.35)
@@ -149,7 +182,7 @@ def still_clip(bg: Image.Image, overlay: Image.Image, seconds: float, out: Path,
         z = (f"if(lt(on,{PUNCH_FRAMES}),{1 + punch_amount}-{punch_amount}*on/{PUNCH_FRAMES},"
              f"{z.replace('on', f'(on-{PUNCH_FRAMES})')})")
     # Pequeño desplazamiento horizontal alterno para que no parezca siempre igual
-    drift = random.Random(seed).choice([-1, 1])
+    drift = 0 if minimal() else random.Random(seed).choice([-1, 1])
     x = f"(iw-iw/zoom)/2+{drift}*(iw-iw/zoom)/2*on/{frames}"
     vf = (
         f"[0:v]scale={w * 2}:{h * 2},zoompan=z='{z}':x='{x}':y='(ih-ih/zoom)/2':d=1:s={w}x{h}:fps={FPS}[bg];"
@@ -277,7 +310,8 @@ def final_mix(video: Path, voice: Path, out: Path, subtitles: Path | None = None
 
     if subtitles:
         sub = subtitles.resolve().as_posix().replace(":", r"\:")
-        chain = f"[0:v]ass='{sub}'[s0];"
+        fonts = FONTS_DIR.as_posix().replace(":", r"\:")
+        chain = f"[0:v]ass='{sub}':fontsdir='{fonts}'[s0];"
         last = "s0"
         if flashes:
             cond = "+".join(f"between(t,{t:.3f},{t + 0.066:.3f})" for t in flashes)
@@ -286,7 +320,8 @@ def final_mix(video: Path, voice: Path, out: Path, subtitles: Path | None = None
             last = "s1"
         if progress_bar:
             d = f"{progress_bar:.3f}"
-            chain += (f"color=c=0xFFCC00:s=1080x12:d={d}:r={FPS}[bar];"
+            color, height = ("0x%02X%02X%02X" % MIN_ACCENT, 6) if minimal() else ("0xFFCC00", 12)
+            chain += (f"color=c={color}:s=1080x{height}:d={d}:r={FPS}[bar];"
                       f"[{last}][bar]overlay=x='-w+w*t/{d}':y=H-h:shortest=1[v];")
         else:
             chain += f"[{last}]null[v];"
@@ -494,6 +529,13 @@ def write_karaoke_ass(words: list[dict], out: Path, total: float, hook_words: in
         "[Events]\nFormat: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text\n"
     )
     yellow, white = "{\\c&H00CCFF&}", "{\\c&HFFFFFF&}"
+    pos, upper = "\\an2\\pos(540,1360)", str.upper
+    if minimal():  # gris oscuro sin contorno, palabra activa en rosa, sin mayúsculas, debajo de la tarjeta
+        r, g, b = MIN_ACCENT
+        yellow, white = f"{{\\c&H{b:02X}{g:02X}{r:02X}&}}", "{\\c&H282828&}"
+        header = header.replace("Style: Cap,DejaVu Sans,104,&H00FFFFFF,&H00FFFFFF,&H00000000,&H96000000,-1,0,0,0,100,100,0,0,1,8,3,",
+                                "Style: Cap,Poppins SemiBold,78,&H00282828,&H00282828,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,0,0,")
+        pos, upper = "\\an2\\pos(540,1640)", str
     lines, n = [], 0
     groups = word_groups(words)
     for gi, group in enumerate(groups):
@@ -503,11 +545,11 @@ def write_karaoke_ass(words: list[dict], out: Path, total: float, hook_words: in
             end = group[k + 1]["t"] if k + 1 < len(group) else group_end
             parts = []
             for j, other in enumerate(group):
-                txt = re.sub(r"[{}\\]", "", other["w"]).upper()
+                txt = upper(re.sub(r"[{}\\]", "", other["w"]))
                 in_hook = n - k + j < hook_words
                 parts.append((yellow if j == k or in_hook else white) + txt)
             # Posición fija (\\pos): si dos eventos coinciden un fotograma, libass NO desplaza la línea
-            lines.append(f"Dialogue: 0,{_ass_time(start)},{_ass_time(end)},Cap,,0,0,0,,{{\\an2\\pos(540,1360)}}{' '.join(parts)}")
+            lines.append(f"Dialogue: 0,{_ass_time(start)},{_ass_time(end)},Cap,,0,0,0,,{{{pos}}}{' '.join(parts)}")
             n += 1
     for start, end, text in stickers or []:
         # pegatina roja inclinada que "salta": escala 0 -> 125 % -> 100 %
@@ -525,6 +567,16 @@ def headline_overlay(text: str, channel: str) -> Image.Image:
     w, h = SHORT_SIZE
     layer = Image.new("RGBA", SHORT_SIZE, (0, 0, 0, 0))
     draw = ImageDraw.Draw(layer)
+    if minimal():  # texto oscuro, sin caja ni mayúsculas; los emojis no existen en Poppins
+        text = EMOJI_RE.sub("", text).strip()
+        if text:
+            font = _min_font(56)
+            wrapped = _wrap(draw, text, font, int(w * 0.84))
+            draw.multiline_text((w / 2, CARD_BOX[1] - 50), wrapped, font=font, fill=MIN_INK, anchor="md",
+                                align="center", spacing=6)
+        if channel:
+            draw.text((w / 2, h - 120), channel, font=_min_font(30, "Medium"), fill=MIN_INK, anchor="ma")
+        return layer
     if text:
         font = _font(78)
         wrapped = _wrap(draw, text.upper(), font, int(w * 0.86))
@@ -645,7 +697,7 @@ def beat_shots(pkg: VideoPackage, index: int, words: list[dict], total: float, w
         for k in range(parts):  # misma foto, dos encuadres (zoom in / zoom out)
             length = dur / parts + (fade if clips else 0)
             clips.append(still_clip(bg, overlay if k == 0 else empty, length, work / f"b{b:02d}_{k}.mp4",
-                                    seed=b * 2 + k, zoom=0.12, punch=True))
+                                    seed=b * 2 + k, zoom=0.04 if minimal() else 0.12, punch=True))
             lengths.append(length)
             if k:
                 cuts.append(start + dur / parts * k)
