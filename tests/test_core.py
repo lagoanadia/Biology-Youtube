@@ -300,3 +300,27 @@ def test_headline_overlay_all_styles(monkeypatch):
         monkeypatch.setattr(render, "_edit", lambda key, default, s=style: s if key == "style" else default)
         layer = render.headline_overlay("It can count ☀️", "BioNiche")
         assert layer.size == render.SHORT_SIZE and layer.mode == "RGBA"
+
+
+def test_sentence_chunks_follow_voice_timing():
+    from biotube.models import Beat
+    from biotube.render import sentence_chunks
+    beats = [Beat(text="This plant can count.", visual="x"),
+             Beat(text="It is a Venus flytrap and it has tiny trigger hairs.", visual="x")]
+    words = [{"t": i * 0.4, "d": 0.3, "w": w} for i, w in enumerate(
+        "This plant can count It is a Venus flytrap and it has tiny trigger hairs".split())]
+    chunks = sentence_chunks(beats, words, total=7.0)
+    assert [c[2] for c in chunks] == ["This plant can count.", "It is a Venus flytrap",
+                                      "and it has tiny trigger hairs."]
+    assert chunks[1][0] == words[4]["t"] and chunks[2][0] == words[9]["t"]
+    assert all(a < b for a, b, _ in chunks)
+
+
+def test_sentence_chunks_split_at_comma():
+    from biotube.models import Beat
+    from biotube.render import sentence_chunks
+    text = "So the more the prey moves, the more the plant invests in eating it."
+    words = [{"t": i * 0.3, "d": 0.25, "w": w.strip(",.")} for i, w in enumerate(text.split())]
+    chunks = sentence_chunks([Beat(text=text, visual="x")], words, total=5.0)
+    assert [c[2] for c in chunks] == ["So the more the prey moves,", "the more the plant invests in eating it."]
+    assert chunks[1][0] == words[6]["t"]

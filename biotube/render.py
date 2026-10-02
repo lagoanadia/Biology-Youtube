@@ -40,6 +40,9 @@ SCENE_GAP = 0.35          # pausa entre escenas (s)
 END_CARD_SECONDS = 12     # YouTube permite "pantalla final" en los últimos 5-20 s
 ACCENT = (255, 204, 0)
 PUNCH_FRAMES = 6
+# Ecualización "de locutor": +5 dB a 110 Hz (pecho), algo de cuerpo a 250 Hz, eses más suaves y compresión
+BROADCAST_EQ = ("equalizer=f=110:t=q:w=1:g=5,equalizer=f=250:t=q:w=1:g=1.5,equalizer=f=6500:t=q:w=2:g=-2,"
+                "acompressor=threshold=0.08:ratio=3:attack=5:release=120:makeup=2")
 
 
 # ------------------------------------------------------------------ imágenes
@@ -312,6 +315,14 @@ def final_mix(video: Path, voice: Path, out: Path, subtitles: Path | None = None
     args = ["-i", str(video), "-i", str(voice)]
     parts, mix_inputs = ["[1:a]asplit=2[vo][key]"], ["[vo]"]
     n = 2
+    ambience = Path(__file__).resolve().parent.parent / "assets" / "ambience" / str(_edit("ambience", ""))
+    if _edit("ambience", "") and ambience.is_file():  # sonido de naturaleza de fondo (pájaros, viento, insectos)
+        total = ffmpeg.duration(voice)
+        args += ["-stream_loop", "-1", "-i", str(ambience)]
+        parts.append(f"[{n}:a]volume={_edit('ambience_volume', 0.25)},afade=t=in:d=1,"
+                     f"afade=t=out:st={max(total - 1.5, 0):.2f}:d=1.5[amb]")
+        mix_inputs.append("[amb]")
+        n += 1
     if music:
         total = ffmpeg.duration(voice)
         args += ["-ss", str(_edit("music_start", 0)), "-stream_loop", "-1", "-i", str(music)]
@@ -334,7 +345,9 @@ def final_mix(video: Path, voice: Path, out: Path, subtitles: Path | None = None
     if subtitles:
         sub = subtitles.resolve().as_posix().replace(":", r"\:")
         fonts = FONTS_DIR.as_posix().replace(":", r"\:")
-        chain = f"[0:v]ass='{sub}':fontsdir='{fonts}'[s0];"
+        # etalonaje de cine (estilo documentary): menos saturación, algo de contraste, viñeta y grano de película
+        grade = "eq=contrast=1.06:saturation=0.88:gamma=0.97,vignette=PI/5,noise=alls=3:allf=t," if documentary() else ""
+        chain = f"[0:v]{grade}ass='{sub}':fontsdir='{fonts}'[s0];"
         last = "s0"
         if flashes:
             cond = "+".join(f"between(t,{t:.3f},{t + 0.066:.3f})" for t in flashes)
@@ -606,6 +619,63 @@ def _doc_texts(draw: ImageDraw.ImageDraw, text: str, channel: str, color=None) -
                             spacing=8)
 
 
+def sentence_chunks(beats, words: list[dict], total: float, max_words: int = 7) -> list[tuple[float, float, str]]:
+    """Subtítulos de documental: cada frase entera (o en dos mitades si es larga), con los tiempos reales de la voz."""
+    counts = [len(TOKEN_RE.findall(b.text)) for b in beats]
+    if sum(counts) != len(words) or not words:
+        return [(a, b_end, beat.text) for beat, (a, b_end) in zip(beats, beat_times(beats, words, total))]
+    chunks, idx = [], 0
+    for beat, c in zip(beats, counts):
+        tokens = beat.text.split()
+        cut = len(tokens)
+        if c > max_words and len(tokens) == c:  # frase larga: en dos, mejor tras una coma cercana a la mitad
+            commas = [i + 1 for i, t in enumerate(tokens[:-1]) if t.endswith(",")]
+            cut = min(commas, key=lambda i: abs(i - len(tokens) / 2)) if commas else len(tokens) // 2
+        elif c > max_words:
+            cut = len(tokens) // 2
+        chunks.append((words[idx]["t"], " ".join(tokens[:cut])))
+        if cut < len(tokens):
+            w_cut = idx + (cut if len(tokens) == c else c * cut // len(tokens))
+            chunks.append((words[w_cut]["t"], " ".join(tokens[cut:])))
+        idx += c
+    out = []
+    for i, (start, text) in enumerate(chunks):
+        end = chunks[i + 1][0] if i + 1 < len(chunks) else min(total, words[-1]["t"] + words[-1]["d"] + 0.5)
+        out.append((start, end, text))
+    return out
+
+
+def write_sentence_ass(chunks: list[tuple[float, float, str]], out: Path) -> Path:
+    """Subtítulos tranquilos de documental: frase completa, blanca, con sombra suave, sin resaltar palabras."""
+    header = (
+        "[Script Info]\nScriptType: v4.00+\nPlayResX: 1080\nPlayResY: 1920\nWrapStyle: 0\n\n"
+        "[V4+ Styles]\nFormat: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, "
+        "Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, "
+        "Alignment, MarginL, MarginR, MarginV, Encoding\n"
+        "Style: Sub,Poppins Medium,58,&H00FFFFFF,&H00FFFFFF,&H00000000,&H90000000,0,0,0,0,100,100,0,0,1,0,2,"
+        "2,110,110,0,1\n\n"
+        "[Events]\nFormat: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text\n"
+    )
+    tag = "{\\an2\\pos(540,1640)\\fad(120,120)}"
+    lines = [f"Dialogue: 0,{_ass_time(a)},{_ass_time(b)},Sub,,0,0,0,,{tag}" + re.sub(r"[{}\\]", "", text)
+             for a, b, text in chunks]
+    out.write_text(header + "\n".join(lines) + "\n", encoding="utf-8")
+    return out
+
+
+def species_overlay(name: str, channel: str) -> Image.Image:
+    """Rótulo de especie tipo documental (nombre científico en cursiva) sobre la capa normal del plano."""
+    layer = headline_overlay("", channel)
+    draw = ImageDraw.Draw(layer)
+    path = FONTS_DIR / "PlayfairDisplay-Italic.ttf"
+    font = ImageFont.truetype(str(path), 52) if path.exists() else _serif(52)
+    x, y = 90, 1400
+    draw.line([(x, y), (x + 70, y)], fill=DOC_GOLD, width=3)
+    draw.text((x + 2, y + 14), name, font=font, fill=(0, 0, 0, 160))
+    draw.text((x, y + 12), name, font=font, fill="white")
+    return layer
+
+
 def headline_overlay(text: str, channel: str) -> Image.Image:
     """Titular grande arriba durante el gancho (solo en el primer plano del short)."""
     w, h = SHORT_SIZE
@@ -729,6 +799,8 @@ def beat_shots(pkg: VideoPackage, index: int, words: list[dict], total: float, w
             stickers.append((start + 0.15, min(end, start + 1.8), beat_sticker))
         beat = short.beats[b]
         overlay = headline_overlay(headline, channel) if b == 0 else empty
+        if documentary() and b == 1 and pkg.documentary.species:
+            overlay = species_overlay(pkg.documentary.species[0], channel)
         dur = max(end - start, 0.3)
         asset = curated_asset(pkg, f"short{index}.beat{b}")
         if asset is None:  # sin elección manual: primero clip, si no foto
@@ -779,9 +851,16 @@ def render_short(pkg: VideoPackage, index: int, out_dir: Path, tts_provider: str
 
     if short.beats:
         video, images, cuts, clip_cuts, stickers = beat_shots(pkg, index, load_words(mp3), total, work, channel)
-        voice = pad_audio(mp3, total, work / "voice.wav")
-        ass = write_karaoke_ass(load_words(mp3), work / "captions.ass", total, hook_words=len(short.hook.split()),
-                                stickers=stickers)
+        voice_src = mp3
+        if cfg["voice"].get("broadcast_eq"):  # más "pecho" (graves), menos eses y compresión: voz de cabina
+            voice_src = work / "voice_eq.wav"
+            ffmpeg.run(["-i", str(mp3), "-af", BROADCAST_EQ, str(voice_src)])
+        voice = pad_audio(voice_src, total, work / "voice.wav")
+        if documentary():  # subtítulos de documental: frase completa
+            ass = write_sentence_ass(sentence_chunks(short.beats, load_words(mp3), total), work / "captions.ass")
+        else:
+            ass = write_karaoke_ass(load_words(mp3), work / "captions.ass", total, hook_words=len(short.hook.split()),
+                                    stickers=stickers)
         # Efectos de sonido; la intensidad se regula en config.yaml -> editing
         events = [(0.0, "impact.mp3", _edit("impact_volume", 0.5))]
         mode = _edit("whoosh_on", "clips")
@@ -790,7 +869,8 @@ def render_short(pkg: VideoPackage, index: int, out_dir: Path, tts_provider: str
         events += [(t - lead - 0.05, "whoosh2.mp3", _edit("whoosh_volume", 0.3)) for t in whoosh_cuts]
         events += [(t0, "pop.mp3", _edit("pop_volume", 0.5)) for t0, _, _ in stickers]
         fx = sfx_track([e for e in events if e[2] > 0], total, work / "sfx.wav")
-        final = final_mix(video, voice, out_dir / f"short_{index + 1}.mp4", subtitles=ass, progress_bar=total,
+        final = final_mix(video, voice, out_dir / f"short_{index + 1}.mp4", subtitles=ass,
+                          progress_bar=total if _edit("progress_bar", True) else None,
                           sfx=fx, flashes=cuts if _edit("flashes", False) else None)
         return {"path": str(final), "seconds": round(ffmpeg.duration(final), 2), "images": images}
 

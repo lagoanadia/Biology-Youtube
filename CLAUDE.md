@@ -90,11 +90,18 @@ shadow, Poppins captions (dark gray, active word soft rose, no uppercase/outline
 Fonts: `assets/fonts/Poppins-*.ttf` (SIL OFL, passed to libass with `fontsdir`).
 
 ## "documentary" style (trial for BioNiche shorts, not yet approved)
-Opt-in via `editing.style: documentary` (+ `transition_seconds: 0.5`). Owner asked: more elegant, nature-documentary
-feel, image **full screen**, voice **deeper and slower**. Full-bleed photos/clips (one shot per sentence, Ken Burns
-zoom 0.06; low-res `fit` clips are upscaled full screen with lanczos + unsharp instead of the blurred band), dark
-gradients top/bottom, letter-spaced gold "B I O N I C H E" label, Playfair Display serif title with soft shadow,
-Poppins SemiBold captions (active word white, rest light gray, `\pos(540,1560)`), 4 px muted-gold progress bar.
-Voice: `voice.rate_shorts: "-6%"`, `voice.pitch_shorts: "-8Hz"` (edge-tts `pitch`; non-default pitch is part of the
-TTS cache key). Music/whoosh unchanged. Output to `output/<id>/documentary/` so the approved render isn't overwritten.
-Context: the plant short had 79 % swipe-away (20.7 % "viewed").
+Owner: "more elegant, like a nature documentary", image **full screen**, voice **deeper**. Then: "great, but it doesn't
+feel documentary enough" → added ambience, sentence subtitles, species caption, film grade, removed social-media SFX.
+Render overrides used for the plant short (`output/<id>/documentary/`, never overwrite the approved render):
+```python
+cfg['editing'].update(style='documentary', transition_seconds=0.6, whoosh_on='none', impact_volume=0,
+                      progress_bar=False, ambience='forest_morning.mp3', ambience_volume=0.6)
+cfg['voice'].update(voice_en='en-US-ChristopherNeural', rate_shorts='-10%', pitch_shorts='-14Hz', broadcast_eq=True)
+```
+- Visuals: full-bleed photos/clips, one shot per sentence, Ken Burns 0.06; low-res `fit` clips upscaled (lanczos+unsharp).
+- Grade (final_mix): `eq=contrast=1.06:saturation=0.88:gamma=0.97,vignette=PI/5,noise=alls=3` (alls=5 → 42 MB file).
+- Text: gold letter-spaced "B I O N I C H E", Playfair serif title (beat 0), italic scientific name lower-third (beat 1),
+  sentence subtitles (`write_sentence_ass`, ≤7 words per line, split at a comma near the middle, `\pos(540,1640)`).
+- Audio: CC0 ambience bed (`assets/ambience/`, ~18-20 dB under the voice), Beethoven at 0.07, no whoosh/impact.
+  Voice EQ `BROADCAST_EQ` (+5 dB @110 Hz, -2 dB @6.5 kHz, compressor) only changes tone, so word timings stay valid.
+- Context: the plant short had 79 % swipe-away (20.7 % "viewed"). Slower voice → 44 s instead of 33 s.
