@@ -105,3 +105,16 @@ cfg['voice'].update(voice_en='en-US-ChristopherNeural', rate_shorts='-10%', pitc
 - Audio: CC0 ambience bed (`assets/ambience/`, ~18-20 dB under the voice), Beethoven at 0.07, no whoosh/impact.
   Voice EQ `BROADCAST_EQ` (+5 dB @110 Hz, -2 dB @6.5 kHz, compressor) only changes tone, so word timings stay valid.
 - Context: the plant short had 79 % swipe-away (20.7 % "viewed"). Slower voice → 44 s instead of 33 s.
+
+## Video-first shorts (owner: "more video clips than pictures, following a weird animal doing weird things")
+- **Best clip source: NOAA Ocean Exploration on the Internet Archive** — ~584 deep-sea ROV videos, **public domain**,
+  mostly 720p/1080p. List: `https://archive.org/advancedsearch.php?q=identifier:noaa-oe-video*&fl[]=identifier&fl[]=title&rows=2000&output=json`;
+  files: `https://archive.org/metadata/<id>`; download: `https://archive.org/download/<id>/<file>`. The item description
+  (NOAA's own text) is a citable source for the facts. Rich topics: sea cucumbers (12), squid, octopus/dumbo (6),
+  jellies, ctenophores (6), hagfish (4, knot-tying), isopods, chimaeras, siphonophores.
+- Wikimedia Commons API is 429 most of the time; `api.wikimedia.org/core/v1/commons/search/page` works if slow (≥3 s/query).
+- Make a labelled contact sheet per clip (frame every 4 s) to pick `start` per sentence; avoid ROV shots, title cards, watermarks.
+- Curated clips accept `x` (0-1): horizontal crop centre for the 9:16 crop (documentary style), since the animal is often off-centre.
+- Only say "it" about the species named; clips of *other* species go on sentences phrased generally ("Some swimming sea cucumbers…").
+- Shorts-only packages live in `shorts/en/` (tests require `examples/**` to be full doc+4 shorts packages).
+- `shorts/en/headless-chicken-monster.yaml` (Enypniastes eximia) = first video-only documentary short; ambience `deep_sea.mp3` @0.35.

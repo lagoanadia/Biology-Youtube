@@ -220,17 +220,18 @@ def still_clip(bg: Image.Image, overlay: Image.Image, seconds: float, out: Path,
 
 
 def video_clip(src: str, overlay: Image.Image, seconds: float, size: tuple[int, int], out: Path, start: float = 0.0,
-               punch: bool = False, fit: bool = False) -> Path:
-    """Clip mudo a partir de un vídeo de stock: recorte a `size`, 30 fps y rótulos encima."""
+               punch: bool = False, fit: bool = False, focus: float = 0.5) -> Path:
+    """Clip mudo a partir de un vídeo de stock: recorte a `size`, 30 fps y rótulos encima.
+    `focus` (0 = izquierda, 1 = derecha) dice dónde recortar si el animal no está centrado."""
     ov_path = out.with_name(out.stem + "_ov.png")
     overlay.save(ov_path)
     w, h = size
     amount = _edit("punch_zoom", 0.08)
     punch_f = (f",zoompan=z='if(lt(on,{PUNCH_FRAMES}),{1 + amount}-{amount}*on/{PUNCH_FRAMES},1)'"
                f":x='(iw-iw/zoom)/2':y='(ih-ih/zoom)/2':d=1:s={w}x{h}:fps={FPS}") if punch and amount else ""
-    if fit and documentary():  # estilo documental: SIEMPRE a pantalla completa (ampliado con nitidez)
-        base = (f"[0:v]scale={w}:{h}:force_original_aspect_ratio=increase:flags=lanczos,crop={w}:{h},"
-                f"unsharp=5:5:0.6,fps={FPS},setsar=1{punch_f}[v0];")
+    if documentary():  # estilo documental: SIEMPRE a pantalla completa (ampliado con nitidez)
+        base = (f"[0:v]scale={w}:{h}:force_original_aspect_ratio=increase:flags=lanczos,"
+                f"crop={w}:{h}:(iw-{w})*{focus}:(ih-{h})/2,unsharp=5:5:0.6,fps={FPS},setsar=1{punch_f}[v0];")
     elif fit:  # clip de baja resolución: centrado a lo ancho sobre una copia desenfocada (como las fotos)
         base = (f"[0:v]fps={FPS},split[a][b];[a]scale={w}:{h}:force_original_aspect_ratio=increase,crop={w}:{h},"
                 f"boxblur=25:2,eq=brightness=-0.12[bg];[b]scale={w}:-2[fg];"
@@ -652,7 +653,7 @@ def write_sentence_ass(chunks: list[tuple[float, float, str]], out: Path) -> Pat
         "[V4+ Styles]\nFormat: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, "
         "Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, "
         "Alignment, MarginL, MarginR, MarginV, Encoding\n"
-        "Style: Sub,Poppins Medium,58,&H00FFFFFF,&H00FFFFFF,&H00000000,&H90000000,0,0,0,0,100,100,0,0,1,0,2,"
+        "Style: Sub,Poppins Medium,58,&H00FFFFFF,&H00FFFFFF,&H70000000,&H60000000,0,0,0,0,100,100,0,0,1,2,2,"
         "2,110,110,0,1\n\n"
         "[Events]\nFormat: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text\n"
     )
@@ -816,7 +817,7 @@ def beat_shots(pkg: VideoPackage, index: int, words: list[dict], total: float, w
                 clip_cuts.append(start)
             length = dur + (fade if clips else 0)  # empieza `fade` s antes: el fundido termina justo en el corte
             clips.append(video_clip(asset["path"], overlay, length, SHORT_SIZE, path, start=asset.get("start", 0),
-                                    punch=True, fit=asset.get("fit", False)))
+                                    punch=True, fit=asset.get("fit", False), focus=asset.get("x", 0.5)))
             lengths.append(length)
             images.append(clip_preview({"clip": asset["path"]}) | meta | {"short": index, "query": beat.text[:40]})
             continue

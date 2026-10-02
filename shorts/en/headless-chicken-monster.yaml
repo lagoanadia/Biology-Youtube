@@ -1,0 +1,172 @@
+id: headless-chicken-monster
+language: en
+documentary:
+  topic: Enypniastes eximia, the swimming deep-sea cucumber (short only, no documentary yet)
+  working_title: '-'
+  category: animal
+  subcategory: deep sea
+  hook_type: shock
+  species:
+  - Enypniastes eximia
+  scenes:
+  - narration: '-'
+    visual_query: '-'
+    on_screen_text: '-'
+    key_fact: false
+  sources:
+  - title: 'NOAA Ocean Exploration: The Headless Chicken Monster (Enypniastes eximia, Gulf of Mexico 2017) — feeds on surface
+      sediments, swims to move quickly or evade a predator; common names Spanish dancer / headless chicken monster'
+    reference: https://oceanexplorer.noaa.gov/multimedia/video-playlist-ex1711-seacuke/
+  - title: 'NOAA Ocean Exploration: sea cucumber using specialized appendages to bring sediment to its mouth before swimming
+      off (2014)'
+    reference: https://oceanexplorer.noaa.gov/multimedia/video-shorts-ex1402-seacuke-eating/
+  - title: 'NOAA Ocean Exploration: swimming sea cucumber with a stomach full of sediment, 2,470 m (Marianas 2016)'
+    reference: https://oceanexplorer.noaa.gov/multimedia/video-shorts-ex1605-seacuke-0701/
+  - title: 'Australian Antarctic Division (2018): ''Headless chicken monster'' filmed in the Southern Ocean'
+    reference: https://www.antarctica.gov.au/news/2018/headless-chicken-monster-filmed-in-the-southern-ocean/
+documentary_metadata:
+  title: '-'
+  description: '-'
+  tags: []
+  hashtags: []
+  thumbnail_text: '-'
+shorts:
+- hook: Scientists call this the headless chicken monster.
+  fact: It's actually a sea cucumber. It lives on the floor of the deep ocean. Most of the time, it sits on the mud and eats
+    it. Little tentacles shovel the mud into its mouth. But when it wants to go somewhere fast, it does something strange.
+    It lifts off the seafloor and swims. It flaps a frilly veil like a cape. It also swims away to escape predators. Some
+    swimming sea cucumbers are so see-through you can watch the mud in their gut.
+  cta: Follow BioNiche for more weird animals.
+  visual_queries:
+  - Enypniastes eximia
+  on_screen_texts:
+  - The headless chicken monster
+  beats:
+  - text: Scientists call this the headless chicken monster.
+    visual: Enypniastes eximia
+  - text: It's actually a sea cucumber.
+    visual: Enypniastes eximia
+  - text: It lives on the floor of the deep ocean.
+    visual: Enypniastes eximia
+  - text: Most of the time, it sits on the mud and eats it.
+    visual: Enypniastes eximia
+  - text: Little tentacles shovel the mud into its mouth.
+    visual: Enypniastes eximia
+  - text: But when it wants to go somewhere fast, it does something strange.
+    visual: Enypniastes eximia
+  - text: It lifts off the seafloor and swims.
+    visual: Enypniastes eximia
+  - text: It flaps a frilly veil like a cape.
+    visual: Enypniastes eximia
+  - text: It also swims away to escape predators.
+    visual: Enypniastes eximia
+  - text: Some swimming sea cucumbers are so see-through you can watch the mud in their gut.
+    visual: Enypniastes eximia
+  - text: Follow BioNiche for more weird animals.
+    visual: Enypniastes eximia
+shorts_metadata:
+- title: Scientists Call It the Headless Chicken Monster 🐔
+  description: 'This deep-sea cucumber can lift off the seafloor and swim. Footage: NOAA Ocean Exploration.
+
+
+    #shorts #deepsea #oceanlife'
+  tags:
+  - headless chicken monster
+  - Enypniastes eximia
+  - swimming sea cucumber
+  - deep sea creatures
+  - weird animals
+  hashtags:
+  - '#shorts'
+  - '#deepsea'
+  - '#oceanlife'
+  thumbnail_text: '-'
+curated:
+  short0.beat0:
+    type: clip
+    url: https://archive.org/download/noaa-oe-video-video-playlist-ex1711-seacuke/chickenmonster-1280x720-1.mp4
+    license: Public domain
+    start: 61
+    x: 0.5
+    attribution: NOAA Ocean Exploration, Gulf of Mexico 2017 (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/video-playlist-ex1711-seacuke/
+  short0.beat1:
+    type: clip
+    url: https://archive.org/download/noaa-oe-video-video-playlist-ex1711-seacuke/chickenmonster-1280x720-1.mp4
+    license: Public domain
+    start: 26
+    x: 0.47
+    attribution: NOAA Ocean Exploration, Gulf of Mexico 2017 (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/video-playlist-ex1711-seacuke/
+  short0.beat2:
+    type: clip
+    url: https://archive.org/download/noaa-oe-video-video-playlist-ex1711-seacuke/chickenmonster-1280x720-1.mp4
+    license: Public domain
+    start: 36
+    x: 0.52
+    attribution: NOAA Ocean Exploration, Gulf of Mexico 2017 (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/video-playlist-ex1711-seacuke/
+  short0.beat3:
+    type: clip
+    url: https://archive.org/download/noaa-oe-video-video-playlist-ex1711-seacuke/chickenmonster-1280x720-1.mp4
+    license: Public domain
+    start: 8
+    x: 0.52
+    attribution: NOAA Ocean Exploration, Gulf of Mexico 2017 (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/video-playlist-ex1711-seacuke/
+  short0.beat4:
+    type: clip
+    url: https://archive.org/download/noaa-oe-video-video-playlist-ex1711-seacuke/chickenmonster-1280x720-1.mp4
+    license: Public domain
+    start: 15.5
+    x: 0.5
+    attribution: NOAA Ocean Exploration, Gulf of Mexico 2017 (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/video-playlist-ex1711-seacuke/
+  short0.beat5:
+    type: clip
+    url: https://archive.org/download/noaa-oe-video-video-shorts-ex1402-seacuke-eating/ex1402-seacuke-eating.mp4
+    license: Public domain
+    start: 8
+    x: 0.55
+    attribution: NOAA Ocean Exploration, Exploration of the Gulf of Mexico 2014 (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/video-shorts-ex1402-seacuke-eating/
+  short0.beat6:
+    type: clip
+    url: https://archive.org/download/noaa-oe-video-video-playlist-ex1711-seacuke/chickenmonster-1280x720-1.mp4
+    license: Public domain
+    start: 46.5
+    x: 0.62
+    attribution: NOAA Ocean Exploration, Gulf of Mexico 2017 (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/video-playlist-ex1711-seacuke/
+  short0.beat7:
+    type: clip
+    url: https://archive.org/download/noaa-oe-video-video-playlist-ex1711-seacuke/chickenmonster-1280x720-1.mp4
+    license: Public domain
+    start: 72
+    x: 0.65
+    attribution: NOAA Ocean Exploration, Gulf of Mexico 2017 (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/video-playlist-ex1711-seacuke/
+  short0.beat8:
+    type: clip
+    url: https://archive.org/download/noaa-oe-video-video-playlist-ex1711-seacuke/chickenmonster-1280x720-1.mp4
+    license: Public domain
+    start: 79
+    x: 0.57
+    attribution: NOAA Ocean Exploration, Gulf of Mexico 2017 (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/video-playlist-ex1711-seacuke/
+  short0.beat9:
+    type: clip
+    url: https://archive.org/download/noaa-oe-video-video-shorts-ex1605-seacuke-0701/ex1605-seacuke-0701.mp4
+    license: Public domain
+    start: 19
+    x: 0.42
+    attribution: NOAA Ocean Exploration, 2016 Deepwater Exploration of the Marianas (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/video-shorts-ex1605-seacuke-0701/
+  short0.beat10:
+    type: clip
+    url: https://archive.org/download/noaa-oe-video-video-playlist-ex1711-seacuke/chickenmonster-1280x720-1.mp4
+    license: Public domain
+    start: 84
+    x: 0.47
+    attribution: NOAA Ocean Exploration, Gulf of Mexico 2017 (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/video-playlist-ex1711-seacuke/
