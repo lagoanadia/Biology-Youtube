@@ -1,0 +1,123 @@
+id: tiktok-protector-solar
+language: es
+documentary:
+  topic: Protector solar (solo TikTok, sin documental)
+  working_title: '-'
+  category: otro
+  subcategory: belleza
+  hook_type: shock
+  species:
+  - sunscreen
+  scenes:
+  - narration: '-'
+    visual_query: '-'
+    on_screen_text: '-'
+    key_fact: false
+  sources:
+  - title: 'American Academy of Dermatology: How to apply sunscreen'
+    reference: https://www.aad.org/public/everyday-care/sun-protection/shade-clothing-sunscreen/how-to-apply-sunscreen
+  - title: 'Skin Cancer Foundation: Sunscreen FAQs'
+    reference: https://www.skincancer.org/skin-cancer-prevention/sun-protection/sunscreen/
+documentary_metadata:
+  title: '-'
+  description: '-'
+  tags: []
+  hashtags: []
+  thumbnail_text: '-'
+shorts:
+- hook: Si te echas el protector solar así, no te está protegiendo.
+  fact: 'Error número uno: poner muy poco. Para la cara y el cuello necesitas unos dos dedos de crema. Error número dos: echártelo solo por la mañana. Si estás al sol, hay que volver a ponerlo cada dos
+    horas. Y siempre después de bañarte o de sudar. Error número tres: no usarlo cuando está nublado. Las nubes no bloquean toda la radiación ultravioleta. Y no te olvides del cuello y las orejas.'
+  cta: ¿Cuál de estos cometías tú? Dímelo en comentarios.
+  visual_queries:
+  - sunscreen
+  on_screen_texts:
+  - 3 errores con el protector solar ☀️
+  beats:
+  - text: Si te echas el protector solar así, no te está protegiendo.
+    visual: sunscreen
+  - text: 'Error número uno: poner muy poco.'
+    visual: sunscreen
+  - text: Para la cara y el cuello necesitas unos dos dedos de crema.
+    visual: sunscreen
+  - text: 'Error número dos: echártelo solo por la mañana.'
+    visual: sunscreen
+  - text: Si estás al sol, hay que volver a ponerlo cada dos horas.
+    visual: sunscreen
+  - text: Y siempre después de bañarte o de sudar.
+    visual: sunscreen
+  - text: 'Error número tres: no usarlo cuando está nublado.'
+    visual: sunscreen
+  - text: Las nubes no bloquean toda la radiación ultravioleta.
+    visual: sunscreen
+  - text: Y no te olvides del cuello y las orejas.
+    visual: sunscreen
+  - text: ¿Cuál de estos cometías tú? Dímelo en comentarios.
+    visual: sunscreen
+shorts_metadata:
+- title: 3 errores con el protector solar
+  description: '-'
+  tags: []
+  hashtags: []
+  thumbnail_text: '-'
+curated:
+  short0.beat0:
+    type: photo
+    url: https://live.staticflickr.com/4050/4713156127_c4f8d8717e_b.jpg
+    license: CC BY 2.0
+    source_url: https://www.flickr.com/photos/90536753@N00/4713156127
+    attribution: theslowlane, CC BY 2.0, vía flickr (https://www.flickr.com/photos/90536753@N00/4713156127)
+  short0.beat1:
+    type: photo
+    url: https://live.staticflickr.com/2504/5853425982_f2c01c88a3_b.jpg
+    license: CC BY 2.0
+    source_url: https://www.flickr.com/photos/7298413@N06/5853425982
+    attribution: Hello Turkey Toe, CC BY 2.0, vía flickr (https://www.flickr.com/photos/7298413@N06/5853425982)
+  short0.beat2:
+    type: photo
+    url: https://live.staticflickr.com/3432/3350877893_9d1db3abf3_b.jpg
+    license: CC BY 2.0
+    source_url: https://www.flickr.com/photos/59077136@N00/3350877893
+    attribution: shawncampbell, CC BY 2.0, vía flickr (https://www.flickr.com/photos/59077136@N00/3350877893)
+  short0.beat3:
+    type: photo
+    url: https://live.staticflickr.com/7166/6554283227_915e3ba832_b.jpg
+    license: CC BY 2.0
+    source_url: https://www.flickr.com/photos/54826722@N06/6554283227
+    attribution: ecokarenlee, CC BY 2.0, vía flickr (https://www.flickr.com/photos/54826722@N06/6554283227)
+  short0.beat4:
+    type: photo
+    url: https://live.staticflickr.com/5755/21768398726_b50be444ea_b.jpg
+    license: CC BY 2.0
+    source_url: https://www.flickr.com/photos/136504030@N04/21768398726
+    attribution: Artur Pilipchuck, CC BY 2.0, vía flickr (https://www.flickr.com/photos/136504030@N04/21768398726)
+  short0.beat5:
+    type: photo
+    url: https://live.staticflickr.com/7623/16937042916_1f0d5765c5_b.jpg
+    license: CC BY 2.0
+    source_url: https://www.flickr.com/photos/130448072@N02/16937042916
+    attribution: dutruong.t733, CC BY 2.0, vía flickr (https://www.flickr.com/photos/130448072@N02/16937042916)
+  short0.beat6:
+    type: photo
+    url: https://live.staticflickr.com/8424/7873710280_30df9d68a5_b.jpg
+    license: CC BY 2.0
+    source_url: https://www.flickr.com/photos/80901381@N04/7873710280
+    attribution: A Guy Taking Pictures, CC BY 2.0, vía flickr (https://www.flickr.com/photos/80901381@N04/7873710280)
+  short0.beat7:
+    type: photo
+    url: https://live.staticflickr.com/3852/14569063554_812e6fcd37_b.jpg
+    license: CC BY 2.0
+    source_url: https://www.flickr.com/photos/79157069@N03/14569063554
+    attribution: Matthew Paul Argall, CC BY 2.0, vía flickr (https://www.flickr.com/photos/79157069@N03/14569063554)
+  short0.beat8:
+    type: photo
+    url: https://live.staticflickr.com/7374/9422696853_8ee92583eb_b.jpg
+    license: CC BY 2.0
+    source_url: https://www.flickr.com/photos/51382471@N04/9422696853
+    attribution: Amir Illusion, CC BY 2.0, vía flickr (https://www.flickr.com/photos/51382471@N04/9422696853)
+  short0.beat9:
+    type: photo
+    url: https://live.staticflickr.com/5460/9728334699_f385726400_b.jpg
+    license: CC BY 2.0
+    source_url: https://www.flickr.com/photos/78162759@N06/9728334699
+    attribution: filipthedesigner, CC BY 2.0, vía flickr (https://www.flickr.com/photos/78162759@N06/9728334699)
