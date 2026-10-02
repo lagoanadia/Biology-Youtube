@@ -116,5 +116,11 @@ cfg['voice'].update(voice_en='en-US-ChristopherNeural', rate_shorts='-10%', pitc
 - Make a labelled contact sheet per clip (frame every 4 s) to pick `start` per sentence; avoid ROV shots, title cards, watermarks.
 - Curated clips accept `x` (0-1): horizontal crop centre for the 9:16 crop (documentary style), since the animal is often off-centre.
 - Only say "it" about the species named; clips of *other* species go on sentences phrased generally ("Some swimming sea cucumbers…").
+- Curated clips also accept `zoom` (>1) + `cx`/`cy` (0-1 centre of interest) when the animal is tiny or sits under
+  the subtitles; test a clip alone with `render.video_clip(...)` + 3 frames before re-rendering the whole short.
+- **Second clip source: open-access papers.** Scientific Reports / PLOS supplementary videos are CC BY 4.0. Commons mirrors
+  them but `upload.wikimedia.org` often 429s → download the same file from the journal (nature.com article page →
+  `media.springernature.com/original/.../MOESM<n>_ESM.mov`). Lab footage is great for close-ups (slime, knots).
 - Shorts-only packages live in `shorts/en/` (tests require `examples/**` to be full doc+4 shorts packages).
 - `shorts/en/headless-chicken-monster.yaml` (Enypniastes eximia) = first video-only documentary short; ambience `deep_sea.mp3` @0.35.
+- `shorts/en/hagfish-slime-knot.yaml` (Myxine glutinosa): NOAA + NIOZ + Böni et al. 2016 (CC BY 4.0). Owner loved the chicken monster one.

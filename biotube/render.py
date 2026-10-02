@@ -220,17 +220,24 @@ def still_clip(bg: Image.Image, overlay: Image.Image, seconds: float, out: Path,
 
 
 def video_clip(src: str, overlay: Image.Image, seconds: float, size: tuple[int, int], out: Path, start: float = 0.0,
-               punch: bool = False, fit: bool = False, focus: float = 0.5) -> Path:
+               punch: bool = False, fit: bool = False, focus: float = 0.5, zoom: float = 1.0,
+               center: tuple[float, float] = (0.5, 0.5)) -> Path:
     """Clip mudo a partir de un vídeo de stock: recorte a `size`, 30 fps y rótulos encima.
-    `focus` (0 = izquierda, 1 = derecha) dice dónde recortar si el animal no está centrado."""
+    `focus` (0 = izquierda, 1 = derecha) dice dónde recortar si el animal no está centrado.
+    `zoom` > 1 acerca la imagen alrededor de `center` (x, y en 0-1) cuando el animal se ve muy pequeño."""
     ov_path = out.with_name(out.stem + "_ov.png")
     overlay.save(ov_path)
     w, h = size
     amount = _edit("punch_zoom", 0.08)
     punch_f = (f",zoompan=z='if(lt(on,{PUNCH_FRAMES}),{1 + amount}-{amount}*on/{PUNCH_FRAMES},1)'"
                f":x='(iw-iw/zoom)/2':y='(ih-ih/zoom)/2':d=1:s={w}x{h}:fps={FPS}") if punch and amount else ""
+    pre = ""
+    if zoom > 1:  # recorte previo alrededor del animal (las comas de las expresiones van escapadas: \\,)
+        cx, cy = center
+        pre = (f"crop=iw/{zoom}:ih/{zoom}:max(0\\,min(iw-iw/{zoom}\\,iw*{cx}-iw/{zoom}/2)):"
+               f"max(0\\,min(ih-ih/{zoom}\\,ih*{cy}-ih/{zoom}/2)),")
     if documentary():  # estilo documental: SIEMPRE a pantalla completa (ampliado con nitidez)
-        base = (f"[0:v]scale={w}:{h}:force_original_aspect_ratio=increase:flags=lanczos,"
+        base = (f"[0:v]{pre}scale={w}:{h}:force_original_aspect_ratio=increase:flags=lanczos,"
                 f"crop={w}:{h}:(iw-{w})*{focus}:(ih-{h})/2,unsharp=5:5:0.6,fps={FPS},setsar=1{punch_f}[v0];")
     elif fit:  # clip de baja resolución: centrado a lo ancho sobre una copia desenfocada (como las fotos)
         base = (f"[0:v]fps={FPS},split[a][b];[a]scale={w}:{h}:force_original_aspect_ratio=increase,crop={w}:{h},"
@@ -817,7 +824,8 @@ def beat_shots(pkg: VideoPackage, index: int, words: list[dict], total: float, w
                 clip_cuts.append(start)
             length = dur + (fade if clips else 0)  # empieza `fade` s antes: el fundido termina justo en el corte
             clips.append(video_clip(asset["path"], overlay, length, SHORT_SIZE, path, start=asset.get("start", 0),
-                                    punch=True, fit=asset.get("fit", False), focus=asset.get("x", 0.5)))
+                                    punch=True, fit=asset.get("fit", False), focus=asset.get("x", 0.5),
+                                    zoom=asset.get("zoom", 1.0), center=(asset.get("cx", 0.5), asset.get("cy", 0.5))))
             lengths.append(length)
             images.append(clip_preview({"clip": asset["path"]}) | meta | {"short": index, "query": beat.text[:40]})
             continue

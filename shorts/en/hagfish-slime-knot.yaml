@@ -1,0 +1,201 @@
+id: hagfish-slime-knot
+language: en
+documentary:
+  topic: Hagfish slime defense and knotting (short only, no documentary yet)
+  working_title: '-'
+  category: animal
+  subcategory: deep sea
+  hook_type: shock
+  species:
+  - Myxine glutinosa
+  scenes:
+  - narration: '-'
+    visual_query: '-'
+    on_screen_text: '-'
+    key_fact: false
+  sources:
+  - title: Zintzen et al. (2011) Hagfish predatory behaviour and slime defence mechanism. Scientific Reports 1:131 — sharks
+      and bony fish that bit hagfish choked on slime clogging their gills and released them
+    reference: https://www.nature.com/articles/srep00131
+  - title: 'NOAA Ocean Exploration: the holes along the side of the hagfish are where it produces mucus as protection against
+      predators (Myxine glutinosa, 970 m)'
+    reference: https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-express-ex2301-gallery-media-ex2301-dive09-hagfish/
+  - title: 'NOAA Ocean Exploration: hagfish tying itself into a knot, a known behaviour of these very flexible fish (970 m)'
+    reference: https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-express-ex2301-gallery-media-ex2301-dive02-hagfish/
+  - title: 'Böni et al. (2016) Hagfish slime and mucin flow properties and their implications for defense. Scientific Reports
+      6:30371 — Video 1: hagfish trapped in its own slime ties a knot to strip it off'
+    reference: https://www.nature.com/articles/srep30371
+  - title: Fudge et al. (2005) Composition, morphology and mechanics of hagfish slime. Journal of Experimental Biology 208:4613
+      — slime forms on contact with seawater
+    reference: https://journals.biologists.com/jeb/article/208/24/4613/16089
+documentary_metadata:
+  title: '-'
+  description: '-'
+  tags: []
+  hashtags: []
+  thumbnail_text: '-'
+shorts:
+- hook: If a shark bites this fish, it chokes on slime.
+  fact: It's a hagfish. It lives on the seafloor, deep in the ocean. Look at the little holes along its side. Each one leads
+    to a slime gland. When a predator bites, the hagfish releases slime. In seawater, the slime becomes thick goo that clogs
+    the attacker's gills. So the predator lets go. But now the hagfish is covered in its own slime. So it ties its body into
+    a knot. It slides the knot along its body and wipes the slime off.
+  cta: Follow BioNiche for more weird animals.
+  visual_queries:
+  - Myxine glutinosa
+  on_screen_texts:
+  - The slime fish
+  beats:
+  - text: If a shark bites this fish, it chokes on slime.
+    visual: Myxine glutinosa
+  - text: It's a hagfish.
+    visual: Myxine glutinosa
+  - text: It lives on the seafloor, deep in the ocean.
+    visual: Myxine glutinosa
+  - text: Look at the little holes along its side.
+    visual: Myxine glutinosa
+  - text: Each one leads to a slime gland.
+    visual: Myxine glutinosa
+  - text: When a predator bites, the hagfish releases slime.
+    visual: Myxine glutinosa
+  - text: In seawater, the slime becomes thick goo that clogs the attacker's gills.
+    visual: Myxine glutinosa
+  - text: So the predator lets go.
+    visual: Myxine glutinosa
+  - text: But now the hagfish is covered in its own slime.
+    visual: Myxine glutinosa
+  - text: So it ties its body into a knot.
+    visual: Myxine glutinosa
+  - text: It slides the knot along its body and wipes the slime off.
+    visual: Myxine glutinosa
+  - text: Follow BioNiche for more weird animals.
+    visual: Myxine glutinosa
+shorts_metadata:
+- title: This Fish Chokes Sharks With Slime 🫧
+  description: 'Hagfish fill a predator''s mouth with slime, then tie themselves in a knot to wipe it off. Footage: NOAA Ocean
+    Exploration, NIOZ, Böni et al. 2016 (CC BY 4.0).
+
+
+    #shorts #deepsea #hagfish'
+  tags:
+  - hagfish
+  - hagfish slime
+  - Myxine glutinosa
+  - deep sea creatures
+  - weird animals
+  hashtags:
+  - '#shorts'
+  - '#deepsea'
+  - '#hagfish'
+  thumbnail_text: '-'
+curated:
+  short0.beat0:
+    type: clip
+    url: https://archive.org/download/noaa-oe-video-okeanos-explorations-express-ex2301-gallery-media-ex2301-dive09-hagfish/ex2301-dive09-hagfish-1280x720-1.mp4
+    license: Public domain
+    attribution: NOAA Ocean Exploration, 2023 Shakedown + EXPRESS West Coast Exploration (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-express-ex2301-gallery-media-ex2301-dive09-hagfish/
+    start: 30
+    x: 0.55
+  short0.beat1:
+    type: clip
+    url: https://archive.org/download/noaa-oe-video-okeanos-explorations-express-ex2301-gallery-media-ex2301-dive01-hagfish/ex2301-dive01-hagfish-640x360-1.mp4
+    license: Public domain
+    attribution: NOAA Ocean Exploration, 2023 Shakedown + EXPRESS West Coast Exploration (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-express-ex2301-gallery-media-ex2301-dive01-hagfish/
+    start: 9.5
+    x: 0.6
+  short0.beat2:
+    type: clip
+    url: https://archive.org/download/noaa-oe-video-okeanos-explorations-express-ex2301-gallery-media-ex2301-dive01-hagfish/ex2301-dive01-hagfish-640x360-1.mp4
+    license: Public domain
+    attribution: NOAA Ocean Exploration, 2023 Shakedown + EXPRESS West Coast Exploration (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-express-ex2301-gallery-media-ex2301-dive01-hagfish/
+    start: 18
+    x: 0.45
+  short0.beat3:
+    type: clip
+    url: https://archive.org/download/noaa-oe-video-okeanos-explorations-express-ex2301-gallery-media-ex2301-dive09-hagfish/ex2301-dive09-hagfish-1280x720-1.mp4
+    license: Public domain
+    attribution: NOAA Ocean Exploration, 2023 Shakedown + EXPRESS West Coast Exploration (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-express-ex2301-gallery-media-ex2301-dive09-hagfish/
+    start: 14.0
+    x: 0.5
+    zoom: 1.3
+    cx: 0.45
+    cy: 0.45
+  short0.beat4:
+    type: clip
+    url: https://archive.org/download/noaa-oe-video-okeanos-explorations-express-ex2301-gallery-media-ex2301-dive09-hagfish/ex2301-dive09-hagfish-1280x720-1.mp4
+    license: Public domain
+    attribution: NOAA Ocean Exploration, 2023 Shakedown + EXPRESS West Coast Exploration (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-express-ex2301-gallery-media-ex2301-dive09-hagfish/
+    start: 16.6
+    x: 0.5
+    zoom: 1.4
+    cx: 0.45
+    cy: 0.66
+  short0.beat5:
+    type: clip
+    url: https://archive.org/download/noaa-oe-video-explorations-19deepsearch-logs-apr14-media-eel-attack/eel-attack-1440x1080-1.mp4
+    license: Public domain
+    attribution: Royal Netherlands Institute for Sea Research (NIOZ), DEEP SEARCH 2019 - BOEM, USGS, NOAA, via NOAA Ocean
+      Exploration (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/explorations-19deepsearch-logs-apr14-media-eel-attack/
+    start: 6.5
+    x: 0.5
+  short0.beat6:
+    type: clip
+    url: https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fsrep30371/MediaObjects/41598_2016_BFsrep30371_MOESM4_ESM.mov
+    license: CC BY 4.0
+    attribution: Böni, Fischer, Böcker, Kuster & Rühs (2016), Hagfish slime and mucin flow properties and their implications
+      for defense, Scientific Reports 6:30371, Supplementary Video 4, CC BY 4.0
+    source_url: https://www.nature.com/articles/srep30371
+    start: 1
+    x: 0.75
+  short0.beat7:
+    type: clip
+    url: https://archive.org/download/noaa-oe-video-explorations-19deepsearch-logs-apr14-media-eel-attack/eel-attack-1440x1080-1.mp4
+    license: Public domain
+    attribution: Royal Netherlands Institute for Sea Research (NIOZ), DEEP SEARCH 2019 - BOEM, USGS, NOAA, via NOAA Ocean
+      Exploration (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/explorations-19deepsearch-logs-apr14-media-eel-attack/
+    start: 14
+    x: 0.5
+  short0.beat8:
+    type: clip
+    url: https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fsrep30371/MediaObjects/41598_2016_BFsrep30371_MOESM1_ESM.mov
+    license: CC BY 4.0
+    attribution: Böni, Fischer, Böcker, Kuster & Rühs (2016), Hagfish slime and mucin flow properties and their implications
+      for defense, Scientific Reports 6:30371, Supplementary Video 1, CC BY 4.0
+    source_url: https://www.nature.com/articles/srep30371
+    start: 3.6
+    x: 0.72
+  short0.beat9:
+    type: clip
+    url: https://archive.org/download/noaa-oe-video-okeanos-explorations-express-ex2301-gallery-media-ex2301-dive02-hagfish/ex2301-dive02-hagfish-1280x720-1.mp4
+    license: Public domain
+    attribution: NOAA Ocean Exploration, 2023 Shakedown + EXPRESS West Coast Exploration (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-express-ex2301-gallery-media-ex2301-dive02-hagfish/
+    start: 10
+    zoom: 1.8
+    cx: 0.69
+    cy: 0.52
+    x: 0.5
+  short0.beat10:
+    type: clip
+    url: https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fsrep30371/MediaObjects/41598_2016_BFsrep30371_MOESM1_ESM.mov
+    license: CC BY 4.0
+    attribution: Böni, Fischer, Böcker, Kuster & Rühs (2016), Hagfish slime and mucin flow properties and their implications
+      for defense, Scientific Reports 6:30371, Supplementary Video 1, CC BY 4.0
+    source_url: https://www.nature.com/articles/srep30371
+    start: 12.5
+    x: 0.85
+  short0.beat11:
+    type: clip
+    url: https://archive.org/download/noaa-oe-video-okeanos-explorations-express-ex2301-gallery-media-ex2301-dive09-hagfish/ex2301-dive09-hagfish-1280x720-1.mp4
+    license: Public domain
+    attribution: NOAA Ocean Exploration, 2023 Shakedown + EXPRESS West Coast Exploration (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-express-ex2301-gallery-media-ex2301-dive09-hagfish/
+    start: 34
+    x: 0.5
