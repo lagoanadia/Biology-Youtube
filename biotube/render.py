@@ -61,10 +61,9 @@ CARD_BOX = (80, 360, 1000, 1420)  # x0, y0, x1, y1 de la tarjeta con la foto
 EMOJI_RE = re.compile("[\u2600-\u27BF\uFE0F\U0001F000-\U0001FFFF]")
 
 
-# Estilo "documentary": fondo negro cálido, imagen entera (sin recortar) en un marco con zoom lento,
-# título con serifa, marca espaciada arriba y subtítulos blancos finos
-DOC_BG, DOC_GOLD = (14, 13, 12), (200, 180, 140)
-FRAME_W, FRAME_H, FRAME_CY = 1000, 880, 900  # la imagen cabe en un cuadro de 1000x880 centrado en y=900
+# Estilo "documentary": imagen a pantalla completa con zoom lento, degradados oscuros arriba/abajo,
+# título con serifa, marca espaciada arriba y subtítulos blancos
+DOC_GOLD = (200, 180, 140)
 
 
 def minimal() -> bool:
@@ -82,44 +81,6 @@ def _serif(size: int, weight: str = "SemiBold") -> ImageFont.FreeTypeFont:
     font = ImageFont.truetype(str(path), size)
     font.set_variation_by_name(weight)
     return font
-
-
-def _even(n: float) -> int:
-    return max(2, int(n) // 2 * 2)
-
-
-def frame_size(width: int, height: int) -> tuple[int, int]:
-    """Tamaño del marco: la imagen entera dentro de FRAME_W x FRAME_H, sin recortar."""
-    k = min(FRAME_W / width, FRAME_H / height)
-    return _even(width * k), _even(height * k)
-
-
-def framed_clip(src: str, is_video: bool, overlay: Image.Image, seconds: float, out: Path,
-                start: float = 0.0, seed: int = 0) -> Path:
-    """Estilo documentary: foto o clip ENTERO en un marco sobre fondo oscuro.
-    En las fotos solo se mueve el contenido del marco (zoom lento tipo Ken Burns), no el fondo."""
-    bg_path, ov_path = out.with_name(out.stem + "_bg.png"), out.with_name(out.stem + "_ov.png")
-    Image.new("RGB", SHORT_SIZE, DOC_BG).save(bg_path)
-    overlay.save(ov_path)
-    frames = max(1, round(seconds * FPS))
-    if is_video:
-        fit = (f"[1:v]fps={FPS},scale={FRAME_W}:{FRAME_H}:force_original_aspect_ratio=decrease,"
-               "scale=trunc(iw/2)*2:trunc(ih/2)*2,setsar=1[p];")
-        inputs = ["-ss", f"{start:.2f}", "-stream_loop", "-1", "-i", src]
-    else:
-        with Image.open(src) as im:
-            fw, fh = frame_size(*im.size)
-        zoom = 0.05
-        z = f"1+{zoom}*on/{frames}" if seed % 2 == 0 else f"{1 + zoom}-{zoom}*on/{frames}"
-        fit = (f"[1:v]scale={fw * 2}:{fh * 2},zoompan=z='{z}':x='(iw-iw/zoom)/2':y='(ih-ih/zoom)/2'"
-               f":d=1:s={fw}x{fh}:fps={FPS},setsar=1[p];")
-        inputs = ["-loop", "1", "-framerate", str(FPS), "-i", src]
-    vf = fit + (f"[0:v][p]overlay=x=(W-w)/2:y={FRAME_CY}-h/2[a];"
-                "[a][2:v]overlay=0:0,format=yuv420p[v]")
-    ffmpeg.run(["-loop", "1", "-framerate", str(FPS), "-i", str(bg_path), *inputs, "-loop", "1", "-i", str(ov_path),
-                "-filter_complex", vf, "-map", "[v]", "-frames:v", str(frames), "-an",
-                "-c:v", "libx264", "-preset", "veryfast", "-crf", "20", "-r", str(FPS), str(out)])
-    return out
 
 
 def _min_font(size: int, weight: str = "SemiBold") -> ImageFont.FreeTypeFont:
@@ -146,6 +107,8 @@ def compose_portrait(img: Image.Image) -> Image.Image:
     """Para shorts: foto horizontal centrada sobre una copia desenfocada de sí misma."""
     if minimal():
         return compose_card(img)
+    if documentary():  # pantalla completa, sin fondo desenfocado
+        return cover(img, SHORT_SIZE)
     w, h = SHORT_SIZE
     bg = cover(img, SHORT_SIZE).filter(ImageFilter.GaussianBlur(40))
     bg = Image.blend(bg, Image.new("RGB", SHORT_SIZE, (0, 0, 0)), 0.35)
@@ -262,7 +225,10 @@ def video_clip(src: str, overlay: Image.Image, seconds: float, size: tuple[int, 
     amount = _edit("punch_zoom", 0.08)
     punch_f = (f",zoompan=z='if(lt(on,{PUNCH_FRAMES}),{1 + amount}-{amount}*on/{PUNCH_FRAMES},1)'"
                f":x='(iw-iw/zoom)/2':y='(ih-ih/zoom)/2':d=1:s={w}x{h}:fps={FPS}") if punch and amount else ""
-    if fit:  # clip de baja resolución: centrado a lo ancho sobre una copia desenfocada (como las fotos)
+    if fit and documentary():  # estilo documental: SIEMPRE a pantalla completa (ampliado con nitidez)
+        base = (f"[0:v]scale={w}:{h}:force_original_aspect_ratio=increase:flags=lanczos,crop={w}:{h},"
+                f"unsharp=5:5:0.6,fps={FPS},setsar=1{punch_f}[v0];")
+    elif fit:  # clip de baja resolución: centrado a lo ancho sobre una copia desenfocada (como las fotos)
         base = (f"[0:v]fps={FPS},split[a][b];[a]scale={w}:{h}:force_original_aspect_ratio=increase,crop={w}:{h},"
                 f"boxblur=25:2,eq=brightness=-0.12[bg];[b]scale={w}:-2[fg];"
                 f"[bg][fg]overlay=0:(H-h)*0.4,setsar=1{punch_f}[v0];")
@@ -595,10 +561,10 @@ def write_karaoke_ass(words: list[dict], out: Path, total: float, hook_words: in
                                 "Style: Cap,Poppins SemiBold,78,&H00282828,&H00282828,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,0,0,")
         pos, upper = "\\an2\\pos(540,1640)", str
     if documentary():  # blanco fino, sin contorno; la palabra que suena en blanco y el resto en gris
-        yellow, white = "{\\c&HFFFFFF&}", "{\\c&H8C8C8C&}"
+        yellow, white = "{\\c&HFFFFFF&}", "{\\c&HB4B4B4&}"
         header = header.replace("Style: Cap,DejaVu Sans,104,&H00FFFFFF,&H00FFFFFF,&H00000000,&H96000000,-1,0,0,0,100,100,0,0,1,8,3,",
-                                "Style: Cap,Poppins Medium,76,&H00FFFFFF,&H00FFFFFF,&H00000000,&H00000000,0,0,0,0,100,100,1,0,1,0,0,")
-        pos, upper = "\\an2\\pos(540,1480)", str
+                                "Style: Cap,Poppins SemiBold,78,&H00FFFFFF,&H00FFFFFF,&H00000000,&H80000000,0,0,0,0,100,100,1,0,1,0,3,")
+        pos, upper = "\\an2\\pos(540,1560)", str
     lines, n = [], 0
     groups = word_groups(words)
     for gi, group in enumerate(groups):
@@ -625,22 +591,38 @@ def write_karaoke_ass(words: list[dict], out: Path, total: float, hook_words: in
     return out
 
 
+def _doc_texts(draw: ImageDraw.ImageDraw, text: str, channel: str, color=None) -> None:
+    """Estilo documentary: marca espaciada arriba + título con serifa. `color` fuerza un color (para la sombra)."""
+    w = SHORT_SIZE[0]
+    if channel:
+        label = " ".join(channel.upper())
+        draw.text((w / 2, 170), label, font=_min_font(28, "Medium"), fill=color or DOC_GOLD, anchor="ma")
+        draw.line([(w / 2 - 40, 225), (w / 2 + 40, 225)], fill=color or DOC_GOLD, width=2)
+    text = EMOJI_RE.sub("", text).strip()
+    if text:
+        font = _serif(64)
+        wrapped = _wrap(draw, text, font, int(w * 0.84))
+        draw.multiline_text((w / 2, 280), wrapped, font=font, fill=color or "white", anchor="ma", align="center",
+                            spacing=8)
+
+
 def headline_overlay(text: str, channel: str) -> Image.Image:
     """Titular grande arriba durante el gancho (solo en el primer plano del short)."""
     w, h = SHORT_SIZE
     layer = Image.new("RGBA", SHORT_SIZE, (0, 0, 0, 0))
     draw = ImageDraw.Draw(layer)
-    if documentary():  # marca espaciada arriba + título con serifa encima del marco
-        if channel:
-            label = " ".join(channel.upper())
-            draw.text((w / 2, 170), label, font=_min_font(28, "Medium"), fill=DOC_GOLD, anchor="ma")
-            draw.line([(w / 2 - 40, 225), (w / 2 + 40, 225)], fill=DOC_GOLD, width=2)
-        text = EMOJI_RE.sub("", text).strip()
-        if text:
-            font = _serif(64)
-            wrapped = _wrap(draw, text, font, int(w * 0.84))
-            draw.multiline_text((w / 2, FRAME_CY - FRAME_H / 2 - 30), wrapped, font=font, fill="white",
-                                anchor="md", align="center", spacing=8)
+    if documentary():  # degradados para leer el texto + marca espaciada + título con serifa
+        shade = Image.new("L", (1, h))
+        for y in range(h):
+            top = max(0.0, 1 - y / 640) * 200
+            bottom = max(0.0, (y - 1150) / (h - 1150)) * 190
+            shade.putpixel((0, y), int(max(top, bottom)))
+        layer.putalpha(shade.resize((w, h)))
+        # sombra difuminada detrás de los textos para que se lean sobre cualquier imagen
+        glow = Image.new("RGBA", SHORT_SIZE, (0, 0, 0, 0))
+        _doc_texts(ImageDraw.Draw(glow), text, channel, (0, 0, 0, 200))
+        layer = Image.alpha_composite(layer, glow.filter(ImageFilter.GaussianBlur(8)))
+        _doc_texts(ImageDraw.Draw(layer), text, channel)
         return layer
     if minimal():  # texto oscuro, sin caja ni mayúsculas; los emojis no existen en Poppins
         text = EMOJI_RE.sub("", text).strip()
@@ -757,19 +739,6 @@ def beat_shots(pkg: VideoPackage, index: int, words: list[dict], total: float, w
             used.add(asset["source_url"])
         meta = {k: asset.get(k) for k in ("provider", "license", "attribution", "source_url")}
         path = work / f"b{b:02d}.mp4"
-        if documentary():  # un solo plano por frase, imagen entera en su marco
-            length = dur + (fade if clips else 0)
-            is_video = asset["type"] == "clip"
-            clips.append(framed_clip(asset["path"], is_video, overlay, length, path,
-                                     start=asset.get("start", 0), seed=b))
-            lengths.append(length)
-            if is_video:
-                if b:
-                    clip_cuts.append(start)
-                images.append(clip_preview({"clip": asset["path"]}) | meta | {"short": index, "query": beat.text[:40]})
-            else:
-                images.append({"path": asset["path"]} | meta | {"short": index, "query": beat.text[:40]})
-            continue
         if asset["type"] == "clip":
             if b:
                 clip_cuts.append(start)
@@ -780,12 +749,12 @@ def beat_shots(pkg: VideoPackage, index: int, words: list[dict], total: float, w
             images.append(clip_preview({"clip": asset["path"]}) | meta | {"short": index, "query": beat.text[:40]})
             continue
         images.append({"path": asset["path"]} | meta | {"short": index, "query": beat.text[:40]})
-        parts = 2 if dur > MAX_SHOT else 1
+        parts = 2 if dur > MAX_SHOT and not documentary() else 1
         bg = compose_portrait(Image.open(asset["path"]))
         for k in range(parts):  # misma foto, dos encuadres (zoom in / zoom out)
             length = dur / parts + (fade if clips else 0)
             clips.append(still_clip(bg, overlay if k == 0 else empty, length, work / f"b{b:02d}_{k}.mp4",
-                                    seed=b * 2 + k, zoom=0.04 if minimal() else 0.12, punch=True))
+                                    seed=b * 2 + k, zoom=0.04 if minimal() else 0.06 if documentary() else 0.12, punch=True))
             lengths.append(length)
             if k:
                 cuts.append(start + dur / parts * k)
@@ -800,10 +769,11 @@ def render_short(pkg: VideoPackage, index: int, out_dir: Path, tts_provider: str
     work = out_dir / f"work_short{index + 1}"
     work.mkdir(parents=True, exist_ok=True)
 
-    from .tts import load_words, voice_for
+    from .tts import cache_suffix, load_words, voice_for
 
     voice_name, _ = voice_for(short=True, lang=pkg.language)
-    mp3 = cfg.path("cache") / "tts" / f"{_h(short.narration + voice_name + str(tts_provider))}.mp3"
+    key = short.narration + voice_name + str(tts_provider) + cache_suffix(short=True, lang=pkg.language)
+    mp3 = cfg.path("cache") / "tts" / f"{_h(key)}.mp3"
     voice_len = synthesize(short.narration, mp3, short=True, provider=tts_provider, lang=pkg.language)
     total = voice_len + 0.5
 

@@ -25,7 +25,7 @@ from .config import env, load_config
 TICKS = 10_000_000  # edge-tts mide el tiempo en unidades de 100 nanosegundos
 
 
-def _synth_edge(text: str, out: Path, voice: str, rate: str) -> list[dict]:
+def _synth_edge(text: str, out: Path, voice: str, rate: str, pitch: str = "+0Hz") -> list[dict]:
     import edge_tts
     import edge_tts.communicate as communicate
 
@@ -36,7 +36,7 @@ def _synth_edge(text: str, out: Path, voice: str, rate: str) -> list[dict]:
 
     async def _run() -> list[dict]:
         words: list[dict] = []
-        comm = edge_tts.Communicate(text, voice, rate=rate, boundary="WordBoundary", proxy=proxy)
+        comm = edge_tts.Communicate(text, voice, rate=rate, pitch=pitch, boundary="WordBoundary", proxy=proxy)
         with open(out, "wb") as f:
             async for chunk in comm.stream():
                 if chunk["type"] == "audio":
@@ -57,7 +57,7 @@ def _synth_edge(text: str, out: Path, voice: str, rate: str) -> list[dict]:
     return []
 
 
-def _synth_silent(text: str, out: Path, voice: str, rate: str) -> list[dict]:
+def _synth_silent(text: str, out: Path, voice: str, rate: str, pitch: str = "+0Hz") -> list[dict]:
     wpm = load_config()["content"]["words_per_minute"]
     words = text.split()
     seconds = max(1.0, len(words) / wpm * 60)
@@ -78,6 +78,19 @@ def voice_for(short: bool = False, lang: str | None = None) -> tuple[str, str]:
     return voice, rate
 
 
+def pitch_for(short: bool = False) -> str:
+    """Tono de la voz (p. ej. "-8Hz" = más grave, tipo narrador de documental). Por defecto, sin cambios."""
+    v = load_config()["voice"]
+    return v.get("pitch_shorts" if short else "pitch", "+0Hz")
+
+
+def cache_suffix(short: bool = False, lang: str | None = None) -> str:
+    """Parte extra de la clave de caché del audio: si cambian el tono o la velocidad, hay que regenerar la voz.
+    Vacía con el tono por defecto para no invalidar los audios ya aprobados."""
+    pitch = pitch_for(short)
+    return "" if pitch == "+0Hz" else pitch + voice_for(short, lang)[1]
+
+
 def synthesize(text: str, out: Path, *, short: bool = False, provider: str | None = None, lang: str | None = None) -> float:
     """Genera `out` (mp3) + `out.words.json` y devuelve la duración en segundos. Cachea por fichero."""
     provider = provider or load_config()["voice"]["provider"]
@@ -85,7 +98,7 @@ def synthesize(text: str, out: Path, *, short: bool = False, provider: str | Non
     out.parent.mkdir(parents=True, exist_ok=True)
     words_file = words_path(out)
     if not out.exists() or out.stat().st_size == 0 or not words_file.exists():
-        words = PROVIDERS[provider](text, out, voice, rate)
+        words = PROVIDERS[provider](text, out, voice, rate, pitch_for(short))
         words_file.write_text(json.dumps(words, ensure_ascii=False), encoding="utf-8")
     return ffmpeg.duration(out)
 

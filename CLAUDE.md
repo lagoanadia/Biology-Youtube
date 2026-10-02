@@ -90,8 +90,11 @@ shadow, Poppins captions (dark gray, active word soft rose, no uppercase/outline
 Fonts: `assets/fonts/Poppins-*.ttf` (SIL OFL, passed to libass with `fontsdir`).
 
 ## "documentary" style (trial for BioNiche shorts, not yet approved)
-Opt-in via `editing.style: documentary` (+ `transition_seconds: 0.5`). Warm black background, the WHOLE photo/clip
-(never cropped) in a frame ≤1000×880 centered at y=900 with a slow Ken Burns zoom inside the frame only
-(`framed_clip`), letter-spaced gold "B I O N I C H E" label, Playfair Display serif title, Poppins Medium captions
-(active word white, rest gray, `\pos(540,1480)`), 4 px muted-gold progress bar. Audio unchanged (approved mix).
-Output to `output/<id>/documentary/` so the approved render isn't overwritten. Context: the plant short had 79 % swipe-away.
+Opt-in via `editing.style: documentary` (+ `transition_seconds: 0.5`). Owner asked: more elegant, nature-documentary
+feel, image **full screen**, voice **deeper and slower**. Full-bleed photos/clips (one shot per sentence, Ken Burns
+zoom 0.06; low-res `fit` clips are upscaled full screen with lanczos + unsharp instead of the blurred band), dark
+gradients top/bottom, letter-spaced gold "B I O N I C H E" label, Playfair Display serif title with soft shadow,
+Poppins SemiBold captions (active word white, rest light gray, `\pos(540,1560)`), 4 px muted-gold progress bar.
+Voice: `voice.rate_shorts: "-6%"`, `voice.pitch_shorts: "-8Hz"` (edge-tts `pitch`; non-default pitch is part of the
+TTS cache key). Music/whoosh unchanged. Output to `output/<id>/documentary/` so the approved render isn't overwritten.
+Context: the plant short had 79 % swipe-away (20.7 % "viewed").

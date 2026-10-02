@@ -292,3 +292,11 @@ def test_load_words_splits_grouped_events(tmp_path):
     words_path(audio).write_text(json.dumps([{"t": 1.0, "d": 1.0, "w": "In 2020"}, {"t": 2.1, "d": 0.3, "w": "scientists"}]))
     w = load_words(audio)
     assert [x["w"] for x in w] == ["In", "2020", "scientists"] and abs(w[1]["t"] - (1.0 + 2 / 6)) < 1e-9
+
+
+def test_headline_overlay_all_styles(monkeypatch):
+    from biotube import render
+    for style in ("default", "minimal", "documentary"):
+        monkeypatch.setattr(render, "_edit", lambda key, default, s=style: s if key == "style" else default)
+        layer = render.headline_overlay("It can count ☀️", "BioNiche")
+        assert layer.size == render.SHORT_SIZE and layer.mode == "RGBA"
