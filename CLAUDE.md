@@ -128,6 +128,8 @@ cfg['voice'].update(voice_en='en-US-ChristopherNeural', rate_shorts='-10%', pitc
 ### Voice & ambience for video-first documentary shorts (owner feedback on the hagfish)
 - Christopher -14Hz/-10% was "too monotone, robotic and slow" ❌. Use **Andrew Multilingual, `rate_shorts: +4%`,
   `pitch_shorts: -5Hz`, `broadcast_eq: True`**, `transition_seconds: 0.5` → ~33 s for ~98 words.
-- Ambience must be *audible* with texture (owner liked the plant's birds/insects). Deep sea: `deep_sea_life.mp3`
-  (rumble + low-passed hydrophone crackle + bubbles, all CC0) at `ambience_volume: 0.55` (~13 dB under the voice).
-  The plain `deep_sea.mp3` rumble alone was not noticed.
+- Ambience: owner wants it **like the music — barely noticeable, just enough to notice at times**. Crackle/bubbles
+  (hydrophone) felt "awkward" ❌ (removed), and -34 dB was "too loud" ❌. Deep sea now: `deep_sea_drone.mp3`
+  (CC0 underwater drone with slow swells + rumble, low-passed) at `ambience_volume: 0.12` **with `ambience_duck: True`**
+  (sidechain on the voice, ratio 4, release 800 ms): measured -36…-41 dB in pauses vs -15 dB speech.
+- To verify levels without ears: `volumedetect` on the longest word gaps (from `*.words.json`) vs a speech stretch.

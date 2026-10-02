@@ -321,7 +321,8 @@ def final_mix(video: Path, voice: Path, out: Path, subtitles: Path | None = None
     """
     music = _music_track() if _edit("music_volume", 0.06) > 0 else None
     args = ["-i", str(video), "-i", str(voice)]
-    parts, mix_inputs = ["[1:a]asplit=2[vo][key]"], ["[vo]"]
+    # la voz se usa 3 veces: en la mezcla, como "llave" de la música y como llave del ambiente
+    parts, mix_inputs = ["[1:a]asplit=3[vo][key][akey]"], ["[vo]"]
     n = 2
     ambience = Path(__file__).resolve().parent.parent / "assets" / "ambience" / str(_edit("ambience", ""))
     if _edit("ambience", "") and ambience.is_file():  # sonido de naturaleza de fondo (pájaros, viento, insectos)
@@ -329,8 +330,15 @@ def final_mix(video: Path, voice: Path, out: Path, subtitles: Path | None = None
         args += ["-stream_loop", "-1", "-i", str(ambience)]
         parts.append(f"[{n}:a]volume={_edit('ambience_volume', 0.25)},afade=t=in:d=1,"
                      f"afade=t=out:st={max(total - 1.5, 0):.2f}:d=1.5[amb]")
-        mix_inputs.append("[amb]")
+        if _edit("ambience_duck", False):  # baja mientras habla la voz y vuelve despacio en las pausas
+            parts.append("[amb][akey]sidechaincompress=threshold=0.03:ratio=4:attack=40:release=800[ambd]")
+            mix_inputs.append("[ambd]")
+        else:
+            parts.append("[akey]anullsink")
+            mix_inputs.append("[amb]")
         n += 1
+    else:
+        parts.append("[akey]anullsink")
     if music:
         total = ffmpeg.duration(voice)
         args += ["-ss", str(_edit("music_start", 0)), "-stream_loop", "-1", "-i", str(music)]
