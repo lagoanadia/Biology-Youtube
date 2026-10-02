@@ -177,9 +177,9 @@ curated:
     license: Public domain
     attribution: NOAA Ocean Exploration, 2023 Shakedown + EXPRESS West Coast Exploration (public domain, U.S. Government work)
     source_url: https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-express-ex2301-gallery-media-ex2301-dive02-hagfish/
-    start: 10
-    zoom: 1.8
-    cx: 0.69
+    start: 12.2
+    zoom: 1.5
+    cx: 0.68
     cy: 0.52
     x: 0.5
   short0.beat10:

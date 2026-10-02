@@ -124,3 +124,10 @@ cfg['voice'].update(voice_en='en-US-ChristopherNeural', rate_shorts='-10%', pitc
 - Shorts-only packages live in `shorts/en/` (tests require `examples/**` to be full doc+4 shorts packages).
 - `shorts/en/headless-chicken-monster.yaml` (Enypniastes eximia) = first video-only documentary short; ambience `deep_sea.mp3` @0.35.
 - `shorts/en/hagfish-slime-knot.yaml` (Myxine glutinosa): NOAA + NIOZ + Böni et al. 2016 (CC BY 4.0). Owner loved the chicken monster one.
+
+### Voice & ambience for video-first documentary shorts (owner feedback on the hagfish)
+- Christopher -14Hz/-10% was "too monotone, robotic and slow" ❌. Use **Andrew Multilingual, `rate_shorts: +4%`,
+  `pitch_shorts: -5Hz`, `broadcast_eq: True`**, `transition_seconds: 0.5` → ~33 s for ~98 words.
+- Ambience must be *audible* with texture (owner liked the plant's birds/insects). Deep sea: `deep_sea_life.mp3`
+  (rumble + low-passed hydrophone crackle + bubbles, all CC0) at `ambience_volume: 0.55` (~13 dB under the voice).
+  The plain `deep_sea.mp3` rumble alone was not noticed.
