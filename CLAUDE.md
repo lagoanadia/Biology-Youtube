@@ -132,4 +132,9 @@ cfg['voice'].update(voice_en='en-US-ChristopherNeural', rate_shorts='-10%', pitc
   (hydrophone) felt "awkward" ❌ (removed), and -34 dB was "too loud" ❌. Deep sea now: `deep_sea_drone.mp3`
   (CC0 underwater drone with slow swells + rumble, low-passed) at `ambience_volume: 0.12` **with `ambience_duck: True`**
   (sidechain on the voice, ratio 4, release 800 ms): measured -36…-41 dB in pauses vs -15 dB speech.
-- To verify levels without ears: `volumedetect` on the longest word gaps (from `*.words.json`) vs a speech stretch.
+- To verify levels without ears: `volumedetect` on the longest word gaps (from `*.words.json`) vs a speech stretch.- `shorts/en/orchid-mantis.yaml` (Hymenopus coronatus): **no free video exists** (checked Commons, Archive, Figshare/PLOS/
+  Sci Rep supplements — only lab arena clips of other flower mantids) → iNaturalist photos (CC BY/CC0) in documentary
+  style. Photos also accept `x` (horizontal crop) in documentary style. Ambience `borneo_rainforest.mp3` (CC0, Borneo
+  daytime) at 0.3 + duck → -39…-45 dB in pauses. Facts: O'Hanlon et al. 2014 Am Nat; Svenson et al. 2016 Sci Rep.
+- Reference the owner liked: Instagram "Land Of Predator" reel (only cover visible: cinematic close-up, letterbox bars).
+  Such pages repost copyrighted BBC/NatGeo footage → copy the *style* only, never the footage.

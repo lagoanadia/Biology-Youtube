@@ -839,7 +839,11 @@ def beat_shots(pkg: VideoPackage, index: int, words: list[dict], total: float, w
             continue
         images.append({"path": asset["path"]} | meta | {"short": index, "query": beat.text[:40]})
         parts = 2 if dur > MAX_SHOT and not documentary() else 1
-        bg = compose_portrait(Image.open(asset["path"]))
+        if documentary():  # foto a pantalla completa, encuadrada en `x` si el animal no está centrado
+            bg = ImageOps.fit(Image.open(asset["path"]).convert("RGB"), SHORT_SIZE, Image.LANCZOS,
+                              centering=(asset.get("x", 0.5), 0.45))
+        else:
+            bg = compose_portrait(Image.open(asset["path"]))
         for k in range(parts):  # misma foto, dos encuadres (zoom in / zoom out)
             length = dur / parts + (fade if clips else 0)
             clips.append(still_clip(bg, overlay if k == 0 else empty, length, work / f"b{b:02d}_{k}.mp4",
