@@ -317,7 +317,7 @@ def _music_track() -> Path | None:
 
 
 def final_mix(video: Path, voice: Path, out: Path, subtitles: Path | None = None, progress_bar: float | None = None,
-              sfx: Path | None = None, flashes: list[float] | None = None) -> Path:
+              sfx: Path | None = None, flashes: list[float] | None = None, ambience_track: Path | None = None) -> Path:
     """Mezcla final.
 
     - `progress_bar`: duración total -> barra amarilla que avanza abajo (shorts).
@@ -330,8 +330,18 @@ def final_mix(video: Path, voice: Path, out: Path, subtitles: Path | None = None
     # la voz se usa 3 veces: en la mezcla, como "llave" de la música y como llave del ambiente
     parts, mix_inputs = ["[1:a]asplit=3[vo][key][akey]"], ["[vo]"]
     n = 2
-    ambience = Path(__file__).resolve().parent.parent / "assets" / "ambience" / str(_edit("ambience", ""))
-    if _edit("ambience", "") and ambience.is_file():  # sonido de naturaleza de fondo (pájaros, viento, insectos)
+    ambience = ambience_track or Path(__file__).resolve().parent.parent / "assets" / "ambience" / str(_edit("ambience", ""))
+    if ambience_track:  # ambiente ya montado y nivelado (documental largo): sin bucle ni volumen extra
+        parts.append(f"[{n}:a]anull[amb]")
+        args += ["-i", str(ambience_track)]
+        if _edit("ambience_duck", False):  # documental: se aparta un poco para la voz, sin desaparecer
+            parts.append("[amb][akey]sidechaincompress=threshold=0.05:ratio=2:attack=80:release=1200[ambd]")
+            mix_inputs.append("[ambd]")
+        else:
+            parts.append("[akey]anullsink")
+            mix_inputs.append("[amb]")
+        n += 1
+    elif _edit("ambience", "") and ambience.is_file():  # sonido de naturaleza de fondo (pájaros, viento, insectos)
         total = ffmpeg.duration(voice)
         args += ["-stream_loop", "-1", "-i", str(ambience)]
         parts.append(f"[{n}:a]volume={_edit('ambience_volume', 0.25)},afade=t=in:d=1,"
@@ -361,8 +371,15 @@ def final_mix(video: Path, voice: Path, out: Path, subtitles: Path | None = None
         parts.append(f"[{n}:a]volume=0.9[fx]")
         mix_inputs.append("[fx]")
         n += 1
+    if ambience_track:
+        # Documental: se normaliza SOLO la voz; al final solo un limitador. Un loudnorm sobre la mezcla subiría el
+        # ambiente en las pausas (sube lo que está bajo) y sonaría tan alto como el narrador.
+        parts[0] = parts[0].replace("[1:a]asplit=3", "[1:a]loudnorm=I=-15:TP=-2:LRA=7,asplit=3")
+        tail = "[mix]alimiter=limit=0.89:level=disabled[a]"
+    else:
+        tail = "[mix]loudnorm=I=-14:TP=-1.5:LRA=11[a]"
     audio = ";".join(parts) + ";" + "".join(mix_inputs) + (
-        f"amix=inputs={len(mix_inputs)}:duration=first:normalize=0[mix];[mix]loudnorm=I=-14:TP=-1.5:LRA=11[a]")
+        f"amix=inputs={len(mix_inputs)}:duration=first:normalize=0[mix];{tail}")
 
     if subtitles:
         sub = subtitles.resolve().as_posix().replace(":", r"\:")
@@ -623,6 +640,75 @@ def _empty_ass(out: Path, size: tuple[int, int]) -> Path:
 
 
 SENTENCE_RE = re.compile(r"(?<=[.!?])\s+")
+AMBIENCE_DIR = Path(__file__).resolve().parent.parent / "assets" / "ambience"
+_LEVELS: dict[str, float] = {}
+
+
+def mean_db(path: Path) -> float:
+    """Volumen medio (dB) de un audio, para nivelar capas de ambiente distintas."""
+    key = str(path)
+    if key not in _LEVELS:
+        err = ffmpeg.run_capture(["-i", str(path), "-af", "volumedetect", "-f", "null", "-"])
+        _LEVELS[key] = float(re.search(r"mean_volume: ([-0-9.]+)", err).group(1))
+    return _LEVELS[key]
+
+
+def ambience_bed(layers: list[dict], seconds: float, out: Path) -> Path:
+    """Cama de ambiente de un capítulo. Cada capa: {file, db (nivel medio deseado), from, to} en segundos del
+    capítulo; se repite en bucle, entra y sale con fundidos de 2 s. Todo a 48 kHz estéreo."""
+    args, chains, labels = [], [], []
+    for k, layer in enumerate(layers):
+        src = AMBIENCE_DIR / layer["file"]
+        gain = 10 ** ((layer.get("db", -32) - mean_db(src)) / 20)
+        a, b = layer.get("from", 0.0), layer.get("to") or seconds
+        a, b = (seconds + a if a < 0 else a), min(seconds + b if b < 0 else b, seconds)  # negativo = desde el final
+        args += ["-stream_loop", "-1", "-i", str(src)]
+        fade_in = "" if a <= 0 else f"afade=t=in:st={a:.2f}:d=2,"
+        chains.append(f"[{k}:a]aresample=48000,aformat=channel_layouts=stereo,atrim=0:{b:.2f},asetpts=N/SR/TB,"
+                      f"volume={gain:.4f},{fade_in}afade=t=out:st={max(b - 2, 0):.2f}:d=2,"
+                      f"adelay=0|0,apad=whole_dur={seconds:.2f}[l{k}]")
+        if a > 0:  # la capa empieza más tarde: silencio antes
+            chains[-1] = chains[-1].replace(f"atrim=0:{b:.2f}", f"atrim=0:{b - a:.2f}").replace(
+                f"afade=t=in:st={a:.2f}:d=2,", "afade=t=in:d=2,").replace(
+                f"afade=t=out:st={max(b - 2, 0):.2f}", f"afade=t=out:st={max(b - a - 2, 0):.2f}").replace(
+                "adelay=0|0", f"adelay={int(a * 1000)}|{int(a * 1000)}")
+        labels.append(f"[l{k}]")
+    graph = ";".join(chains) + ";" + "".join(labels) + f"amix=inputs={len(labels)}:duration=longest:normalize=0," \
+        f"atrim=0:{seconds:.2f},afade=t=in:d=1.5,afade=t=out:st={max(seconds - 1.5, 0):.2f}:d=1.5[a]"
+    ffmpeg.run([*args, "-filter_complex", graph, "-map", "[a]", "-ar", "48000", "-ac", "2", str(out)])
+    return out
+
+
+def voice_with_pauses(src: Path, words: list[dict], counts: list[int], lead: float, gap: float,
+                      total: float, out: Path) -> list[dict]:
+    """Ritmo de documental: `lead` s de silencio al empezar y `gap` s extra tras cada frase.
+    Corta en el silencio natural entre frases (punto medio entre palabras) y desplaza los tiempos de las palabras."""
+    cuts, idx = [], 0
+    for c in counts[:-1]:
+        idx += c
+        prev, nxt = words[idx - 1], words[idx]
+        cuts.append((prev["t"] + prev["d"] + nxt["t"]) / 2)
+    bounds = [0.0] + cuts + [None]
+    n = len(bounds) - 1
+    parts = [f"[0:a]aresample=48000,aformat=channel_layouts=mono,asplit={n}" + "".join(f"[i{k}]" for k in range(n))]
+    seq = [f"aevalsrc=0:c=mono:s=48000:d={lead:.3f}[lead]"]
+    order = ["[lead]"]
+    for k in range(n):
+        a, b = bounds[k], bounds[k + 1]
+        end = f":end={b:.3f}" if b is not None else ""
+        seq.append(f"[i{k}]atrim=start={a:.3f}{end},asetpts=PTS-STARTPTS[s{k}]")
+        order.append(f"[s{k}]")
+        if k < n - 1:
+            seq.append(f"aevalsrc=0:c=mono:s=48000:d={gap:.3f}[g{k}]")
+            order.append(f"[g{k}]")
+    graph = ";".join(parts + seq) + ";" + "".join(order) + f"concat=n={len(order)}:v=0:a=1,apad=whole_dur={total:.3f}[a]"
+    ffmpeg.run(["-i", str(src), "-filter_complex", graph, "-map", "[a]", "-t", f"{total:.3f}", str(out)])
+    shifted, idx = [], 0
+    for k, c in enumerate(counts):
+        for w in words[idx: idx + c]:
+            shifted.append(dict(w, t=w["t"] + lead + gap * k))
+        idx += c
+    return shifted
 
 
 def render_documentary_story(pkg: VideoPackage, out_dir: Path, tts_provider: str | None = None) -> dict:
@@ -638,16 +724,26 @@ def render_documentary_story(pkg: VideoPackage, out_dir: Path, tts_provider: str
     work.mkdir(parents=True, exist_ok=True)
     voice_name, _ = voice_for(short=False, lang=lang)
     fade = _edit("transition_seconds", 0.6)
-    scene_videos, wavs, durations, srt_chunks, titles = [], [], [], [], []
+    scene_videos, wavs, durations, srt_chunks, titles, beds = [], [], [], [], [], []
     t = 0.0
     for i, scene in enumerate(pkg.documentary.scenes):
         key = scene.narration + voice_name + str(tts_provider) + cache_suffix(short=False, lang=lang)
         mp3 = cfg.path("cache") / "tts" / f"{_h(key)}.mp3"
         voice_len = synthesize(scene.narration, mp3, provider=tts_provider, lang=lang)
-        gap = 1.2 if i < len(pkg.documentary.scenes) - 1 else 1.5
-        seconds = voice_len + gap
-        words = load_words(mp3)
         beats = [Beat(text=x, visual="-") for x in SENTENCE_RE.split(scene.narration.strip()) if x]
+        counts = [len(TOKEN_RE.findall(b.text)) for b in beats]
+        raw_words = load_words(mp3)
+        if sum(counts) != len(raw_words):
+            raise ValueError(f"capítulo {i}: las frases ({sum(counts)} palabras) no cuadran con la voz ({len(raw_words)})")
+        lead = _edit("doc_lead", 2.5) if i else _edit("doc_lead_intro", 3.0)   # imagen + ambiente antes de hablar
+        pause = _edit("doc_sentence_pause", 0.6)                                 # respiro extra tras cada frase
+        tail = 2.0 if i < len(pkg.documentary.scenes) - 1 else 2.5
+        seconds = lead + voice_len + pause * (len(beats) - 1) + tail
+        voice_src = mp3
+        if cfg["voice"].get("broadcast_eq"):
+            voice_src = work / f"voice{i:02d}_eq.wav"
+            ffmpeg.run(["-i", str(mp3), "-af", BROADCAST_EQ, str(voice_src)])
+        words = voice_with_pauses(voice_src, raw_words, counts, lead, pause, seconds, work / f"voice{i:02d}.wav")
         times = beat_times(beats, words, seconds)
         shots: list[list] = []
         for j, (a, b) in enumerate(times):
@@ -675,11 +771,9 @@ def render_documentary_story(pkg: VideoPackage, out_dir: Path, tts_provider: str
                 clips.append(still_clip(bg, overlay, length, path, seed=i * 13 + k, zoom=0.05))
             lengths.append(length)
         scene_videos.append(xfade_concat(clips, lengths, work / f"scene{i:02d}.mp4", "fade", fade))
-        voice_src = mp3
-        if cfg["voice"].get("broadcast_eq"):
-            voice_src = work / f"voice{i:02d}_eq.wav"
-            ffmpeg.run(["-i", str(mp3), "-af", BROADCAST_EQ, str(voice_src)])
-        wavs.append(pad_audio(voice_src, seconds, work / f"voice{i:02d}.wav"))
+        wavs.append(work / f"voice{i:02d}.wav")
+        layers = meta.get("ambience") or [{"file": _edit("ambience", "deep_sea_drone.mp3"), "db": -32}]
+        beds.append(ambience_bed(layers, seconds, work / f"amb{i:02d}.wav"))
         srt_chunks += srt_from_words(words, offset=t)
         durations.append(seconds)
         name = scene.on_screen_text.split("|")[-1]  # YouTube: "The Slime Fish" (sin "Chapter 1")
@@ -690,9 +784,13 @@ def render_documentary_story(pkg: VideoPackage, out_dir: Path, tts_provider: str
     bg, layer = doc_end_card(channel)
     scene_videos.append(still_clip(bg, layer, END_CARD_SECONDS, work / "end.mp4", seed=1, zoom=0.02))
     wavs.append(silence(END_CARD_SECONDS, work / "end.wav"))
+    beds.append(ambience_bed(pkg.curated.get("doc.end", {}).get("ambience") or
+                             [{"file": "ocean_waves_wind.mp3", "db": -34}], END_CARD_SECONDS, work / "amb_end.wav"))
     video = concat(scene_videos, work / "video.mp4")
-    voice = concat(wavs, work / "voice.wav")
-    final = final_mix(video, voice, out_dir / "documentary.mp4", subtitles=_empty_ass(work / "empty.ass", DOC_SIZE))
+    voice = concat([pad_audio(w, ffmpeg.duration(w), w.with_name(w.stem + "_48k.wav")) for w in wavs], work / "voice.wav")
+    amb = concat(beds, work / "ambience.wav")
+    final = final_mix(video, voice, out_dir / "documentary.mp4", subtitles=_empty_ass(work / "empty.ass", DOC_SIZE),
+                      ambience_track=amb)
     write_srt(srt_chunks, out_dir / "documentary.srt")
     chapters = build_chapters(titles, durations, min_chapter=10)  # YouTube exige >= 10 s por capítulo
     return {"documentary": str(final), "documentary_seconds": round(ffmpeg.duration(final), 2),

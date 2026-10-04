@@ -30,6 +30,15 @@ def run(args: list[str]) -> None:
         raise RuntimeError(f"ffmpeg falló:\n{' '.join(cmd)}\n{result.stderr[-2000:]}")
 
 
+def run_capture(args: list[str]) -> str:
+    """Como run(), pero devuelve lo que ffmpeg escribe en stderr (p. ej. el resultado de volumedetect)."""
+    cmd = [ffmpeg_exe(), "-hide_banner", "-y", *args]
+    result = subprocess.run(cmd, capture_output=True, text=True)
+    if result.returncode != 0:
+        raise RuntimeError(f"ffmpeg falló:\n{' '.join(cmd)}\n{result.stderr[-2000:]}")
+    return result.stderr
+
+
 def duration(path: str | Path) -> float:
     """Duración en segundos leyendo la cabecera que imprime `ffmpeg -i`."""
     result = subprocess.run([ffmpeg_exe(), "-hide_banner", "-i", str(path)], capture_output=True, text=True)

@@ -175,3 +175,13 @@ cfg['voice'].update(voice_en='en-US-ChristopherNeural', rate_shorts='-10%', pitc
 - Landscape shows the WHOLE frame: avoid NOAA captions/logos (2023 "ex2301" clips have a top-left logo → zoom 1.15;
   the Böni lab video has left-side captions → zoom 1.45 cx 0.66). No burned subtitles: upload the `.srt` to YouTube.
 - v1 = 844 words → 5:17 (voice ≈ 160 wpm). Mid-roll ads need ≥ 8:00 → ~1,300 words.
+- **v2 feedback (owner): "add fitting ambience; music not necessary; slow down — this is a video, not a short".**
+  → No music (`music_volume=0`), voice `rate='-3%'`, dissolves `transition_seconds=1.0`, `doc_lead` 2.5 s (3.0 intro) of
+  image + ambience before the narrator speaks, `doc_sentence_pause` 0.6 s extra after every sentence
+  (`voice_with_pauses` cuts at the mid-point of the natural gap and shifts word times → clips/SRT stay in sync).
+- Ambience per chapter: `curated["doc.s<i>"]["ambience"] = [{file, db, from, to}]` (db = target mean level, negative
+  from/to = seconds from the chapter end), `doc.end` for the end card. Intro: waves → underwater; seafloor chapters:
+  drone + rumble; open water: `underwater_open.mp3`; ending: back to the waves.
+- ⚠️ Never `loudnorm` the whole mix when there are pauses: it pumps the ambience up to voice level (measured −15 dB).
+  With `ambience_track`, `final_mix` normalizes only the voice and ends with `alimiter`. Target: voice ≈ −18 dB,
+  ambience in pauses ≈ −30…−32 dB.

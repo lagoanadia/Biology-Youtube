@@ -204,8 +204,8 @@ curated:
       for defense, Scientific Reports 6:30371, Supplementary Video 1, CC BY 4.0
     source_url: https://www.nature.com/articles/srep30371
     start: 13
-    zoom: 1.45
-    cx: 0.66
+    zoom: 1.6
+    cx: 0.7
     cy: 0.5
   doc.s0.b9:
     type: clip
@@ -247,6 +247,11 @@ curated:
     start: 72
   doc.s1:
     species: Myxine glutinosa
+    ambience: &id001
+    - file: deep_sea_drone.mp3
+      db: -31
+    - file: deep_sea.mp3
+      db: -35
   doc.s1.b0:
     type: clip
     url: https://archive.org/download/noaa-oe-video-okeanos-explorations-express-ex2301-gallery-media-ex2301-dive01-hagfish/ex2301-dive01-hagfish-640x360-1.mp4
@@ -347,8 +352,8 @@ curated:
       for defense, Scientific Reports 6:30371, Supplementary Video 1, CC BY 4.0
     source_url: https://www.nature.com/articles/srep30371
     start: 3.6
-    zoom: 1.45
-    cx: 0.66
+    zoom: 1.6
+    cx: 0.7
     cy: 0.5
   doc.s1.b15:
     hold: true
@@ -372,8 +377,8 @@ curated:
       for defense, Scientific Reports 6:30371, Supplementary Video 1, CC BY 4.0
     source_url: https://www.nature.com/articles/srep30371
     start: 12.5
-    zoom: 1.45
-    cx: 0.66
+    zoom: 1.6
+    cx: 0.7
     cy: 0.5
   doc.s1.b19:
     hold: true
@@ -381,6 +386,7 @@ curated:
     hold: true
   doc.s2:
     species: Enypniastes eximia
+    ambience: *id001
   doc.s2.b0:
     type: clip
     url: https://archive.org/download/noaa-oe-video-video-playlist-ex1711-seacuke/chickenmonster-1280x720-1.mp4
@@ -471,6 +477,7 @@ curated:
     hold: true
   doc.s3:
     species: Cirrata
+    ambience: *id001
   doc.s3.b0:
     type: clip
     url: https://archive.org/download/noaa-oe-video-okeanos-explorations-ex2104-features-squid-octopod-media-dive07-dumbo/dive07-dumbo-1280x720-2.ia.mp4
@@ -551,6 +558,7 @@ curated:
     hold: true
   doc.s4:
     species: Bathynomus giganteus
+    ambience: *id001
   doc.s4.b0:
     type: clip
     license: Public domain
@@ -629,6 +637,11 @@ curated:
     hold: true
   doc.s5:
     species: Ctenophora
+    ambience: &id002
+    - file: underwater_open.mp3
+      db: -31
+    - file: deep_sea_drone.mp3
+      db: -35
   doc.s5.b0:
     type: clip
     license: Public domain
@@ -697,6 +710,7 @@ curated:
     start: 9
   doc.s6:
     species: Siphonophora
+    ambience: *id002
   doc.s6.b0:
     type: clip
     license: Public domain
@@ -824,3 +838,29 @@ curated:
     attribution: NOAA Ocean Exploration, Seascape Alaska 3 (2023) (public domain, U.S. Government work)
     source_url: https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-seascape-alaska-ex2304-gallery-media-dive01-unexplored-planet/
     start: 24
+  doc.s0:
+    ambience:
+    - file: ocean_waves_wind.mp3
+      db: -24
+      to: 13
+    - file: underwater_open.mp3
+      db: -32
+      from: 10
+    - file: deep_sea_drone.mp3
+      db: -34
+      from: 10
+  doc.s7:
+    ambience:
+    - file: deep_sea_drone.mp3
+      db: -32
+      to: -9
+    - file: underwater_open.mp3
+      db: -34
+      to: -9
+    - file: ocean_waves_wind.mp3
+      db: -29
+      from: -12
+  doc.end:
+    ambience:
+    - file: ocean_waves_wind.mp3
+      db: -31
