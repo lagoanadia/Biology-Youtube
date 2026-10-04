@@ -106,6 +106,13 @@ cfg['voice'].update(voice_en='en-US-ChristopherNeural', rate_shorts='-10%', pitc
   Voice EQ `BROADCAST_EQ` (+5 dB @110 Hz, -2 dB @6.5 kHz, compressor) only changes tone, so word timings stay valid.
 - Context: the plant short had 79 % swipe-away (20.7 % "viewed"). Slower voice → 44 s instead of 33 s.
 
+## ⭐ GOLD STANDARD: `shorts/en/hagfish-slime-knot.yaml` (owner: "great because it uses all video clips … of the
+## hagfish actually doing something weird/cool; the voice is perfect")
+- **100 % video clips, 0 photos**, and the clips show the animal *doing* its weird behaviour (slime pores, knot).
+  → Only pick animals with enough free footage of the behaviour itself. If none exists (orchid mantis), say so first.
+- Voice exactly as rendered there: Andrew Multilingual, `rate_shorts: +4%`, `pitch_shorts: -10Hz`, `broadcast_eq: True`.
+- Documentary style, `deep_sea_drone.mp3` @0.12 + `ambience_duck`, `transition_seconds: 0.5`, ~33 s.
+
 ## Video-first shorts (owner: "more video clips than pictures, following a weird animal doing weird things")
 - **Best clip source: NOAA Ocean Exploration on the Internet Archive** — ~584 deep-sea ROV videos, **public domain**,
   mostly 720p/1080p. List: `https://archive.org/advancedsearch.php?q=identifier:noaa-oe-video*&fl[]=identifier&fl[]=title&rows=2000&output=json`;
