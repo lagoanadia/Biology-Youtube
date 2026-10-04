@@ -35,6 +35,10 @@ When the owner says "PERFECT, don't touch anything else": change **only** what t
 - ❌ No "…" and no stacked commas mid-sentence: the TTS pauses on every one → "tone is weird".
 - ❌ But also no comma-less run-on sentences: they become confusing. Use periods instead.
 - ❌ Avoid "No X, no Y" phrasing ("No red, no outline") — the voice gave it a weird accent.
+- **Tell ONE connected story, not a list of facts.** Owner: "it looks like random facts … no correlation … unnatural".
+  Each sentence must follow from the previous one (mystery → reveal → *but* → *so/instead* → *that's why* → payoff
+  that answers the hook). Use connectors (but, so, instead, that's how, just like). Reference: dumbo octopus v2.
+- Connected ≠ invented causality: don't write "X, so Y" unless a source says so (e.g. ❌ "gliding lets it reach depths").
 - Every claim must be real and sourced (sources go in the package, **not** in YouTube descriptions — the owner can't paste citations).
 
 ## Visuals: every sentence shows what is being said

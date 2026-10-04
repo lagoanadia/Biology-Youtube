@@ -30,43 +30,45 @@ documentary_metadata:
   hashtags: []
   thumbnail_text: '-'
 shorts:
-- hook: This octopus swims by flapping its ears.
-  fact: Meet the dumbo octopus. It's named after Disney's flying elephant. But those ears are actually fins. Most octopuses
-    shoot out water to jet around. Dumbo octopuses mostly use their fins instead. Their arms are joined by a web of skin.
-    So they can open up like an umbrella. They also live deeper than any other known octopus. One was filmed almost seven
-    kilometers down. Down there, it's completely dark.
+- hook: In the deep sea, something is flapping its ears.
+  fact: It's a dumbo octopus. And those ears are actually fins. Most octopuses get around by shooting out jets of water. But
+    the dumbo barely does that. Instead, it flaps its fins and glides through the water. That's how it got its name. Just
+    like Disney's flying elephant. Its arms are webbed, so it can open them like an umbrella. And it glides deeper than any
+    octopus we know. One was filmed almost seven kilometers down. The deepest octopus ever seen.
   cta: Follow BioNiche for more weird animals.
   visual_queries:
   - dumbo octopus
   on_screen_texts: []
   beats:
-  - text: This octopus swims by flapping its ears.
+  - text: In the deep sea, something is flapping its ears.
     visual: dumbo octopus
-  - text: Meet the dumbo octopus.
+  - text: It's a dumbo octopus.
     visual: dumbo octopus
-  - text: It's named after Disney's flying elephant.
+  - text: And those ears are actually fins.
     visual: dumbo octopus
-  - text: But those ears are actually fins.
+  - text: Most octopuses get around by shooting out jets of water.
     visual: dumbo octopus
-  - text: Most octopuses shoot out water to jet around.
+  - text: But the dumbo barely does that.
     visual: dumbo octopus
-  - text: Dumbo octopuses mostly use their fins instead.
+  - text: Instead, it flaps its fins and glides through the water.
     visual: dumbo octopus
-  - text: Their arms are joined by a web of skin.
+  - text: That's how it got its name.
     visual: dumbo octopus
-  - text: So they can open up like an umbrella.
+  - text: Just like Disney's flying elephant.
     visual: dumbo octopus
-  - text: They also live deeper than any other known octopus.
+  - text: Its arms are webbed, so it can open them like an umbrella.
+    visual: dumbo octopus
+  - text: And it glides deeper than any octopus we know.
     visual: dumbo octopus
   - text: One was filmed almost seven kilometers down.
     visual: dumbo octopus
-  - text: Down there, it's completely dark.
+  - text: The deepest octopus ever seen.
     visual: dumbo octopus
   - text: Follow BioNiche for more weird animals.
     visual: dumbo octopus
 shorts_metadata:
 - title: This Octopus Swims With Its Ears 🐙
-  description: 'Dumbo octopuses flap ear-like fins to glide through the deep sea. Footage: NOAA Ocean Exploration.
+  description: 'Deep in the ocean, the dumbo octopus flaps ear-like fins to glide. Footage: NOAA Ocean Exploration.
 
 
     #shorts #deepsea #octopus'
@@ -98,17 +100,9 @@ curated:
     license: Public domain
     start: 17
     x: 0.55
-  short0.beat2:
+  short0.beat2: &id001
     hold: true
   short0.beat3:
-    type: clip
-    url: https://archive.org/download/noaa-oe-video-okeanos-explorations-ex2104-gallery-media-dumbo-atlantis/dumbo-atlantis-1280x720-1.mp4
-    attribution: NOAA Ocean Exploration, Deepwater Backyard 2014 (public domain, U.S. Government work)
-    source_url: https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-ex2104-gallery-media-dumbo-atlantis/
-    license: Public domain
-    start: 9
-    x: 0.4
-  short0.beat4:
     type: clip
     url: https://archive.org/download/noaa-oe-video-video-shorts-ex1903-dumbo/ex1903-dumbo.mp4
     attribution: NOAA Ocean Exploration, Windows to the Deep 2019 (public domain, U.S. Government work)
@@ -119,9 +113,25 @@ curated:
     cx: 0.58
     cy: 0.45
     x: 0.5
+  short0.beat4: *id001
   short0.beat5:
-    hold: true
+    type: clip
+    url: https://archive.org/download/noaa-oe-video-okeanos-explorations-ex2104-gallery-media-dumbo-atlantis/dumbo-atlantis-1280x720-1.mp4
+    attribution: NOAA Ocean Exploration, Deepwater Backyard 2014 (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-ex2104-gallery-media-dumbo-atlantis/
+    license: Public domain
+    start: 9
+    x: 0.4
   short0.beat6:
+    type: clip
+    url: https://archive.org/download/noaa-oe-video-video-shorts-ex1907-dumbo1/ex1907-dumbo1.mp4
+    attribution: NOAA Ocean Exploration, 2019 Southeastern U.S. Deep-sea Exploration (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/video-shorts-ex1907-dumbo1/
+    license: Public domain
+    start: 0.2
+    x: 0.95
+  short0.beat7: *id001
+  short0.beat8:
     type: clip
     url: https://archive.org/download/noaa-oe-video-video-playlist-arctic-dumbo/dumbo_octopus_1280x720.mp4
     attribution: 'Hidden Ocean 2016: Chukchi Borderlands, NOAA Ocean Exploration / Global Foundation for Ocean Exploration
@@ -133,9 +143,7 @@ curated:
     cx: 0.6
     cy: 0.5
     x: 0.5
-  short0.beat7:
-    hold: true
-  short0.beat8:
+  short0.beat9:
     type: clip
     url: https://archive.org/download/noaa-oe-video-okeanos-explorations-ex2104-features-squid-octopod-media-dive07-dumbo/dive07-dumbo-1280x720-2.ia.mp4
     attribution: NOAA Ocean Exploration, 2021 North Atlantic Stepping Stones (public domain, U.S. Government work)
@@ -143,11 +151,9 @@ curated:
     license: Public domain
     start: 72
     x: 0.75
-  short0.beat9:
-    hold: true
-  short0.beat10:
-    hold: true
-  short0.beat11:
+  short0.beat10: *id001
+  short0.beat11: *id001
+  short0.beat12:
     type: clip
     url: https://archive.org/download/noaa-oe-video-video-shorts-ex1907-dumbo1/ex1907-dumbo1.mp4
     attribution: NOAA Ocean Exploration, 2019 Southeastern U.S. Deep-sea Exploration (public domain, U.S. Government work)
