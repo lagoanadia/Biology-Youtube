@@ -151,3 +151,7 @@ cfg['voice'].update(voice_en='en-US-ChristopherNeural', rate_shorts='-10%', pitc
   that sentence (pair related sentences → ~4-5 s per shot, 7 shots in 32 s). `transition_seconds: 0.6`.
 - Owner wants **more video than photos**. Pexels/Pixabay pages are Cloudflare-blocked here; the Pexels API needs a free
   key (`PEXELS_API_KEY`) the owner would have to add to the environment. Commons transcoded video works in bursts (429s).
+- `shorts/en/dumbo-octopus.yaml`: 5 NOAA dumbo clips (Atlantis 2014, Key West 2019 1080p, Arctic umbrella, dive07
+  Cirrothauma magna close-up, Windows to the Deep 2019). Mixed species → talk about "dumbo octopuses", species label
+  `Cirrata`. No serif title (it covered the close-up head). Facts: NOAA (fins, jet propulsion abandoned, Dumbo name),
+  Jamieson & Vecchione 2020 (Grimpoteuthis at 6,957 m). Pexels API keys are paused (owner checked).
