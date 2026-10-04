@@ -127,7 +127,7 @@ cfg['voice'].update(voice_en='en-US-ChristopherNeural', rate_shorts='-10%', pitc
 
 ### Voice & ambience for video-first documentary shorts (owner feedback on the hagfish)
 - Christopher -14Hz/-10% was "too monotone, robotic and slow" ❌. Use **Andrew Multilingual, `rate_shorts: +4%`,
-  `pitch_shorts: -10Hz`, `broadcast_eq: True`** ✅ APPROVED. edge-tts pitch can crackle on a word before a comma
+  `pitch_shorts: -6Hz`, `broadcast_eq: True`** (owner: -10Hz approved on the hagfish, then "take a higher voice" on the orchid mantis → -6Hz; -5Hz earlier was "not deep enough"). edge-tts pitch can crackle on a word before a comma
   ("to a bee," → broken F0 band in the spectrogram) → **reword the sentence** and check its spectrogram.
   ❌ `pitch_semitones_post` (rubberband) was tried as a fix: owner said "the voice sounds worse" — don't use it. ("the voice on the short is great"; -5Hz was not deep enough), `transition_seconds: 0.5` → ~33 s for ~98 words.
 - Ambience: owner wants it **like the music — barely noticeable, just enough to notice at times**. Crackle/bubbles
