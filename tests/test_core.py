@@ -324,3 +324,24 @@ def test_sentence_chunks_split_at_comma():
     chunks = sentence_chunks([Beat(text=text, visual="x")], words, total=5.0)
     assert [c[2] for c in chunks] == ["So the more the prey moves,", "the more the plant invests in eating it."]
     assert chunks[1][0] == words[6]["t"]
+
+
+def test_hold_beats_extend_previous_shot(monkeypatch, tmp_path):
+    """Una frase con `hold` no crea plano nuevo: el anterior dura las dos frases."""
+    from PIL import Image
+    from biotube import render
+    from biotube.models import Beat
+    photo = tmp_path / "p.jpg"
+    Image.new("RGB", (800, 600), "green").save(photo)
+    pkg = load_package(EXAMPLES[0])
+    pkg.shorts[0].beats = [Beat(text="One two.", visual="x"), Beat(text="Three four.", visual="x"),
+                           Beat(text="Five six.", visual="x")]
+    pkg.curated = {"short0.beat0": {"type": "photo", "path": str(photo)}, "short0.beat1": {"hold": True},
+                   "short0.beat2": {"type": "photo", "path": str(photo)}}
+    words = [{"t": i * 0.5, "d": 0.4, "w": w} for i, w in enumerate("One two Three four Five six".split())]
+    made = []
+    monkeypatch.setattr(render, "still_clip", lambda bg, ov, length, out, **kw: made.append(length) or out)
+    monkeypatch.setattr(render, "xfade_concat", lambda files, lengths, out, t, d: out)
+    _, _, cuts, _, _ = render.beat_shots(pkg, 0, words, 3.0, tmp_path, "BioNiche")
+    assert len(made) == 2 and cuts == [words[4]["t"] - 0.05]
+    assert made[0] > made[1] - 1.0  # el primer plano cubre dos frases

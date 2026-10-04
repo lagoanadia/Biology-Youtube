@@ -127,7 +127,9 @@ cfg['voice'].update(voice_en='en-US-ChristopherNeural', rate_shorts='-10%', pitc
 
 ### Voice & ambience for video-first documentary shorts (owner feedback on the hagfish)
 - Christopher -14Hz/-10% was "too monotone, robotic and slow" ❌. Use **Andrew Multilingual, `rate_shorts: +4%`,
-  `pitch_shorts: -10Hz`, `broadcast_eq: True`** ✅ APPROVED ("the voice on the short is great"; -5Hz was not deep enough), `transition_seconds: 0.5` → ~33 s for ~98 words.
+  `pitch_shorts: -10Hz`, `broadcast_eq: True`** ✅ APPROVED tone. **BUT edge-tts pitch shifting crackles on some words**
+  ("to a bee," → broken F0 band in the spectrogram; owner heard "distortion"). Now: `pitch_shorts: '+0Hz'` +
+  **`pitch_semitones_post: -1.6`** (ffmpeg `rubberband`, formants preserved, same duration → timings valid). ("the voice on the short is great"; -5Hz was not deep enough), `transition_seconds: 0.5` → ~33 s for ~98 words.
 - Ambience: owner wants it **like the music — barely noticeable, just enough to notice at times**. Crackle/bubbles
   (hydrophone) felt "awkward" ❌ (removed), and -34 dB was "too loud" ❌. Deep sea now: `deep_sea_drone.mp3`
   (CC0 underwater drone with slow swells + rumble, low-passed) at `ambience_volume: 0.12` **with `ambience_duck: True`**
@@ -138,3 +140,7 @@ cfg['voice'].update(voice_en='en-US-ChristopherNeural', rate_shorts='-10%', pitc
   daytime) at 0.3 + duck → -39…-45 dB in pauses. Facts: O'Hanlon et al. 2014 Am Nat; Svenson et al. 2016 Sci Rep.
 - Reference the owner liked: Instagram "Land Of Predator" reel (only cover visible: cinematic close-up, letterbox bars).
   Such pages repost copyrighted BBC/NatGeo footage → copy the *style* only, never the footage.
+- **Pacing:** owner wants clips to change *slower*. Curated `shortN.beatM: {hold: true}` keeps the previous shot through
+  that sentence (pair related sentences → ~4-5 s per shot, 7 shots in 32 s). `transition_seconds: 0.6`.
+- Owner wants **more video than photos**. Pexels/Pixabay pages are Cloudflare-blocked here; the Pexels API needs a free
+  key (`PEXELS_API_KEY`) the owner would have to add to the environment. Commons transcoded video works in bursts (429s).

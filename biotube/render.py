@@ -808,11 +808,20 @@ def beat_shots(pkg: VideoPackage, index: int, words: list[dict], total: float, w
     trans = _edit("transition", "fade")
     fade = _edit("transition_seconds", 0.2) if trans != "cut" else 0.0
     clips, lengths, images, used, cuts, clip_cuts, stickers = [], [], [], set(), [], [], []
-    for b, (start, end) in enumerate(beat_times(short.beats, words, total)):
-        if b:
-            cuts.append(start)
+    times = beat_times(short.beats, words, total)
+    for b, (start, end) in enumerate(times):
         if (beat_sticker := short.beats[b].sticker) and _edit("stickers", False):
             stickers.append((start + 0.15, min(end, start + 1.8), beat_sticker))
+    # Ritmo más lento: una frase con `hold: true` en `curated` NO cambia de plano, alarga el anterior
+    shots: list[list] = []  # [primera frase, inicio, fin]
+    for b, (start, end) in enumerate(times):
+        if shots and (pkg.curated.get(f"short{index}.beat{b}") or {}).get("hold"):
+            shots[-1][2] = end
+        else:
+            shots.append([b, start, end])
+    for b, start, end in shots:
+        if b:
+            cuts.append(start)
         beat = short.beats[b]
         overlay = headline_overlay(headline, channel) if b == 0 else empty
         if documentary() and b == 1 and pkg.documentary.species:
@@ -873,9 +882,16 @@ def render_short(pkg: VideoPackage, index: int, out_dir: Path, tts_provider: str
     if short.beats:
         video, images, cuts, clip_cuts, stickers = beat_shots(pkg, index, load_words(mp3), total, work, channel)
         voice_src = mp3
+        chain = []
+        if semis := cfg["voice"].get("pitch_semitones_post"):
+            # Bajar el tono DESPUÉS de generar la voz: el "pitch" de edge-tts rompe algunas palabras ("bee" con
+            # crepitación). rubberband cambia solo el tono (no la velocidad) y conserva los formantes (el timbre).
+            chain.append(f"rubberband=pitch={2 ** (semis / 12):.5f}:formant=preserved:pitchq=quality")
         if cfg["voice"].get("broadcast_eq"):  # más "pecho" (graves), menos eses y compresión: voz de cabina
+            chain.append(BROADCAST_EQ)
+        if chain:
             voice_src = work / "voice_eq.wav"
-            ffmpeg.run(["-i", str(mp3), "-af", BROADCAST_EQ, str(voice_src)])
+            ffmpeg.run(["-i", str(mp3), "-af", ",".join(chain), str(voice_src)])
         voice = pad_audio(voice_src, total, work / "voice.wav")
         if documentary():  # subtítulos de documental: frase completa
             ass = write_sentence_ass(sentence_chunks(short.beats, load_words(mp3), total), work / "captions.ass")

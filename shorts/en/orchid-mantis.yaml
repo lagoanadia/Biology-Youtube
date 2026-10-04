@@ -92,12 +92,7 @@ curated:
     source_url: https://www.inaturalist.org/photos/359672514
     x: 0.5
   short0.beat1:
-    type: photo
-    url: https://inaturalist-open-data.s3.amazonaws.com/photos/352747876/large.jpeg
-    license: CC BY
-    attribution: Cheryl Stinchcomb, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/352747876)
-    source_url: https://www.inaturalist.org/photos/352747876
-    x: 0.55
+    hold: true
   short0.beat2:
     type: photo
     url: https://inaturalist-open-data.s3.amazonaws.com/photos/168345099/large.jpeg
@@ -113,12 +108,7 @@ curated:
     source_url: https://www.inaturalist.org/photos/451185876
     x: 0.5
   short0.beat4:
-    type: photo
-    url: https://inaturalist-open-data.s3.amazonaws.com/photos/154549867/large.jpg
-    license: CC BY
-    attribution: Cheongweei Gan, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/154549867)
-    source_url: https://www.inaturalist.org/photos/154549867
-    x: 0.45
+    hold: true
   short0.beat5:
     type: photo
     url: https://live.staticflickr.com/2686/4465465473_43d40d9859_b.jpg
@@ -141,19 +131,9 @@ curated:
     source_url: https://www.inaturalist.org/photos/352747821
     x: 0.55
   short0.beat8:
-    type: photo
-    url: https://inaturalist-open-data.s3.amazonaws.com/photos/64969704/large.jpg
-    license: CC BY-SA
-    attribution: Pavel Kirillov, CC BY-SA, vía iNaturalist (https://www.inaturalist.org/photos/64969704)
-    source_url: https://www.inaturalist.org/photos/64969704
-    x: 0.5
+    hold: true
   short0.beat9:
-    type: photo
-    url: https://inaturalist-open-data.s3.amazonaws.com/photos/352747862/large.jpeg
-    license: CC BY
-    attribution: Cheryl Stinchcomb, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/352747862)
-    source_url: https://www.inaturalist.org/photos/352747862
-    x: 0.47
+    hold: true
   short0.beat10:
     type: photo
     url: https://inaturalist-open-data.s3.amazonaws.com/photos/408392017/large.jpeg
@@ -162,9 +142,4 @@ curated:
     source_url: https://www.inaturalist.org/photos/408392017
     x: 0.5
   short0.beat11:
-    type: photo
-    url: https://inaturalist-open-data.s3.amazonaws.com/photos/175266251/large.jpeg
-    license: CC BY
-    attribution: Cheryl Stinchcomb, CC BY, vía iNaturalist (https://www.inaturalist.org/photos/175266251)
-    source_url: https://www.inaturalist.org/photos/175266251
-    x: 0.55
+    hold: true
