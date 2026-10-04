@@ -1,0 +1,161 @@
+id: giant-isopod
+language: en
+documentary:
+  topic: Giant isopod (Bathynomus giganteus) — short only
+  working_title: '-'
+  category: animal
+  subcategory: deep sea
+  hook_type: shock
+  species:
+  - Bathynomus giganteus
+  scenes:
+  - narration: '-'
+    visual_query: '-'
+    on_screen_text: '-'
+    key_fact: false
+  sources:
+  - title: 'NOAA Ocean Exploration: ''Winner, Winner, Fish Head Dinner'' — giant isopod (Bathynomus giganteus) with a fish
+      head; deep-sea scavengers, close relatives of pill bugs, up to a foot and a half long; known for more than a century
+      but little is known about their biology or behavior'
+    reference: https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-ex1907-dailyupdates-nov18-media-dive11-isopod/
+  - title: 'NOAA Ocean Exploration: Giant Isopod (Gulf of Mexico 2017) — usually seen resting on the seafloor, rarely seen
+      swimming; nearly 30 cm'
+    reference: https://oceanexplorer.noaa.gov/multimedia/video-playlist-ex1711-giant-isopod/
+documentary_metadata:
+  title: '-'
+  description: '-'
+  tags: []
+  hashtags: []
+  thumbnail_text: '-'
+shorts:
+- hook: On the deep seafloor, something just found a fish head.
+  fact: It's a giant isopod. A relative of the tiny pill bugs in your garden. But this one can grow up to a foot and a half
+    long. It's a scavenger. It feeds on dead animals that sink to the bottom. But this one didn't stay to eat. It grabbed
+    the fish head and swam away with it. Look closely. It's swimming upside down. We've known about giant isopods for over
+    a century. Yet we still know very little about how they live.
+  cta: Follow BioNiche for more weird animals.
+  visual_queries:
+  - Bathynomus giganteus
+  on_screen_texts: []
+  beats:
+  - text: On the deep seafloor, something just found a fish head.
+    visual: giant isopod
+  - text: It's a giant isopod.
+    visual: giant isopod
+  - text: A relative of the tiny pill bugs in your garden.
+    visual: giant isopod
+  - text: But this one can grow up to a foot and a half long.
+    visual: giant isopod
+  - text: It's a scavenger.
+    visual: giant isopod
+  - text: It feeds on dead animals that sink to the bottom.
+    visual: giant isopod
+  - text: But this one didn't stay to eat.
+    visual: giant isopod
+  - text: It grabbed the fish head and swam away with it.
+    visual: giant isopod
+  - text: Look closely. It's swimming upside down.
+    visual: giant isopod
+  - text: We've known about giant isopods for over a century.
+    visual: giant isopod
+  - text: Yet we still know very little about how they live.
+    visual: giant isopod
+  - text: Follow BioNiche for more weird animals.
+    visual: giant isopod
+shorts_metadata:
+- title: A Giant Deep-Sea Bug Steals a Fish Head 🐟
+  description: 'A giant isopod finds a fish head on the deep seafloor and swims off with it. Footage: NOAA Ocean Exploration.
+
+
+    #shorts #deepsea #isopod'
+  tags:
+  - giant isopod
+  - Bathynomus giganteus
+  - deep sea creatures
+  - isopod
+  - weird animals
+  hashtags:
+  - '#shorts'
+  - '#deepsea'
+  - '#isopod'
+  thumbnail_text: '-'
+curated:
+  short0.beat0:
+    type: clip
+    license: Public domain
+    url: https://archive.org/download/noaa-oe-video-okeanos-explorations-ex1907-dailyupdates-nov18-media-dive11-isopod/dive11-isopod-1280x720-1.ia.mp4
+    attribution: NOAA Ocean Exploration, 2019 Southeastern U.S. Deep-sea Exploration (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-ex1907-dailyupdates-nov18-media-dive11-isopod/
+    start: 14.5
+    x: 0.55
+  short0.beat1:
+    type: clip
+    license: Public domain
+    url: https://archive.org/download/noaa-oe-video-video-playlist-ex1711-giant-isopod/isopod-1280x720-2.mp4
+    attribution: NOAA Ocean Exploration, Gulf of Mexico 2017 (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/video-playlist-ex1711-giant-isopod/
+    start: 33
+    x: 0.6
+  short0.beat2: &id001
+    hold: true
+  short0.beat3:
+    type: clip
+    license: Public domain
+    url: https://archive.org/download/noaa-oe-video-video-playlist-ex1711-giant-isopod/isopod-1280x720-2.mp4
+    attribution: NOAA Ocean Exploration, Gulf of Mexico 2017 (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/video-playlist-ex1711-giant-isopod/
+    start: 40
+    x: 0.55
+  short0.beat4:
+    type: clip
+    license: Public domain
+    url: https://archive.org/download/noaa-oe-video-okeanos-explorations-ex1907-dailyupdates-nov18-media-dive11-isopod/dive11-isopod-1280x720-1.ia.mp4
+    attribution: NOAA Ocean Exploration, 2019 Southeastern U.S. Deep-sea Exploration (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-ex1907-dailyupdates-nov18-media-dive11-isopod/
+    start: 16
+    x: 0.6
+  short0.beat5: *id001
+  short0.beat6:
+    type: clip
+    license: Public domain
+    url: https://archive.org/download/noaa-oe-video-okeanos-explorations-ex1907-dailyupdates-nov18-media-dive11-isopod/dive11-isopod-1280x720-1.ia.mp4
+    attribution: NOAA Ocean Exploration, 2019 Southeastern U.S. Deep-sea Exploration (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-ex1907-dailyupdates-nov18-media-dive11-isopod/
+    start: 18.5
+    x: 0.32
+  short0.beat7:
+    type: clip
+    license: Public domain
+    url: https://archive.org/download/noaa-oe-video-okeanos-explorations-ex1907-dailyupdates-nov18-media-dive11-isopod/dive11-isopod-1280x720-1.ia.mp4
+    attribution: NOAA Ocean Exploration, 2019 Southeastern U.S. Deep-sea Exploration (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-ex1907-dailyupdates-nov18-media-dive11-isopod/
+    start: 30
+    x: 0.5
+    zoom: 2.0
+    cx: 0.45
+    cy: 0.35
+  short0.beat8:
+    type: clip
+    license: Public domain
+    url: https://archive.org/download/noaa-oe-video-okeanos-explorations-ex1907-dailyupdates-nov18-media-dive11-isopod/dive11-isopod-1280x720-1.ia.mp4
+    attribution: NOAA Ocean Exploration, 2019 Southeastern U.S. Deep-sea Exploration (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-ex1907-dailyupdates-nov18-media-dive11-isopod/
+    start: 56.5
+    x: 0.25
+  short0.beat9:
+    type: clip
+    license: Public domain
+    url: https://archive.org/download/noaa-oe-video-video-playlist-ex1711-giant-isopod/isopod-1280x720-2.mp4
+    attribution: NOAA Ocean Exploration, Gulf of Mexico 2017 (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/video-playlist-ex1711-giant-isopod/
+    start: 12.5
+    x: 0.2
+  short0.beat10: *id001
+  short0.beat11:
+    type: clip
+    license: Public domain
+    url: https://archive.org/download/noaa-oe-video-video-playlist-ex1711-giant-isopod/isopod-1280x720-2.mp4
+    attribution: NOAA Ocean Exploration, Gulf of Mexico 2017 (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/video-playlist-ex1711-giant-isopod/
+    start: 48
+    x: 0.5

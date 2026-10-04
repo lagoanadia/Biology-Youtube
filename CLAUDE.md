@@ -161,3 +161,6 @@ cfg['voice'].update(voice_en='en-US-ChristopherNeural', rate_shorts='-10%', pitc
   Cirrothauma magna close-up, Windows to the Deep 2019). Mixed species → talk about "dumbo octopuses", species label
   `Cirrata`. No serif title (it covered the close-up head). Facts: NOAA (fins, jet propulsion abandoned, Dumbo name),
   Jamieson & Vecchione 2020 (Grimpoteuthis at 6,957 m). Pexels API keys are paused (owner checked).
+- `shorts/en/giant-isopod.yaml` (Bathynomus giganteus): NOAA "Fish Head Dinner" (2019, isopod lifts a fish head and
+  swims off with it, upside down) + "Giant Isopod" (Gulf of Mexico 2017, swim-in + close crawl). Story-style script.
+  Swimming animals move across the frame: read their x/y on the contact sheet at the *shot's* time, not the clip start.
