@@ -185,3 +185,8 @@ cfg['voice'].update(voice_en='en-US-ChristopherNeural', rate_shorts='-10%', pitc
 - ⚠️ Never `loudnorm` the whole mix when there are pauses: it pumps the ambience up to voice level (measured −15 dB).
   With `ambience_track`, `final_mix` normalizes only the voice and ends with `alimiter`. Target: voice ≈ −18 dB,
   ambience in pauses ≈ −30…−32 dB.
+- **v3 feedback: "audio random, cuts in between"; "let the real clip sound play; 5-6 s scenes of just the clip".**
+  → Chapters now dip to black (0.8 s fade out/in); curated `{..., breath: 4}` on a sentence = seconds of image only
+  (no narrator) after it, ambience rises as the duck releases (~11 breaths, 47 s in total).
+  → ❌ Original clip audio is NOT usable: NOAA "produced" clips carry background music (tonal lines + beats in the
+  spectrogram, possible Content ID) or interviews; the rest are silent (−91 dB). ROVs don't record sea sound.

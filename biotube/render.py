@@ -679,15 +679,17 @@ def ambience_bed(layers: list[dict], seconds: float, out: Path) -> Path:
     return out
 
 
-def voice_with_pauses(src: Path, words: list[dict], counts: list[int], lead: float, gap: float,
+def voice_with_pauses(src: Path, words: list[dict], counts: list[int], lead: float, gap: float | list[float],
                       total: float, out: Path) -> list[dict]:
-    """Ritmo de documental: `lead` s de silencio al empezar y `gap` s extra tras cada frase.
+    """Ritmo de documental: `lead` s de silencio al empezar y `gap` s extra tras cada frase (un número, o una
+    lista con el hueco tras cada frase: así hay momentos de "solo imagen" después de las frases importantes).
     Corta en el silencio natural entre frases (punto medio entre palabras) y desplaza los tiempos de las palabras."""
     cuts, idx = [], 0
     for c in counts[:-1]:
         idx += c
         prev, nxt = words[idx - 1], words[idx]
         cuts.append((prev["t"] + prev["d"] + nxt["t"]) / 2)
+    gaps = gap if isinstance(gap, list) else [gap] * len(cuts)
     bounds = [0.0] + cuts + [None]
     n = len(bounds) - 1
     parts = [f"[0:a]aresample=48000,aformat=channel_layouts=mono,asplit={n}" + "".join(f"[i{k}]" for k in range(n))]
@@ -699,15 +701,16 @@ def voice_with_pauses(src: Path, words: list[dict], counts: list[int], lead: flo
         seq.append(f"[i{k}]atrim=start={a:.3f}{end},asetpts=PTS-STARTPTS[s{k}]")
         order.append(f"[s{k}]")
         if k < n - 1:
-            seq.append(f"aevalsrc=0:c=mono:s=48000:d={gap:.3f}[g{k}]")
+            seq.append(f"aevalsrc=0:c=mono:s=48000:d={gaps[k]:.3f}[g{k}]")
             order.append(f"[g{k}]")
     graph = ";".join(parts + seq) + ";" + "".join(order) + f"concat=n={len(order)}:v=0:a=1,apad=whole_dur={total:.3f}[a]"
     ffmpeg.run(["-i", str(src), "-filter_complex", graph, "-map", "[a]", "-t", f"{total:.3f}", str(out)])
-    shifted, idx = [], 0
+    shifted, idx, offset = [], 0, lead
     for k, c in enumerate(counts):
         for w in words[idx: idx + c]:
-            shifted.append(dict(w, t=w["t"] + lead + gap * k))
+            shifted.append(dict(w, t=w["t"] + offset))
         idx += c
+        offset += gaps[k] if k < len(gaps) else 0
     return shifted
 
 
@@ -737,13 +740,16 @@ def render_documentary_story(pkg: VideoPackage, out_dir: Path, tts_provider: str
             raise ValueError(f"capítulo {i}: las frases ({sum(counts)} palabras) no cuadran con la voz ({len(raw_words)})")
         lead = _edit("doc_lead", 2.5) if i else _edit("doc_lead_intro", 3.0)   # imagen + ambiente antes de hablar
         pause = _edit("doc_sentence_pause", 0.6)                                 # respiro extra tras cada frase
-        tail = 2.0 if i < len(pkg.documentary.scenes) - 1 else 2.5
-        seconds = lead + voice_len + pause * (len(beats) - 1) + tail
+        # `breath` en una frase = segundos de "solo imagen" (sin narrador) justo después de ella
+        breaths = [(pkg.curated.get(f"doc.s{i}.b{j}") or {}).get("breath", 0) for j in range(len(beats))]
+        gaps = [pause + breaths[j] for j in range(len(beats) - 1)]
+        tail = (2.0 if i < len(pkg.documentary.scenes) - 1 else 2.5) + breaths[-1]
+        seconds = lead + voice_len + sum(gaps) + tail
         voice_src = mp3
         if cfg["voice"].get("broadcast_eq"):
             voice_src = work / f"voice{i:02d}_eq.wav"
             ffmpeg.run(["-i", str(mp3), "-af", BROADCAST_EQ, str(voice_src)])
-        words = voice_with_pauses(voice_src, raw_words, counts, lead, pause, seconds, work / f"voice{i:02d}.wav")
+        words = voice_with_pauses(voice_src, raw_words, counts, lead, gaps, seconds, work / f"voice{i:02d}.wav")
         times = beat_times(beats, words, seconds)
         shots: list[list] = []
         for j, (a, b) in enumerate(times):
@@ -770,7 +776,12 @@ def render_documentary_story(pkg: VideoPackage, out_dir: Path, tts_provider: str
                 bg = cover(Image.open(asset["path"]), DOC_SIZE)
                 clips.append(still_clip(bg, overlay, length, path, seed=i * 13 + k, zoom=0.05))
             lengths.append(length)
-        scene_videos.append(xfade_concat(clips, lengths, work / f"scene{i:02d}.mp4", "fade", fade))
+        joined = xfade_concat(clips, lengths, work / f"scene{i:02d}_raw.mp4", "fade", fade)
+        # fundido a negro al entrar y salir de cada capítulo: sin cortes bruscos entre capítulos
+        dur = ffmpeg.duration(joined)
+        ffmpeg.run(["-i", str(joined), "-vf", f"fade=t=in:st=0:d=0.8,fade=t=out:st={max(dur - 0.8, 0):.2f}:d=0.8",
+                    "-c:v", "libx264", "-preset", "veryfast", "-crf", "20", "-an", str(work / f"scene{i:02d}.mp4")])
+        scene_videos.append(work / f"scene{i:02d}.mp4")
         wavs.append(work / f"voice{i:02d}.wav")
         layers = meta.get("ambience") or [{"file": _edit("ambience", "deep_sea_drone.mp3"), "db": -32}]
         beds.append(ambience_bed(layers, seconds, work / f"amb{i:02d}.wav"))
