@@ -37,7 +37,7 @@ When the owner says "PERFECT, don't touch anything else": change **only** what t
 - ❌ Avoid "No X, no Y" phrasing ("No red, no outline") — the voice gave it a weird accent.
 - **Tell ONE connected story, not a list of facts.** Owner: "it looks like random facts … no correlation … unnatural".
   Each sentence must follow from the previous one (mystery → reveal → *but* → *so/instead* → *that's why* → payoff
-  that answers the hook). Use connectors (but, so, instead, that's how, just like). Reference: dumbo octopus v2.
+  that answers the hook). Use connectors (but, so, instead, that's how, just like). Reference: dumbo octopus v2 ✅ APPROVED ("i like that style").
 - Connected ≠ invented causality: don't write "X, so Y" unless a source says so (e.g. ❌ "gliding lets it reach depths").
 - Every claim must be real and sourced (sources go in the package, **not** in YouTube descriptions — the owner can't paste citations).
 
@@ -137,15 +137,17 @@ cfg['voice'].update(voice_en='en-US-ChristopherNeural', rate_shorts='-10%', pitc
 - `shorts/en/hagfish-slime-knot.yaml` (Myxine glutinosa): NOAA + NIOZ + Böni et al. 2016 (CC BY 4.0). Owner loved the chicken monster one.
 
 ### Voice & ambience for video-first documentary shorts (owner feedback on the hagfish)
-- Christopher -14Hz/-10% was "too monotone, robotic and slow" ❌. Use **Andrew Multilingual, `rate_shorts: +4%`,
-  `pitch_shorts: -6Hz`, `broadcast_eq: True`** (owner: -10Hz approved on the hagfish, then "take a higher voice" on the orchid mantis → -6Hz; -5Hz earlier was "not deep enough"). edge-tts pitch can crackle on a word before a comma
-  ("to a bee," → broken F0 band in the spectrogram) → **reword the sentence** and check its spectrogram.
-  ❌ `pitch_semitones_post` (rubberband) was tried as a fix: owner said "the voice sounds worse" — don't use it. ("the voice on the short is great"; -5Hz was not deep enough), `transition_seconds: 0.5` → ~33 s for ~98 words.
+- Christopher -14Hz/-10% was "too monotone, robotic and slow" ❌. **Use exactly the gold-standard voice: Andrew
+  Multilingual, `rate_shorts: +4%`, `pitch_shorts: -10Hz`, `broadcast_eq: True`** (hagfish "perfect", dumbo liked).
+  (-6Hz was tried once on the orchid mantis after "take a higher voice"; the owner then praised -10Hz again.)
+- edge-tts pitch can crackle on a word before a comma ("to a bee," → broken F0 band in the spectrogram) → **reword the
+  sentence** and check its spectrogram. ❌ Don't use `pitch_semitones_post` (rubberband): "the voice sounds worse".
 - Ambience: owner wants it **like the music — barely noticeable, just enough to notice at times**. Crackle/bubbles
   (hydrophone) felt "awkward" ❌ (removed), and -34 dB was "too loud" ❌. Deep sea now: `deep_sea_drone.mp3`
   (CC0 underwater drone with slow swells + rumble, low-passed) at `ambience_volume: 0.12` **with `ambience_duck: True`**
   (sidechain on the voice, ratio 4, release 800 ms): measured -36…-41 dB in pauses vs -15 dB speech.
-- To verify levels without ears: `volumedetect` on the longest word gaps (from `*.words.json`) vs a speech stretch.- `shorts/en/orchid-mantis.yaml` (Hymenopus coronatus): **no free video exists** (checked Commons, Archive, Figshare/PLOS/
+- To verify levels without ears: `volumedetect` on the longest word gaps (from `*.words.json`) vs a speech stretch.
+- `shorts/en/orchid-mantis.yaml` (Hymenopus coronatus): **no free video exists** (checked Commons, Archive, Figshare/PLOS/
   Sci Rep supplements — only lab arena clips of other flower mantids) → iNaturalist photos (CC BY/CC0) in documentary
   style. Photos also accept `x` (horizontal crop) in documentary style. Ambience `borneo_rainforest.mp3` (CC0, Borneo
   daytime) at 0.3 + duck → -39…-45 dB in pauses. Facts: O'Hanlon et al. 2014 Am Nat; Svenson et al. 2016 Sci Rep.
