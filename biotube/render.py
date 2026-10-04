@@ -221,7 +221,7 @@ def still_clip(bg: Image.Image, overlay: Image.Image, seconds: float, out: Path,
 
 def video_clip(src: str, overlay: Image.Image, seconds: float, size: tuple[int, int], out: Path, start: float = 0.0,
                punch: bool = False, fit: bool = False, focus: float = 0.5, zoom: float = 1.0,
-               center: tuple[float, float] = (0.5, 0.5)) -> Path:
+               center: tuple[float, float] = (0.5, 0.5), overlay_until: float | None = None) -> Path:
     """Clip mudo a partir de un vídeo de stock: recorte a `size`, 30 fps y rótulos encima.
     `focus` (0 = izquierda, 1 = derecha) dice dónde recortar si el animal no está centrado.
     `zoom` > 1 acerca la imagen alrededor de `center` (x, y en 0-1) cuando el animal se ve muy pequeño."""
@@ -245,9 +245,15 @@ def video_clip(src: str, overlay: Image.Image, seconds: float, size: tuple[int, 
                 f"[bg][fg]overlay=0:(H-h)*0.4,setsar=1{punch_f}[v0];")
     else:
         base = f"[0:v]scale={w}:{h}:force_original_aspect_ratio=increase,crop={w}:{h},fps={FPS},setsar=1{punch_f}[v0];"
+    ov = "[1:v]"
+    if overlay_until:  # rótulo que aparece y desaparece con fundido (títulos de capítulo)
+        base += (f"[1:v]format=rgba,fade=t=in:st=0.5:d=0.8:alpha=1,"
+                 f"fade=t=out:st={max(overlay_until - 0.8, 1.4):.2f}:d=0.8:alpha=1[ov];")
+        ov = "[ov]"
     vf = (base +
-          f"[v0][1:v]overlay=0:0,format=yuv420p[v]")
-    ffmpeg.run(["-ss", f"{start:.2f}", "-stream_loop", "-1", "-i", src, "-loop", "1", "-i", str(ov_path), "-filter_complex", vf,
+          f"[v0]{ov}overlay=0:0,format=yuv420p[v]")
+    ffmpeg.run(["-ss", f"{start:.2f}", "-stream_loop", "-1", "-i", src, "-loop", "1", "-framerate", str(FPS),
+                "-i", str(ov_path), "-filter_complex", vf,
                 "-map", "[v]", "-t", f"{seconds:.3f}", "-an", "-c:v", "libx264", "-preset", "veryfast",
                 "-crf", "20", "-r", str(FPS), str(out)])
     return out
@@ -551,6 +557,146 @@ def render_documentary(pkg: VideoPackage, out_dir: Path, tts_provider: str | Non
         "chapters_seconds": chapters,
         "images": images,
     }
+
+
+def doc_chapter_overlay(title: str, species: str, channel: str, intro: bool = False) -> Image.Image:
+    """Rótulo de capítulo 16:9: "CHAPTER 1" espaciado en dorado + título con serifa + especie en cursiva.
+    `title` = "Chapter 1|The slime fish". En la intro (`intro=True`), título grande centrado."""
+    w, h = DOC_SIZE
+    layer = Image.new("RGBA", DOC_SIZE, (0, 0, 0, 0))
+    kicker, _, name = title.partition("|") if "|" in title else ("", "", title)
+    shade = Image.new("L", (w, h))
+    sd = ImageDraw.Draw(shade)
+    for y in range(h):  # degradado oscuro abajo (o entero en la intro) para leer el texto
+        a = 120 if intro else max(0, (y - h * 0.45) / (h * 0.55)) * 200
+        sd.line([(0, y), (w, y)], fill=int(a))
+    layer.putalpha(shade)
+
+    def texts(draw, color=None):
+        if intro:
+            if channel:
+                draw.text((w / 2, h / 2 - 150), " ".join(channel.upper()), font=_min_font(30, "Medium"),
+                          fill=color or DOC_GOLD, anchor="ma")
+            draw.multiline_text((w / 2, h / 2 - 80), _wrap(draw, name, _serif(92), int(w * 0.7)), font=_serif(92),
+                                fill=color or "white", anchor="ma", align="center", spacing=10)
+            return
+        x, y = 110, h - 330
+        if kicker:
+            draw.text((x, y), " ".join(kicker.upper()), font=_min_font(28, "Medium"), fill=color or DOC_GOLD)
+            draw.line([(x, y + 52), (x + 90, y + 52)], fill=color or DOC_GOLD, width=3)
+        draw.text((x, y + 72), name, font=_serif(84), fill=color or "white")
+        if species:
+            path = FONTS_DIR / "PlayfairDisplay-Italic.ttf"
+            font = ImageFont.truetype(str(path), 44) if path.exists() else _serif(44)
+            draw.text((x + 2, y + 190), species, font=font, fill=color or (230, 225, 215))
+
+    glow = Image.new("RGBA", DOC_SIZE, (0, 0, 0, 0))
+    texts(ImageDraw.Draw(glow), (0, 0, 0, 200))
+    layer = Image.alpha_composite(layer, glow.filter(ImageFilter.GaussianBlur(8)))
+    texts(ImageDraw.Draw(layer))
+    return layer
+
+
+def doc_end_card(channel: str) -> tuple[Image.Image, Image.Image]:
+    """Pantalla final 16:9 en estilo documental (fondo negro, serifa, marca dorada)."""
+    w, h = DOC_SIZE
+    bg = Image.new("RGB", DOC_SIZE, (8, 10, 14))
+    layer = Image.new("RGBA", DOC_SIZE, (0, 0, 0, 0))
+    d = ImageDraw.Draw(layer)
+    d.text((w / 2, 150), " ".join(channel.upper()), font=_min_font(32, "Medium"), fill=DOC_GOLD, anchor="ma")
+    d.text((w / 2, 230), "Thanks for watching", font=_serif(80), fill="white", anchor="ma")
+    for box in ([200, 420, 900, 820], [1020, 420, 1720, 820]):  # huecos para la pantalla final de YouTube
+        d.rounded_rectangle(box, 18, outline=(120, 110, 90), width=3)
+    return bg, layer
+
+
+def _empty_ass(out: Path, size: tuple[int, int]) -> Path:
+    """ASS sin eventos: sirve para pasar por la cadena de final_mix (etalonaje) sin quemar subtítulos."""
+    out.write_text(f"[Script Info]\nScriptType: v4.00+\nPlayResX: {size[0]}\nPlayResY: {size[1]}\n\n"
+                   "[V4+ Styles]\nFormat: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, "
+                   "BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, "
+                   "Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding\n"
+                   "Style: Default,Poppins Medium,40,&H00FFFFFF,&H00FFFFFF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,"
+                   "1,0,0,2,10,10,10,1\n\n[Events]\nFormat: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, "
+                   "Effect, Text\n", encoding="utf-8")
+    return out
+
+
+SENTENCE_RE = re.compile(r"(?<=[.!?])\s+")
+
+
+def render_documentary_story(pkg: VideoPackage, out_dir: Path, tts_provider: str | None = None) -> dict:
+    """Documental largo 16:9 en estilo "documentary": cada escena es un capítulo, cada frase su clip elegido a mano
+    (`curated["doc.s<i>.b<j>"]`, con `hold` para alargar el plano anterior), voz con EQ y ambiente/música en la mezcla.
+    Título de capítulo = `scene.on_screen_text` ("Chapter 1|The slime fish"); especie en `curated["doc.s<i>"]`."""
+    from .models import Beat
+    from .tts import cache_suffix, load_words, voice_for
+
+    cfg = load_config()
+    channel, lang = cfg["channel"]["name"], pkg.language
+    work = out_dir / "work_doc_story"
+    work.mkdir(parents=True, exist_ok=True)
+    voice_name, _ = voice_for(short=False, lang=lang)
+    fade = _edit("transition_seconds", 0.6)
+    scene_videos, wavs, durations, srt_chunks, titles = [], [], [], [], []
+    t = 0.0
+    for i, scene in enumerate(pkg.documentary.scenes):
+        key = scene.narration + voice_name + str(tts_provider) + cache_suffix(short=False, lang=lang)
+        mp3 = cfg.path("cache") / "tts" / f"{_h(key)}.mp3"
+        voice_len = synthesize(scene.narration, mp3, provider=tts_provider, lang=lang)
+        gap = 1.2 if i < len(pkg.documentary.scenes) - 1 else 1.5
+        seconds = voice_len + gap
+        words = load_words(mp3)
+        beats = [Beat(text=x, visual="-") for x in SENTENCE_RE.split(scene.narration.strip()) if x]
+        times = beat_times(beats, words, seconds)
+        shots: list[list] = []
+        for j, (a, b) in enumerate(times):
+            if shots and (pkg.curated.get(f"doc.s{i}.b{j}") or {}).get("hold"):
+                shots[-1][2] = b
+            else:
+                shots.append([j, a, b])
+        meta = pkg.curated.get(f"doc.s{i}") or {}
+        clips, lengths = [], []
+        for k, (j, a, b) in enumerate(shots):
+            asset = curated_asset(pkg, f"doc.s{i}.b{j}")
+            if asset is None:
+                raise ValueError(f"falta el clip de doc.s{i}.b{j}: {beats[j].text}")
+            length = (b - a) + (fade if clips else 0)
+            first = k == 0
+            overlay = (doc_chapter_overlay(scene.on_screen_text, meta.get("species", ""), channel, intro=(i == 0))
+                       if first and scene.on_screen_text else Image.new("RGBA", DOC_SIZE, (0, 0, 0, 0)))
+            path = work / f"s{i:02d}_{k:02d}.mp4"
+            if asset["type"] == "clip":
+                clips.append(video_clip(asset["path"], overlay, length, DOC_SIZE, path, start=asset.get("start", 0),
+                                        zoom=asset.get("zoom", 1.0), center=(asset.get("cx", 0.5), asset.get("cy", 0.5)),
+                                        overlay_until=min(length, 6.0) if first else None))
+            else:
+                bg = cover(Image.open(asset["path"]), DOC_SIZE)
+                clips.append(still_clip(bg, overlay, length, path, seed=i * 13 + k, zoom=0.05))
+            lengths.append(length)
+        scene_videos.append(xfade_concat(clips, lengths, work / f"scene{i:02d}.mp4", "fade", fade))
+        voice_src = mp3
+        if cfg["voice"].get("broadcast_eq"):
+            voice_src = work / f"voice{i:02d}_eq.wav"
+            ffmpeg.run(["-i", str(mp3), "-af", BROADCAST_EQ, str(voice_src)])
+        wavs.append(pad_audio(voice_src, seconds, work / f"voice{i:02d}.wav"))
+        srt_chunks += srt_from_words(words, offset=t)
+        durations.append(seconds)
+        titles.append(scene.on_screen_text.replace("|", ": ") if i else "Intro")
+        t += seconds
+        print(f"  capítulo {i + 1}/{len(pkg.documentary.scenes)}: {seconds:.1f}s, {len(shots)} planos")
+
+    bg, layer = doc_end_card(channel)
+    scene_videos.append(still_clip(bg, layer, END_CARD_SECONDS, work / "end.mp4", seed=1, zoom=0.02))
+    wavs.append(silence(END_CARD_SECONDS, work / "end.wav"))
+    video = concat(scene_videos, work / "video.mp4")
+    voice = concat(wavs, work / "voice.wav")
+    final = final_mix(video, voice, out_dir / "documentary.mp4", subtitles=_empty_ass(work / "empty.ass", DOC_SIZE))
+    write_srt(srt_chunks, out_dir / "documentary.srt")
+    chapters = build_chapters(titles, durations)
+    return {"documentary": str(final), "documentary_seconds": round(ffmpeg.duration(final), 2),
+            "subtitles": str(out_dir / "documentary.srt"),
+            "chapters": [[fmt_timestamp(a), b] for a, b in chapters], "chapters_seconds": chapters}
 
 
 SHOT_SECONDS = 2.6       # en shorts, una imagen nueva cada ~2,6 s (ritmo rápido)

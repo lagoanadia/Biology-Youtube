@@ -1,0 +1,826 @@
+id: deep-sea-weirdest
+language: en
+documentary:
+  topic: The weirdest creatures of the deep sea
+  working_title: The Weirdest Creatures of the Deep Sea
+  category: animal
+  subcategory: deep sea
+  hook_type: misterio
+  species:
+  - Myxine glutinosa
+  - Enypniastes eximia
+  - Cirrata
+  - Bathynomus giganteus
+  - Ctenophora
+  - Siphonophora
+  scenes:
+  - narration: Most of our planet is covered by ocean. And most of that ocean is dark. A few hundred meters down, the sunlight
+      starts to fade. A little deeper, it disappears completely. This dark water is the largest living space on Earth. Yet
+      most of it has never been explored. So scientists send robots down to look. And what their cameras find seems to come
+      from another planet. A fish that ties itself in a knot. A sea cucumber that swims. An octopus with ears. A giant bug
+      that steals dinner. And a living rainbow. These are the weirdest creatures of the deep sea.
+    visual_query: '-'
+    on_screen_text: The Weirdest Creatures of the Deep Sea
+    key_fact: false
+  - narration: Our first creature lives on the muddy seafloor. It looks like an eel. But it's a hagfish. Hagfish have no jaws.
+      And they've been around for about three hundred million years. That's older than the dinosaurs. But their real superpower
+      is hidden along their sides. Look at this row of little holes. Each one leads to a slime gland. When a predator bites,
+      the hagfish releases slime. As soon as it touches seawater, it turns into thick goo. Scientists have filmed sharks and
+      eels trying to eat hagfish. The slime clogs their gills. So they spit the hagfish out and swim away. But now the hagfish
+      has a problem. It's covered in its own slime. So it does something even weirder. It ties its body into a knot. Then
+      it slides the knot down its body. And the slime gets wiped away. Problem solved.
+    visual_query: '-'
+    on_screen_text: Chapter 1|The Slime Fish
+    key_fact: false
+  - narration: Our next creature also lives on the seafloor. Scientists have a nickname for it. The headless chicken monster.
+      It's actually a sea cucumber. Most of the time, it sits on the mud and eats it. Little tentacles shovel the mud into
+      its mouth. But when it needs to move fast, it does something surprising. It lifts off the seafloor and swims. It flaps
+      a frilly veil, like a cape. That's how it escapes from predators. Some swimming sea cucumbers are so see-through that
+      you can watch the mud inside their gut. In 2018, scientists filmed one in the icy waters near Antarctica. And its nickname
+      went around the world.
+    visual_query: '-'
+    on_screen_text: Chapter 2|The Headless Chicken Monster
+    key_fact: false
+  - narration: Deeper still, something is flapping its ears. It's a dumbo octopus. And those ears are actually fins. Most
+      octopuses get around by shooting out jets of water. But the dumbo barely does that. Instead, it flaps its fins and glides
+      through the water. That's how it got its name. Just like Disney's flying elephant. Its arms are webbed, so it can open
+      them like an umbrella. When it lands, it spreads them out like a skirt. And dumbo octopuses live deeper than any other
+      octopus we know. One was filmed almost seven kilometers down. The deepest octopus ever seen.
+    visual_query: '-'
+    on_screen_text: Chapter 3|The Dumbo Octopus
+    key_fact: false
+  - narration: On the deep seafloor, something just found a fish head. It's a giant isopod. A relative of the tiny pill bugs
+      in your garden. But this one can grow up to a foot and a half long. It's a scavenger. It feeds on dead animals that
+      sink to the bottom. And it can go a very long time without eating. In an aquarium in Japan, one refused food for more
+      than five years. But this one didn't wait. It grabbed the fish head and swam away with it. Look closely. It's swimming
+      upside down. We've known about giant isopods for over a century. Yet we still know very little about how they live.
+    visual_query: '-'
+    on_screen_text: Chapter 4|The Giant Isopod
+    key_fact: false
+  - narration: Our next creature floats in the open water. It looks like a jellyfish. But it's not. It's a comb jelly. Comb
+      jellies are so different from other animals that they have their own group. Some scientists even think they were the
+      first branch of animals to split off. Along their bodies run eight rows of tiny hairs. The hairs beat like little oars
+      and push the animal forward. And as they move, they scatter the light into rainbow colors. This one has a bright red
+      stomach. Scientists think the red hides the light of the glowing prey it eats. Down here, a glowing belly could attract
+      predators. Other comb jellies trail long tentacles to catch food.
+    visual_query: '-'
+    on_screen_text: Chapter 5|The Rainbow Comb Jelly
+    key_fact: false
+  - narration: Our last creature looks like a tangled string. But it's not one animal. It's many tiny animals living together
+      as one. It's called a siphonophore. Each member has a job. Some swim. Some catch food. Others digest it for the whole
+      colony. This one is a dandelion siphonophore. It anchors itself to the seafloor with its tentacles. Other siphonophores
+      drift through the open ocean. In 2020, scientists filmed one off the coast of Australia that may have been more than
+      forty meters long. That's longer than a blue whale.
+    visual_query: '-'
+    on_screen_text: Chapter 6|The Colony
+    key_fact: false
+  - narration: A fish that fights with slime. A sea cucumber that flies. An octopus with ears. A bug that steals its dinner.
+      A living rainbow. And an animal made of many animals. Each one found its own strange way to survive in the dark. And
+      most of the deep sea is still unexplored. So the weirdest creature of all may still be waiting down there. Subscribe
+      to BioNiche for more weird animals.
+    visual_query: '-'
+    on_screen_text: ''
+    key_fact: false
+  sources:
+  - title: NOAA Ocean Exploration — the water column is the largest and least explored habitat on Earth (95%+ of livable space)
+    reference: https://oceanexplorer.noaa.gov/multimedia/video-playlist-ex2107-watercolumn/
+  - title: 'NOAA Ocean Service — ocean zones: sunlight fades below ~200 m and is absent below ~1,000 m'
+    reference: https://oceanservice.noaa.gov/facts/twilightzone.html
+  - title: Zintzen et al. (2011) Hagfish predatory behaviour and slime defence mechanism. Sci Rep 1:131 (sharks and other
+      fish choke on slime and release hagfish)
+    reference: https://doi.org/10.1038/srep00131
+  - title: 'NOAA: hagfish slime pores; knot-tying behaviour (2023 Shakedown + EXPRESS)'
+    reference: https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-express-ex2301-gallery-media-ex2301-dive09-hagfish/
+  - title: Böni et al. (2016) Hagfish slime and mucin flow properties… Sci Rep 6:30371 (knot to strip slime; CC BY video)
+    reference: https://doi.org/10.1038/srep30371
+  - title: Fudge et al. (2005) J Exp Biol 208:4613 — slime forms on contact with seawater
+    reference: https://journals.biologists.com/jeb/article/208/24/4613/16089
+  - title: Bardack (1991) Science 254:701 — Myxinikela siroka, ~300-million-year-old fossil hagfish; hagfish are jawless
+    reference: https://doi.org/10.1126/science.254.5032.701
+  - title: 'NOAA: Enypniastes eximia feeds on surface sediments, swims to move quickly or evade predators; ''headless chicken
+      monster'''
+    reference: https://oceanexplorer.noaa.gov/multimedia/video-playlist-ex1711-seacuke/
+  - title: 'Australian Antarctic Division (2018): headless chicken monster filmed in the Southern Ocean'
+    reference: https://www.antarctica.gov.au/news/2018/headless-chicken-monster-filmed-in-the-southern-ocean/
+  - title: 'NOAA: swimming sea cucumber with a stomach full of sediment (Marianas 2016)'
+    reference: https://oceanexplorer.noaa.gov/multimedia/video-shorts-ex1605-seacuke-0701/
+  - title: 'NOAA: cirrate octopods rely on fins instead of jet propulsion; named after Disney''s Dumbo'
+    reference: https://oceanexplorer.noaa.gov/multimedia/video-playlist-arctic-dumbo/
+  - title: Jamieson & Vecchione (2020) Marine Biology 167:82 — Grimpoteuthis at 6,957 m
+    reference: https://doi.org/10.1007/s00227-020-03701-1
+  - title: 'NOAA: giant isopods — scavengers, relatives of pill bugs, up to 1.5 ft; known for over a century, behavior poorly
+      known'
+    reference: https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-ex1907-dailyupdates-nov18-media-dive11-isopod/
+  - title: 'Toba Aquarium (Japan): giant isopod ''No. 1'' refused food from 2009 until its death in 2014 (reported by The
+      Japan Times, 2014)'
+    reference: https://www.japantimes.co.jp/news/2014/02/22/national/the-super-hungry-giant-isopod-of-the-toba-aquarium-dies/
+  - title: 'NOAA: ctenophores have 8 rows of comb-like cilia that propel them and scatter light into colors; their own phylum'
+    reference: https://oceanexplorer.noaa.gov/multimedia/video-shorts-ex1803-ctneophore1/
+  - title: Schultz et al. (2023) Nature 618:110 — ctenophores are the sister group to all other animals
+    reference: https://doi.org/10.1038/s41586-023-05936-6
+  - title: 'MBARI — bloody-belly comb jelly: red gut may mask bioluminescent prey'
+    reference: https://www.mbari.org/animal/bloody-belly-comb-jelly/
+  - title: 'NOAA: siphonophores are colonies of many individuals working together; dandelion siphonophores anchor with tentacles'
+    reference: https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-ex2104-dives-dive13-media-dive13-dandelion/
+  - title: 'Schmidt Ocean Institute (2020): giant Apolemia siphonophore off Western Australia, outer ring ~47 m'
+    reference: https://schmidtocean.org/cruise-log-post/a-new-discovery-in-the-deep-sea/
+documentary_metadata:
+  title: The Weirdest Creatures of the Deep Sea (Real Footage)
+  description: 'A fish that ties itself in a knot. A sea cucumber that swims. An octopus with ears. Real deep-sea footage
+    of the strangest animals on Earth.
+
+
+    Footage: NOAA Ocean Exploration (public domain), NIOZ, Böni et al. 2016 (CC BY 4.0).'
+  tags:
+  - deep sea
+  - deep sea creatures
+  - weird animals
+  - hagfish
+  - dumbo octopus
+  - giant isopod
+  - comb jelly
+  - siphonophore
+  - headless chicken monster
+  - ocean documentary
+  hashtags:
+  - '#deepsea'
+  - '#ocean'
+  - '#documentary'
+  thumbnail_text: WEIRDEST DEEP SEA CREATURES
+shorts: []
+shorts_metadata: []
+curated:
+  doc.s0.b0:
+    type: clip
+    license: Public domain
+    url: https://archive.org/download/noaa-oe-video-okeanos-explorations-ex1711-dailyupdates-media-video-d2-d2/d2-1280x720-1.mp4
+    attribution: NOAA Ocean Exploration, Engineering for Discovery (Gulf of Mexico 2017) (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-ex1711-dailyupdates-media-video-d2-d2/
+    start: 9
+  doc.s0.b1:
+    hold: true
+  doc.s0.b2:
+    type: clip
+    license: Public domain
+    url: https://archive.org/download/noaa-oe-video-okeanos-explorations-seascape-alaska-ex2304-gallery-media-dive01-unexplored-planet/dive01-unexplored-planet-1920x1080-1.ia.mp4
+    attribution: NOAA Ocean Exploration, Seascape Alaska 3 (2023) (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-seascape-alaska-ex2304-gallery-media-dive01-unexplored-planet/
+    start: 7
+  doc.s0.b3:
+    type: clip
+    license: Public domain
+    url: https://archive.org/download/noaa-oe-video-okeanos-explorations-seascape-alaska-ex2304-gallery-media-dive01-unexplored-planet/dive01-unexplored-planet-1920x1080-1.ia.mp4
+    attribution: NOAA Ocean Exploration, Seascape Alaska 3 (2023) (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-seascape-alaska-ex2304-gallery-media-dive01-unexplored-planet/
+    start: 14
+  doc.s0.b4:
+    type: clip
+    license: Public domain
+    url: https://archive.org/download/noaa-oe-video-video-playlist-ex2107-watercolumn/water-column-1280x720-1.ia.mp4
+    attribution: NOAA Ocean Exploration, Life in the Water Column (2021) (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/video-playlist-ex2107-watercolumn/
+    start: 47
+  doc.s0.b5:
+    hold: true
+  doc.s0.b6:
+    type: clip
+    license: Public domain
+    url: https://archive.org/download/noaa-oe-video-okeanos-explorations-ex1711-dailyupdates-media-video-d2-d2/d2-1280x720-1.mp4
+    attribution: NOAA Ocean Exploration, Engineering for Discovery (Gulf of Mexico 2017) (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-ex1711-dailyupdates-media-video-d2-d2/
+    start: 111
+  doc.s0.b7:
+    type: clip
+    license: Public domain
+    url: https://archive.org/download/noaa-oe-video-okeanos-explorations-seascape-alaska-ex2304-gallery-media-dive01-unexplored-planet/dive01-unexplored-planet-1920x1080-1.ia.mp4
+    attribution: NOAA Ocean Exploration, Seascape Alaska 3 (2023) (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-seascape-alaska-ex2304-gallery-media-dive01-unexplored-planet/
+    start: 32
+  doc.s0.b8:
+    type: clip
+    url: https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fsrep30371/MediaObjects/41598_2016_BFsrep30371_MOESM1_ESM.mov
+    license: CC BY 4.0
+    attribution: Böni, Fischer, Böcker, Kuster & Rühs (2016), Hagfish slime and mucin flow properties and their implications
+      for defense, Scientific Reports 6:30371, Supplementary Video 1, CC BY 4.0
+    source_url: https://www.nature.com/articles/srep30371
+    start: 13
+    zoom: 1.45
+    cx: 0.66
+    cy: 0.5
+  doc.s0.b9:
+    type: clip
+    url: https://archive.org/download/noaa-oe-video-video-playlist-ex1711-seacuke/chickenmonster-1280x720-1.mp4
+    license: Public domain
+    attribution: NOAA Ocean Exploration, Gulf of Mexico 2017 (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/video-playlist-ex1711-seacuke/
+    start: 64
+  doc.s0.b10:
+    type: clip
+    url: https://archive.org/download/noaa-oe-video-okeanos-explorations-ex2104-features-squid-octopod-media-dive07-dumbo/dive07-dumbo-1280x720-2.ia.mp4
+    attribution: NOAA Ocean Exploration, 2021 North Atlantic Stepping Stones (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-ex2104-features-squid-octopod-media-dive07-dumbo/
+    license: Public domain
+    start: 52
+  doc.s0.b11:
+    type: clip
+    license: Public domain
+    url: https://archive.org/download/noaa-oe-video-okeanos-explorations-ex1907-dailyupdates-nov18-media-dive11-isopod/dive11-isopod-1280x720-1.ia.mp4
+    attribution: NOAA Ocean Exploration, 2019 Southeastern U.S. Deep-sea Exploration (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-ex1907-dailyupdates-nov18-media-dive11-isopod/
+    start: 30
+    zoom: 2.0
+    cx: 0.45
+    cy: 0.35
+  doc.s0.b12:
+    type: clip
+    license: Public domain
+    url: https://archive.org/download/noaa-oe-video-video-shorts-ex1803-ctneophore1/ex1803-ctenophore1.mp4
+    attribution: NOAA Ocean Exploration, Gulf of Mexico 2018 (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/video-shorts-ex1803-ctneophore1/
+    start: 10
+  doc.s0.b13:
+    type: clip
+    license: Public domain
+    url: https://archive.org/download/noaa-oe-video-okeanos-explorations-seascape-alaska-ex2304-gallery-media-dive01-unexplored-planet/dive01-unexplored-planet-1920x1080-1.ia.mp4
+    attribution: NOAA Ocean Exploration, Seascape Alaska 3 (2023) (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-seascape-alaska-ex2304-gallery-media-dive01-unexplored-planet/
+    start: 72
+  doc.s1:
+    species: Myxine glutinosa
+  doc.s1.b0:
+    type: clip
+    url: https://archive.org/download/noaa-oe-video-okeanos-explorations-express-ex2301-gallery-media-ex2301-dive01-hagfish/ex2301-dive01-hagfish-640x360-1.mp4
+    license: Public domain
+    attribution: NOAA Ocean Exploration, 2023 Shakedown + EXPRESS West Coast Exploration (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-express-ex2301-gallery-media-ex2301-dive01-hagfish/
+    start: 9.5
+    zoom: 1.15
+    cx: 0.57
+    cy: 0.57
+  doc.s1.b1:
+    hold: true
+  doc.s1.b2:
+    type: clip
+    url: https://archive.org/download/noaa-oe-video-okeanos-explorations-express-ex2301-gallery-media-ex2301-dive01-hagfish/ex2301-dive01-hagfish-640x360-1.mp4
+    license: Public domain
+    attribution: NOAA Ocean Exploration, 2023 Shakedown + EXPRESS West Coast Exploration (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-express-ex2301-gallery-media-ex2301-dive01-hagfish/
+    start: 18
+    zoom: 1.15
+    cx: 0.57
+    cy: 0.57
+  doc.s1.b3:
+    hold: true
+  doc.s1.b4:
+    type: clip
+    url: https://archive.org/download/noaa-oe-video-okeanos-explorations-express-ex2301-gallery-media-ex2301-dive09-hagfish/ex2301-dive09-hagfish-1280x720-1.mp4
+    license: Public domain
+    attribution: NOAA Ocean Exploration, 2023 Shakedown + EXPRESS West Coast Exploration (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-express-ex2301-gallery-media-ex2301-dive09-hagfish/
+    start: 22
+    zoom: 1.15
+    cx: 0.57
+    cy: 0.57
+  doc.s1.b5:
+    hold: true
+  doc.s1.b6:
+    type: clip
+    url: https://archive.org/download/noaa-oe-video-okeanos-explorations-express-ex2301-gallery-media-ex2301-dive09-hagfish/ex2301-dive09-hagfish-1280x720-1.mp4
+    license: Public domain
+    attribution: NOAA Ocean Exploration, 2023 Shakedown + EXPRESS West Coast Exploration (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-express-ex2301-gallery-media-ex2301-dive09-hagfish/
+    start: 14
+    zoom: 1.3
+    cx: 0.45
+    cy: 0.45
+  doc.s1.b7:
+    hold: true
+  doc.s1.b8:
+    type: clip
+    url: https://archive.org/download/noaa-oe-video-okeanos-explorations-express-ex2301-gallery-media-ex2301-dive09-hagfish/ex2301-dive09-hagfish-1280x720-1.mp4
+    license: Public domain
+    attribution: NOAA Ocean Exploration, 2023 Shakedown + EXPRESS West Coast Exploration (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-express-ex2301-gallery-media-ex2301-dive09-hagfish/
+    start: 16.6
+    zoom: 1.6
+    cx: 0.42
+    cy: 0.6
+  doc.s1.b9:
+    type: clip
+    url: https://archive.org/download/noaa-oe-video-explorations-19deepsearch-logs-apr14-media-eel-attack/eel-attack-1440x1080-1.mp4
+    license: Public domain
+    attribution: Royal Netherlands Institute for Sea Research (NIOZ), DEEP SEARCH 2019 - BOEM, USGS, NOAA, via NOAA Ocean
+      Exploration (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/explorations-19deepsearch-logs-apr14-media-eel-attack/
+    start: 6.5
+  doc.s1.b10:
+    type: clip
+    url: https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fsrep30371/MediaObjects/41598_2016_BFsrep30371_MOESM4_ESM.mov
+    license: CC BY 4.0
+    attribution: Böni, Fischer, Böcker, Kuster & Rühs (2016), Hagfish slime and mucin flow properties and their implications
+      for defense, Scientific Reports 6:30371, Supplementary Video 4, CC BY 4.0
+    source_url: https://www.nature.com/articles/srep30371
+    start: 1
+  doc.s1.b11:
+    type: clip
+    url: https://archive.org/download/noaa-oe-video-explorations-19deepsearch-logs-apr14-media-eel-attack/eel-attack-1440x1080-1.mp4
+    license: Public domain
+    attribution: Royal Netherlands Institute for Sea Research (NIOZ), DEEP SEARCH 2019 - BOEM, USGS, NOAA, via NOAA Ocean
+      Exploration (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/explorations-19deepsearch-logs-apr14-media-eel-attack/
+    start: 10
+  doc.s1.b12:
+    hold: true
+  doc.s1.b13:
+    type: clip
+    url: https://archive.org/download/noaa-oe-video-explorations-19deepsearch-logs-apr14-media-eel-attack/eel-attack-1440x1080-1.mp4
+    license: Public domain
+    attribution: Royal Netherlands Institute for Sea Research (NIOZ), DEEP SEARCH 2019 - BOEM, USGS, NOAA, via NOAA Ocean
+      Exploration (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/explorations-19deepsearch-logs-apr14-media-eel-attack/
+    start: 14
+  doc.s1.b14:
+    type: clip
+    url: https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fsrep30371/MediaObjects/41598_2016_BFsrep30371_MOESM1_ESM.mov
+    license: CC BY 4.0
+    attribution: Böni, Fischer, Böcker, Kuster & Rühs (2016), Hagfish slime and mucin flow properties and their implications
+      for defense, Scientific Reports 6:30371, Supplementary Video 1, CC BY 4.0
+    source_url: https://www.nature.com/articles/srep30371
+    start: 3.6
+    zoom: 1.45
+    cx: 0.66
+    cy: 0.5
+  doc.s1.b15:
+    hold: true
+  doc.s1.b16:
+    type: clip
+    url: https://archive.org/download/noaa-oe-video-okeanos-explorations-express-ex2301-gallery-media-ex2301-dive02-hagfish/ex2301-dive02-hagfish-1280x720-1.mp4
+    license: Public domain
+    attribution: NOAA Ocean Exploration, 2023 Shakedown + EXPRESS West Coast Exploration (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-express-ex2301-gallery-media-ex2301-dive02-hagfish/
+    start: 12.2
+    zoom: 2.0
+    cx: 0.68
+    cy: 0.52
+  doc.s1.b17:
+    hold: true
+  doc.s1.b18:
+    type: clip
+    url: https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fsrep30371/MediaObjects/41598_2016_BFsrep30371_MOESM1_ESM.mov
+    license: CC BY 4.0
+    attribution: Böni, Fischer, Böcker, Kuster & Rühs (2016), Hagfish slime and mucin flow properties and their implications
+      for defense, Scientific Reports 6:30371, Supplementary Video 1, CC BY 4.0
+    source_url: https://www.nature.com/articles/srep30371
+    start: 12.5
+    zoom: 1.45
+    cx: 0.66
+    cy: 0.5
+  doc.s1.b19:
+    hold: true
+  doc.s1.b20:
+    hold: true
+  doc.s2:
+    species: Enypniastes eximia
+  doc.s2.b0:
+    type: clip
+    url: https://archive.org/download/noaa-oe-video-video-playlist-ex1711-seacuke/chickenmonster-1280x720-1.mp4
+    license: Public domain
+    attribution: NOAA Ocean Exploration, Gulf of Mexico 2017 (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/video-playlist-ex1711-seacuke/
+    start: 36
+    zoom: 1.5
+    cx: 0.5
+    cy: 0.55
+  doc.s2.b1:
+    hold: true
+  doc.s2.b2:
+    type: clip
+    url: https://archive.org/download/noaa-oe-video-video-playlist-ex1711-seacuke/chickenmonster-1280x720-1.mp4
+    license: Public domain
+    attribution: NOAA Ocean Exploration, Gulf of Mexico 2017 (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/video-playlist-ex1711-seacuke/
+    start: 26
+  doc.s2.b3:
+    hold: true
+  doc.s2.b4:
+    type: clip
+    url: https://archive.org/download/noaa-oe-video-video-playlist-ex1711-seacuke/chickenmonster-1280x720-1.mp4
+    license: Public domain
+    attribution: NOAA Ocean Exploration, Gulf of Mexico 2017 (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/video-playlist-ex1711-seacuke/
+    start: 8
+    zoom: 1.5
+    cx: 0.5
+    cy: 0.5
+  doc.s2.b5:
+    type: clip
+    url: https://archive.org/download/noaa-oe-video-video-playlist-ex1711-seacuke/chickenmonster-1280x720-1.mp4
+    license: Public domain
+    attribution: NOAA Ocean Exploration, Gulf of Mexico 2017 (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/video-playlist-ex1711-seacuke/
+    start: 15.5
+  doc.s2.b6:
+    type: clip
+    url: https://archive.org/download/noaa-oe-video-video-playlist-ex1711-seacuke/chickenmonster-1280x720-1.mp4
+    license: Public domain
+    attribution: NOAA Ocean Exploration, Gulf of Mexico 2017 (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/video-playlist-ex1711-seacuke/
+    start: 44
+    zoom: 1.5
+    cx: 0.5
+    cy: 0.55
+  doc.s2.b7:
+    type: clip
+    url: https://archive.org/download/noaa-oe-video-video-playlist-ex1711-seacuke/chickenmonster-1280x720-1.mp4
+    license: Public domain
+    attribution: NOAA Ocean Exploration, Gulf of Mexico 2017 (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/video-playlist-ex1711-seacuke/
+    start: 47
+  doc.s2.b8:
+    type: clip
+    url: https://archive.org/download/noaa-oe-video-video-playlist-ex1711-seacuke/chickenmonster-1280x720-1.mp4
+    license: Public domain
+    attribution: NOAA Ocean Exploration, Gulf of Mexico 2017 (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/video-playlist-ex1711-seacuke/
+    start: 72
+  doc.s2.b9:
+    type: clip
+    url: https://archive.org/download/noaa-oe-video-video-playlist-ex1711-seacuke/chickenmonster-1280x720-1.mp4
+    license: Public domain
+    attribution: NOAA Ocean Exploration, Gulf of Mexico 2017 (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/video-playlist-ex1711-seacuke/
+    start: 79
+  doc.s2.b10:
+    type: clip
+    url: https://archive.org/download/noaa-oe-video-video-shorts-ex1605-seacuke-0701/ex1605-seacuke-0701.mp4
+    license: Public domain
+    attribution: NOAA Ocean Exploration, 2016 Deepwater Exploration of the Marianas (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/video-shorts-ex1605-seacuke-0701/
+    start: 19
+    zoom: 1.4
+    cx: 0.5
+    cy: 0.5
+  doc.s2.b11:
+    type: clip
+    url: https://archive.org/download/noaa-oe-video-video-playlist-ex1711-seacuke/chickenmonster-1280x720-1.mp4
+    license: Public domain
+    attribution: NOAA Ocean Exploration, Gulf of Mexico 2017 (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/video-playlist-ex1711-seacuke/
+    start: 84
+  doc.s2.b12:
+    hold: true
+  doc.s3:
+    species: Cirrata
+  doc.s3.b0:
+    type: clip
+    url: https://archive.org/download/noaa-oe-video-okeanos-explorations-ex2104-features-squid-octopod-media-dive07-dumbo/dive07-dumbo-1280x720-2.ia.mp4
+    attribution: NOAA Ocean Exploration, 2021 North Atlantic Stepping Stones (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-ex2104-features-squid-octopod-media-dive07-dumbo/
+    license: Public domain
+    start: 52
+  doc.s3.b1:
+    type: clip
+    url: https://archive.org/download/noaa-oe-video-video-shorts-ex1907-dumbo1/ex1907-dumbo1.mp4
+    attribution: NOAA Ocean Exploration, 2019 Southeastern U.S. Deep-sea Exploration (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/video-shorts-ex1907-dumbo1/
+    license: Public domain
+    start: 17
+  doc.s3.b2:
+    hold: true
+  doc.s3.b3:
+    type: clip
+    url: https://archive.org/download/noaa-oe-video-video-shorts-ex1903-dumbo/ex1903-dumbo.mp4
+    attribution: NOAA Ocean Exploration, Windows to the Deep 2019 (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/video-shorts-ex1903-dumbo/
+    license: Public domain
+    start: 2
+    zoom: 1.3
+    cx: 0.5
+    cy: 0.45
+  doc.s3.b4:
+    hold: true
+  doc.s3.b5:
+    type: clip
+    url: https://archive.org/download/noaa-oe-video-okeanos-explorations-ex2104-gallery-media-dumbo-atlantis/dumbo-atlantis-1280x720-1.mp4
+    attribution: NOAA Ocean Exploration, Deepwater Backyard 2014 (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-ex2104-gallery-media-dumbo-atlantis/
+    license: Public domain
+    start: 9
+  doc.s3.b6:
+    type: clip
+    url: https://archive.org/download/noaa-oe-video-video-shorts-ex1907-dumbo1/ex1907-dumbo1.mp4
+    attribution: NOAA Ocean Exploration, 2019 Southeastern U.S. Deep-sea Exploration (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/video-shorts-ex1907-dumbo1/
+    license: Public domain
+    start: 0.2
+  doc.s3.b7:
+    type: clip
+    url: https://archive.org/download/noaa-oe-video-okeanos-explorations-ex2104-features-squid-octopod-media-dive07-dumbo/dive07-dumbo-1280x720-2.ia.mp4
+    attribution: NOAA Ocean Exploration, 2021 North Atlantic Stepping Stones (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-ex2104-features-squid-octopod-media-dive07-dumbo/
+    license: Public domain
+    start: 40
+  doc.s3.b8:
+    type: clip
+    url: https://archive.org/download/noaa-oe-video-video-playlist-arctic-dumbo/dumbo_octopus_1280x720.mp4
+    attribution: 'Hidden Ocean 2016: Chukchi Borderlands, NOAA Ocean Exploration / Global Foundation for Ocean Exploration
+      (public domain, U.S. Government work)'
+    source_url: https://oceanexplorer.noaa.gov/multimedia/video-playlist-arctic-dumbo/
+    license: Public domain
+    start: 23
+    zoom: 1.3
+    cx: 0.6
+    cy: 0.5
+  doc.s3.b9:
+    type: clip
+    url: https://archive.org/download/noaa-oe-video-okeanos-explorations-ex2104-gallery-media-dumbo-atlantis/dumbo-atlantis-1280x720-1.mp4
+    attribution: NOAA Ocean Exploration, Deepwater Backyard 2014 (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-ex2104-gallery-media-dumbo-atlantis/
+    license: Public domain
+    start: 18
+  doc.s3.b10:
+    type: clip
+    url: https://archive.org/download/noaa-oe-video-okeanos-explorations-ex2104-features-squid-octopod-media-dive07-dumbo/dive07-dumbo-1280x720-2.ia.mp4
+    attribution: NOAA Ocean Exploration, 2021 North Atlantic Stepping Stones (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-ex2104-features-squid-octopod-media-dive07-dumbo/
+    license: Public domain
+    start: 72
+  doc.s3.b11:
+    hold: true
+  doc.s3.b12:
+    hold: true
+  doc.s4:
+    species: Bathynomus giganteus
+  doc.s4.b0:
+    type: clip
+    license: Public domain
+    url: https://archive.org/download/noaa-oe-video-okeanos-explorations-ex1907-dailyupdates-nov18-media-dive11-isopod/dive11-isopod-1280x720-1.ia.mp4
+    attribution: NOAA Ocean Exploration, 2019 Southeastern U.S. Deep-sea Exploration (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-ex1907-dailyupdates-nov18-media-dive11-isopod/
+    start: 14.5
+  doc.s4.b1:
+    type: clip
+    license: Public domain
+    url: https://archive.org/download/noaa-oe-video-video-playlist-ex1711-giant-isopod/isopod-1280x720-2.mp4
+    attribution: NOAA Ocean Exploration, Gulf of Mexico 2017 (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/video-playlist-ex1711-giant-isopod/
+    start: 33
+  doc.s4.b2:
+    hold: true
+  doc.s4.b3:
+    type: clip
+    license: Public domain
+    url: https://archive.org/download/noaa-oe-video-video-playlist-ex1711-giant-isopod/isopod-1280x720-2.mp4
+    attribution: NOAA Ocean Exploration, Gulf of Mexico 2017 (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/video-playlist-ex1711-giant-isopod/
+    start: 40
+  doc.s4.b4:
+    type: clip
+    license: Public domain
+    url: https://archive.org/download/noaa-oe-video-okeanos-explorations-ex1907-dailyupdates-nov18-media-dive11-isopod/dive11-isopod-1280x720-1.ia.mp4
+    attribution: NOAA Ocean Exploration, 2019 Southeastern U.S. Deep-sea Exploration (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-ex1907-dailyupdates-nov18-media-dive11-isopod/
+    start: 16
+  doc.s4.b5:
+    hold: true
+  doc.s4.b6:
+    type: clip
+    license: Public domain
+    url: https://archive.org/download/noaa-oe-video-video-playlist-ex1711-giant-isopod/isopod-1280x720-2.mp4
+    attribution: NOAA Ocean Exploration, Gulf of Mexico 2017 (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/video-playlist-ex1711-giant-isopod/
+    start: 44
+  doc.s4.b7:
+    hold: true
+  doc.s4.b8:
+    type: clip
+    license: Public domain
+    url: https://archive.org/download/noaa-oe-video-okeanos-explorations-ex1907-dailyupdates-nov18-media-dive11-isopod/dive11-isopod-1280x720-1.ia.mp4
+    attribution: NOAA Ocean Exploration, 2019 Southeastern U.S. Deep-sea Exploration (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-ex1907-dailyupdates-nov18-media-dive11-isopod/
+    start: 18.5
+  doc.s4.b9:
+    type: clip
+    license: Public domain
+    url: https://archive.org/download/noaa-oe-video-okeanos-explorations-ex1907-dailyupdates-nov18-media-dive11-isopod/dive11-isopod-1280x720-1.ia.mp4
+    attribution: NOAA Ocean Exploration, 2019 Southeastern U.S. Deep-sea Exploration (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-ex1907-dailyupdates-nov18-media-dive11-isopod/
+    start: 30
+    zoom: 2.0
+    cx: 0.45
+    cy: 0.35
+  doc.s4.b10:
+    type: clip
+    license: Public domain
+    url: https://archive.org/download/noaa-oe-video-okeanos-explorations-ex1907-dailyupdates-nov18-media-dive11-isopod/dive11-isopod-1280x720-1.ia.mp4
+    attribution: NOAA Ocean Exploration, 2019 Southeastern U.S. Deep-sea Exploration (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-ex1907-dailyupdates-nov18-media-dive11-isopod/
+    start: 56.5
+  doc.s4.b11:
+    hold: true
+  doc.s4.b12:
+    type: clip
+    license: Public domain
+    url: https://archive.org/download/noaa-oe-video-video-playlist-ex1711-giant-isopod/isopod-1280x720-2.mp4
+    attribution: NOAA Ocean Exploration, Gulf of Mexico 2017 (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/video-playlist-ex1711-giant-isopod/
+    start: 12.5
+  doc.s4.b13:
+    hold: true
+  doc.s5:
+    species: Ctenophora
+  doc.s5.b0:
+    type: clip
+    license: Public domain
+    url: https://archive.org/download/noaa-oe-video-okeanos-explorations-seascape-alaska-ex2304-gallery-media-dive01-unexplored-planet/dive01-unexplored-planet-1920x1080-1.ia.mp4
+    attribution: NOAA Ocean Exploration, Seascape Alaska 3 (2023) (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-seascape-alaska-ex2304-gallery-media-dive01-unexplored-planet/
+    start: 50
+  doc.s5.b1:
+    hold: true
+  doc.s5.b2:
+    type: clip
+    license: Public domain
+    url: https://archive.org/download/noaa-oe-video-video-shorts-ex1803-ctneophore1/ex1803-ctenophore1.mp4
+    attribution: NOAA Ocean Exploration, Gulf of Mexico 2018 (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/video-shorts-ex1803-ctneophore1/
+    start: 0.5
+  doc.s5.b3:
+    type: clip
+    license: Public domain
+    url: https://archive.org/download/noaa-oe-video-video-shorts-ex1803-ctneophore1/ex1803-ctenophore1.mp4
+    attribution: NOAA Ocean Exploration, Gulf of Mexico 2018 (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/video-shorts-ex1803-ctneophore1/
+    start: 9.5
+  doc.s5.b4:
+    hold: true
+  doc.s5.b5:
+    type: clip
+    license: Public domain
+    url: https://archive.org/download/noaa-oe-video-video-shorts-ex1803-ctneophore1/ex1803-ctenophore1.mp4
+    attribution: NOAA Ocean Exploration, Gulf of Mexico 2018 (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/video-shorts-ex1803-ctneophore1/
+    start: 16
+  doc.s5.b6:
+    type: clip
+    license: Public domain
+    url: https://archive.org/download/noaa-oe-video-okeanos-explorations-seascape-alaska-ex2304-gallery-media-dive01-unexplored-planet/dive01-unexplored-planet-1920x1080-1.ia.mp4
+    attribution: NOAA Ocean Exploration, Seascape Alaska 3 (2023) (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-seascape-alaska-ex2304-gallery-media-dive01-unexplored-planet/
+    start: 62
+  doc.s5.b7:
+    hold: true
+  doc.s5.b8:
+    type: clip
+    license: Public domain
+    url: https://archive.org/download/noaa-oe-video-okeanos-explorations-ex2104-features-ctenophore-media-dive04-ctenophore/dive04-ctenophore-1280x720-1.ia.mp4
+    attribution: NOAA Ocean Exploration, 2021 North Atlantic Stepping Stones (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-ex2104-features-ctenophore-media-dive04-ctenophore/
+    start: 12
+  doc.s5.b9:
+    type: clip
+    license: Public domain
+    url: https://archive.org/download/noaa-oe-video-okeanos-explorations-ex2104-features-ctenophore-media-dive04-ctenophore/dive04-ctenophore-1280x720-1.ia.mp4
+    attribution: NOAA Ocean Exploration, 2021 North Atlantic Stepping Stones (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-ex2104-features-ctenophore-media-dive04-ctenophore/
+    start: 22
+  doc.s5.b10:
+    hold: true
+  doc.s5.b11:
+    hold: true
+  doc.s5.b12:
+    type: clip
+    license: Public domain
+    url: https://archive.org/download/noaa-oe-video-video-playlist-ex2103-ctenophore/ctenophore-1080p.mp4
+    attribution: NOAA Ocean Exploration, 2021 ROV Shakedown (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/video-playlist-ex2103-ctenophore/
+    start: 9
+  doc.s6:
+    species: Siphonophora
+  doc.s6.b0:
+    type: clip
+    license: Public domain
+    url: https://archive.org/download/noaa-oe-video-video-shorts-ex1708-siphonophore/ex1708-siphonophore.mp4
+    attribution: NOAA Ocean Exploration, Deep-Sea Symphony 2017 (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/video-shorts-ex1708-siphonophore/
+    start: 9.5
+  doc.s6.b1:
+    hold: true
+  doc.s6.b2:
+    type: clip
+    license: Public domain
+    url: https://archive.org/download/noaa-oe-video-video-shorts-ex1708-siphonophore/ex1708-siphonophore.mp4
+    attribution: NOAA Ocean Exploration, Deep-Sea Symphony 2017 (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/video-shorts-ex1708-siphonophore/
+    start: 15
+  doc.s6.b3:
+    hold: true
+  doc.s6.b4:
+    type: clip
+    license: Public domain
+    url: https://archive.org/download/noaa-oe-video-okeanos-explorations-ex2104-dives-dive13-media-dive13-dandelion/dive13-dandelion-1280x720-2.ia.mp4
+    attribution: NOAA Ocean Exploration, 2021 North Atlantic Stepping Stones (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-ex2104-dives-dive13-media-dive13-dandelion/
+    start: 16
+  doc.s6.b5:
+    hold: true
+  doc.s6.b6:
+    hold: true
+  doc.s6.b7:
+    hold: true
+  doc.s6.b8:
+    type: clip
+    license: Public domain
+    url: https://archive.org/download/noaa-oe-video-okeanos-explorations-ex2104-dives-dive13-media-dive13-dandelion/dive13-dandelion-1280x720-2.ia.mp4
+    attribution: NOAA Ocean Exploration, 2021 North Atlantic Stepping Stones (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-ex2104-dives-dive13-media-dive13-dandelion/
+    start: 30
+  doc.s6.b9:
+    hold: true
+  doc.s6.b10:
+    type: clip
+    license: Public domain
+    url: https://archive.org/download/noaa-oe-video-video-shorts-ex1708-siphonophore/ex1708-siphonophore.mp4
+    attribution: NOAA Ocean Exploration, Deep-Sea Symphony 2017 (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/video-shorts-ex1708-siphonophore/
+    start: 19
+  doc.s6.b11:
+    type: clip
+    license: Public domain
+    url: https://archive.org/download/noaa-oe-video-okeanos-explorations-ex2104-dives-dive13-media-dive13-dandelion/dive13-dandelion-1280x720-2.ia.mp4
+    attribution: NOAA Ocean Exploration, 2021 North Atlantic Stepping Stones (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-ex2104-dives-dive13-media-dive13-dandelion/
+    start: 50
+  doc.s6.b12:
+    hold: true
+  doc.s7.b0:
+    type: clip
+    url: https://archive.org/download/noaa-oe-video-okeanos-explorations-express-ex2301-gallery-media-ex2301-dive09-hagfish/ex2301-dive09-hagfish-1280x720-1.mp4
+    license: Public domain
+    attribution: NOAA Ocean Exploration, 2023 Shakedown + EXPRESS West Coast Exploration (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-express-ex2301-gallery-media-ex2301-dive09-hagfish/
+    start: 34
+    zoom: 1.15
+    cx: 0.57
+    cy: 0.57
+  doc.s7.b1:
+    type: clip
+    url: https://archive.org/download/noaa-oe-video-video-playlist-ex1711-seacuke/chickenmonster-1280x720-1.mp4
+    license: Public domain
+    attribution: NOAA Ocean Exploration, Gulf of Mexico 2017 (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/video-playlist-ex1711-seacuke/
+    start: 88
+  doc.s7.b2:
+    type: clip
+    url: https://archive.org/download/noaa-oe-video-okeanos-explorations-ex2104-gallery-media-dumbo-atlantis/dumbo-atlantis-1280x720-1.mp4
+    attribution: NOAA Ocean Exploration, Deepwater Backyard 2014 (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-ex2104-gallery-media-dumbo-atlantis/
+    license: Public domain
+    start: 0.5
+  doc.s7.b3:
+    type: clip
+    license: Public domain
+    url: https://archive.org/download/noaa-oe-video-okeanos-explorations-ex1907-dailyupdates-nov18-media-dive11-isopod/dive11-isopod-1280x720-1.ia.mp4
+    attribution: NOAA Ocean Exploration, 2019 Southeastern U.S. Deep-sea Exploration (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-ex1907-dailyupdates-nov18-media-dive11-isopod/
+    start: 35
+    zoom: 1.6
+    cx: 0.45
+    cy: 0.35
+  doc.s7.b4:
+    type: clip
+    license: Public domain
+    url: https://archive.org/download/noaa-oe-video-okeanos-explorations-ex2104-features-ctenophore-media-dive04-ctenophore/dive04-ctenophore-1280x720-1.ia.mp4
+    attribution: NOAA Ocean Exploration, 2021 North Atlantic Stepping Stones (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-ex2104-features-ctenophore-media-dive04-ctenophore/
+    start: 16
+  doc.s7.b5:
+    type: clip
+    license: Public domain
+    url: https://archive.org/download/noaa-oe-video-okeanos-explorations-ex2104-dives-dive13-media-dive13-dandelion/dive13-dandelion-1280x720-2.ia.mp4
+    attribution: NOAA Ocean Exploration, 2021 North Atlantic Stepping Stones (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-ex2104-dives-dive13-media-dive13-dandelion/
+    start: 60
+  doc.s7.b6:
+    type: clip
+    license: Public domain
+    url: https://archive.org/download/noaa-oe-video-okeanos-explorations-seascape-alaska-ex2304-gallery-media-dive01-unexplored-planet/dive01-unexplored-planet-1920x1080-1.ia.mp4
+    attribution: NOAA Ocean Exploration, Seascape Alaska 3 (2023) (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-seascape-alaska-ex2304-gallery-media-dive01-unexplored-planet/
+    start: 80
+  doc.s7.b7:
+    type: clip
+    license: Public domain
+    url: https://archive.org/download/noaa-oe-video-okeanos-explorations-ex1711-dailyupdates-media-video-d2-d2/d2-1280x720-1.mp4
+    attribution: NOAA Ocean Exploration, Engineering for Discovery (Gulf of Mexico 2017) (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-ex1711-dailyupdates-media-video-d2-d2/
+    start: 175
+  doc.s7.b8:
+    hold: true
+  doc.s7.b9:
+    type: clip
+    license: Public domain
+    url: https://archive.org/download/noaa-oe-video-okeanos-explorations-seascape-alaska-ex2304-gallery-media-dive01-unexplored-planet/dive01-unexplored-planet-1920x1080-1.ia.mp4
+    attribution: NOAA Ocean Exploration, Seascape Alaska 3 (2023) (public domain, U.S. Government work)
+    source_url: https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-seascape-alaska-ex2304-gallery-media-dive01-unexplored-planet/
+    start: 24
