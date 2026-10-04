@@ -31,10 +31,10 @@ documentary_metadata:
   thumbnail_text: '-'
 shorts:
 - hook: This isn't a flower. It's a hunter.
-  fact: Meet the orchid mantis. It lives in the rainforests of Southeast Asia. Its legs are shaped like flower petals. And
-    to a bee, its colors look exactly like a real flower. So insects fly in, looking for nectar. Then it strikes. Scientists
-    tested this in the wild. The mantis attracted even more insects than real flowers. No other animal is known to hunt like
-    this. And the males? They stay small and brown.
+  fact: Meet the orchid mantis. It lives in the rainforests of Southeast Asia. Its legs are shaped like flower petals. Even
+    bees can't tell its colors from a real flower. So insects fly in, looking for nectar. Then it strikes. Scientists tested
+    this in the wild. The mantis attracted even more insects than real flowers. No other animal is known to hunt like this.
+    And the males? They stay small and brown.
   cta: Follow BioNiche for more weird animals.
   visual_queries:
   - Hymenopus coronatus
@@ -49,7 +49,7 @@ shorts:
     visual: Hymenopus coronatus
   - text: Its legs are shaped like flower petals.
     visual: Hymenopus coronatus
-  - text: And to a bee, its colors look exactly like a real flower.
+  - text: Even bees can't tell its colors from a real flower.
     visual: Hymenopus coronatus
   - text: So insects fly in, looking for nectar.
     visual: Hymenopus coronatus
