@@ -682,7 +682,8 @@ def render_documentary_story(pkg: VideoPackage, out_dir: Path, tts_provider: str
         wavs.append(pad_audio(voice_src, seconds, work / f"voice{i:02d}.wav"))
         srt_chunks += srt_from_words(words, offset=t)
         durations.append(seconds)
-        titles.append(scene.on_screen_text.replace("|", ": ") if i else "Intro")
+        name = scene.on_screen_text.split("|")[-1]  # YouTube: "The Slime Fish" (sin "Chapter 1")
+        titles.append("Intro" if i == 0 else name or "What Else Is Down There?")
         t += seconds
         print(f"  capítulo {i + 1}/{len(pkg.documentary.scenes)}: {seconds:.1f}s, {len(shots)} planos")
 
@@ -693,7 +694,7 @@ def render_documentary_story(pkg: VideoPackage, out_dir: Path, tts_provider: str
     voice = concat(wavs, work / "voice.wav")
     final = final_mix(video, voice, out_dir / "documentary.mp4", subtitles=_empty_ass(work / "empty.ass", DOC_SIZE))
     write_srt(srt_chunks, out_dir / "documentary.srt")
-    chapters = build_chapters(titles, durations)
+    chapters = build_chapters(titles, durations, min_chapter=10)  # YouTube exige >= 10 s por capítulo
     return {"documentary": str(final), "documentary_seconds": round(ffmpeg.duration(final), 2),
             "subtitles": str(out_dir / "documentary.srt"),
             "chapters": [[fmt_timestamp(a), b] for a, b in chapters], "chapters_seconds": chapters}

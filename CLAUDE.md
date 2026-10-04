@@ -164,3 +164,14 @@ cfg['voice'].update(voice_en='en-US-ChristopherNeural', rate_shorts='-10%', pitc
 - `shorts/en/giant-isopod.yaml` (Bathynomus giganteus): NOAA "Fish Head Dinner" (2019, isopod lifts a fish head and
   swims off with it, upside down) + "Giant Isopod" (Gulf of Mexico 2017, swim-in + close crawl). Story-style script.
   Swimming animals move across the frame: read their x/y on the contact sheet at the *shot's* time, not the clip start.
+
+## Long-form documentary (story style, 16:9) — `documentaries/en/deep-sea-weirdest.yaml`
+- Engine: `render.render_documentary_story(pkg, out_dir)`. Each `scene` = chapter (`on_screen_text` "Chapter 1|The Slime
+  Fish", species in `curated["doc.s<i>"]`), each sentence = `curated["doc.s<i>.b<j>"]` clip (or `{hold: true}`).
+  Sentences split with `SENTENCE_RE` → one script entry must be exactly one sentence.
+- Render overrides: `editing.update(style='documentary', transition_seconds=0.6, ambience='deep_sea_drone.mp3',
+  ambience_volume=0.12, ambience_duck=True)`, `voice.update(voice_en=Andrew, rate='+2%', pitch='-10Hz', broadcast_eq=True)`.
+  Full render ≈ 15 min → run it in the background. 1080p file ≈ 200 MB → send a 960p ~620 kbps preview.
+- Landscape shows the WHOLE frame: avoid NOAA captions/logos (2023 "ex2301" clips have a top-left logo → zoom 1.15;
+  the Böni lab video has left-side captions → zoom 1.45 cx 0.66). No burned subtitles: upload the `.srt` to YouTube.
+- v1 = 844 words → 5:17 (voice ≈ 160 wpm). Mid-roll ads need ≥ 8:00 → ~1,300 words.
