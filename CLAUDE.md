@@ -190,3 +190,10 @@ cfg['voice'].update(voice_en='en-US-ChristopherNeural', rate_shorts='-10%', pitc
   (no narrator) after it, ambience rises as the duck releases (~11 breaths, 47 s in total).
   → ❌ Original clip audio is NOT usable: NOAA "produced" clips carry background music (tonal lines + beats in the
   spectrogram, possible Content ID) or interviews; the rest are silent (−91 dB). ROVs don't record sea sound.
+- **v4 feedback: "chapter 1 starts mid-sentence"; "pauses and breaks too long"; "voice is horrible".**
+  → BUG: `loudnorm` on the voice inside `final_mix` shifted the narration ~2.2 s EARLY vs the picture and dropped 12 s
+  of audio (decoded audio 454.8 s vs video 467.1 s). Now a FIXED gain (voice peak → −2 dB). Always verify sync by
+  decoding the final audio sequentially and comparing a chapter's speech onset with the SRT time.
+  → Pacing trimmed: `doc_sentence_pause` 0.3, `doc_lead` 1.5 (2.0 intro), 6 breaths of 3 s.
+  → Voices: Kokoro-82M (Apache 2.0, local CPU, `pip install kokoro`, gives per-word start_ts/end_ts) samples sent:
+  am_michael, am_fenrir, bm_george, bm_fable. Paid alternative: ElevenLabs (API key in env).

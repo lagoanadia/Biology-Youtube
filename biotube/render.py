@@ -374,7 +374,11 @@ def final_mix(video: Path, voice: Path, out: Path, subtitles: Path | None = None
     if ambience_track:
         # Documental: se normaliza SOLO la voz; al final solo un limitador. Un loudnorm sobre la mezcla subiría el
         # ambiente en las pausas (sube lo que está bajo) y sonaría tan alto como el narrador.
-        parts[0] = parts[0].replace("[1:a]asplit=3", "[1:a]loudnorm=I=-15:TP=-2:LRA=7,asplit=3")
+        # ⚠️ Nada de loudnorm aquí: su ventana de 3 s adelantaba la voz ~2 s respecto a la imagen (y perdía 12 s de
+        # audio). Ganancia FIJA medida una vez: lleva el pico de la voz a -2 dB y no mueve nada en el tiempo.
+        err = ffmpeg.run_capture(["-i", str(voice), "-af", "volumedetect", "-f", "null", "-"])
+        peak = float(re.search(r"max_volume: ([-0-9.]+)", err).group(1))
+        parts[0] = parts[0].replace("[1:a]asplit=3", f"[1:a]volume={-2 - peak:.2f}dB,asplit=3")
         tail = "[mix]alimiter=limit=0.89:level=disabled[a]"
     else:
         tail = "[mix]loudnorm=I=-14:TP=-1.5:LRA=11[a]"
