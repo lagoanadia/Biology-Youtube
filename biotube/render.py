@@ -747,7 +747,7 @@ def render_documentary_story(pkg: VideoPackage, out_dir: Path, tts_provider: str
         # `breath` en una frase = segundos de "solo imagen" (sin narrador) justo después de ella
         breaths = [(pkg.curated.get(f"doc.s{i}.b{j}") or {}).get("breath", 0) for j in range(len(beats))]
         gaps = [pause + breaths[j] for j in range(len(beats) - 1)]
-        tail = (2.0 if i < len(pkg.documentary.scenes) - 1 else 2.5) + breaths[-1]
+        tail = (_edit("doc_tail", 2.0) if i < len(pkg.documentary.scenes) - 1 else 2.5) + breaths[-1]
         seconds = lead + voice_len + sum(gaps) + tail
         voice_src = mp3
         if cfg["voice"].get("broadcast_eq"):

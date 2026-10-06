@@ -197,3 +197,6 @@ cfg['voice'].update(voice_en='en-US-ChristopherNeural', rate_shorts='-10%', pitc
   → Pacing trimmed: `doc_sentence_pause` 0.3, `doc_lead` 1.5 (2.0 intro), 6 breaths of 3 s.
   → Voices: Kokoro-82M (Apache 2.0, local CPU, `pip install kokoro`, gives per-word start_ts/end_ts) samples sent:
   am_michael, am_fenrir, bm_george, bm_fable. Paid alternative: ElevenLabs (API key in env).
+- ✅ Owner picked **Kokoro `am_michael`** for the documentary. `voice.provider='kokoro'`, `voice_en='am_michael'`,
+  `rate='-3%'` (→ speed 0.97), `broadcast_eq=True`. `tts._synth_kokoro` maps Kokoro tokens to TOKEN_RE words
+  (all 8 chapters align 1:1). Render overrides: `doc_sentence_pause=0.3, doc_lead=1.5, doc_lead_intro=2.0, doc_tail=1.2`.

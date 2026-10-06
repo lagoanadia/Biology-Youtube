@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import asyncio
 import json
+import re
 import ssl
 import time
 from pathlib import Path
@@ -66,7 +67,56 @@ def _synth_silent(text: str, out: Path, voice: str, rate: str, pitch: str = "+0H
     return [{"t": i * step, "d": step * 0.9, "w": w.strip(".,;:!?¿¡")} for i, w in enumerate(words)]
 
 
-PROVIDERS = {"edge": _synth_edge, "silent": _synth_silent}
+_KOKORO: dict = {}
+_WORD_RE = re.compile(r"[\w'’]+(?:-[\w'’]+)*")  # igual que TOKEN_RE en render.py
+
+
+def _alnum(x: str) -> str:
+    return re.sub(r"[^0-9a-z]", "", x.lower())
+
+
+def _synth_kokoro(text: str, out: Path, voice: str, rate: str, pitch: str = "+0Hz") -> list[dict]:
+    """Kokoro-82M (Apache 2.0): voz local más natural. `voice` = am_michael, bm_george... (1ª letra = idioma).
+    `rate` "+4%" → velocidad 1.04. Kokoro no tiene pitch. Los tiempos por palabra salen de sus tokens y se
+    reparten a las palabras del texto tal como las cuenta el montaje (TOKEN_RE), para que todo cuadre."""
+    import numpy as np
+    import soundfile as sf
+    from kokoro import KPipeline
+
+    lang = voice[0]
+    if lang not in _KOKORO:
+        _KOKORO[lang] = KPipeline(lang_code=lang, repo_id="hexgrad/Kokoro-82M")
+    speed = 1 + float(rate.strip("%") or 0) / 100
+    audio, toks, offset = [], [], 0.0
+    for r in _KOKORO[lang](text, voice=voice, speed=speed):
+        chunk = r.audio.numpy()
+        for t in r.tokens or []:
+            if _alnum(t.text):
+                toks.append((t.text, None if t.start_ts is None else t.start_ts + offset,
+                             None if t.end_ts is None else t.end_ts + offset))
+        audio.append(chunk)
+        offset += len(chunk) / 24000
+    wav = out.with_suffix(".wav")
+    sf.write(wav, np.concatenate(audio), 24000)
+    ffmpeg.run(["-i", str(wav), "-b:a", "160k", str(out)])
+    wav.unlink()
+    # unir tokens de Kokoro con las palabras del texto ("see-through" puede venir en 3 tokens, etc.)
+    words, k = [], 0
+    for w in _WORD_RE.findall(text):
+        target, got, first, last = _alnum(w), "", None, None
+        while k < len(toks) and len(got) < len(target):
+            got += _alnum(toks[k][0]); first = first if first is not None else toks[k][1]; last = toks[k][2]; k += 1
+        words.append({"t": first, "d": None if first is None or last is None else max(last - first, 0.05), "w": w})
+    for i, w in enumerate(words):  # huecos sin tiempo: se interpolan entre vecinos
+        if w["t"] is None:
+            prev = words[i - 1]["t"] + (words[i - 1]["d"] or 0.2) if i else 0.0
+            w["t"] = prev
+        if w["d"] is None:
+            w["d"] = 0.2
+    return words
+
+
+PROVIDERS = {"edge": _synth_edge, "silent": _synth_silent, "kokoro": _synth_kokoro}
 
 
 def voice_for(short: bool = False, lang: str | None = None) -> tuple[str, str]:
