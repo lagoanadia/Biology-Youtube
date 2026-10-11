@@ -1,0 +1,92 @@
+id: basket-star-medusa
+language: en
+documentary:
+  topic: Basket star (Gorgonocephalus eucnemis) — "Gorgon's head", branching arms form a net with hooks (low-poly short)
+  working_title: '-'
+  category: animal
+  subcategory: deep sea
+  hook_type: shock
+  species:
+  - Gorgonocephalus eucnemis
+  scenes:
+  - narration: '-'
+    visual_query: '-'
+    on_screen_text: '-'
+    key_fact: false
+  sources:
+  - title: 'Monterey Bay Aquarium, Basket star (Gorgonocephalus eucnemis) — brittle star relative; 10-1,900 m; at least 60 cm
+      total diameter; extends long arms and uncurls its branches to form a net that catches tiny drifting animals (small
+      crustaceans, plankton) from passing currents'
+    reference: https://www.montereybayaquarium.org/animals-the-ocean/animals-a-to-z/basket-star
+  - title: 'Gorgonocephalus (Wikipedia, G. arcticus) — name from Greek "Gorgon''s head" (Medusa, snakes for hair), genus
+      described by Leach 1815; dichotomously branching arms form a parabolic basket in the current; microscopic hooks on
+      the branches pin prey; branchlets curl around prey forming a knot; arms roll the prey to the mouth'
+    reference: https://en.wikipedia.org/wiki/Gorgonocephalus_arcticus
+  - title: 'Biological Bulletin (2020), basket star arm hooks work mechanically like cat claws to hold prey'
+    reference: https://www.journals.uchicago.edu/doi/reader/10.1086/710549
+  - title: 'NOAA Ocean Exploration, Dive 13: Tangled, Tangled, Little Star (basket star feeding posture)'
+    reference: https://oceanexplorer.noaa.gov/okeanos/explorations/ex1811/dailyupdates/nov13/media/dive13.html
+documentary_metadata:
+  title: '-'
+  description: '-'
+  tags: []
+  hashtags: []
+  thumbnail_text: '-'
+shorts:
+- hook: This animal is named after a monster with snakes for hair.
+  fact: It's a basket star. Its scientific name means Gorgon's head, like Medusa. Its five arms split again and again into
+    tiny branches. To eat, it opens them into the current. They form a bowl-shaped net. Tiny animals drift into it. The
+    branches are covered in microscopic hooks. They grab the prey like a cat's claws. Then the tips curl around it in a
+    knot. And the arm rolls the food to its mouth. It can be more than half a meter wide. No wonder it's named after
+    Medusa.
+  cta: Follow BioNiche for more weird animals.
+  visual_queries:
+  - Gorgonocephalus eucnemis
+  on_screen_texts: []
+  # low-poly style: `visual` = scene id in lowpoly/src/basket/BasketShort.tsx
+  beats:
+  - text: This animal is named after a monster with snakes for hair.
+    visual: hook
+  - text: It's a basket star.
+    visual: name
+  - text: Its scientific name means Gorgon's head, like Medusa.
+    visual: name
+  - text: Its five arms split again and again into tiny branches.
+    visual: branch
+  - text: To eat, it opens them into the current.
+    visual: open
+  - text: They form a bowl-shaped net.
+    visual: open
+  - text: Tiny animals drift into it.
+    visual: drift
+  - text: The branches are covered in microscopic hooks.
+    visual: hooks
+  - text: They grab the prey like a cat's claws.
+    visual: hooks
+  - text: Then the tips curl around it in a knot.
+    visual: knot
+  - text: And the arm rolls the food to its mouth.
+    visual: mouth
+  - text: It can be more than half a meter wide.
+    visual: size
+  - text: No wonder it's named after Medusa.
+    visual: medusa
+  - text: Follow BioNiche for more weird animals.
+    visual: cta
+shorts_metadata:
+- title: 'This Animal Is Named After Medusa 🐍 #shorts #basketstar #deepsea'
+  description: 'The basket star''s scientific name means Gorgon''s head. Its five arms split again and again into tiny
+    branches that open into a net in the current. Microscopic hooks grab passing plankton like cat claws, and the arms
+    roll the food to its mouth. Animation: BioNiche. Follow BioNiche for more weird animals.'
+  tags:
+  - basket star
+  - Gorgonocephalus
+  - brittle star
+  - deep sea creatures
+  - weird animals
+  hashtags:
+  - '#shorts'
+  - '#basketstar'
+  - '#deepsea'
+  thumbnail_text: '-'
+curated: {}

@@ -167,6 +167,83 @@ cfg['voice'].update(voice_en='en-US-ChristopherNeural', rate_shorts='-10%', pitc
   swims off with it, upside down) + "Giant Isopod" (Gulf of Mexico 2017, swim-in + close crawl). Story-style script.
   Swimming animals move across the frame: read their x/y on the contact sheet at the *shot's* time, not the clip start.
 
+## 🆕 2026-10-10: shorts switch to LOW-POLY 3D ANIMATION (owner: "change the style to low poly animations,
+## like Zack D. Films on YouTube")
+- Scope (owner's choice): **shorts only**. Documentaries stay real NOAA footage (format B, Kokoro am_michael).
+- Tool (owner's choice): **Three.js + Remotion** (code-based 3D, renders on the owner's laptop: Ryzen 3 4300U,
+  7 GB RAM, integrated graphics, no Blender). Models: CC0 low-poly (Quaternius, Poly Pizza CC0) or built from primitives
+  with `flatShading`. Copy Zack D. Films' *style* only, never his assets.
+- The real-footage short rules above (NOAA clips, contact sheets, `x`/`zoom` crops) no longer apply to new shorts.
+  Script rules (story style, 80-105 words, sourced facts, CTA) still apply.
+- edge-tts (Andrew) has been down since 2026-10-10 (upstream rany2/edge-tts#490). A Kokoro am_michael version of the
+  hagfish short was rendered as a sample (`output/hagfish-slime-knot/kokoro_sample/`) for the owner to judge.
+  Owner then chose **"wait for Andrew"** for the comb jelly short: build the animation on planned timings now, add the
+  voice when edge-tts works again (re-run without `--voice planned`; captions/scenes re-sync to the real words).
+- Owner: "ok now we're working with animations, not real footage". They now send a full **brief** per short (shot list
+  with times, style, captions, audio, facts). Follow it, but still fact-check it: the comb jelly brief said "it makes no
+  light at all", which is false for Mnemiopsis (bioluminescent) → owner approved the corrected lines.
+
+### Low-poly pipeline (`lowpoly/` Remotion project + `scripts/render_lowpoly.py`)
+- Package = normal short YAML in `shorts/en/`; each beat's `visual` is a **scene id** of the composition
+  (e.g. `lowpoly/src/combjelly/CombJellyShort.tsx`). Consecutive beats with the same id = one continuous shot.
+- `python scripts/render_lowpoly.py <pkg> <CompositionId> --total 28 --pause 7:1.0 --cue shimmer.wav:6:8 ...`
+  → voice + word timings → `lowpoly/public/<id>/timeline.json` → Remotion (`--gl=angle`, ~1 s/frame on the owner's
+  laptop) → mix. `--frames 30,120,...` renders stills only: **always check a still per scene before a full render.**
+  `--voice planned` = estimated timings (0.12 s + 0.045 s/letter per word), no narration.
+- Reusable kit: `models/CombJelly.tsx` (980-triangle faceted body, 8 rows × 20 paddle plates, rainbow/lit/beat/light/
+  cut/knit props), `models/Props.tsx` (jellyfish, red ❌, light ray + spectrum, ripples), `env/DeepSea.tsx`
+  (gradient backdrop, fog, key + cyan rim lights, marine snow), `lib/Captions.tsx` (≤4 words/line, break at commas,
+  Montserrat 800 white + dark outline, key words in rainbow letters, top 1190 px, right margin 170 px).
+- Everything animates from `useCurrentFrame()`/`t` (never `useFrame` or clocks). Actions land on spoken words with
+  `wordTime(tl, beat, word)`.
+- 9:16 is narrow (horizontal FOV ≈ 20° at fov 35): two animals side by side need scale ~0.6 or a vertical layout.
+- Audio: the deep-sea pad (`deep_sea_drone.mp3`) is pre-levelled to −38 dB and passed as `ambience_track`, so
+  `final_mix` uses a fixed voice gain + limiter (no loudnorm pumping in pauses). No Beethoven when the brief asks for
+  an ambient pad. SFX made by us: `scripts/make_sfx.py` (shimmer, squish); whoosh2 at 0.1 on scene changes.
+- Owner asked "why is there no voice" on the planned preview → then **"add michael"**: comb jelly short voiced with
+  Kokoro am_michael: `--voice kokoro --rate +7% --max-gap 0.25` (Kokoro leaves ~0.45 s between sentences and ~0.4 s
+  at start/end; trimmed so 83 words + 1 s hold fit 28 s). Result: voice −18 dB, pad −40 dB in the hold.
+  Don't deliver a voiceless preview again without saying so loudly up front.
+- Kokoro cache gotcha: `cache_suffix` ignores the rate when pitch is +0Hz, so render_lowpoly adds `args.rate` to the
+  key (otherwise a new `--rate` silently reuses the old audio).
+- Short #2 low-poly: `shorts/en/brooding-octopus.yaml` → composition `Octopus` (`lowpoly/src/octopus/`), Michael +7 %,
+  max-gap 0.25, 32.7 s. New reusable models: `Octopus` (pale/cup/push/swim), `Eggs` (grow/embryo/empty), `Rov`,
+  `Crab`, `Shrimp`, `env/Rock`. Zack-style pop-up graphics (`Pop`: "4.5 YEARS", counters, "53 MONTHS") sit at
+  top ≈ 250-330 px so they never collide with the captions.
+- Thumbnails: Remotion `<Still>` per short (`CombJellyThumb`, `OctopusThumb`): whole animal visible + 2 lines of huge
+  Montserrat 900 text. Owner uploads them from the YouTube mobile app.
+- First stills of a new model are always too close/too big: check framing in 9:16 before the full render.
+- Short #3 low-poly: `shorts/en/orca-wave-wash.yaml` → `Orca` (`lowpoly/src/orca/`), Antarctic surface env
+  `env/Polar.tsx` (sky, fog, faceted water with travelling push waves via `waveHeight`), `models/PolarAnimals.tsx`
+  (Orca with per-facet vertex colors, Seal weddell/crabeater, breakable IceFloe). No gore: ends with the seal in the
+  water. Gotchas: Euler order — to stand an animal up, yaw in an outer group and tilt in an inner one; orca white
+  belly must be a narrow ventral stripe or it reads as a penguin.
+- **Fuente recomendada por el dueño (2026-10-11):** Monterey Bay Aquarium, "Deep-sea animals A to Z"
+  https://www.montereybayaquarium.org/visit/exhibits/into-the-deep/deep-sea-animals-a-to-z — buen sitio para elegir
+  animales, sacar datos (citar la ficha del animal en `sources:`) y referencias visuales (forma, colores, postura)
+  para modelarlos en low-poly. Copiar solo la *referencia* visual, nunca sus fotos/vídeos.
+- Owner queue (2026-10-11): anglerfish, basket star, droopy sea pen, Christmas tree siphonophore, owlfish —
+  "render them one by one" (send each when done).
+- 2026-10-11 queue delivered (each with title + description + thumbnail, as the owner asked "so I can schedule
+  them"): anglerfish-fusion (`Angler`), basket-star-medusa (`Basket`), droopy-sea-pen (`SeaPen`),
+  christmas-tree-siphonophore (`Siphon`), owlfish-eyes (`Owlfish`). Owner now writes in Spanish → reply in Spanish;
+  scripts/titles stay in English (English channel).
+- Lessons from these: long fish in 9:16 → 3/4 views, not side views; avoid repeating the same "it's a colony" angle in
+  consecutive shorts; drop any number a source doesn't support ("up to 8 males", "3 m sea pen", "hundreds of polyps").
+- **Visibility rules for the NEXT shorts (owner 2026-10-11: "take a note for the next generations").** The 8 shorts above
+  are already scheduled — don't re-render them. Apply to every new short:
+  1. **Hook card at frame 0**: big pop-up text with the hook (e.g. "HE NEVER LETS GO") on screen from 0 s, animal already
+     moving / mid-action. No calm establishing shot first. (Plant short had 79 % swipe-away; target ≥ 60-70 % viewed.)
+  2. **Loop ending**: end on the payoff line and make the last frame flow back into the first. Test dropping the
+     "Follow BioNiche…" CTA (costs ~3 s where viewers swipe) on some shorts and compare retention.
+  3. **Shorter**: aim 20-25 s (≈ 65-80 words) for some, A/B against ~32 s ones.
+  4. Topic mix: alternate famous animals (searched: orca, anglerfish) with niche ones.
+  5. With each short, also deliver a **pinned-comment question** (e.g. "Which deep-sea animal should we animate next?").
+  6. Owner schedules 1 short/day, 6-9 pm Spain time; later link each short to the matching documentary ("Related video").
+  7. Same files can go to TikTok / Instagram Reels.
+  Check analytics (viewed vs swiped away, avg % viewed, subs per short) after ~10 shorts and copy what wins.
+- YAML gotcha: an unquoted title with ` #shorts` is cut at the `#` (YAML comment) → always quote titles.
+
 ## Long-form documentary (story style, 16:9) — `documentaries/en/deep-sea-weirdest.yaml`
 - Engine: `render.render_documentary_story(pkg, out_dir)`. Each `scene` = chapter (`on_screen_text` "Chapter 1|The Slime
   Fish", species in `curated["doc.s<i>"]`), each sentence = `curated["doc.s<i>.b<j>"]` clip (or `{hold: true}`).

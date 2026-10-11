@@ -1,0 +1,90 @@
+id: droopy-sea-pen
+language: en
+documentary:
+  topic: Droopy sea pen (Umbellula) — looks like one flower on a stick but is a colony of polyps (low-poly short)
+  working_title: '-'
+  category: animal
+  subcategory: deep sea
+  hook_type: shock
+  species:
+  - Umbellula sp.
+  scenes:
+  - narration: '-'
+    visual_query: '-'
+    on_screen_text: '-'
+    key_fact: false
+  sources:
+  - title: 'Monterey Bay Aquarium, Droopy sea pen (Umbellula sp.) — 200-6,300 m worldwide; pushes its strong stem down into
+      the mud; feathery tentacles reach up and catch plankton floating above the seafloor'
+    reference: https://www.montereybayaquarium.org/animals-the-ocean/animals-a-to-z/droopy-sea-pen
+  - title: 'Umbellula (Wikipedia) — colony: the primary polyp forms the stalk; secondary polyps bud around its distal end,
+      larger autozooids (feeding) and smaller siphonozooids (water circulation); autozooids clustered at the tip of the
+      stalk; swollen base (peduncle) holds the colony in position'
+    reference: https://en.wikipedia.org/wiki/Umbellula
+  - title: 'Marine and Freshwater Research Institute Iceland, Deepwater seapen communities — Umbellula encrinus can reach a
+      height of more than two metres, below 800 m'
+    reference: https://novasarc.hafogvatn.is/vme5/
+  - title: 'Live Science, Colorful Sea Pens Decorate Ocean Floor — the head is pushed along by the current while the
+      tentacles pick food from the water'
+    reference: https://www.livescience.com/15435-sea-pens-corals-marine-deep-water.html
+documentary_metadata:
+  title: '-'
+  description: '-'
+  tags: []
+  hashtags: []
+  thumbnail_text: '-'
+shorts:
+- hook: This looks like one flower on a stick. But it's a whole crowd of animals.
+  fact: It's a droopy sea pen. It all starts with one tiny polyp. That polyp grows into a long stalk. Then new polyps bud
+    at the top, like copies of itself. Some catch food with feathery tentacles. Others pump water through the colony. Its
+    swollen base anchors it in the mud. And the stalk can grow taller than two meters. The current pushes the head over,
+    and the tentacles grab passing food. So that flower is really a team, working as one.
+  cta: Follow BioNiche for more weird animals.
+  visual_queries:
+  - Umbellula
+  on_screen_texts: []
+  # low-poly style: `visual` = scene id in lowpoly/src/seapen/SeaPenShort.tsx
+  beats:
+  - text: This looks like one flower on a stick.
+    visual: hook
+  - text: But it's a whole crowd of animals.
+    visual: crowd
+  - text: It's a droopy sea pen.
+    visual: name
+  - text: It all starts with one tiny polyp.
+    visual: grow
+  - text: That polyp grows into a long stalk.
+    visual: grow
+  - text: Then new polyps bud at the top, like copies of itself.
+    visual: bud
+  - text: Some catch food with feathery tentacles.
+    visual: feeders
+  - text: Others pump water through the colony.
+    visual: pumps
+  - text: Its swollen base anchors it in the mud.
+    visual: anchor
+  - text: And the stalk can grow taller than two meters.
+    visual: tall
+  - text: The current pushes the head over, and the tentacles grab passing food.
+    visual: current
+  - text: So that flower is really a team, working as one.
+    visual: team
+  - text: Follow BioNiche for more weird animals.
+    visual: cta
+shorts_metadata:
+- title: 'This "Flower" Is Really a Crowd of Animals 🌸 #shorts #seapen #deepsea'
+  description: 'The droopy sea pen looks like a single flower on a long stick, but it is a colony. One polyp grows into
+    the stalk and buds new polyps at the top: some catch food with feathery tentacles, others pump water. Its stalk can
+    grow taller than two meters on the deep seafloor. Animation: BioNiche. Follow BioNiche for more weird animals.'
+  tags:
+  - droopy sea pen
+  - Umbellula
+  - sea pen
+  - deep sea creatures
+  - weird animals
+  hashtags:
+  - '#shorts'
+  - '#deepsea'
+  - '#seapen'
+  thumbnail_text: '-'
+curated: {}

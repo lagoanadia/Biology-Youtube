@@ -1,0 +1,91 @@
+id: brooding-octopus
+language: en
+documentary:
+  topic: Deep-sea octopus Graneledone boreopacifica broods its eggs for 53 months (low-poly animated short, no documentary)
+  working_title: '-'
+  category: animal
+  subcategory: deep sea
+  hook_type: shock
+  species:
+  - Graneledone boreopacifica
+  scenes:
+  - narration: '-'
+    visual_query: '-'
+    on_screen_text: '-'
+    key_fact: false
+  sources:
+  - title: 'Robison, Seibel & Drazen (2014) Deep-Sea Octopus (Graneledone boreopacifica) Conducts the Longest-Known Egg-Brooding
+      Period of Any Animal. PLoS ONE 9(7): e103437 (CC BY 4.0) — female found with a fresh clutch on a rock 1,397 m deep in
+      Monterey Canyon, California (May 2007); ROV returned 18 times over four and a half years; she pushed away crabs and
+      shrimp and ignored food offered; skin became pale, almost white; temperature 2.8-3.4 °C; gone by October 2011 with
+      only empty egg capsules left; 53 months = longest egg-brooding period ever reported for any animal; low temperature
+      prolongs embryonic development'
+    reference: https://doi.org/10.1371/journal.pone.0103437
+documentary_metadata:
+  title: '-'
+  description: '-'
+  tags: []
+  hashtags: []
+  thumbnail_text: '-'
+shorts:
+- hook: This octopus mom guarded her eggs for four and a half years.
+  fact: In 2007, scientists found her with fresh eggs, deep off California. So they came back to check on her. Eighteen
+    times. She was always there, covering her eggs. Crabs and shrimp walked right up to her. But she didn't eat them. She
+    pushed them away. The water there is barely above freezing. So the eggs grow very slowly. Month after month, she got
+    paler. Then one day, she was gone. Only empty eggs were left. Her babies had hatched. No animal has ever guarded its
+    eggs longer.
+  cta: Follow BioNiche for more weird animals.
+  visual_queries:
+  - Graneledone boreopacifica
+  on_screen_texts: []
+  # low-poly style: `visual` = scene id in lowpoly/src/shorts/BroodingOctopus.tsx
+  beats:
+  - text: This octopus mom guarded her eggs for four and a half years.
+    visual: hook
+  - text: In 2007, scientists found her with fresh eggs, deep off California.
+    visual: rov_finds
+  - text: So they came back to check on her.
+    visual: rov_returns
+  - text: Eighteen times.
+    visual: eighteen
+  - text: She was always there, covering her eggs.
+    visual: covering
+  - text: Crabs and shrimp walked right up to her.
+    visual: crabs
+  - text: But she didn't eat them.
+    visual: crabs
+  - text: She pushed them away.
+    visual: push
+  - text: The water there is barely above freezing.
+    visual: cold
+  - text: So the eggs grow very slowly.
+    visual: eggs_grow
+  - text: Month after month, she got paler.
+    visual: paler
+  - text: Then one day, she was gone.
+    visual: gone
+  - text: Only empty eggs were left.
+    visual: gone
+  - text: Her babies had hatched.
+    visual: hatch
+  - text: No animal has ever guarded its eggs longer.
+    visual: record
+  - text: Follow BioNiche for more weird animals.
+    visual: cta
+shorts_metadata:
+- title: 'This Octopus Guarded Her Eggs for 4.5 Years #shorts #octopus #deepsea'
+  description: 'Deep in a canyon off California, an octopus mother covered her eggs for 53 months. Scientists came back
+    to check on her 18 times, and she was always there, pushing away crabs and shrimp. When she was finally gone, her
+    babies had hatched. Animation: BioNiche. Follow BioNiche for more weird animals.'
+  tags:
+  - octopus
+  - deep sea octopus
+  - Graneledone boreopacifica
+  - octopus mother
+  - weird animals
+  hashtags:
+  - '#shorts'
+  - '#octopus'
+  - '#deepsea'
+  thumbnail_text: '-'
+curated: {}

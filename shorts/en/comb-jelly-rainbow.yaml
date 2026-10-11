@@ -1,0 +1,90 @@
+id: comb-jelly-rainbow
+language: en
+documentary:
+  topic: Comb jelly rainbow (light scattering on beating comb rows) + 2024 fusion of injured Mnemiopsis (low-poly animated short)
+  working_title: '-'
+  category: animal
+  subcategory: ocean
+  hook_type: shock
+  species:
+  - Mnemiopsis leidyi
+  scenes:
+  - narration: '-'
+    visual_query: '-'
+    on_screen_text: '-'
+    key_fact: false
+  sources:
+  - title: 'NOAA Ocean Exploration daily image, Comb Jelly (2020-10-15) — the rainbow-hued displays are not bioluminescence:
+      light is scattered by the moving rows of combs (cilia) the animal uses to propel itself; eight comb rows, each a
+      stack of comb plates'
+    reference: https://oceanexplorer.noaa.gov/multimedia/daily-image/media/20201015.html
+  - title: 'University of Puget Sound, Comb Jelly — moving cilia scatter light; it is not bioluminescence; eight ciliated
+      comb rows provide locomotion'
+    reference: https://www.pugetsound.edu/comb-jelly
+  - title: 'Schnitzler et al. (2012) Genomic organization, evolution, and expression of photoprotein and opsin genes in
+      Mnemiopsis leidyi. BMC Biology 10:107 — Mnemiopsis DOES bioluminesce (photocytes along the comb rows), so the
+      script must not say it makes no light'
+    reference: https://doi.org/10.1186/1741-7007-10-107
+  - title: 'Jokura, Anttonen, Rodriguez-Santiago & Arenas (2024) Rapid physiological integration of fused ctenophores.
+      Current Biology 34(19):R889-R890 — two injured Mnemiopsis leidyi fused into a single entity (9 of 10 pairs); within
+      ~2 h about 90-95 % of muscle contractions were synchronized; shared digestive tract'
+    reference: https://doi.org/10.1016/j.cub.2024.07.084
+  - title: 'Press coverage of Jokura et al. 2024 (two-hour synchronization figure)'
+    reference: https://www.sci.news/biology/mnemiopsis-leidyi-rapid-physiological-integration-13322.html
+documentary_metadata:
+  title: '-'
+  description: '-'
+  tags: []
+  hashtags: []
+  thumbnail_text: '-'
+shorts:
+- hook: This animal shimmers like a rainbow. But the rainbow isn't its own light.
+  fact: It's a comb jelly. And it's not even a jellyfish. Along its body are eight rows of tiny hairs, called combs. It
+    beats them in waves to swim. And when light hits the moving combs, it splits into every color. The rainbow is just
+    reflected light. In 2024, scientists saw two injured comb jellies fuse into one. Within hours, they moved as one animal.
+  cta: Follow BioNiche for more weird animals.
+  visual_queries:
+  - Mnemiopsis leidyi
+  on_screen_texts: []
+  # low-poly style: `visual` = scene id in lowpoly/src/combjelly/CombJellyShort.tsx
+  beats:
+  - text: This animal shimmers like a rainbow.
+    visual: hook
+  - text: But the rainbow isn't its own light.
+    visual: hook
+  - text: It's a comb jelly.
+    visual: notjelly
+  - text: And it's not even a jellyfish.
+    visual: notjelly
+  - text: Along its body are eight rows of tiny hairs, called combs.
+    visual: combs
+  - text: It beats them in waves to swim.
+    visual: swim
+  - text: And when light hits the moving combs, it splits into every color.
+    visual: split
+  - text: The rainbow is just reflected light.
+    visual: reflected
+  - text: In 2024, scientists saw two injured comb jellies fuse into one.
+    visual: fuse
+  - text: Within hours, they moved as one animal.
+    visual: asone
+  - text: Follow BioNiche for more weird animals.
+    visual: cta
+shorts_metadata:
+- title: 'How Comb Jellies Make Rainbows 🌈 #shorts #combjelly #ocean'
+  description: 'Comb jellies shimmer like a rainbow, but those colors are not their own light. They swim by beating eight
+    rows of tiny hair plates, and light bouncing off the moving plates splits into every color. In 2024, scientists also
+    watched two injured comb jellies fuse into a single animal. Animation: BioNiche. Follow BioNiche for more weird
+    animals.'
+  tags:
+  - comb jelly
+  - ctenophore
+  - Mnemiopsis leidyi
+  - rainbow animal
+  - weird animals
+  hashtags:
+  - '#shorts'
+  - '#combjelly'
+  - '#ocean'
+  thumbnail_text: '-'
+curated: {}

@@ -1,0 +1,94 @@
+id: christmas-tree-siphonophore
+language: en
+documentary:
+  topic: Christmas tree siphonophore (Forskalia) — swims with bells, stings with "decorations", breaks apart at a touch (low-poly short)
+  working_title: '-'
+  category: animal
+  subcategory: deep sea
+  hook_type: shock
+  species:
+  - Forskalia sp.
+  scenes:
+  - narration: '-'
+    visual_query: '-'
+    on_screen_text: '-'
+    key_fact: false
+  sources:
+  - title: 'Monterey Bay Aquarium, Christmas tree siphonophore (Forskalia sp.) — up to 3 m long; branching tentacles look like
+      a holiday tree but are loaded with stinging cells that stun prey; drifts and twirls through the midwater using a
+      system of floats and swimming bells; eats small crustaceans and fish, mantis shrimp larvae, bristle worms; surface
+      to 2,000 m in the North Pacific and Atlantic'
+    reference: https://www.montereybayaquarium.org/animals-the-ocean/animals-a-to-z/christmas-tree-siphonophore
+  - title: 'MBARI 2021 Annual Report, MBARI reveals a dazzling diversity of delicate drifters — siphonophores capture prey with
+      a curtain of stinging cells; their delicate bodies can break apart at the slightest touch, so they are studied with
+      ROVs (robot submarines)'
+    reference: https://annualreport.mbari.org/2021/story/mbari-reveals-a-dazzling-diversity-of-delicate-drifters
+  - title: 'Physonect siphonophore anatomy (Dunn, Pugh & Haddock 2005; taxonomic keys) — gas-filled float (pneumatophore) at
+      the top, swimming bells (nectophores) below; Forskalia has very numerous crowded nectophores and stalked feeding
+      polyps (gastrozooids)'
+    reference: https://www.brown.edu/Faculty/Dunn_Lab/assets/Dunn-etal2005_Marrus.pdf
+documentary_metadata:
+  title: '-'
+  description: '-'
+  tags: []
+  hashtags: []
+  thumbnail_text: '-'
+shorts:
+- hook: This Christmas tree swims, stings, and falls apart if you touch it.
+  fact: It's a Christmas tree siphonophore. It can be up to three meters long. At the top is a tiny gas float. Below it,
+    many swimming bells pump water. So it drifts and twirls through the dark. Its branches look like decorations. But
+    they're loaded with stinging cells. Small shrimp and fish that touch them get stunned. Then its feeding parts swallow
+    them. But it's so delicate, it breaks apart at the slightest touch. That's why scientists study it with robot
+    submarines. A beautiful tree you should never touch.
+  cta: Follow BioNiche for more weird animals.
+  visual_queries:
+  - Forskalia
+  on_screen_texts: []
+  # low-poly style: `visual` = scene id in lowpoly/src/siphon/SiphonShort.tsx
+  beats:
+  - text: This Christmas tree swims, stings, and falls apart if you touch it.
+    visual: hook
+  - text: It's a Christmas tree siphonophore.
+    visual: name
+  - text: It can be up to three meters long.
+    visual: size
+  - text: At the top is a tiny gas float.
+    visual: float
+  - text: Below it, many swimming bells pump water.
+    visual: bells
+  - text: So it drifts and twirls through the dark.
+    visual: twirl
+  - text: Its branches look like decorations.
+    visual: decor
+  - text: But they're loaded with stinging cells.
+    visual: sting
+  - text: Small shrimp and fish that touch them get stunned.
+    visual: prey
+  - text: Then its feeding parts swallow them.
+    visual: eat
+  - text: But it's so delicate, it breaks apart at the slightest touch.
+    visual: fragile
+  - text: That's why scientists study it with robot submarines.
+    visual: rov
+  - text: A beautiful tree you should never touch.
+    visual: final
+  - text: Follow BioNiche for more weird animals.
+    visual: cta
+shorts_metadata:
+- title: 'This Christmas Tree Swims and Stings 🎄 #shorts #siphonophore #deepsea'
+  description: 'The Christmas tree siphonophore drifts and twirls through the deep sea using a gas float and many swimming
+    bells. Its branches look like decorations but are loaded with stinging cells that stun small shrimp and fish. It is
+    so delicate that it breaks apart at the slightest touch, so scientists study it with robot submarines. Animation:
+    BioNiche. Follow BioNiche for more weird animals.'
+  tags:
+  - christmas tree siphonophore
+  - Forskalia
+  - siphonophore
+  - deep sea creatures
+  - weird animals
+  hashtags:
+  - '#shorts'
+  - '#siphonophore'
+  - '#deepsea'
+  thumbnail_text: '-'
+curated: {}

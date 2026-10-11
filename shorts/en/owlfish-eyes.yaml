@@ -1,0 +1,86 @@
+id: owlfish-eyes
+language: en
+documentary:
+  topic: Owlfish (Pseudobathylagus milleri) — eyes almost as big as its head to catch the faint light of the deep sea (low-poly short)
+  working_title: '-'
+  category: animal
+  subcategory: deep sea
+  hook_type: shock
+  species:
+  - Pseudobathylagus milleri
+  scenes:
+  - narration: '-'
+    visual_query: '-'
+    on_screen_text: '-'
+    key_fact: false
+  sources:
+  - title: 'Monterey Bay Aquarium, Owlfish (Pseudobathylagus milleri) — big eyes make the most of what little light reaches
+      the deep sea; faint glimmers in the dark guide it to food like small shrimp and jellies; 550-6,600 m'
+    reference: https://www.montereybayaquarium.org/animals-the-ocean/animals-a-to-z/owlfish
+  - title: 'KION / MBARI (2021-05-07), Owlfish spotted in the depths of the Monterey Bay — called owlfish because its eyes are
+      almost as big as its head; North Pacific; observed by MBARI ROV Tiburon at 3,986 ft (~1,215 m)'
+    reference: https://kioncentralcoast.com/news/2021/05/07/owlfish-spotted-in-the-depths-of-the-monterey-bay/
+  - title: 'Pseudobathylagus (Wikipedia) — stout blacksmelt / owlfish, deep-sea smelt of the North Pacific, up to 16.5 cm;
+      eyes remarkably larger than in other Bathylagidae; described as Bathylagus milleri (Jordan & Gilbert 1898), later
+      moved to its own genus Pseudobathylagus (Greek pseudes = false); eats small crustaceans'
+    reference: https://en.wikipedia.org/wiki/Pseudobathylagus
+documentary_metadata:
+  title: '-'
+  description: '-'
+  tags: []
+  hashtags: []
+  thumbnail_text: '-'
+shorts:
+- hook: This fish has eyes almost as big as its head.
+  fact: It's called the owlfish. It's a deep-sea fish about the size of your hand. It lives in the North Pacific, far below
+    the surface. Down there, almost no sunlight reaches. So its huge eyes catch every bit of light there is. Just like an
+    owl hunting at night. Faint glimmers in the dark guide it to food. Tiny shrimp and jellies. Scientists filmed one with
+    a robot submarine, about twelve hundred meters down. Its scientific name even starts with false, because it was first
+    put in the wrong group.
+  cta: Follow BioNiche for more weird animals.
+  visual_queries:
+  - Pseudobathylagus milleri
+  on_screen_texts: []
+  # low-poly style: `visual` = scene id in lowpoly/src/owlfish/OwlfishShort.tsx
+  beats:
+  - text: This fish has eyes almost as big as its head.
+    visual: hook
+  - text: It's called the owlfish.
+    visual: name
+  - text: It's a deep-sea fish about the size of your hand.
+    visual: size
+  - text: It lives in the North Pacific, far below the surface.
+    visual: depth
+  - text: Down there, almost no sunlight reaches.
+    visual: dark
+  - text: So its huge eyes catch every bit of light there is.
+    visual: eyes
+  - text: Just like an owl hunting at night.
+    visual: owl
+  - text: Faint glimmers in the dark guide it to food.
+    visual: glimmer
+  - text: Tiny shrimp and jellies.
+    visual: food
+  - text: Scientists filmed one with a robot submarine, about twelve hundred meters down.
+    visual: rov
+  - text: Its scientific name even starts with false, because it was first put in the wrong group.
+    visual: name2
+  - text: Follow BioNiche for more weird animals.
+    visual: cta
+shorts_metadata:
+- title: 'This Fish Has Eyes as Big as Its Head 👀 #shorts #owlfish #deepsea'
+  description: 'The owlfish lives deep in the North Pacific, where almost no sunlight reaches. Its eyes are almost as big as
+    its head, catching every bit of light so faint glimmers can guide it to tiny shrimp and jellies. Its scientific name,
+    Pseudobathylagus, even starts with the word for false. Animation: BioNiche. Follow BioNiche for more weird animals.'
+  tags:
+  - owlfish
+  - Pseudobathylagus milleri
+  - stout blacksmelt
+  - deep sea fish
+  - weird animals
+  hashtags:
+  - '#shorts'
+  - '#owlfish'
+  - '#deepsea'
+  thumbnail_text: '-'
+curated: {}

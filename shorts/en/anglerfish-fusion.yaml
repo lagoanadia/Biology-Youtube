@@ -1,0 +1,92 @@
+id: anglerfish-fusion
+language: en
+documentary:
+  topic: Deep-sea anglerfish sexual parasitism — tiny males fuse with females; immune system changes allow it (low-poly short)
+  working_title: '-'
+  category: animal
+  subcategory: deep sea
+  hook_type: shock
+  species:
+  - Ceratioidei (deep-sea anglerfishes)
+  scenes:
+  - narration: '-'
+    visual_query: '-'
+    on_screen_text: '-'
+    key_fact: false
+  sources:
+  - title: 'Swann, Holland, Petersen, Pietsch & Boehm (2020) The immunogenetics of sexual parasitism. Science 369:1608-1615 —
+      permanently attaching species largely lack MHC genes and killer T-cell function is severely blunted; authors
+      propose this enables tissue fusion'
+    reference: https://doi.org/10.1126/science.aaz9445
+  - title: 'University of Washington News (2020-07-30), Deep-sea anglerfishes have evolved a new type of immune system —
+      tiny dwarfed males permanently attach to gigantic females, fuse tissues and share blood circulation, male fully
+      dependent on the female for nutrients; females may be more than 60 times the length of males; males have huge
+      nostrils to home in on a chemical attractant from females; only females have the bioluminescent lure; the fish
+      rarely meet in the dark'
+    reference: https://www.washington.edu/news/2020/07/30/deep-sea-anglerfishes-have-evolved-a-new-type-of-immune-system/
+documentary_metadata:
+  title: '-'
+  description: '-'
+  tags: []
+  hashtags: []
+  thumbnail_text: '-'
+shorts:
+- hook: This fish finds a partner and never lets go.
+  fact: It's a deep-sea anglerfish. This is the female, with a glowing lure. In the dark, they rarely meet. The male is
+    tiny. She can be sixty times longer. He has huge nostrils to follow her scent. When he finds her, he bites on. And he
+    never lets go. Their bodies fuse, and they share the same blood. He gets all his food from her. Normally, a body
+    attacks tissue that isn't its own. But these anglerfish lost parts of their immune system. Scientists think that's
+    what lets them fuse.
+  cta: Follow BioNiche for more weird animals.
+  visual_queries:
+  - anglerfish
+  on_screen_texts: []
+  # low-poly style: `visual` = scene id in lowpoly/src/angler/AnglerShort.tsx
+  beats:
+  - text: This fish finds a partner and never lets go.
+    visual: hook
+  - text: It's a deep-sea anglerfish.
+    visual: female
+  - text: This is the female, with a glowing lure.
+    visual: female
+  - text: In the dark, they rarely meet.
+    visual: dark
+  - text: The male is tiny.
+    visual: size
+  - text: She can be sixty times longer.
+    visual: size
+  - text: He has huge nostrils to follow her scent.
+    visual: scent
+  - text: When he finds her, he bites on.
+    visual: bite
+  - text: And he never lets go.
+    visual: bite
+  - text: Their bodies fuse, and they share the same blood.
+    visual: fuse
+  - text: He gets all his food from her.
+    visual: fuse
+  - text: Normally, a body attacks tissue that isn't its own.
+    visual: immune
+  - text: But these anglerfish lost parts of their immune system.
+    visual: lost
+  - text: Scientists think that's what lets them fuse.
+    visual: together
+  - text: Follow BioNiche for more weird animals.
+    visual: cta
+shorts_metadata:
+- title: 'This Fish Fuses With Its Mate Forever 🎣 #shorts #anglerfish #deepsea'
+  description: 'Deep-sea anglerfish males are tiny. When one finally finds a female in the dark, he bites on and never lets
+    go: their bodies fuse and they share the same blood. Scientists found these fish lost parts of their immune system,
+    which is probably what lets them fuse. Animation: BioNiche. Follow BioNiche for more weird animals.'
+  tags:
+  - anglerfish
+  - deep sea anglerfish
+  - anglerfish male
+  - deep sea creatures
+  - weird animals
+  hashtags:
+  - '#shorts'
+  - '#anglerfish'
+  - '#deepsea'
+  thumbnail_text: '-'
+curated: {}

@@ -1,0 +1,92 @@
+id: orca-wave-wash
+language: en
+documentary:
+  topic: Antarctic pack-ice orcas (type B) make waves to wash Weddell seals off ice floes (low-poly animated short)
+  working_title: '-'
+  category: animal
+  subcategory: polar ocean
+  hook_type: shock
+  species:
+  - Orcinus orca (type B, pack ice)
+  scenes:
+  - narration: '-'
+    visual_query: '-'
+    on_screen_text: '-'
+    key_fact: false
+  sources:
+  - title: 'Pitman & Durban (2012) Cooperative hunting behavior, prey selectivity and prey handling by pack ice killer
+      whales (Orcinus orca), type B, in Antarctic Peninsula waters. Marine Mammal Science 28(1):16-36 (online 2011) —
+      observed January 2009 off the western Antarctic Peninsula; whales locate seals on floes by spy-hopping; up to 7
+      whales charge a floe side by side, the wave washes the seal off or breaks the floe into smaller pieces; 12/14
+      seal kills by wave-washing, 120 waves in 22 attacks, mean 4.1 waves per successful attack (1-10); Weddell seals
+      14/15 identified kills although only 15 % of 365 seals on floes (crabeater 82 %, leopard 3 %); reason unknown'
+    reference: https://doi.org/10.1111/j.1748-7692.2010.00453.x
+  - title: 'Yale Environment 360, Mysteries of Killer Whales Uncovered in the Antarctic (interview with R. Pitman)'
+    reference: https://e360.yale.edu/features/mysteries_of_killer_whales_uncovered_in_the_antarctic
+  - title: 'ScienceDaily (2011-03-30), NOAA press release on the wave-washing study'
+    reference: https://www.sciencedaily.com/releases/2011/03/110330150852.htm
+documentary_metadata:
+  title: '-'
+  description: '-'
+  tags: []
+  hashtags: []
+  thumbnail_text: '-'
+shorts:
+- hook: These orcas make waves to knock seals off the ice.
+  fact: In Antarctica, seals rest on floating ice, where orcas can't reach them. One orca pokes its head up to look.
+    It's called spy-hopping. When it spots a seal, they line up side by side. They swim at the ice together. Their bodies
+    push a big wave over it. It often takes a few waves. If the ice breaks, the next wave is even easier. But here's the
+    weird part. They almost always pick the Weddell seal. Even though most seals there are another kind. Scientists still
+    don't know why.
+  cta: Follow BioNiche for more weird animals.
+  visual_queries:
+  - Orcinus orca
+  on_screen_texts: []
+  # low-poly style: `visual` = scene id in lowpoly/src/orca/OrcaShort.tsx
+  beats:
+  - text: These orcas make waves to knock seals off the ice.
+    visual: hook
+  - text: In Antarctica, seals rest on floating ice, where orcas can't reach them.
+    visual: floes
+  - text: One orca pokes its head up to look.
+    visual: spyhop
+  - text: It's called spy-hopping.
+    visual: spyhop
+  - text: When it spots a seal, they line up side by side.
+    visual: lineup
+  - text: They swim at the ice together.
+    visual: charge
+  - text: Their bodies push a big wave over it.
+    visual: wave
+  - text: It often takes a few waves.
+    visual: waves
+  - text: If the ice breaks, the next wave is even easier.
+    visual: breaks
+  - text: But here's the weird part.
+    visual: weird
+  - text: They almost always pick the Weddell seal.
+    visual: weddell
+  - text: Even though most seals there are another kind.
+    visual: others
+  - text: Scientists still don't know why.
+    visual: mystery
+  - text: Follow BioNiche for more weird animals.
+    visual: cta
+shorts_metadata:
+- title: 'These Orcas Make Waves to Catch Seals 🌊 #shorts #orca #antarctica'
+  description: 'In Antarctica, some orcas hunt seals resting on floating ice. They line up side by side and swim at the
+    ice together, pushing a wave over it until the seal slides into the water. Strangely, they almost always pick
+    Weddell seals, even though most seals there are a different kind. Animation: BioNiche. Follow BioNiche for more
+    weird animals.'
+  tags:
+  - orca
+  - killer whale
+  - orca wave wash
+  - antarctica
+  - weird animals
+  hashtags:
+  - '#shorts'
+  - '#orca'
+  - '#antarctica'
+  thumbnail_text: '-'
+curated: {}
