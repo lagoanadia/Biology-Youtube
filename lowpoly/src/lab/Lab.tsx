@@ -5,11 +5,18 @@ import { AbsoluteFill } from "remotion";
 import { DeepSeaLights } from "../env/DeepSea";
 import { CameraRig, V3 } from "../lib/shortkit";
 import { Barreleye } from "../models/Barreleye";
+import { BranchStub, Potoo } from "../models/Potoo";
 import { BlueWhale, GiantSiphon } from "../models/GiantSiphon";
 
 type View = { pos: V3; look?: V3; bg?: string; node: React.ReactNode };
 
 const MODELS: Record<string, View[]> = {
+  potoo: [
+    { pos: [1.2, 0.5, 3.4], look: [0, 0.2, 0], bg: "#5f9f84", node: <><Potoo t={1} /><group position={[0, -0.85, -0.05]}><BranchStub /></group></> },
+    { pos: [1.2, 0.5, 3.4], look: [0, 0.3, 0], bg: "#5f9f84", node: <><Potoo t={1} point={1} /><group position={[0, -0.85, -0.05]}><BranchStub /></group></> },
+    { pos: [0.2, 0.75, 1.5], look: [0, 0.6, 0], bg: "#0b1236", node: <Potoo t={1} eyes={1} glow={1} gape={1} /> },
+    { pos: [0.4, 0.3, 3.4], look: [0, 0.2, 0], bg: "#0b1236", node: <Potoo t={1.03} eyes={1} fly={1} gape={0.6} /> },
+  ],
   barreleye: [
     { pos: [0, 0.15, 2.4], look: [0, 0.1, 0.3], node: <Barreleye t={1} /> },
     { pos: [2.6, 0.4, 0.6], look: [0, 0.05, 0], node: <Barreleye t={1} /> },
