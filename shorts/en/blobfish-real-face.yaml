@@ -17,7 +17,7 @@ documentary:
     key_fact: false
   sources:
   - title: National Geographic, Blobfish — in its natural habitat thousands of feet underwater the blobfish looks like a normal
-      fish; voted world's ugliest animal (2013)
+      fish
     reference: https://www.nationalgeographic.com/animals/fish/facts/blobfish
   - title: WorldAtlas, Are blobfish real? — lives ~600-1,200 m deep; relies on water pressure to hold its shape (no strong
       bones or thick muscle); flesh mostly water, body density lower than water so it floats just above the seafloor
@@ -68,7 +68,7 @@ shorts_metadata:
   tags:
   - blobfish
   - Psychrolutes marcidus
-  - ugliest animal
+  - deep sea creatures
   - deep sea fish
   - weird animals
   hashtags:
@@ -76,5 +76,5 @@ shorts_metadata:
   - '#blobfish'
   - '#deepsea'
   thumbnail_text: NOT ITS REAL FACE
-pinned_comment: Did you know the blobfish looks normal in the deep sea? 👀 Which 'ugly' animal should we defend next?
+pinned_comment: Did you know the blobfish looks like a normal fish in the deep sea? 👀 Which deep-sea animal should we animate next?
 curated: {}

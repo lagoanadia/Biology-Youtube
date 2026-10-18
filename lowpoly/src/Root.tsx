@@ -16,6 +16,7 @@ import { OwlfishShort } from "./owlfish/OwlfishShort";
 import { OwlfishThumb } from "./owlfish/OwlfishThumb";
 import { CombJellyShort } from "./combjelly/CombJellyShort";
 import { BlobfishShort } from "./blobfish/BlobfishShort";
+import { BlobfishLab } from "./blobfish/BlobfishLab";
 import { FPS, loadTimeline, ShortProps } from "./lib/timeline";
 
 // One composition per low-poly short. Duration comes from public/<id>/timeline.json (scripts/render_lowpoly.py).
@@ -111,6 +112,7 @@ export const RemotionRoot: React.FC = () => (
       defaultProps={{ timelineFile: "blobfish-real-face/timeline.json" } satisfies ShortProps}
       calculateMetadata={loadTimeline}
     />
+    <Still id="BlobfishLab" component={BlobfishLab} width={1920} height={1080} />
     <Still id="CombJellyThumb" component={CombJellyThumb} width={1080} height={1920} />
     <Still id="OctopusThumb" component={OctopusThumb} width={1080} height={1920} />
     <Still id="OrcaThumb" component={OrcaThumb} width={1080} height={1920} />

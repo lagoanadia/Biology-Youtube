@@ -8,7 +8,7 @@ import { Pop, RedCross, Shot, ShortShell } from "../lib/shortkit";
 import { sceneAt, scenesOf, ShortProps, Timeline, wordTime } from "../lib/timeline";
 import { Blobfish } from "../models/Blobfish";
 
-const KEYWORDS = ["blobfish", "injury", "twelve", "hundred", "pressure", "jelly-like", "lighter", "float", "collapses", "normal", "blob"];
+const KEYWORDS = ["blobfish", "injury", "decompression", "twelve", "hundred", "pressure", "jelly-like", "lighter", "float", "collapses", "normal", "blob"];
 
 const Seafloor: React.FC<{ y?: number }> = ({ y = -0.9 }) => (
   <mesh position={[0, y, 0]} rotation={[-Math.PI / 2, 0, 0]}>
@@ -56,6 +56,11 @@ const surface = (k: number): Pick<Shot, "bg" | "world"> => ({
     <>
       <ambientLight intensity={0.6} />
       <directionalLight position={[1, 6, 3]} intensity={2.6} />
+      <directionalLight position={[-3, 2, -2]} intensity={0.8} color="#9fd8ff" />
+      <mesh position={[0, -0.31, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+        <circleGeometry args={[3.2, 9]} />
+        <meshStandardMaterial color="#3a3f4a" flatShading roughness={1} />
+      </mesh>
     </>
   ),
 });
@@ -89,8 +94,8 @@ const shotAt = (tl: Timeline, t: number): Shot => {
         body: fish(1, 0),
         overlay: (
           <>
-            <Pop t={t} at={S + 0.1} until={w(1, 5)} size={70} color="#ffd34d">VOTED "UGLIEST ANIMAL"</Pop>
             <Pop t={t} at={w(1, 5)} size={130} color="#ff5a6a">INJURY</Pop>
+            <Pop t={t} at={w(1, 5) + 0.5} top={440} size={64} color="#ffd34d">FROM DECOMPRESSION</Pop>
           </>
         ),
       };
@@ -183,5 +188,5 @@ const shotAt = (tl: Timeline, t: number): Shot => {
 
 export const BlobfishShort: React.FC<ShortProps> = ({ timeline }) => (
   <ShortShell timeline={timeline} shotAt={shotAt} keywords={KEYWORDS} hook={["THIS ISN'T", "ITS REAL FACE"]}
-    label={{ name: "BLOBFISH", latin: "Psychrolutes marcidus" }} question="Which 'ugly' animal should we defend next?" />
+    label={{ name: "BLOBFISH", latin: "Psychrolutes marcidus" }} question="Which deep-sea animal should we animate next?" />
 );
