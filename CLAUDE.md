@@ -1,5 +1,8 @@
 # CLAUDE.md — BioNiche video playbook
 
+> **Since 2026-10-10 all new SHORTS are low-poly 3D animations** — go straight to "LOW-POLY 3D ANIMATION" and its
+> "▶ Recipe" below. The real-footage/glass-frog notes that follow are history (still valid for documentaries).
+
 Read this before touching any video work. It captures everything the channel owner approved
 (and rejected) while building the first 12 shorts. **When in doubt, copy what the glass-frog
 English shorts do** (`examples/en/glass-frog.yaml`) — they are the approved reference.
@@ -243,6 +246,91 @@ cfg['voice'].update(voice_en='en-US-ChristopherNeural', rate_shorts='-10%', pitc
   7. Same files can go to TikTok / Instagram Reels.
   Check analytics (viewed vs swiped away, avg % viewed, subs per short) after ~10 shorts and copy what wins.
 - YAML gotcha: an unquoted title with ` #shorts` is cut at the `#` (YAML comment) → always quote titles.
+
+### 📊 Analytics of the 8 low-poly shorts (read from YouTube Studio, 2026-10-18) → data-driven rules
+Channel: youtube.com/@BiologyNiche (22 subs). Retention % sampled from the Studio curve (>100 % = rewatches).
+| short (age) | views | stayed to watch | avg viewed | ret@5s | @8s | @12s | @20s | end | likes |
+|---|---|---|---|---|---|---|---|---|---|
+| orca (6 d) | 1,703 | 48.8 % | 22/32 s (69 %) | 97 | 77 | 71 | 62 | 41 | 1.8 % |
+| octopus (7 d) | 1,521 | 51.7 % | 22/33 s (67 %) | 90 | 79 | 71 | 60 | 29 | 1.7 % |
+| anglerfish (5 d) | 1,316 | 39.8 % | 21/32 s (66 %) | 96 | 80 | 69 | 62 | 28 | 2.5 % |
+| basket star (4 d) | 676 | 68.7 % | 18/33 s (55 %) | 93 | 71 | 60 | 45 | 17 | 2.1 % |
+| comb jelly (8 d) | 320 | 56.3 % | 14/29 s (48 %) | 93 | 72 | 48 | 27 | 12 | 2.2 % |
+| siphonophore (3 d) | 145 | 44.5 % | 17/35 s (49 %) | 90 | 66 | 53 | 47 | 24 | 4.1 % |
+| sea pen (2 d) / owlfish (<1 d) | 1,183 / 242 | n/a yet | | | | | | | 0.3 % / 2 % |
+Findings: (1) views follow **avg % viewed**, not "stayed": ~67 % → 1.3-1.7 K, ~48 % → < 350 (basket star had the best
+"stayed" but weak mid-video retention → 676). (2) "Stayed to watch" is only 40-56 % → the first frame doesn't stop the
+scroll (target ≥ 65 %). (3) **Every short loses 25-45 points between 3 s and 12 s** — exactly the 2nd/3rd sentence, which
+is always exposition ("It's a basket star.", "It's a deep-sea anglerfish.", "In Antarctica, seals rest on floating ice").
+(4) Concrete action stories (orca wave, octopus mother, male biting) hold; abstract mechanisms (light scattering, colony
+anatomy) bleed (comb jelly 27 % at 20 s). (5) Famous animals > niche. (6) Shorts were scheduled at 01:00 PT = 10:00 Spain
+= 4 am New York: bad for an English audience. (7) Almost no comments.
+**Rules for every new short (on top of the visibility rules above):**
+- Frame 0 = the climax moment (the wave hitting, the bite), already moving, + 3-5-word hook card. Never a calm intro.
+- **No "It's a ___" sentence.** The name goes on screen as a small label; the 2nd sentence must escalate ("and it does
+  it with ___"). Every 3-5 s a new visual surprise or pop-up number.
+- First 10 s: cut/strong camera move every ~1.5-2.5 s; later shots can breathe (3-4 s).
+- Script 70-80 words → 22-26 s (Michael `--rate +10%` if needed); avg viewed target ≥ 80 %.
+- Concrete, visual cause→effect; if the fact is abstract, show it as an action/metaphor, don't explain physics.
+- Niche animal → compare to something famous in the hook ("eyes like an owl", "named after Medusa").
+- End = loop line that flows into the first frame; CTA only as on-screen text, not spoken.
+- On-screen question at the end + pinned comment to get comments.
+- Schedule 18:00-20:00 Spain time (12-2 pm New York), not 10:00.
+- Re-check this table after the next 8 and update it.
+
+### ▶ Recipe: make a NEW low-poly short from scratch (follow in order)
+**Setup (once per machine, Windows):**
+```bash
+py -3.11 -m venv .venv                     # Python 3.11: kokoro/spaCy do NOT build on 3.14
+.venv/Scripts/python -m pip install -r requirements.txt tzdata kokoro soundfile
+cd lowpoly && npm install && cd ..         # Remotion + three + @react-three/fiber
+export PYTHONIOENCODING=utf-8              # Windows console + emoji in titles
+```
+ffmpeg comes from `imageio-ffmpeg` (`.venv/Lib/site-packages/imageio_ffmpeg/binaries/ffmpeg-win-*.exe`), no system install.
+
+**Default voice now:** Kokoro `am_michael`, `--voice kokoro --rate +7% --max-gap 0.25` (owner said "add michael").
+edge-tts Andrew was down (403) since 2026-10-10 — test it first; only switch back if the owner asks.
+
+**Steps:**
+1. **Facts**: pick the animal (Monterey Bay Aquarium A-Z page is the owner's preferred source + MBARI/NOAA/papers).
+   Verify every claim; drop numbers no source supports. Note what you dropped and tell the owner.
+2. **Script** (80-105 words, or 65-80 for the shorter test versions): story style, hook → connected story → payoff →
+   CTA (or loop ending, see visibility rules). Count words with TOKEN_RE.
+3. **Package** `shorts/en/<id>.yaml`: copy an existing one (e.g. `owlfish-eyes.yaml`). Beats = one per sentence,
+   `visual` = scene id. `sources:` with what each source says. Quoted title ≤ 70 chars with `#shorts #<animal> #deepsea`,
+   plain description ending "Animation: BioNiche. Follow BioNiche for more weird animals." Check
+   `' '.join(beat.text) == narration`.
+4. **Voice + timeline**: `python scripts/render_lowpoly.py shorts/en/<id>.yaml <Comp> --voice kokoro --rate +7%
+   --max-gap 0.25 --stage prepare` → prints each beat's start/end; the actions you animate land on those times.
+5. **Model(s)** in `lowpoly/src/models/` (reuse first, see catalogue below) + **scene file**
+   `lowpoly/src/<animal>/<Name>Short.tsx`: copy `owlfish/OwlfishShort.tsx` — it has `CameraRig`, `Pop` (pop-up text),
+   `shotAt(tl, t)` = `switch (scene.visual)` returning `{cam, light, dim, body, overlay}`, `dipAt`, captions, black end.
+   Use `wordTime(tl, beat, word)` to land actions on words. Add the hook card at 0 s (visibility rule 1).
+6. **Register** in `lowpoly/src/Root.tsx`: a `<Composition id="<Comp>" … defaultProps={{ timelineFile: "<id>/timeline.json" }}
+   calculateMetadata={loadTimeline} />`. Then `cd lowpoly && npx tsc --noEmit` must be clean.
+7. **Stills check**: `--frames <one frame per scene, ~70 % into it>` → make a grid with PIL and LOOK at it. Expect to
+   fix framing 1-2 times (always too close at first; 9:16 is narrow). Re-check only the shots you changed.
+8. **Full render** (~2-4 min): same command without `--stage/--frames`; add `--cue shimmer.wav:<beat>:<word>` for SFX.
+9. **QC**: audio vs video length (decode both), `volumedetect` mean ≈ −18/−19 dB, 1-fps contact sheet of the final.
+10. **Deliverable** (standard range, < 30 MB so it can be sent):
+    `ffmpeg -i short_1.mp4 -vf "scale=in_range=pc:out_range=tv,format=yuv420p" -c:v libx264 -preset slow -crf 23
+    -color_range tv -colorspace bt709 -color_primaries bt709 -color_trc bt709 -c:a copy -movflags +faststart <id>.mp4`
+    and copy `short_1.srt` → `<id>.srt`.
+11. **Thumbnail**: `lowpoly/src/<animal>/<Name>Thumb.tsx` (copy `owlfish/OwlfishThumb.tsx`), register a `<Still>` in
+    Root, `npx remotion still <Name>Thumb ../output/<id>/lowpoly/<id>_thumbnail.png --gl=angle`. Whole animal visible
+    (3/4 view for long animals) + 2 lines of huge text that don't cover the animal.
+12. **Send** with SendUserFile: mp4 + srt + thumbnail, and in the message: title, description, pinned-comment
+    question, upload reminders (Not made for kids, Altered content = Yes, upload .srt, 6-9 pm Spain time).
+13. Add a line here (what was made, what the owner said), then commit when the owner asks.
+
+**Model catalogue (`lowpoly/src/models/`, all props driven by `t`):** `CombJelly`, `Props` (Jellyfish, RedX, LightRay,
+Ripples), `Octopus` (pale/cup/push/swim — also baby octopuses), `Eggs`, `Rov` (lights + beams), `Critters` (Crab,
+Shrimp), `PolarAnimals` (Orca, Seal weddell/crabeater, IceFloe crack), `Angler` (FemaleAngler with glowing lure/halo,
+MaleAngler fused, ImmuneCell), `BasketStar` (recursive branching arms open/writhe/grow/roll, HookedBranch, Copepod),
+`SeaPen` (grow/bud/bend/swell/feed/pump), `Siphonophore` (pulse/spin/sting/broken/feed), `Owlfish` (eyeGlow) + `Owl`.
+Environments: `env/DeepSea` (backdrop, lights, marine snow), `env/Rock` (outcrop + floor), `env/Polar` (sky, water,
+push waves). Helpers: `lib/lowpoly.ts` (rng, facet, taperedTube, pop/glide easing, rainbow), `lib/timeline.ts`,
+`lib/Captions.tsx`.
 
 ## Long-form documentary (story style, 16:9) — `documentaries/en/deep-sea-weirdest.yaml`
 - Engine: `render.render_documentary_story(pkg, out_dir)`. Each `scene` = chapter (`on_screen_text` "Chapter 1|The Slime
