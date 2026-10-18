@@ -3,7 +3,7 @@ import { ThreeCanvas } from "@remotion/three";
 import { useThree } from "@react-three/fiber";
 import { useLayoutEffect } from "react";
 import { AbsoluteFill, useVideoConfig } from "remotion";
-import { loadFont } from "@remotion/google-fonts/Montserrat";
+import { loadFont } from "../lib/montserrat";
 import { DeepSeaBackdrop, DeepSeaLights, MarineSnow } from "../env/DeepSea";
 import { Owlfish } from "../models/Owlfish";
 

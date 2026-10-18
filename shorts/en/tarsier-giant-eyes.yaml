@@ -1,0 +1,82 @@
+# Low-poly short (2026-10-18 batch, analytics rules): `visual` = scene id in lowpoly/src/<animal>/*Short.tsx.
+# No spoken CTA: the last beat is the loop line; 'Follow BioNiche' + end question are on-screen text only.
+id: tarsier-giant-eyes
+language: en
+documentary:
+  topic: Philippine tarsier — each eye about as big as its brain, fixed eyes so it turns its head ~180°, nocturnal leaping
+    hunter, ultrasonic calls (low-poly short)
+  working_title: '-'
+  category: animal
+  subcategory: primates
+  hook_type: shock
+  species:
+  - Carlito syrichta
+  scenes:
+  - narration: '-'
+    visual_query: '-'
+    on_screen_text: '-'
+    key_fact: false
+  sources:
+  - title: Animal Diversity Web, Tarsius syrichta — in proportion to their body, their eyes are the largest among mammals;
+      heads can rotate 180 degrees; excellent leapers; nocturnal hunters of insects
+    reference: https://animaldiversity.org/accounts/Tarsius_syrichta/
+  - title: EBSCO Research Starters, Tarsier — eyes as large as or larger than the brain; eyes fixed in the skull so tarsiers
+      rotate their heads
+    reference: https://www.ebsco.com/research-starters/zoology/tarsier/
+  - title: Ramsier et al. (2012) Primate communication in the pure ultrasound, Biol Lett 8:508 — Philippine tarsiers hear
+      up to ~91 kHz and call at ~70 kHz (humans hear up to ~20 kHz)
+    reference: https://doi.org/10.1098/rsbl.2011.1149
+documentary_metadata:
+  title: '-'
+  description: '-'
+  tags: []
+  hashtags: []
+  thumbnail_text: '-'
+shorts:
+- hook: Each of this animal's eyes is about as big as its brain.
+  fact: But it can't move its eyes at all. So it turns its head halfway around instead. It lives in the forests of the Philippines.
+    And it only comes out at night. Those giant eyes spot insects in the dark. Then it leaps from branch to branch to grab
+    them. It even calls out in screams we can't hear.
+  cta: And with those eyes it's already watching you.
+  visual_queries:
+  - Carlito syrichta
+  on_screen_texts: []
+  beats:
+  - text: Each of this animal's eyes is about as big as its brain.
+    visual: hook
+  - text: But it can't move its eyes at all.
+    visual: fixed
+  - text: So it turns its head halfway around instead.
+    visual: turn
+  - text: It lives in the forests of the Philippines.
+    visual: forest
+  - text: And it only comes out at night.
+    visual: night
+  - text: Those giant eyes spot insects in the dark.
+    visual: spot
+  - text: Then it leaps from branch to branch to grab them.
+    visual: leap
+  - text: It even calls out in screams we can't hear.
+    visual: ultrasound
+  - text: And with those eyes it's already watching you.
+    visual: loop
+shorts_metadata:
+- title: 'Each of Its Eyes Is as Big as Its Brain 👁️ #shorts #tarsier #philippines'
+  description: 'The Philippine tarsier''s eyes are each about as big as its brain, but it can''t move them, so it turns its
+    head halfway around instead. It comes out at night in the forests of the Philippines, spots insects with those giant eyes
+    and leaps from branch to branch to grab them. It even calls in ultrasonic screams we can''t hear. Animation: BioNiche.
+    Follow BioNiche for more weird animals.'
+  tags:
+  - tarsier
+  - Philippine tarsier
+  - Carlito syrichta
+  - Bohol
+  - big eyes
+  - weird animals
+  hashtags:
+  - '#shorts'
+  - '#tarsier'
+  - '#philippines'
+  thumbnail_text: EYES BIGGER THAN BRAIN
+pinned_comment: Have you ever seen a tarsier in Bohol? 👁️ Tell us where you're watching from!
+curated: {}

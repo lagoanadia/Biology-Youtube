@@ -15,6 +15,7 @@ import { SiphonThumb } from "./siphon/SiphonThumb";
 import { OwlfishShort } from "./owlfish/OwlfishShort";
 import { OwlfishThumb } from "./owlfish/OwlfishThumb";
 import { CombJellyShort } from "./combjelly/CombJellyShort";
+import { BlobfishShort } from "./blobfish/BlobfishShort";
 import { FPS, loadTimeline, ShortProps } from "./lib/timeline";
 
 // One composition per low-poly short. Duration comes from public/<id>/timeline.json (scripts/render_lowpoly.py).
@@ -98,6 +99,16 @@ export const RemotionRoot: React.FC = () => (
       fps={FPS}
       durationInFrames={900}
       defaultProps={{ timelineFile: "owlfish-eyes/timeline.json" } satisfies ShortProps}
+      calculateMetadata={loadTimeline}
+    />
+    <Composition
+      id="Blobfish"
+      component={BlobfishShort}
+      width={1080}
+      height={1920}
+      fps={FPS}
+      durationInFrames={900}
+      defaultProps={{ timelineFile: "blobfish-real-face/timeline.json" } satisfies ShortProps}
       calculateMetadata={loadTimeline}
     />
     <Still id="CombJellyThumb" component={CombJellyThumb} width={1080} height={1920} />

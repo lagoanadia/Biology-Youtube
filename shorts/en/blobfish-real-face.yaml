@@ -1,0 +1,80 @@
+# Low-poly short (2026-10-18 batch, analytics rules): `visual` = scene id in lowpoly/src/<animal>/*Short.tsx.
+# No spoken CTA: the last beat is the loop line; 'Follow BioNiche' + end question are on-screen text only.
+id: blobfish-real-face
+language: en
+documentary:
+  topic: Blobfish — the famous blob face is decompression damage; at depth it looks like a normal fish (low-poly short)
+  working_title: '-'
+  category: animal
+  subcategory: deep sea
+  hook_type: shock
+  species:
+  - Psychrolutes marcidus
+  scenes:
+  - narration: '-'
+    visual_query: '-'
+    on_screen_text: '-'
+    key_fact: false
+  sources:
+  - title: National Geographic, Blobfish — in its natural habitat thousands of feet underwater the blobfish looks like a normal
+      fish; voted world's ugliest animal (2013)
+    reference: https://www.nationalgeographic.com/animals/fish/facts/blobfish
+  - title: WorldAtlas, Are blobfish real? — lives ~600-1,200 m deep; relies on water pressure to hold its shape (no strong
+      bones or thick muscle); flesh mostly water, body density lower than water so it floats just above the seafloor
+    reference: https://worldatlas.com/articles/are-blobfish-real.html
+  - title: Nature World News (2020), Is the blobfish really the ugliest sea creature — decompression damage when hauled up;
+      famous photo from the 2003 NORFANZ expedition (~900 m)
+    reference: https://www.natureworldnews.com/articles/43462/20200311/blobfish-really-ugliest-sea-creature.htm
+documentary_metadata:
+  title: '-'
+  description: '-'
+  tags: []
+  hashtags: []
+  thumbnail_text: '-'
+shorts:
+- hook: This is not what a blobfish really looks like.
+  fact: That droopy face is actually an injury. Blobfish live up to twelve hundred meters down. There the crushing pressure
+    holds their soft bodies in shape. Their jelly-like flesh is lighter than water. So they float above the seafloor without
+    wasting energy. Pull one up too fast and the body collapses. Down in the deep it looks like a normal fish.
+  cta: So next time someone shows you the blob, tell them.
+  visual_queries:
+  - Psychrolutes marcidus
+  on_screen_texts: []
+  beats:
+  - text: This is not what a blobfish really looks like.
+    visual: hook
+  - text: That droopy face is actually an injury.
+    visual: blob
+  - text: Blobfish live up to twelve hundred meters down.
+    visual: depth
+  - text: There the crushing pressure holds their soft bodies in shape.
+    visual: pressure
+  - text: Their jelly-like flesh is lighter than water.
+    visual: jelly
+  - text: So they float above the seafloor without wasting energy.
+    visual: float
+  - text: Pull one up too fast and the body collapses.
+    visual: collapse
+  - text: Down in the deep it looks like a normal fish.
+    visual: normal
+  - text: So next time someone shows you the blob, tell them.
+    visual: loop
+shorts_metadata:
+- title: 'This Isn''t What a Blobfish Really Looks Like 😳 #shorts #blobfish #deepsea'
+  description: 'The droopy blob face that was voted the world''s ugliest animal is actually an injury. Blobfish live up to
+    1,200 meters deep, where the crushing pressure holds their soft, jelly-like bodies in shape. Their flesh is lighter than
+    water, so they float just above the seafloor without wasting energy. Pulled up too fast, the body collapses. Down in the
+    deep, a blobfish looks like a normal fish. Animation: BioNiche. Follow BioNiche for more weird animals.'
+  tags:
+  - blobfish
+  - Psychrolutes marcidus
+  - ugliest animal
+  - deep sea fish
+  - weird animals
+  hashtags:
+  - '#shorts'
+  - '#blobfish'
+  - '#deepsea'
+  thumbnail_text: NOT ITS REAL FACE
+pinned_comment: Did you know the blobfish looks normal in the deep sea? 👀 Which 'ugly' animal should we defend next?
+curated: {}

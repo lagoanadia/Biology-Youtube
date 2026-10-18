@@ -3,7 +3,7 @@ import { ThreeCanvas } from "@remotion/three";
 import { useThree } from "@react-three/fiber";
 import { useLayoutEffect } from "react";
 import { AbsoluteFill, useVideoConfig } from "remotion";
-import { loadFont } from "@remotion/google-fonts/Montserrat";
+import { loadFont } from "../lib/montserrat";
 import { PolarBackdrop, PolarLights, PushWave, Water } from "../env/Polar";
 import { Seal } from "../models/PolarAnimals";
 import { Floe, SwimOrca } from "./OrcaShort";

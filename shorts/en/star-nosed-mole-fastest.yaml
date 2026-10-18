@@ -1,0 +1,83 @@
+# Low-poly short (2026-10-18 batch, analytics rules): `visual` = scene id in lowpoly/src/<animal>/*Short.tsx.
+# No spoken CTA: the last beat is the loop line; 'Follow BioNiche' + end question are on-screen text only.
+id: star-nosed-mole-fastest
+language: en
+documentary:
+  topic: Star-nosed mole — fastest-eating mammal (< 1/4 s), 22-tentacle star with >25,000 Eimer's organs, sniffs underwater
+    by blowing bubbles (low-poly short)
+  working_title: '-'
+  category: animal
+  subcategory: mammals
+  hook_type: shock
+  species:
+  - Condylura cristata
+  scenes:
+  - narration: '-'
+    visual_query: '-'
+    on_screen_text: '-'
+    key_fact: false
+  sources:
+  - title: Catania (2026) Of moles and men, Brain Behav Evol — star-nosed moles are the fastest foragers among mammals, able
+      to identify and eat small prey in less than a quarter of a second
+    reference: https://doi.org/10.1159/000551541
+  - title: Animal Diversity Web, Condylura cristata — star of 22 fleshy tentacles; over 25,000 Eimer's organs (tactile receptors);
+      touches as many as 12 objects per second; swims underwater, even under ice
+    reference: https://animaldiversity.org/accounts/Condylura_cristata/
+  - title: Catania (2006) Underwater 'sniffing' by semi-aquatic mammals, Nature 444:1024 — star-nosed moles exhale air bubbles
+      onto objects or scent trails and re-inspire them to smell underwater
+    reference: https://doi.org/10.1038/4441024a
+documentary_metadata:
+  title: '-'
+  description: '-'
+  tags: []
+  hashtags: []
+  thumbnail_text: '-'
+shorts:
+- hook: This mole eats faster than any other mammal.
+  fact: It can find and eat small prey in less than a quarter of a second. The secret is on its face. A pink star of twenty-two
+    tentacles. They're covered in over twenty-five thousand touch sensors. It taps the ground up to twelve times every second.
+    And it even hunts underwater. It blows bubbles onto its prey and sniffs them back in. That's how it smells underwater.
+  cta: Then the star finds the next snack.
+  visual_queries:
+  - Condylura cristata
+  on_screen_texts: []
+  beats:
+  - text: This mole eats faster than any other mammal.
+    visual: hook
+  - text: It can find and eat small prey in less than a quarter of a second.
+    visual: fast
+  - text: The secret is on its face.
+    visual: face
+  - text: A pink star of twenty-two tentacles.
+    visual: star
+  - text: They're covered in over twenty-five thousand touch sensors.
+    visual: sensors
+  - text: It taps the ground up to twelve times every second.
+    visual: tap
+  - text: And it even hunts underwater.
+    visual: swim
+  - text: It blows bubbles onto its prey and sniffs them back in.
+    visual: bubbles
+  - text: That's how it smells underwater.
+    visual: smell
+  - text: Then the star finds the next snack.
+    visual: loop
+shorts_metadata:
+- title: 'This Mole Eats Faster Than Any Other Mammal ⭐ #shorts #starnosedmole #animals'
+  description: 'The star-nosed mole can find and eat small prey in less than a quarter of a second. The secret is the pink
+    star on its face: 22 tentacles covered in over 25,000 touch sensors that tap the ground up to 12 times every second. It
+    even hunts underwater, blowing bubbles onto its prey and sniffing them back in to smell. Animation: BioNiche. Follow BioNiche
+    for more weird animals.'
+  tags:
+  - star-nosed mole
+  - Condylura cristata
+  - fastest eater
+  - weird mammals
+  - weird animals
+  hashtags:
+  - '#shorts'
+  - '#starnosedmole'
+  - '#animals'
+  thumbnail_text: FASTEST EATER
+pinned_comment: Less than a quarter of a second ⭐ Which animal's superpower would you want?
+curated: {}

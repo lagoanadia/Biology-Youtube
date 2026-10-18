@@ -5,7 +5,7 @@ import { ThreeCanvas } from "@remotion/three";
 import { useThree } from "@react-three/fiber";
 import { useLayoutEffect } from "react";
 import { AbsoluteFill, useCurrentFrame, useVideoConfig } from "remotion";
-import { loadFont } from "@remotion/google-fonts/Montserrat";
+import { loadFont } from "../lib/montserrat";
 import { PolarBackdrop, PolarLights, PushWave, Water, waveHeight } from "../env/Polar";
 import { Captions } from "../lib/Captions";
 import { clamp01, glide, lerp, pop, rng } from "../lib/lowpoly";

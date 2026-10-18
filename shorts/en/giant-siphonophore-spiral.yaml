@@ -1,0 +1,83 @@
+# Low-poly short (2026-10-18 batch, analytics rules): `visual` = scene id in lowpoly/src/<animal>/*Short.tsx.
+# No spoken CTA: the last beat is the loop line; 'Follow BioNiche' + end question are on-screen text only.
+id: giant-siphonophore-spiral
+language: en
+documentary:
+  topic: Giant Apolemia siphonophore filmed in the Ningaloo Canyons (2020), longer than a blue whale, coiled in a spiral feeding
+    posture (low-poly short)
+  working_title: '-'
+  category: animal
+  subcategory: deep sea
+  hook_type: shock
+  species:
+  - Apolemia sp.
+  scenes:
+  - narration: '-'
+    visual_query: '-'
+    on_screen_text: '-'
+    key_fact: false
+  sources:
+  - title: ScienceAlert (2020), Researchers filmed the longest known stringy stingy thingy — Schmidt Ocean Institute, Ningaloo
+      Canyons, ROV SuBastian; outer ring estimated at ~47 m by the ROV pilots, not formally measured
+    reference: https://www.sciencealert.com/researchers-filmed-the-longest-known-stringy-stingy-thingy-floating-in-the-ocean
+  - title: Smithsonian Magazine (2020), Watch this giant, eerie, string-like sea creature hunt for food — giant Apolemia;
+      the spiral posture is thought to be a feeding technique, acting like a drift net sweeping up food; expedition led by
+      Nerida Wilson (WA Museum)
+    reference: https://www.smithsonianmag.com/smart-news/giant-eerie-string-creature-hunting-food-indian-ocean-180974647/
+  - title: Baird Maritime, Deep sea expedition off Western Australia reveals new marine animal species — R/V Falkor, ROV SuBastian,
+      April 2020
+    reference: https://www.bairdmaritime.com/work-boat-world/research-environment-training/deep-sea-expedition-off-western-australia-reveals-new-marine-animal-species
+documentary_metadata:
+  title: '-'
+  description: '-'
+  tags: []
+  hashtags: []
+  thumbnail_text: '-'
+shorts:
+- hook: Scientists filmed a creature longer than a blue whale.
+  fact: And it was coiled into a giant spiral. A robot found it in deep canyons off Western Australia in 2020. Its outer ring
+    alone was estimated at forty-seven meters. Scientists think that spiral is a hunting trap. It works like a drift net that
+    sweeps up food. Tiny animals that drift into it get caught. It doesn't even need to chase its food.
+  cta: It just hangs in the dark and waits.
+  visual_queries:
+  - Apolemia sp.
+  on_screen_texts: []
+  beats:
+  - text: Scientists filmed a creature longer than a blue whale.
+    visual: hook
+  - text: And it was coiled into a giant spiral.
+    visual: spiral
+  - text: A robot found it in deep canyons off Western Australia in 2020.
+    visual: rov
+  - text: Its outer ring alone was estimated at forty-seven meters.
+    visual: measure
+  - text: Scientists think that spiral is a hunting trap.
+    visual: trap
+  - text: It works like a drift net that sweeps up food.
+    visual: net
+  - text: Tiny animals that drift into it get caught.
+    visual: catch
+  - text: It doesn't even need to chase its food.
+    visual: wait
+  - text: It just hangs in the dark and waits.
+    visual: loop
+shorts_metadata:
+- title: 'This Creature Is Longer Than a Blue Whale 🌀 #shorts #siphonophore #deepsea'
+  description: 'In 2020 a robot exploring deep canyons off Western Australia filmed a giant siphonophore coiled into a spiral.
+    Its outer ring alone was estimated at 47 meters, longer than a blue whale. Scientists think the spiral is a hunting trap
+    that works like a drift net, catching tiny animals that drift into it. It doesn''t chase its food. It just waits. Animation:
+    BioNiche. Follow BioNiche for more weird animals.'
+  tags:
+  - siphonophore
+  - Apolemia
+  - longest animal
+  - Ningaloo
+  - deep sea
+  - weird animals
+  hashtags:
+  - '#shorts'
+  - '#siphonophore'
+  - '#deepsea'
+  thumbnail_text: LONGER THAN A WHALE
+pinned_comment: 47 meters of hunting net 🌀 What's the longest animal you know?
+curated: {}

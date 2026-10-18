@@ -1,0 +1,84 @@
+# Low-poly short (2026-10-18 batch, analytics rules): `visual` = scene id in lowpoly/src/<animal>/*Short.tsx.
+# No spoken CTA: the last beat is the loop line; 'Follow BioNiche' + end question are on-screen text only.
+id: great-potoo-branch
+language: en
+documentary:
+  topic: Great potoo — poses as a broken branch by day, eyelid slits sense movement with eyes closed, catches big insects
+    at night with a huge gape (low-poly short)
+  working_title: '-'
+  category: animal
+  subcategory: birds
+  hook_type: shock
+  species:
+  - Nyctibius grandis
+  scenes:
+  - narration: '-'
+    visual_query: '-'
+    on_screen_text: '-'
+    key_fact: false
+  sources:
+  - title: Animal Diversity Web, Nyctibius grandis — by day extremely still, perched at least 12 m up; avoids movement to
+      enhance its cryptic coloration; catches large flying insects (sometimes bats) from the air with its very large gape
+    reference: https://animaldiversity.org/accounts/Nyctibius_grandis/
+  - title: 'Live Science, Great potoo: the ''tree stump'' bird that can see with its eyes closed — slits in its eyelids let
+      it sense light and movement through closed lids'
+    reference: https://www.livescience.com/animals/birds/great-potoo-the-tree-stump-bird-with-a-haunting-growl-and-can-see-with-its-eyes-closed
+  - title: Canopy Tower, Great Potoo — when threatened it stretches head and body upward, bill to the sky, to look even more
+      like a dead branch; upper eyelids have slits to detect movement
+    reference: https://canopytower.com/?p=3249
+documentary_metadata:
+  title: '-'
+  description: '-'
+  tags: []
+  hashtags: []
+  thumbnail_text: '-'
+shorts:
+- hook: That broken branch is actually a bird.
+  fact: All day it sits perfectly still, high up in a tree. When danger comes, it points its beak to the sky. Now it looks
+    exactly like a broken branch. Its eyes are closed, but it's still watching. Tiny slits in its eyelids let it sense movement.
+    Then night falls and the branch wakes up. It flies out and opens a huge mouth. Big flying insects disappear inside.
+  cta: By sunrise it's a broken branch again.
+  visual_queries:
+  - Nyctibius grandis
+  on_screen_texts: []
+  beats:
+  - text: That broken branch is actually a bird.
+    visual: hook
+  - text: All day it sits perfectly still, high up in a tree.
+    visual: still
+  - text: When danger comes, it points its beak to the sky.
+    visual: point
+  - text: Now it looks exactly like a broken branch.
+    visual: branch
+  - text: Its eyes are closed, but it's still watching.
+    visual: eyes
+  - text: Tiny slits in its eyelids let it sense movement.
+    visual: slits
+  - text: Then night falls and the branch wakes up.
+    visual: night
+  - text: It flies out and opens a huge mouth.
+    visual: mouth
+  - text: Big flying insects disappear inside.
+    visual: gulp
+  - text: By sunrise it's a broken branch again.
+    visual: loop
+shorts_metadata:
+- title: 'That Broken Branch Is Actually a Bird 🪵 #shorts #potoo #birds'
+  description: 'The great potoo sits perfectly still all day, high up in a tree. When danger comes, it points its beak to
+    the sky and looks exactly like a broken branch. Its eyes are closed, but tiny slits in its eyelids let it sense movement.
+    At night it flies out, opens a huge mouth and catches big flying insects. Animation: BioNiche. Follow BioNiche for more
+    weird animals.'
+  tags:
+  - great potoo
+  - potoo
+  - Nyctibius grandis
+  - camouflage
+  - weird birds
+  - weird animals
+  hashtags:
+  - '#shorts'
+  - '#potoo'
+  - '#birds'
+  thumbnail_text: THAT BRANCH IS A BIRD
+pinned_comment: Did you spot the bird before the reveal? 🪵👀
+curated: {}

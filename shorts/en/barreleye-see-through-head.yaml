@@ -1,0 +1,78 @@
+# Low-poly short (2026-10-18 batch, analytics rules): `visual` = scene id in lowpoly/src/<animal>/*Short.tsx.
+# No spoken CTA: the last beat is the loop line; 'Follow BioNiche' + end question are on-screen text only.
+id: barreleye-see-through-head
+language: en
+documentary:
+  topic: Barreleye — the 'eyes' are nostrils; green tubular eyes inside a transparent fluid-filled shield, rotating up and
+    forward (low-poly short)
+  working_title: '-'
+  category: animal
+  subcategory: deep sea
+  hook_type: shock
+  species:
+  - Macropinna microstoma
+  scenes:
+  - narration: '-'
+    visual_query: '-'
+    on_screen_text: '-'
+    key_fact: false
+  sources:
+  - title: MBARI (2009), Researchers solve mystery of deep-sea fish with tubular eyes and transparent head — eyes rotate within
+      a transparent, fluid-filled shield; green lenses; the two spots above the mouth are nares (nostrils); seen hanging motionless
+      at 600-800 m
+    reference: https://www.mbari.org/news/researchers-solve-mystery-of-deep-sea-fish-with-tubular-eyes-and-transparent-head/
+  - title: Monterey Bay Aquarium, Barreleye — upward-pointing green eyes spot the silhouettes of prey above and can rotate
+      forward when needed; up to 15 cm; 600-800 m
+    reference: https://www.montereybayaquarium.org/animals-the-ocean/animals-a-to-z/barreleye
+documentary_metadata:
+  title: '-'
+  description: '-'
+  tags: []
+  hashtags: []
+  thumbnail_text: '-'
+shorts:
+- hook: Those two dots aren't its eyes.
+  fact: They're its nostrils. Its real eyes are the green domes inside its see-through head. Its head is covered by a clear
+    shield full of fluid. It hangs almost still, six hundred meters down. Its eyes point up to spot the shadows of prey above.
+    Then they rotate forward so it can see what it eats.
+  cta: So next time it stares at you, look higher.
+  visual_queries:
+  - Macropinna microstoma
+  on_screen_texts: []
+  beats:
+  - text: Those two dots aren't its eyes.
+    visual: hook
+  - text: They're its nostrils.
+    visual: nostrils
+  - text: Its real eyes are the green domes inside its see-through head.
+    visual: reveal
+  - text: Its head is covered by a clear shield full of fluid.
+    visual: shield
+  - text: It hangs almost still, six hundred meters down.
+    visual: depth
+  - text: Its eyes point up to spot the shadows of prey above.
+    visual: lookup
+  - text: Then they rotate forward so it can see what it eats.
+    visual: rotate
+  - text: So next time it stares at you, look higher.
+    visual: loop
+shorts_metadata:
+- title: 'This Fish Has a See-Through Head 👀 #shorts #barreleye #deepsea'
+  description: 'The two dots on the barreleye''s face aren''t its eyes. They''re its nostrils. Its real eyes are the green
+    domes inside its see-through head, covered by a clear shield full of fluid. It hangs almost still about 600 meters down,
+    looking up for the shadows of prey, then rotates its eyes forward to see what it eats. Animation: BioNiche. Follow BioNiche
+    for more weird animals.'
+  tags:
+  - barreleye
+  - Macropinna microstoma
+  - transparent head
+  - deep sea fish
+  - MBARI
+  - weird animals
+  hashtags:
+  - '#shorts'
+  - '#barreleye'
+  - '#deepsea'
+  thumbnail_text: SEE-THROUGH HEAD
+pinned_comment: Did you think those were its eyes? 👀 Which deep-sea animal should we animate next?
+curated: {}

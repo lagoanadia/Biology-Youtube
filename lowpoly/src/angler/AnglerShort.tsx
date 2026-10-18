@@ -5,7 +5,7 @@ import { useThree } from "@react-three/fiber";
 import { useLayoutEffect } from "react";
 import * as THREE from "three";
 import { AbsoluteFill, useCurrentFrame, useVideoConfig } from "remotion";
-import { loadFont } from "@remotion/google-fonts/Montserrat";
+import { loadFont } from "../lib/montserrat";
 import { DeepSeaBackdrop, DeepSeaLights, MarineSnow } from "../env/DeepSea";
 import { Captions } from "../lib/Captions";
 import { clamp01, glide, lerp, pop, rng } from "../lib/lowpoly";

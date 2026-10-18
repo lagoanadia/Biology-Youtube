@@ -47,6 +47,8 @@ ap.add_argument("--frames", help="render only these frames as PNG (comma list) i
 ap.add_argument("--ambience", default="deep_sea_drone.mp3", help="the deep-sea pad (assets/ambience)")
 ap.add_argument("--volume", type=float, default=0.12)
 ap.add_argument("--whoosh", type=float, default=0.1, help="soft whoosh on scene changes (0 = off)")
+ap.add_argument("--concurrency", type=int, default=2, help="parallel Remotion tabs (2 on the laptop)")
+ap.add_argument("--gl", default="angle", help="Remotion OpenGL backend: angle (laptop GPU) or swangle (no GPU, e.g. cloud sandbox)")
 args = ap.parse_args()
 
 cfg = load_config()
@@ -166,7 +168,7 @@ if args.stage == "prepare":
 
 # 3. Remotion: silent animation with captions. npx is a .cmd on Windows
 npx = "npx.cmd" if sys.platform == "win32" else "npx"
-common = [f"--props={json.dumps({'timelineFile': f'{pkg.id}/timeline.json'})}", "--gl=angle", "--log=warn"]
+common = [f"--props={json.dumps({'timelineFile': f'{pkg.id}/timeline.json'})}", f"--gl={args.gl}", "--log=warn"]
 if args.frames:
     frames_dir = out_dir / "frames"
     subprocess.run([npx, "remotion", "render", args.composition, str(frames_dir), f"--frames={args.frames}",
@@ -175,7 +177,7 @@ if args.frames:
     sys.exit(0)
 silent = work / "animation.mp4"
 subprocess.run([npx, "remotion", "render", args.composition, str(silent), "--muted", "--crf=21", "--pixel-format=yuv420p",
-                "--concurrency=2", *common], cwd=ROOT / "lowpoly", check=True)
+                f"--concurrency={args.concurrency}", *common], cwd=ROOT / "lowpoly", check=True)
 
 # 4. sound effects: soft whoosh on scene changes, cues on spoken words
 starts = [0] + [sum(counts[:k]) for k in range(1, len(counts) + 1)]

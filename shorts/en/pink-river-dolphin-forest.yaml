@@ -1,0 +1,80 @@
+# Low-poly short (2026-10-18 batch, analytics rules): `visual` = scene id in lowpoly/src/<animal>/*Short.tsx.
+# No spoken CTA: the last beat is the loop line; 'Follow BioNiche' + end question are on-screen text only.
+id: pink-river-dolphin-forest
+language: en
+documentary:
+  topic: Pink river dolphin (boto) swims through the flooded Amazon forest thanks to unfused neck vertebrae; pink colour from
+    scars (low-poly short)
+  working_title: '-'
+  category: animal
+  subcategory: rivers
+  hook_type: shock
+  species:
+  - Inia geoffrensis
+  scenes:
+  - narration: '-'
+    visual_query: '-'
+    on_screen_text: '-'
+    key_fact: false
+  sources:
+  - title: National Geographic, Amazon river dolphin — every spring the Amazon spills its banks; a unique adaptation lets
+      botos swim between trees and through tangles of branches; unfused neck vertebrae allow them to bend up to 90 degrees;
+      males can be pink, the colouring is believed to be scar tissue from rough games or fighting; largest river dolphin,
+      up to 8 ft / 450 lb
+    reference: https://www.nationalgeographic.com/animals/mammals/facts/amazon-river-dolphin
+documentary_metadata:
+  title: '-'
+  description: '-'
+  tags: []
+  hashtags: []
+  thumbnail_text: '-'
+shorts:
+- hook: This dolphin swims through a forest.
+  fact: Every year the Amazon River floods the jungle. And pink river dolphins follow the water between the trees. Their neck
+    bones aren't fused together. So they can bend their heads up to ninety degrees. That lets them twist around trunks and
+    branches to catch fish. And the pink color? Scientists think it comes from scars. Males get them from rough play and fights.
+  cta: Next time the river rises, look between the trees.
+  visual_queries:
+  - Inia geoffrensis
+  on_screen_texts: []
+  beats:
+  - text: This dolphin swims through a forest.
+    visual: hook
+  - text: Every year the Amazon River floods the jungle.
+    visual: flood
+  - text: And pink river dolphins follow the water between the trees.
+    visual: trees
+  - text: Their neck bones aren't fused together.
+    visual: neck
+  - text: So they can bend their heads up to ninety degrees.
+    visual: bend
+  - text: That lets them twist around trunks and branches to catch fish.
+    visual: hunt
+  - text: And the pink color?
+    visual: pink
+  - text: Scientists think it comes from scars.
+    visual: scars
+  - text: Males get them from rough play and fights.
+    visual: fight
+  - text: Next time the river rises, look between the trees.
+    visual: loop
+shorts_metadata:
+- title: 'This Dolphin Swims Through a Forest 🌳 #shorts #pinkriverdolphin #amazon'
+  description: 'Every year the Amazon River floods the jungle, and pink river dolphins follow the water between the trees.
+    Their neck bones aren''t fused, so they can bend their heads up to 90 degrees and twist around trunks and branches to
+    catch fish. And the pink color? Scientists think it comes from scars that males get from rough play and fights. Animation:
+    BioNiche. Follow BioNiche for more weird animals.'
+  tags:
+  - pink river dolphin
+  - boto
+  - Inia geoffrensis
+  - Amazon river dolphin
+  - flooded forest
+  - weird animals
+  hashtags:
+  - '#shorts'
+  - '#pinkriverdolphin'
+  - '#amazon'
+  thumbnail_text: DOLPHIN IN A FOREST
+pinned_comment: Dolphins in a forest 🐬🌳 Which river animal should we animate next?
+curated: {}

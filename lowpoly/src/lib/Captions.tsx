@@ -1,7 +1,7 @@
 // One short caption line at a time, synced to the voice's word timings. Bold white with a dark outline;
 // the line's key word pops in rainbow colors. Kept in the lower-middle third, clear of the right edge and the
 // bottom ~15 % (YouTube Shorts buttons).
-import { loadFont } from "@remotion/google-fonts/Montserrat";
+import { loadFont } from "./montserrat";
 import { AbsoluteFill, useCurrentFrame, useVideoConfig } from "remotion";
 import { pop, rainbow } from "./lowpoly";
 import { Timeline, TOKEN_RE } from "./timeline";

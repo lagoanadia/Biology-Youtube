@@ -1,0 +1,80 @@
+# Low-poly short (2026-10-18 batch, analytics rules): `visual` = scene id in lowpoly/src/<animal>/*Short.tsx.
+# No spoken CTA: the last beat is the loop line; 'Follow BioNiche' + end question are on-screen text only.
+id: sloth-poop-trip
+language: en
+documentary:
+  topic: Three-toed sloth descends weekly to defecate; moths lay eggs in the dung, colonise the fur and fuel algae the sloth
+    eats (Pauli et al. 2014) (low-poly short)
+  working_title: '-'
+  category: animal
+  subcategory: mammals
+  hook_type: shock
+  species:
+  - Bradypus variegatus
+  scenes:
+  - narration: '-'
+    visual_query: '-'
+    on_screen_text: '-'
+    key_fact: false
+  sources:
+  - title: Pauli et al. (2014) A syndrome of mutualism reinforces the lifestyle of a sloth, Proc R Soc B 281:20133006 — three-toed
+      sloths descend weekly to defecate (risky, costly); moths lay eggs in sloth dung and colonise the fur; moths raise nitrogen
+      that fuels algae; sloths eat the algae from their fur
+    reference: https://doi.org/10.1098/rspb.2013.3006
+  - title: Animal Diversity Web, Bradypus variegatus — descends from the canopy to defecate on the ground; algae gives a greenish
+      coat; predators include harpy eagles and felids
+    reference: https://animaldiversity.org/accounts/Bradypus_variegatus/
+documentary_metadata:
+  title: '-'
+  description: '-'
+  tags: []
+  hashtags: []
+  thumbnail_text: '-'
+shorts:
+- hook: Once a week this sloth risks its life just to poop.
+  fact: It climbs all the way down from the treetops. On the ground it's an easy target. Scientists think the reason is tiny
+    moths in its fur. The moths lay their eggs in sloth poop. New moths fly up and move into the fur. They help green algae
+    grow on the sloth. And the sloth eats that algae as a snack.
+  cta: So next week it climbs down again.
+  visual_queries:
+  - Bradypus variegatus
+  on_screen_texts: []
+  beats:
+  - text: Once a week this sloth risks its life just to poop.
+    visual: hook
+  - text: It climbs all the way down from the treetops.
+    visual: climb
+  - text: On the ground it's an easy target.
+    visual: ground
+  - text: Scientists think the reason is tiny moths in its fur.
+    visual: moths
+  - text: The moths lay their eggs in sloth poop.
+    visual: eggs
+  - text: New moths fly up and move into the fur.
+    visual: flyup
+  - text: They help green algae grow on the sloth.
+    visual: algae
+  - text: And the sloth eats that algae as a snack.
+    visual: snack
+  - text: So next week it climbs down again.
+    visual: loop
+shorts_metadata:
+- title: 'This Sloth Risks Its Life Just to Poop 🦥 #shorts #sloth #animals'
+  description: 'Once a week a three-toed sloth climbs all the way down from the treetops to poop, even though on the ground
+    it''s an easy target. Scientists think the reason is tiny moths living in its fur. The moths lay their eggs in sloth poop,
+    the new moths move into the fur and help green algae grow, and the sloth eats that algae as a snack. Animation: BioNiche.
+    Follow BioNiche for more weird animals.'
+  tags:
+  - sloth
+  - three-toed sloth
+  - sloth moth
+  - algae
+  - rainforest
+  - weird animals
+  hashtags:
+  - '#shorts'
+  - '#sloth'
+  - '#animals'
+  thumbnail_text: RISKS ITS LIFE TO POOP
+pinned_comment: Would you climb down a tree for a snack? 🦥 Which animal should we animate next?
+curated: {}
