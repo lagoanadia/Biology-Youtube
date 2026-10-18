@@ -82,7 +82,7 @@ const shotAt = (tl: Timeline, t: number): Shot => {
       const sub = s > D * 0.55;
       return {
         ...surface(1),
-        cam: sub ? { pos: [0.9, 0.2, 3.0 - u * 0.2], look: [0, -0.2, 0.3] } : { pos: [-1.5, 0.4, 4.2 - u * 0.4], look: [0, -0.2, 0.2] },
+        cam: sub ? { pos: [0.9, 0.3, 4.0 - u * 0.2], look: [0, 0.12, 0.2] } : { pos: [-1.6, 0.35, 4.8 - u * 0.4], look: [0, 0.12, 0.1] },
         body: fish(1, 0),
         overlay: <RedCross t={t} at={w(0, 2)} />,
       };
@@ -90,7 +90,7 @@ const shotAt = (tl: Timeline, t: number): Shot => {
     case "blob": {
       return {
         ...surface(1),
-        cam: { pos: [2.6, 0.7, 3.4 - u * 0.3], look: [0, -0.25, 0.1] },
+        cam: { pos: [2.8, 0.55, 4.0 - u * 0.3], look: [0, 0.1, 0] },
         body: fish(1, 0),
         overlay: (
           <>
@@ -162,7 +162,7 @@ const shotAt = (tl: Timeline, t: number): Shot => {
       const m = Math.round(lerp(1200, 0, k) / 10) * 10;
       return {
         ...(k < 0.7 ? deep(lerp(0.5, 0, k), lerp(1, 1.5, k), t, true) : surface(k)),
-        cam: { pos: [3.0, 0.6 - (1 - k) * 0.3, 2.6], look: [0, -0.2, 0.1] },
+        cam: { pos: [3.2, 0.5 - (1 - k) * 0.3, 3.4], look: [0, 0.05, 0] },
         body: <group position={[0, Math.sin(t * 20) * 0.02 * (1 - melt), 0]} rotation={[0, 0.25, 0]}>{fish(melt, 1 - melt)}</group>,
         overlay: <Pop t={t} at={S + 0.1} size={120} color={k < 0.99 ? "#9fdcff" : "#ff5a6a"}>{m.toLocaleString("en-US")} M</Pop>,
       };
@@ -179,7 +179,7 @@ const shotAt = (tl: Timeline, t: number): Shot => {
       // loop: back to the blob close-up of frame 0
       return {
         ...surface(1),
-        cam: { pos: [lerp(0.4, -1.5, glide(u, 0, 1, 0, 1)), 0.4, lerp(4.8, 4.2, u)], look: [0, -0.2, 0.2] },
+        cam: { pos: [lerp(0.4, -1.6, glide(u, 0, 1, 0, 1)), 0.35, lerp(5.4, 4.8, u)], look: [0, 0.12, 0.1] },
         body: fish(1, 0),
       };
     }
