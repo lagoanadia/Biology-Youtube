@@ -7,11 +7,19 @@ import { CameraRig, V3 } from "../lib/shortkit";
 import { Barreleye } from "../models/Barreleye";
 import { BranchStub, Potoo } from "../models/Potoo";
 import { Tarsier } from "../models/Tarsier";
+import { Sloth } from "../models/Sloth";
+import { Trunk } from "../env/Jungle";
 import { BlueWhale, GiantSiphon } from "../models/GiantSiphon";
 
 type View = { pos: V3; look?: V3; bg?: string; node: React.ReactNode };
 
 const MODELS: Record<string, View[]> = {
+  sloth: [
+    { pos: [0, 0.3, 2.6], look: [0, 0.1, 0], bg: "#5f9f84", node: <><Sloth t={1} /><Trunk x={0} z={-0.32} r={0.18} y0={-3} y1={3} /></> },
+    { pos: [2.2, 0.3, 1.0], look: [0, 0.1, 0], bg: "#5f9f84", node: <><Sloth t={1} climb={0.25} /><Trunk x={0} z={-0.32} r={0.18} y0={-3} y1={3} /></> },
+    { pos: [0, 0.6, 1.0], look: [0, 0.45, 0], bg: "#5f9f84", node: <Sloth t={1} algae={1} /> },
+    { pos: [1.2, 0.4, 2.4], look: [0, -0.1, 0], bg: "#5f9f84", node: <Sloth t={1} squat={1} /> },
+  ],
   tarsier: [
     { pos: [0, 0.3, 1.6], look: [0, 0.2, 0], bg: "#5f9f84", node: <Tarsier t={1} /> },
     { pos: [1.4, 0.3, 0.8], look: [0, 0.1, 0], bg: "#5f9f84", node: <Tarsier t={1} /> },
