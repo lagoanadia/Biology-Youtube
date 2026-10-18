@@ -40,8 +40,8 @@ export const Blobfish: React.FC<{ t: number; melt?: number; swim?: number; seed?
       // the tail half collapses flat behind it
       if (m > 0) {
         const floor = -0.3;
-        v.y = v.y > 0 ? v.y * lerp(1, 1.25, m * head) : lerp(v.y, floor + (v.y - floor) * 0.3, m);
-        v.x *= 1 + m * head * (v.y < 0 ? 0.1 : 0.04);
+        v.y = v.y > 0 ? v.y * lerp(1, 0.88, m * head) : lerp(v.y, floor + (v.y - floor) * 0.55, m);
+        v.x *= 1 + m * head * 0.16; // keeps the round head curve, just wider and lower
         v.y = lerp(v.y, floor + (v.y - floor) * 0.25, m * (1 - head));
         v.x *= 1 + m * (1 - head) * 0.6;
         v.z += m * head * 0.08;
