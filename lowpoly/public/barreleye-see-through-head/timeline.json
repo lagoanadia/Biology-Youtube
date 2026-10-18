@@ -1,5 +1,5 @@
 {
- "total": 21.81,
+ "total": 23.5,
  "planned": false,
  "beats": [
   {
@@ -48,7 +48,7 @@
    "text": "So next time it stares at you, look higher.",
    "visual": "loop",
    "start": 18.857,
-   "end": 21.81
+   "end": 23.5
   }
  ],
  "words": [

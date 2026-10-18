@@ -4,11 +4,18 @@ import { ThreeCanvas } from "@remotion/three";
 import { AbsoluteFill } from "remotion";
 import { DeepSeaLights } from "../env/DeepSea";
 import { CameraRig, V3 } from "../lib/shortkit";
+import { Barreleye } from "../models/Barreleye";
 import { BlueWhale, GiantSiphon } from "../models/GiantSiphon";
 
 type View = { pos: V3; look?: V3; bg?: string; node: React.ReactNode };
 
 const MODELS: Record<string, View[]> = {
+  barreleye: [
+    { pos: [0, 0.15, 2.4], look: [0, 0.1, 0.3], node: <Barreleye t={1} /> },
+    { pos: [2.6, 0.4, 0.6], look: [0, 0.05, 0], node: <Barreleye t={1} /> },
+    { pos: [1.4, 0.7, 1.8], look: [0, 0.1, 0.2], node: <Barreleye t={1} look={1} /> },
+    { pos: [1.2, 1.4, 1.0], look: [0, 0.1, 0.1], node: <Barreleye t={1} /> },
+  ],
   siphon: [
     { pos: [0, 3.2, 5.5], node: <GiantSiphon t={1} /> },
     { pos: [0, 0.3, 6.5], look: [0, -0.3, 0], node: <GiantSiphon t={1} /> },
