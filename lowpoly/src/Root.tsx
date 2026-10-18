@@ -31,6 +31,8 @@ import { SlothShort } from "./sloth/SlothShort";
 import { SlothThumb } from "./sloth/SlothThumb";
 import { RiverDolphinShort } from "./riverdolphin/RiverDolphinShort";
 import { RiverDolphinThumb } from "./riverdolphin/RiverDolphinThumb";
+import { StarMoleShort } from "./starmole/StarMoleShort";
+import { StarMoleThumb } from "./starmole/StarMoleThumb";
 import { FPS, loadTimeline, ShortProps } from "./lib/timeline";
 
 // One composition per low-poly short. Duration comes from public/<id>/timeline.json (scripts/render_lowpoly.py).
@@ -193,6 +195,17 @@ export const RemotionRoot: React.FC = () => (
       calculateMetadata={loadTimeline}
     />
     <Still id="RiverDolphinThumb" component={RiverDolphinThumb} width={1080} height={1920} />
+    <Composition
+      id="StarMole"
+      component={StarMoleShort}
+      width={1080}
+      height={1920}
+      fps={FPS}
+      durationInFrames={900}
+      defaultProps={{ timelineFile: "star-nosed-mole-fastest/timeline.json" } satisfies ShortProps}
+      calculateMetadata={loadTimeline}
+    />
+    <Still id="StarMoleThumb" component={StarMoleThumb} width={1080} height={1920} />
     <Still id="Lab" component={Lab} width={1920} height={1080} defaultProps={{ model: "siphon" }} />
     <Still id="BlobfishLab" component={BlobfishLab} width={1920} height={1080} />
     <Still id="CombJellyThumb" component={CombJellyThumb} width={1080} height={1920} />

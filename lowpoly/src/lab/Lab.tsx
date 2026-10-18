@@ -9,12 +9,19 @@ import { BranchStub, Potoo } from "../models/Potoo";
 import { Tarsier } from "../models/Tarsier";
 import { Sloth } from "../models/Sloth";
 import { RiverDolphin } from "../models/RiverDolphin";
+import { StarMole } from "../models/StarMole";
 import { Trunk } from "../env/Jungle";
 import { BlueWhale, GiantSiphon } from "../models/GiantSiphon";
 
 type View = { pos: V3; look?: V3; bg?: string; node: React.ReactNode };
 
 const MODELS: Record<string, View[]> = {
+  mole: [
+    { pos: [0, 0.05, 1.3], look: [0, 0, 0.4], bg: "#6b5a3a", node: <StarMole t={1} /> },
+    { pos: [1.6, 0.4, 0.6], look: [0, 0, 0], bg: "#6b5a3a", node: <StarMole t={1} dig={1} /> },
+    { pos: [0.35, 0.15, 0.95], look: [0, 0, 0.5], bg: "#3a3a22", node: <StarMole t={1} sniff={1} glow={0.6} /> },
+    { pos: [1.2, 0.9, 1.4], look: [0, 0, 0.1], bg: "#6b5a3a", node: <StarMole t={1} tap={1} /> },
+  ],
   dolphin: [
     { pos: [3.2, 0.5, 0.6], look: [0, 0, 0], bg: "#5d6b3a", node: <RiverDolphin t={1} /> },
     { pos: [1.4, 0.5, 2.6], look: [0, 0, 0.3], bg: "#5d6b3a", node: <RiverDolphin t={1} /> },

@@ -280,6 +280,36 @@ anatomy) bleed (comb jelly 27 % at 20 s). (5) Famous animals > niche. (6) Shorts
   A/B 15:00 vs 19:00 for 2 weeks; once Studio shows "When your viewers are on YouTube", use that instead.
 - Re-check this table after the next 8 and update it.
 
+### 2026-10-18 batch (8 shorts, all with the analytics rules) — what was made and learned
+- Made: blobfish-real-face (`Blobfish`), giant-siphonophore-spiral (`GiantSiphon`), barreleye-see-through-head
+  (`Barreleye`), great-potoo-branch (`Potoo`), tarsier-giant-eyes (`Tarsier`), sloth-poop-trip (`Sloth`),
+  pink-river-dolphin-forest (`RiverDolphin`), star-nosed-mole-fastest (`StarMole`). 70-81 words, 23-27 s, Michael +7 %,
+  each delivered with mp4 + srt + thumbnail + **title, description and pinned comment in the message** (owner: "no te
+  olvides del caption title etc con cada entrega").
+- **New shared kit `lib/shortkit.tsx`**: `ShortShell` (hook card from frame 0, small `NameLabel` on beat 1 instead of an
+  "It's a ___" sentence, captions, `EndQuestion` + "FOLLOW BIONICHE" as text, flash-dip cuts, no black end so it loops),
+  `Pop`, `RedCross`, `CameraRig`, `ThumbShell`. A new short only writes `shotAt(tl, t)` returning `{cam, bg, world, body,
+  overlay}`. Render with `--total = speech end + 2 s` so the end question stays ~2 s.
+- **Model accuracy matters to the owner** ("make it look like an actual blobfish, idk what you think this is"; then
+  "u got the head structure wrong"). Build every new animal on the bench FIRST: `lab/Lab.tsx` (`npx remotion still Lab
+  out.png --props='{"model":"<key>"}'`, 4 cameras) and compare with real photos before writing scenes. Blobfish: round
+  bulbous head (not flat), grumpy wide mouth even at depth, grey-beige at depth; the surface blob is a rounded low dome
+  with a bulbous nose and wide frown. Face features are placed ON the skin with raycasts (`Blobfish.tsx`).
+- Respect: never "ugly/ugliest" framing (owner: "don't be disrespectful").
+- Recurring framing bugs (every short): cameras too close (an animal ~2 units long needs ~5-7 units in 9:16), hook card
+  of 3 lines covers the animal (keep each line ≤ 14 characters), name label colliding with a pop at top 430. Fix on the
+  stills grid before the full render.
+- Word indices for `wordTime(tl, beat, word)` count TOKEN_RE tokens ("it's", "twenty-two" = 1 token); check them.
+- Ambience per habitat: `deep_sea_drone.mp3` (deep sea), `borneo_rainforest.mp3` (jungle: potoo, tarsier, sloth),
+  `underwater_open.mp3` (river / pond: boto, mole). Pass `--ambience`.
+- Loops: make the last frame match frame 0 (e.g. the boto swims exactly 3 periods of the periodic flooded forest).
+- New models: `Blobfish` (melt), `GiantSiphon` + `BlueWhale`, `Barreleye` (look/dome/nares), `Potoo` + `Moth` + `Hawk` +
+  `BranchStub`, `Tarsier` (head turn, leap, call, cutaway), `Sloth` (algae, squat), `RiverDolphin` + `Fish` (neck bend,
+  scars), `StarMole` + `Worm` (tap, sniff bubble). Envs: `env/Jungle.tsx` (day/dusk/night, trunks, leaves, motes),
+  `env/River.tsx` (murky water, god rays, silt, surface, riverbed).
+- Cloud sandbox notes: no GPU → `--gl swangle --concurrency 4` (~2 min per short); Montserrat is now served locally
+  from `lowpoly/public/fonts` (`lib/montserrat.ts`) because the headless browser does not trust the proxy CA.
+
 ### ▶ Recipe: make a NEW low-poly short from scratch (follow in order)
 **Setup (once per machine, Windows):**
 ```bash
@@ -319,7 +349,7 @@ edge-tts Andrew was down (403) since 2026-10-10 — test it first; only switch b
     -color_range tv -colorspace bt709 -color_primaries bt709 -color_trc bt709 -c:a copy -movflags +faststart <id>.mp4`
     and copy `short_1.srt` → `<id>.srt`.
 11. **Thumbnail**: `lowpoly/src/<animal>/<Name>Thumb.tsx` (copy `owlfish/OwlfishThumb.tsx`), register a `<Still>` in
-    Root, `npx remotion still <Name>Thumb ../output/<id>/lowpoly/<id>_thumbnail.png --gl=angle`. Whole animal visible
+    Root, `npx remotion still <Name>Thumb ../output/<id>/lowpoly/<id>_thumbnail.png --gl=angle` (or `ThumbShell` from shortkit). Whole animal visible
     (3/4 view for long animals) + 2 lines of huge text that don't cover the animal.
 12. **Send** with SendUserFile: mp4 + srt + thumbnail, and in the message: title, description, pinned-comment
     question, upload reminders (Not made for kids, Altered content = Yes, upload .srt, 15:00-16:00 Spain time).
