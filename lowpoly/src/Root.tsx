@@ -17,6 +17,10 @@ import { OwlfishThumb } from "./owlfish/OwlfishThumb";
 import { CombJellyShort } from "./combjelly/CombJellyShort";
 import { BlobfishShort } from "./blobfish/BlobfishShort";
 import { BlobfishLab } from "./blobfish/BlobfishLab";
+import { BlobfishThumb } from "./blobfish/BlobfishThumb";
+import { Lab } from "./lab/Lab";
+import { GiantSiphonShort } from "./giantsiphon/GiantSiphonShort";
+import { GiantSiphonThumb } from "./giantsiphon/GiantSiphonThumb";
 import { FPS, loadTimeline, ShortProps } from "./lib/timeline";
 
 // One composition per low-poly short. Duration comes from public/<id>/timeline.json (scripts/render_lowpoly.py).
@@ -112,6 +116,19 @@ export const RemotionRoot: React.FC = () => (
       defaultProps={{ timelineFile: "blobfish-real-face/timeline.json" } satisfies ShortProps}
       calculateMetadata={loadTimeline}
     />
+    <Still id="BlobfishThumb" component={BlobfishThumb} width={1080} height={1920} />
+    <Composition
+      id="GiantSiphon"
+      component={GiantSiphonShort}
+      width={1080}
+      height={1920}
+      fps={FPS}
+      durationInFrames={900}
+      defaultProps={{ timelineFile: "giant-siphonophore-spiral/timeline.json" } satisfies ShortProps}
+      calculateMetadata={loadTimeline}
+    />
+    <Still id="GiantSiphonThumb" component={GiantSiphonThumb} width={1080} height={1920} />
+    <Still id="Lab" component={Lab} width={1920} height={1080} defaultProps={{ model: "siphon" }} />
     <Still id="BlobfishLab" component={BlobfishLab} width={1920} height={1080} />
     <Still id="CombJellyThumb" component={CombJellyThumb} width={1080} height={1920} />
     <Still id="OctopusThumb" component={OctopusThumb} width={1080} height={1920} />

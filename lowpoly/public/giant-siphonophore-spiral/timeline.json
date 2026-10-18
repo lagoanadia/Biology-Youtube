@@ -1,5 +1,5 @@
 {
- "total": 25.94,
+ "total": 27.5,
  "planned": false,
  "beats": [
   {
@@ -54,7 +54,7 @@
    "text": "It just hangs in the dark and waits.",
    "visual": "loop",
    "start": 23.18,
-   "end": 25.94
+   "end": 27.5
   }
  ],
  "words": [

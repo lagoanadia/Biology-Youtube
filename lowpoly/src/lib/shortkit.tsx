@@ -160,3 +160,28 @@ export const ShortShell: React.FC<{
     </AbsoluteFill>
   );
 };
+
+// Thumbnail (1080×1920 still): the animal + 2 lines of huge text at the top (second line in colour).
+export const ThumbShell: React.FC<{ bg: React.ReactNode; world: React.ReactNode; cam: Cam; body: React.ReactNode;
+  lines: [string, string]; color?: string; size?: number }> = ({ bg, world, cam, body, lines, color = "#ffd34d", size = 140 }) => {
+  const { width, height } = useVideoConfig();
+  return (
+    <AbsoluteFill>
+      {bg}
+      <ThreeCanvas width={width} height={height} gl={{ alpha: true, antialias: true }} camera={{ fov: 35, near: 0.05, far: 80 }}>
+        <CameraRig {...cam} />
+        {world}
+        {body}
+      </ThreeCanvas>
+      <AbsoluteFill style={{ background: "radial-gradient(ellipse at 50% 50%, transparent 55%, rgba(0,0,0,0.55) 100%)" }} />
+      <AbsoluteFill style={{ alignItems: "center", paddingTop: 220, gap: 12, textAlign: "center" }}>
+        {lines.map((l, i) => (
+          <div key={i} style={{ fontFamily, fontWeight: 900, fontSize: size, lineHeight: 1, color: i ? color : "#fff",
+            WebkitTextStroke: "16px #060a18", paintOrder: "stroke fill", textShadow: "0 10px 30px rgba(0,0,0,0.7)", padding: "0 40px" }}>
+            {l}
+          </div>
+        ))}
+      </AbsoluteFill>
+    </AbsoluteFill>
+  );
+};
