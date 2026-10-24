@@ -1,0 +1,88 @@
+# Low-poly short, POV format (owner queue 2026-10-24 #1: "snail crazy sleep schedule").
+# `visual` = scene id in lowpoly/src/snail/SnailShort.tsx. No spoken CTA; the last beat loops to the first.
+id: snail-sleep-pov
+language: en
+documentary:
+  topic: 'POV: you are the desert snail glued to a British Museum card in 1846 that woke up in 1850; pond snails nap in
+    clusters (~7 naps in ~13 h) then stay active ~37 h, barely tied to day or night (low-poly short)'
+  working_title: '-'
+  category: animal
+  subcategory: molluscs
+  hook_type: historia
+  species:
+  - Eremina desertorum
+  - Lymnaea stagnalis
+  scenes:
+  - narration: '-'
+    visual_query: '-'
+    on_screen_text: '-'
+    key_fact: false
+  sources:
+  - title: 'Eremina desertorum (Wikipedia, citing Grant Allen) — British Museum specimen from Egypt glued to a card in March
+      1846 as dead; found alive in March 1850, revived with a warm bath, lived ~2 more years'
+    reference: https://en.wikipedia.org/wiki/Eremina_desertorum
+  - title: 'Guinness World Records — longest suspended animation (molluscs): desert snail at the British Museum revived in
+      tepid water after ~4 years'
+    reference: https://www.guinnessworldrecords.com/world-records/70685-longest-suspended-animation-molluscs
+  - title: 'Stephenson & Lewis (2011) J Exp Biol 214:747 — Lymnaea stagnalis quiescence bouts ~22 min, clustered 7±0.5 bouts
+      over 13±1 h, separated by 37±4 h of almost continuous activity; only weakly affected by time of day'
+    reference: https://doi.org/10.1242/jeb.050591
+  - title: 'Stephenson (2011) Sleep homeostasis: progress at a snail''s pace, Commun Integr Biol — no circadian or homeostatic
+      regulation found'
+    reference: https://pmc.ncbi.nlm.nih.gov/articles/PMC3181517/
+documentary_metadata:
+  title: '-'
+  description: '-'
+  tags: []
+  hashtags: []
+  thumbnail_text: '-'
+shorts:
+- hook: You're a snail, and you've just been glued to a museum card.
+  fact: London, 1846. Everyone thinks you're dead. But you're just sealed in your shell, waiting for rain. Four years pass.
+    Then someone drops you in warm water, and you crawl out. Your pond-snail cousins sleep even weirder. Seven quick naps
+    in thirteen hours, then almost two days wide awake. Day or night doesn't matter.
+  cta: So never trust a snail that looks dead.
+  visual_queries:
+  - snail
+  on_screen_texts: []
+  beats:
+  - text: You're a snail, and you've just been glued to a museum card.
+    visual: hook
+  - text: London, 1846. Everyone thinks you're dead.
+    visual: museum
+  - text: But you're just sealed in your shell, waiting for rain.
+    visual: seal
+  - text: Four years pass.
+    visual: years
+  - text: Then someone drops you in warm water, and you crawl out.
+    visual: bath
+  - text: Your pond-snail cousins sleep even weirder.
+    visual: cousins
+  - text: Seven quick naps in thirteen hours,
+    visual: naps
+  - text: then almost two days wide awake.
+    visual: awake
+  - text: Day or night doesn't matter.
+    visual: daynight
+  - text: So never trust a snail that looks dead.
+    visual: loop
+shorts_metadata:
+- title: 'POV: You''re a Snail Glued to a Card for 4 Years 🐌 #shorts #snail'
+  description: 'In 1846 the British Museum glued a desert snail to a card, thinking it was dead. It was just sealed in its
+    shell, waiting for rain. Four years later someone dropped it in warm water and it crawled out alive. And pond snails
+    sleep even weirder: about seven short naps packed into thirteen hours, then almost two days wide awake, no matter if
+    it is day or night. Animation: BioNiche. Follow BioNiche for more weird animals.'
+  tags:
+  - snail
+  - snail sleep
+  - desert snail
+  - British Museum
+  - pond snail
+  - weird animals
+  hashtags:
+  - '#shorts'
+  - '#snail'
+  - '#animals'
+  thumbnail_text: GLUED FOR 4 YEARS
+pinned_comment: 'Would you survive 4 years glued to a card? 🐌 YES or NO — and which animal should be next?'
+curated: {}
