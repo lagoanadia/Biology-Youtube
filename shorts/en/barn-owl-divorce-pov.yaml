@@ -1,0 +1,80 @@
+# Low-poly short, POV format (owner queue 2026-10-24 #5: barn owls get divorced).
+# `visual` = scene id in lowpoly/src/owl/OwlShort.tsx. No spoken CTA; the last beat loops to the first.
+id: barn-owl-divorce-pov
+language: en
+documentary:
+  topic: 'POV: you are a barn owl whose marriage is falling apart — divorce follows bad breeding years (about 1 in 4
+    couples in a 24-year Swiss study), the male usually keeps the nest site, after the split at least one ex breeds as well
+    as faithful pairs, and faithful pairs improve their teamwork (low-poly short)'
+  working_title: '-'
+  category: animal
+  subcategory: birds
+  hook_type: historia
+  species:
+  - Tyto alba
+  scenes:
+  - narration: '-'
+    visual_query: '-'
+    on_screen_text: '-'
+    key_fact: false
+  sources:
+  - title: 'Dreiss & Roulin (2014) J Evol Biol 27 — 24 years, 634 barn owl pairs in western Switzerland, 23.5% divorced;
+      divorce followed poor breeding seasons; after divorce at least one divorcee raised as many fledglings as faithful
+      pairs; faithful pairs improve coordination'
+    reference: https://serval.unil.ch/notice/serval:BIB_2AB2093B903A
+  - title: 'National Geographic — Why do barn owls divorce? (males tend to keep the original nest site)'
+    reference: https://www.nationalgeographic.com/science/article/why-do-barn-owls-divorce-
+documentary_metadata:
+  title: '-'
+  description: '-'
+  tags: []
+  hashtags: []
+  thumbnail_text: '-'
+shorts:
+- hook: You're a barn owl, and your marriage is falling apart.
+  fact: This year, your nest raised almost no chicks. So one of you decides to leave. In a long Swiss study, about one in
+    four couples split up, almost always after a bad breeding year. And the male usually keeps the house. After the split,
+    at least one ex does just as well as the happy couples. Couples that stay together get better at teamwork every year.
+  cta: So, stay, or fly away?
+  visual_queries:
+  - barn owl
+  on_screen_texts: []
+  beats:
+  - text: You're a barn owl, and your marriage is falling apart.
+    visual: hook
+  - text: This year, your nest raised almost no chicks.
+    visual: nest
+  - text: So one of you decides to leave.
+    visual: leave
+  - text: In a long Swiss study, about one in four couples split up,
+    visual: study
+  - text: almost always after a bad breeding year.
+    visual: badyear
+  - text: And the male usually keeps the house.
+    visual: house
+  - text: After the split, at least one ex does just as well as the happy couples.
+    visual: better
+  - text: Couples that stay together get better at teamwork every year.
+    visual: stay
+  - text: So, stay, or fly away?
+    visual: loop
+shorts_metadata:
+- title: 'POV: You''re a Barn Owl and Your Marriage Is Over 🦉 #shorts #owl'
+  description: 'Barn owls are usually faithful, but they do divorce. In a 24-year study of 634 barn owl couples in
+    Switzerland, about one in four split up, almost always after a bad breeding year with few chicks. The male usually keeps
+    the nest site, and after the split at least one of the exes raises as many chicks as the faithful couples. Couples
+    that stay together get better at teamwork every year. Animation: BioNiche. Follow BioNiche for more weird animals.'
+  tags:
+  - barn owl
+  - owl divorce
+  - animal divorce
+  - birds
+  - owls
+  - weird animals
+  hashtags:
+  - '#shorts'
+  - '#owl'
+  - '#birds'
+  thumbnail_text: OWL DIVORCE
+pinned_comment: 'Team STAY or team FLY AWAY? 🦉 Tell us below!'
+curated: {}

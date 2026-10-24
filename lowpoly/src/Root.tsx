@@ -1,3 +1,7 @@
+import { OwlThumb } from "./owl/OwlThumb";
+import { OwlShort } from "./owl/OwlShort";
+import { SeahorseThumb } from "./seahorse/SeahorseThumb";
+import { SeahorseShort } from "./seahorse/SeahorseShort";
 import { BigCatsThumb } from "./bigcats/BigCatsThumb";
 import { BigCatsShort } from "./bigcats/BigCatsShort";
 import { EelThumb } from "./eel/EelThumb";
@@ -271,6 +275,28 @@ export const RemotionRoot: React.FC = () => (
       calculateMetadata={loadTimeline}
     />
     <Still id="BigCatsThumb" component={BigCatsThumb} width={1080} height={1920} />
+    <Composition
+      id="Seahorse"
+      component={SeahorseShort}
+      width={1080}
+      height={1920}
+      fps={FPS}
+      durationInFrames={900}
+      defaultProps={{ timelineFile: "seahorse-pov/timeline.json" } satisfies ShortProps}
+      calculateMetadata={loadTimeline}
+    />
+    <Still id="SeahorseThumb" component={SeahorseThumb} width={1080} height={1920} />
+    <Composition
+      id="Owl"
+      component={OwlShort}
+      width={1080}
+      height={1920}
+      fps={FPS}
+      durationInFrames={900}
+      defaultProps={{ timelineFile: "barn-owl-divorce-pov/timeline.json" } satisfies ShortProps}
+      calculateMetadata={loadTimeline}
+    />
+    <Still id="OwlThumb" component={OwlThumb} width={1080} height={1920} />
     <Still id="Lab" component={Lab} width={1920} height={1080} defaultProps={{ model: "siphon" }} />
     <Still id="BlobfishLab" component={BlobfishLab} width={1920} height={1080} />
     <Still id="CombJellyThumb" component={CombJellyThumb} width={1080} height={1920} />
