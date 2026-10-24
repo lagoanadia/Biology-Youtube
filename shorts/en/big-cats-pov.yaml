@@ -1,0 +1,94 @@
+# Low-poly short, POV format (owner queue 2026-10-24 #3: jaguar vs tiger vs leopard vs puma and why they split).
+# `visual` = scene id in lowpoly/src/bigcats/BigCatsShort.tsx. No spoken CTA; the last beat loops to the first.
+id: big-cats-pov
+language: en
+documentary:
+  topic: 'POV: you are the ancestor of the big cats in Asia; descendants split into tigers (Asia, stripes), leopards (Africa,
+    haul prey into trees), jaguars (crossed the Bering land bridge, bite cracks turtle shells); the puma is not in the
+    family at all (closest to cheetah, purrs, cannot roar) (low-poly short)'
+  working_title: '-'
+  category: animal
+  subcategory: big cats
+  hook_type: historia
+  species:
+  - Panthera tigris
+  - Panthera pardus
+  - Panthera onca
+  - Puma concolor
+  scenes:
+  - narration: '-'
+    visual_query: '-'
+    on_screen_text: '-'
+    key_fact: false
+  sources:
+  - title: 'Tseng et al. (2013) Proc R Soc B — Panthera blytheae from Tibet (~4-6 Ma), oldest pantherine fossil; supports an
+      Asian origin of big cats (not claimed as the direct ancestor)'
+    reference: https://www.amnh.org/explore/news-blogs/big-cat-fossil-discovery
+  - title: 'Figueiró et al. (2017) Science Advances / Davis et al. (2010) — Panthera radiation in the Pliocene; tiger + snow
+      leopard lineage vs lion + leopard + jaguar lineage'
+    reference: https://m.phys.org/news/2017-07-genome-clues-history-big-cats.html
+  - title: 'Jaguar (Wikipedia, citing fossil and genetic studies) — ancestors reached the Americas from Eurasia over the
+      Bering land bridge in the Early Pleistocene; bite can pierce turtle shells; strongest bite force for its size among cats'
+    reference: https://en.wikipedia.org/wiki/Jaguar
+  - title: 'Johnson et al. (2006) Science / Puma lineage — puma, jaguarundi and cheetah form the Puma lineage, separate from
+      Panthera; cheetah split from the puma line ~4.9 Ma'
+    reference: https://encyclopedia.pub/entry/33832
+  - title: 'Panthera.org, Which big cats purr? — lions, tigers, leopards and jaguars have an elastic hyoid ligament that lets
+      them roar; pumas have a rigid hyoid and purr but cannot roar'
+    reference: https://panthera.org/blog-post/which-big-cats-purr
+documentary_metadata:
+  title: '-'
+  description: '-'
+  tags: []
+  hashtags: []
+  thumbnail_text: '-'
+shorts:
+- hook: You're the ancestor of all big cats, and your family is about to split.
+  fact: Asia, millions of years ago. Some kids stay in Asia's forests and get stripes, tigers. Others reach Africa and haul
+    prey up trees, leopards. Some cross into the Americas and become jaguars, with bites that crack turtle shells. But
+    the puma? Not your family at all. One of its closest cousins is the cheetah. It can't even roar. It purrs.
+  cta: And it all started in Asia.
+  visual_queries:
+  - big cats
+  on_screen_texts: []
+  beats:
+  - text: You're the ancestor of all big cats, and your family is about to split.
+    visual: hook
+  - text: Asia, millions of years ago.
+    visual: asia
+  - text: Some kids stay in Asia's forests and get stripes, tigers.
+    visual: tiger
+  - text: Others reach Africa and haul prey up trees, leopards.
+    visual: leopard
+  - text: Some cross into the Americas and become jaguars, with bites that crack turtle shells.
+    visual: jaguar
+  - text: But the puma? Not your family at all.
+    visual: puma
+  - text: One of its closest cousins is the cheetah.
+    visual: cheetah
+  - text: It can't even roar. It purrs.
+    visual: purr
+  - text: And it all started in Asia.
+    visual: loop
+shorts_metadata:
+- title: 'POV: You''re the Ancestor of All Big Cats 🐯 #shorts #tiger #jaguar'
+  description: 'Tiger, leopard, jaguar and puma: why are they different? Big cats started in Asia millions of years ago.
+    Some stayed in Asia''s forests and became tigers, others reached Africa and became leopards that haul prey up trees,
+    and some crossed into the Americas and became jaguars, with bites strong enough to crack turtle shells. The puma is
+    not even in the family: one of its closest cousins is the cheetah, and it can''t roar, it purrs. Animation:
+    BioNiche. Follow BioNiche for more weird animals.'
+  tags:
+  - big cats
+  - tiger
+  - leopard
+  - jaguar
+  - puma
+  - jaguar vs leopard
+  - big cat evolution
+  hashtags:
+  - '#shorts'
+  - '#tiger'
+  - '#jaguar'
+  thumbnail_text: WHO'S NOT FAMILY?
+pinned_comment: 'Jaguar or leopard: which one is stronger? 🐆 Tell us below!'
+curated: {}
