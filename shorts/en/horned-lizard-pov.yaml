@@ -1,0 +1,85 @@
+# Low-poly short, POV format (owner queue 2026-10-24 #7: horned lizard shoots blood from its eyes).
+# `visual` = scene id in lowpoly/src/lizard/LizardShort.tsx. No spoken CTA; the last beat loops to the first.
+id: horned-lizard-pov
+language: en
+documentary:
+  topic: 'POV: you are a Texas horned lizard grabbed by a coyote — camouflage and puffing up fail, muscles squeeze the head
+    veins, pressure ruptures the eye sinuses and blood squirts out (over a meter), the blood tastes foul to canids (they
+    shake their heads and salivate), birds are not bothered (low-poly short)'
+  working_title: '-'
+  category: animal
+  subcategory: reptiles
+  hook_type: historia
+  species:
+  - Phrynosoma cornutum
+  scenes:
+  - narration: '-'
+    visual_query: '-'
+    on_screen_text: '-'
+    key_fact: false
+  sources:
+  - title: 'Sherbrooke & Mason (2005) Southwestern Naturalist — Texas horned lizards squirt blood from the ocular sinuses
+      during canid (coyote) attacks; the blood acts on oral receptors and coyotes show startle/avoidance responses'
+    reference: https://bioone.org/journals/the-southwestern-naturalist/volume-50/issue-2/0038-4909(2005)050[0216:SMUBCI]2.0.CO;2/SENSORY-MODALITY-USED-BY-COYOTES-IN-RESPONDING-TO-ANTIPREDATOR-COMPOUNDS/10.1894/0038-4909(2005)050[0216:SMUBCI]2.0.CO;2.full
+  - title: 'AskNature / Reed College — muscles around the eye veins cut off blood leaving the head while it keeps flowing in;
+      pressure ruptures the thin sinus membranes and a jet of blood shoots out (reported up to ~1.2 m)'
+    reference: https://asknature.org/strategy/eyes-squirt-blood/
+  - title: 'Sherbrooke & Kimball (2024) — the distasteful factor is plasma-borne; predators shake their heads and salivate;
+      squirting appears to have no effect on predatory birds'
+    reference: https://www.scienceabc.com/nature/animals/why-do-lizards-squirt-blood-from-their-eyes.html
+documentary_metadata:
+  title: '-'
+  description: '-'
+  tags: []
+  hashtags: []
+  thumbnail_text: '-'
+shorts:
+- hook: You're a horned lizard, and a coyote just grabbed you.
+  fact: Your camouflage didn't work. Puffing up didn't work either. So you squeeze the veins in your head. Pressure builds
+    behind your eyes, and you shoot blood out of them. It can fly more than a meter. And to dogs and coyotes, it tastes
+    awful. They drop you, shake their heads and drool. Birds don't care, so you save it for dogs.
+  cta: Worth it.
+  visual_queries:
+  - horned lizard
+  on_screen_texts: []
+  beats:
+  - text: You're a horned lizard, and a coyote just grabbed you.
+    visual: hook
+  - text: Your camouflage didn't work.
+    visual: camo
+  - text: Puffing up didn't work either.
+    visual: puff
+  - text: So you squeeze the veins in your head.
+    visual: squeeze
+  - text: Pressure builds behind your eyes, and you shoot blood out of them.
+    visual: squirt
+  - text: It can fly more than a meter.
+    visual: meter
+  - text: And to dogs and coyotes, it tastes awful.
+    visual: taste
+  - text: They drop you, shake their heads and drool.
+    visual: drop
+  - text: Birds don't care, so you save it for dogs.
+    visual: birds
+  - text: Worth it.
+    visual: loop
+shorts_metadata:
+- title: 'POV: You''re a Lizard That Shoots Blood From Its Eyes 🩸 #shorts #lizard'
+  description: 'The Texas horned lizard has a last-resort defence: when a coyote grabs it, it squeezes the veins in its head
+    until pressure builds behind its eyes and blood shoots out, sometimes more than a meter. To dogs and coyotes the blood
+    tastes awful: they drop the lizard, shake their heads and drool. Birds are not bothered, so the trick is mostly for
+    canines. Animation: BioNiche. Follow BioNiche for more weird animals.'
+  tags:
+  - horned lizard
+  - lizard shoots blood
+  - texas horned lizard
+  - reptiles
+  - animal defense
+  - weird animals
+  hashtags:
+  - '#shorts'
+  - '#lizard'
+  - '#reptiles'
+  thumbnail_text: BLOOD FROM EYES
+pinned_comment: 'Would you rather shoot blood from your eyes or never fight back? 🩸 Tell us below!'
+curated: {}

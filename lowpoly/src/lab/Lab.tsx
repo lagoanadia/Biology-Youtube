@@ -15,11 +15,46 @@ import { BlueWhale, GiantSiphon } from "../models/GiantSiphon";
 import { DragonEgg, Komodo } from "../models/Komodo";
 import { Jellybean, Joey, Kangaroo } from "../models/Kangaroo";
 import { Snail } from "../models/Snail";
+import { Coyote, HornedLizard } from "../models/HornedLizard";
+import { Buffalo } from "../models/Buffalo";
+import { Nest, Owl } from "../models/Owl";
+import { Seahorse } from "../models/Seahorse";
+import { BigCat, Turtle } from "../models/BigCat";
 import { Eel, Electrocyte } from "../models/Eel";
 
 type View = { pos: V3; look?: V3; bg?: string; node: React.ReactNode };
 
 const MODELS: Record<string, View[]> = {
+  lizard: [
+    { pos: [0.6, 0.5, 0.7], look: [0, 0.05, 0], bg: "#d9b48a", node: <HornedLizard t={1} /> },
+    { pos: [0.0, 0.9, 0.2], look: [0, 0, 0], bg: "#d9b48a", node: <HornedLizard t={1} puff={1} /> },
+    { pos: [2.2, 0.8, 1.4], look: [0, 0.45, 0], bg: "#d9b48a", node: <Coyote t={1} /> },
+    { pos: [1.0, 0.8, 1.6], look: [0, 0.6, 0.4], bg: "#d9b48a", node: <Coyote t={1} jaw={1} drool={1} /> },
+  ],
+  buffalo: [
+    { pos: [3.6, 1.2, 2.4], look: [0, 0.7, 0], bg: "#d9b48a", node: <Buffalo t={1} bull /> },
+    { pos: [1.2, 1.2, 3.6], look: [0, 0.8, 0.3], bg: "#d9b48a", node: <Buffalo t={1} bull /> },
+    { pos: [3.6, 1.2, 2.4], look: [0, 0.5, 0], bg: "#d9b48a", node: <Buffalo t={1} lie={1} /> },
+    { pos: [3.6, 1.2, 2.4], look: [0, 0.7, 0], bg: "#d9b48a", node: <Buffalo t={1} raise={1} gaze={0.6} walk={0} /> },
+  ],
+  owl: [
+    { pos: [0.6, 0.7, 2.0], look: [0, 0.5, 0], bg: "#2a3050", node: <Owl t={1} /> },
+    { pos: [2.0, 0.7, 0.4], look: [0, 0.5, 0], bg: "#2a3050", node: <Owl t={1} /> },
+    { pos: [0.4, 0.8, 2.4], look: [0, 0.6, 0], bg: "#2a3050", node: <Owl t={1} flap={1} /> },
+    { pos: [0.5, 0.6, 1.2], look: [0, 0.15, 0], bg: "#2a3050", node: <Nest t={1} chicks={3} /> },
+  ],
+  seahorse: [
+    { pos: [2.6, 0.7, 0.2], look: [0, 0.55, 0], bg: "#5ec4e8", node: <Seahorse t={1} /> },
+    { pos: [1.6, 0.8, 2.0], look: [0, 0.55, 0], bg: "#5ec4e8", node: <Seahorse t={1} pouch={1} xray={1} eggs={1} /> },
+    { pos: [2.6, 0.7, 0.2], look: [0, 0.55, 0], bg: "#5ec4e8", node: <Seahorse t={1} female /> },
+    { pos: [-2.0, 0.9, 1.6], look: [0, 0.55, 0], bg: "#5ec4e8", node: <Seahorse t={1} pouch={0.6} /> },
+  ],
+  cats: [
+    { pos: [3.6, 1.4, 2.6], look: [0, 0.5, 0], bg: "#9fb07a", node: <><group position={[0, 0, 0.8]}><BigCat t={1} kind="tiger" /></group><group position={[1.2, 0, -0.8]}><BigCat t={1} kind="leopard" walk={1} /></group></> },
+    { pos: [3.6, 1.4, 2.6], look: [0, 0.5, 0], bg: "#9fb07a", node: <><group position={[0, 0, 0.8]}><BigCat t={1} kind="jaguar" roar={1} /></group><group position={[1.2, 0, -0.8]}><BigCat t={1} kind="puma" /></group></> },
+    { pos: [3.6, 1.4, 2.6], look: [0, 0.5, 0], bg: "#c9b48a", node: <><group position={[0, 0, 0.8]}><BigCat t={1} kind="cheetah" /></group><group position={[1.2, 0, -0.8]}><BigCat t={1} kind="ancestor" /></group></> },
+    { pos: [1.4, 0.9, 1.4], look: [0, 0.6, 0.4], bg: "#c9b48a", node: <><BigCat t={1} kind="tiger" /><group position={[0.6, 0, 0.6]}><Turtle t={1} crack={0.6} /></group></> },
+  ],
   eel: [
     { pos: [3.2, 0.6, 0.4], look: [0, 0, 0], bg: "#6b7a4a", node: <Eel t={1} evo={1} /> },
     { pos: [1.8, 0.4, 0.6], look: [0, 0, 0], bg: "#6b7a4a", node: <Eel t={1} evo={0} /> },

@@ -1,3 +1,7 @@
+import { LizardThumb } from "./lizard/LizardThumb";
+import { LizardShort } from "./lizard/LizardShort";
+import { BuffaloThumb } from "./buffalo/BuffaloThumb";
+import { BuffaloShort } from "./buffalo/BuffaloShort";
 import { OwlThumb } from "./owl/OwlThumb";
 import { OwlShort } from "./owl/OwlShort";
 import { SeahorseThumb } from "./seahorse/SeahorseThumb";
@@ -297,6 +301,28 @@ export const RemotionRoot: React.FC = () => (
       calculateMetadata={loadTimeline}
     />
     <Still id="OwlThumb" component={OwlThumb} width={1080} height={1920} />
+    <Composition
+      id="Buffalo"
+      component={BuffaloShort}
+      width={1080}
+      height={1920}
+      fps={FPS}
+      durationInFrames={900}
+      defaultProps={{ timelineFile: "buffalo-vote-pov/timeline.json" } satisfies ShortProps}
+      calculateMetadata={loadTimeline}
+    />
+    <Still id="BuffaloThumb" component={BuffaloThumb} width={1080} height={1920} />
+    <Composition
+      id="Lizard"
+      component={LizardShort}
+      width={1080}
+      height={1920}
+      fps={FPS}
+      durationInFrames={900}
+      defaultProps={{ timelineFile: "horned-lizard-pov/timeline.json" } satisfies ShortProps}
+      calculateMetadata={loadTimeline}
+    />
+    <Still id="LizardThumb" component={LizardThumb} width={1080} height={1920} />
     <Still id="Lab" component={Lab} width={1920} height={1080} defaultProps={{ model: "siphon" }} />
     <Still id="BlobfishLab" component={BlobfishLab} width={1920} height={1080} />
     <Still id="CombJellyThumb" component={CombJellyThumb} width={1080} height={1920} />
