@@ -14,10 +14,24 @@ import { Trunk } from "../env/Jungle";
 import { BlueWhale, GiantSiphon } from "../models/GiantSiphon";
 import { DragonEgg, Komodo } from "../models/Komodo";
 import { Jellybean, Joey, Kangaroo } from "../models/Kangaroo";
+import { Snail } from "../models/Snail";
+import { Eel, Electrocyte } from "../models/Eel";
 
 type View = { pos: V3; look?: V3; bg?: string; node: React.ReactNode };
 
 const MODELS: Record<string, View[]> = {
+  eel: [
+    { pos: [3.2, 0.6, 0.4], look: [0, 0, 0], bg: "#6b7a4a", node: <Eel t={1} evo={1} /> },
+    { pos: [1.8, 0.4, 0.6], look: [0, 0, 0], bg: "#6b7a4a", node: <Eel t={1} evo={0} /> },
+    { pos: [3.0, 0.5, 0.2], look: [0, 0, -0.2], bg: "#3a4430", node: <Eel t={1} evo={1} xray={1} organ={1} fire={0.5} zap={1} /> },
+    { pos: [1.6, 0.9, 2.4], look: [0, 0.1, 0], bg: "#3a4430", node: <Electrocyte t={1} fire={0.5} /> },
+  ],
+  snail: [
+    { pos: [2.2, 0.8, 1.2], look: [0, 0.3, 0], bg: "#c9d6a8", node: <Snail t={1} /> },
+    { pos: [0.6, 0.5, 2.0], look: [0, 0.3, 0.1], bg: "#c9d6a8", node: <Snail t={1} relax={1} /> },
+    { pos: [-2.0, 0.7, -1.0], look: [0, 0.3, 0], bg: "#e8dcc0", node: <Snail t={1} out={0} seal={1} /> },
+    { pos: [2.0, 0.8, 1.6], look: [0, 0.35, 0], bg: "#7fa7a0", node: <Snail t={1} pond /> },
+  ],
   kangaroo: [
     { pos: [1.4, 0.35, 0.9], look: [0, 0.12, 0], bg: "#7fb07a", node: <Kangaroo t={1} evo={0} /> },
     { pos: [2.2, 0.6, 1.6], look: [0, 0.35, 0], bg: "#d9b48a", node: <Kangaroo t={1} evo={0.5} /> },

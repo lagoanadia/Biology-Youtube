@@ -1,0 +1,87 @@
+# Low-poly short, POV format (owner queue 2026-10-24 #2: electric eel — where the electricity comes from, to the root,
+# and why it evolved). `visual` = scene id in lowpoly/src/eel/EelShort.tsx. No spoken CTA; last beat loops to the first.
+id: electric-eel-pov
+language: en
+documentary:
+  topic: 'POV: you are a fish in the muddy Amazon at night; muscle cells become electrocytes (sodium in, potassium out),
+    thousands stacked in series like batteries; weak pulses to sense, then up to 860 V; doublets make hidden prey twitch
+    (low-poly short)'
+  working_title: '-'
+  category: animal
+  subcategory: fish
+  hook_type: historia
+  species:
+  - Electrophorus voltai
+  - Electrophorus electricus
+  scenes:
+  - narration: '-'
+    visual_query: '-'
+    on_screen_text: '-'
+    key_fact: false
+  sources:
+  - title: 'Gallant et al. (2014) Science 344:1522 — electric organs evolved from muscle six times independently in fishes,
+      reusing the same genetic toolbox (cells lose contractility, grow larger, become more excitable); used for
+      communication, navigation, predation, defence'
+    reference: https://pubmed.ncbi.nlm.nih.gov/24970089/
+  - title: 'University of Fribourg / Nature 2017 — electrocytes fire almost simultaneously when triggered by the brain:
+      sodium rushes in on one side, potassium out on the other; voltages along the stacks add up (to ~600 V)'
+    reference: https://www.unifr.ch/news/en/18315/
+  - title: 'de Santana et al. (2019) Nature Communications — new species Electrophorus voltai discharges up to 860 V,
+      the strongest bioelectric discharge known'
+    reference: https://www.the-scientist.com/newly-described-electric-eel-has-strongest-voltage-yet-measured-66409
+  - title: 'Catania (2014) Science — high-voltage doublets/triplets cause massive involuntary twitches in hidden prey,
+      revealing their location ("remote control" of prey muscles via their nerves)'
+    reference: https://www.sciencedaily.com/releases/2014/12/141204140610.htm
+documentary_metadata:
+  title: '-'
+  description: '-'
+  tags: []
+  hashtags: []
+  thumbnail_text: '-'
+shorts:
+- hook: You're a fish in the muddy Amazon, and you can't see a thing.
+  fact: So your tail muscles slowly stop squeezing and turn into batteries. Each cell lets sodium rush in at once, making
+    a tiny zap. Thousands stacked in a row add up. First, weak pulses help you feel through the dark. Later, your
+    descendants crank it up to 860 volts, enough to make hiding prey twitch and give itself away.
+  cta: That's how a lost fish became the electric eel.
+  visual_queries:
+  - electric eel
+  on_screen_texts: []
+  beats:
+  - text: You're a fish in the muddy Amazon, and you can't see a thing.
+    visual: hook
+  - text: So your tail muscles slowly stop squeezing and turn into batteries.
+    visual: muscle
+  - text: Each cell lets sodium rush in at once, making a tiny zap.
+    visual: cell
+  - text: Thousands stacked in a row add up.
+    visual: stack
+  - text: First, weak pulses help you feel through the dark.
+    visual: sense
+  - text: Later, your descendants crank it up to 860 volts,
+    visual: volts
+  - text: enough to make hiding prey twitch and give itself away.
+    visual: twitch
+  - text: That's how a lost fish became the electric eel.
+    visual: loop
+shorts_metadata:
+- title: 'POV: You''re Turning Into an Electric Eel ⚡ #shorts #electriceel'
+  description: 'Where does an electric eel''s electricity actually come from? Its tail muscles stopped squeezing and turned
+    into living batteries: each cell lets sodium rush in at once and makes a tiny zap, and thousands of them stacked in a
+    row add up to as much as 860 volts. It started as weak pulses to feel through the muddy Amazon water, and fish
+    evolved electric organs from muscle at least six separate times. Animation: BioNiche. Follow BioNiche for more weird
+    animals.'
+  tags:
+  - electric eel
+  - electric eel evolution
+  - electrocytes
+  - Electrophorus voltai
+  - Amazon
+  - how electric eels make electricity
+  hashtags:
+  - '#shorts'
+  - '#electriceel'
+  - '#amazon'
+  thumbnail_text: 860 VOLTS
+pinned_comment: 'Would you touch an electric eel for $1,000? ⚡ YES or NO — tell us below!'
+curated: {}
