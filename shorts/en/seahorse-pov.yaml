@@ -1,0 +1,88 @@
+# Low-poly short, POV format (owner queue 2026-10-24 #4: male seahorses get pregnant and give birth).
+# `visual` = scene id in lowpoly/src/seahorse/SeahorseShort.tsx. No spoken CTA; the last beat loops to the first.
+id: seahorse-pov
+language: en
+documentary:
+  topic: 'POV: you are a male seahorse — morning greeting dance, the female puts her eggs in your pouch, you fertilize them,
+    the pouch becomes placenta-like and gives them oxygen, the family lost immune genes that could reject embryos, labor,
+    hundreds of babies, pregnant again right away (low-poly short)'
+  working_title: '-'
+  category: animal
+  subcategory: fish
+  hook_type: historia
+  species:
+  - Hippocampus
+  scenes:
+  - narration: '-'
+    visual_query: '-'
+    on_screen_text: '-'
+    key_fact: false
+  sources:
+  - title: 'Project Seahorse, Reproduction — morning greeting dance (bodies brighten, ~6 minutes, continues through
+      pregnancy); female transfers eggs into the male''s pouch; broods from a few to over a thousand young'
+    reference: https://projectseahorse.org/saving-seahorses/about-seahorses/reproduction/
+  - title: 'National Geographic — Romance of the seas: after the male gives birth the pair mate again right away; slender
+      seahorse brood of 1,572'
+    reference: https://www.nationalgeographic.com/animals/article/seahorse-reproduction-behavior-conservation
+  - title: 'University of Sydney (Whittington et al.) — male fertilizes eggs inside the pouch; pouch tissue grows around the
+      eggs and becomes a complex placenta-like organ (oxygen, waste removal); birth by elaborate body movements'
+    reference: https://micro.org.au/news/secrets-of-pregnancy-in-male-seahorses/
+  - title: 'GEOMAR / Roth et al. (2020) Nature Ecology & Evolution — seahorses and pipefishes lost MHC II immune genes, which may
+      reduce embryo rejection and helped male pregnancy evolve'
+    reference: https://www.geomar.de/en/news/article/when-fathers-are-pregnant
+documentary_metadata:
+  title: '-'
+  description: '-'
+  tags: []
+  hashtags: []
+  thumbnail_text: '-'
+shorts:
+- hook: You're a male seahorse, and you're about to get pregnant.
+  fact: Every morning, you and your partner dance together. Then she drops her eggs into your pouch, and you fertilize them.
+    Your pouch grows a placenta-like lining that gives them oxygen. Your family even lost immune genes that might reject
+    them. A few weeks later, you go into labor. You pump out hundreds of tiny babies. And often, you get pregnant again
+    right away.
+  cta: Best dad in the ocean.
+  visual_queries:
+  - seahorse
+  on_screen_texts: []
+  beats:
+  - text: You're a male seahorse, and you're about to get pregnant.
+    visual: hook
+  - text: Every morning, you and your partner dance together.
+    visual: dance
+  - text: Then she drops her eggs into your pouch, and you fertilize them.
+    visual: eggs
+  - text: Your pouch grows a placenta-like lining that gives them oxygen.
+    visual: placenta
+  - text: Your family even lost immune genes that might reject them.
+    visual: immune
+  - text: A few weeks later, you go into labor.
+    visual: labor
+  - text: You pump out hundreds of tiny babies.
+    visual: birth
+  - text: And often, you get pregnant again right away.
+    visual: again
+  - text: Best dad in the ocean.
+    visual: loop
+shorts_metadata:
+- title: 'POV: You''re a Male Seahorse and You''re Pregnant 🫃 #shorts #seahorse'
+  description: 'Male seahorses really do get pregnant. Every morning the pair dances together, then the female drops her eggs
+    into the male''s pouch and he fertilizes them inside. The pouch grows a placenta-like lining that gives the embryos
+    oxygen, and seahorses even lost immune genes that might reject them. A few weeks later he goes into labor and pumps out
+    hundreds of tiny babies, and often gets pregnant again right away. Animation: BioNiche. Follow BioNiche for more weird
+    animals.'
+  tags:
+  - seahorse
+  - male seahorse pregnant
+  - seahorse birth
+  - male pregnancy
+  - ocean animals
+  - weird animals
+  hashtags:
+  - '#shorts'
+  - '#seahorse'
+  - '#ocean'
+  thumbnail_text: DAD IS PREGNANT
+pinned_comment: 'Should human dads get pregnant too? 🫃 YES or NO — tell us below!'
+curated: {}
