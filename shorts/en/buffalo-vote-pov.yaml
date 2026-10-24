@@ -1,0 +1,81 @@
+# Low-poly short, POV format (owner queue 2026-10-24 #6: African buffalo "democracy").
+# `visual` = scene id in lowpoly/src/buffalo/BuffaloShort.tsx. No spoken CTA; the last beat loops to the first.
+id: buffalo-vote-pov
+language: en
+documentary:
+  topic: 'POV: you are an African buffalo on "election day" — while the herd rests, adult females stand up, gaze in one
+    direction and lie back down (a vote); then the herd sets off toward that evening''s grazing ground in the direction the
+    gazes pointed (Prins 1996) (low-poly short)'
+  working_title: '-'
+  category: animal
+  subcategory: mammals
+  hook_type: historia
+  species:
+  - Syncerus caffer
+  scenes:
+  - narration: '-'
+    visual_query: '-'
+    on_screen_text: '-'
+    key_fact: false
+  sources:
+  - title: 'Prins (1996) Ecology and Behaviour of the African Buffalo, ch. "Selecting grazing grounds: a case of voting" —
+      resting cows stand, gaze in one direction with head held mid-high, lie down again; almost all adult females take part;
+      then the herd sets off in that direction'
+    reference: https://adambrown.info/p/notes/prins_ecology_and_behavior_of_the_african_buffalo
+  - title: 'Conradt & Roper (2003) Nature, Group decision-making in animals — cites buffalo as a voting example (adult females
+      vote with the direction of their gaze)'
+    reference: https://blog.londolozi.com/2020/12/16/the-buffalo-democracy/
+documentary_metadata:
+  title: '-'
+  description: '-'
+  tags: []
+  hashtags: []
+  thumbnail_text: '-'
+shorts:
+- hook: You're an African buffalo, and it's election day.
+  fact: Your herd rests in the afternoon heat. Then one female stands up, stares in one direction, and lies back down.
+    That's her vote. Other adult females do the same. Only the adult females get to vote. Then the whole herd gets up and
+    heads where the votes point, toward that night's grazing spot.
+  cta: Democracy, buffalo style.
+  visual_queries:
+  - african buffalo
+  on_screen_texts: []
+  beats:
+  - text: You're an African buffalo, and it's election day.
+    visual: hook
+  - text: Your herd rests in the afternoon heat.
+    visual: rest
+  - text: Then one female stands up, stares in one direction, and lies back down.
+    visual: stand
+  - text: That's her vote.
+    visual: vote
+  - text: Other adult females do the same.
+    visual: others
+  - text: Only the adult females get to vote.
+    visual: females
+  - text: Then the whole herd gets up and heads where the votes point,
+    visual: move
+  - text: toward that night's grazing spot.
+    visual: graze
+  - text: Democracy, buffalo style.
+    visual: loop
+shorts_metadata:
+- title: 'POV: You''re a Buffalo and It''s Election Day 🐃 #shorts #buffalo #africa'
+  description: 'African buffalo herds seem to vote. While the herd rests, adult females stand up, stare in one direction and
+    lie back down again. Researcher Herbert Prins described this as voting: then the whole herd gets up and heads in the
+    direction the gazes pointed, toward that evening''s grazing ground. Only the adult females take part. Animation:
+    BioNiche. Follow BioNiche for more weird animals.'
+  tags:
+  - african buffalo
+  - buffalo voting
+  - animal democracy
+  - cape buffalo
+  - africa
+  - weird animals
+  hashtags:
+  - '#shorts'
+  - '#buffalo'
+  - '#africa'
+  thumbnail_text: BUFFALO VOTE
+pinned_comment: 'Should animals vote for the whole herd? 🐃 YES or NO — tell us below!'
+curated: {}
