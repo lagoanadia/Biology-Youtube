@@ -12,10 +12,17 @@ import { RiverDolphin } from "../models/RiverDolphin";
 import { StarMole } from "../models/StarMole";
 import { Trunk } from "../env/Jungle";
 import { BlueWhale, GiantSiphon } from "../models/GiantSiphon";
+import { DragonEgg, Komodo } from "../models/Komodo";
 
 type View = { pos: V3; look?: V3; bg?: string; node: React.ReactNode };
 
 const MODELS: Record<string, View[]> = {
+  komodo: [
+    { pos: [3.4, 0.9, -0.3], look: [0, 0.15, -0.4], bg: "#c9b48a", node: <Komodo t={1} tongue={1} /> },
+    { pos: [1.6, 0.6, 2.4], look: [0, 0.2, 0.4], bg: "#c9b48a", node: <Komodo t={1.1} tongue={1} lift={0.5} /> },
+    { pos: [0.2, 4.2, -0.3], look: [0, 0, -0.4], bg: "#c9b48a", node: <Komodo t={1} walk={1} /> },
+    { pos: [0.5, 0.35, 1.0], look: [0, 0.12, 0], bg: "#c9b48a", node: <><DragonEgg crack={1} /><group position={[0, 0.12, 0.02]} rotation={[-0.9, 0, 0]} scale={0.16}><Komodo t={1} baby lift={0.8} tongue={1} /></group><group position={[0.28, 0, -0.1]}><DragonEgg /></group></> },
+  ],
   mole: [
     { pos: [0, 0.05, 1.3], look: [0, 0, 0.4], bg: "#6b5a3a", node: <StarMole t={1} /> },
     { pos: [1.6, 0.4, 0.6], look: [0, 0, 0], bg: "#6b5a3a", node: <StarMole t={1} dig={1} /> },

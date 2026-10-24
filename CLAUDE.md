@@ -339,6 +339,20 @@ didn't get pushed. (5) Likes 1-2 %, ~0 comments: the end question isn't working 
 - Cloud sandbox notes: no GPU → `--gl swangle --concurrency 4` (~2 min per short); Montserrat is now served locally
   from `lowpoly/public/fonts` (`lib/montserrat.ts`) because the headless browser does not trust the proxy CA.
 
+### 2026-10-24: Komodo short + new owner queue + POV format test
+- Made `komodo-virgin-birth` (`Komodo`, `lowpoly/src/komodo/`): new `models/Komodo.tsx` (curved-spine body built per
+  frame, sprawling thick legs, forked tongue, `baby` hatchling colours; `DragonEgg`, `Chromosome`, `Helix`) and
+  `env/Island.tsx` (sunny/warm/zoo sky, `Sand`, `ZooEnclosure` with heat lamp, `LoneIsland` with sea + `Palm`).
+  Bench lesson: first version looked like a salamander → Komodo needs a much thicker torso, belly almost on the
+  ground, short thick legs with elbows out, wide flat head, short tongue. Egg counts differ between sources → no number.
+- **Owner queue (2026-10-24), in order after the kangaroo:** snail (crazy sleep schedule); electric eel — explain TO THE
+  ROOT where the electricity comes from and why it evolved; differences between jaguar, tiger, leopard and puma and why
+  they split in evolution; male seahorses get pregnant and give birth; barn owls "divorce"; African buffalo "vote"
+  (group decisions); horned lizard shoots blood from its eyes.
+- **Kangaroo = test of a new POV format (owner idea):** the viewer IS the animal's ancestor ("You're…"), facing the
+  problem that drove the evolution; the story is told from the animal's point of view because it helps the hook.
+  Topic: kangaroo evolution (why nothing else hops at that size) + how the pouch/joey system works.
+
 ### ▶ Recipe: make a NEW low-poly short from scratch (follow in order)
 **Setup (once per machine, Windows):**
 ```bash

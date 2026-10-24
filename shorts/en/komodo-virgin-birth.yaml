@@ -1,0 +1,86 @@
+# Low-poly short (2026-10-24 rules): `visual` = scene id in lowpoly/src/komodo/KomodoShort.tsx.
+# No spoken CTA: the last beat is the loop line; 'Follow BioNiche' + end question are on-screen text only.
+id: komodo-virgin-birth
+language: en
+documentary:
+  topic: Komodo dragon virgin birth (parthenogenesis) at UK zoos, 2006 — babies with no father, all male (low-poly short)
+  working_title: '-'
+  category: animal
+  subcategory: reptiles
+  hook_type: shock
+  species:
+  - Varanus komodoensis
+  scenes:
+  - narration: '-'
+    visual_query: '-'
+    on_screen_text: '-'
+    key_fact: false
+  sources:
+  - title: 'Watts, Buley, Sanderson, Boardman, Ciofi & Gibson (2006) Parthenogenesis in Komodo dragons. Nature 444:1021-1022
+      — two captive females (Flora, Chester Zoo; Sungai, London Zoo) produced offspring without a male; genetic
+      fingerprinting showed the mother was the only parent'
+    reference: https://doi.org/10.1038/4441021a
+  - title: 'Nature News (2006-12-20), Dragon virgin births startle zoo keepers — keepers knew something was strange because the
+      females had not been around any males; babies are not clones: one set of the mother''s chromosomes is doubled up;
+      females are ZW, males ZZ, so all offspring are male; co-author R. Gibson: a female swept alone to an island could
+      still reproduce'
+    reference: https://www.nature.com/news/2006/061218/full/news061218-7.html
+  - title: 'Chester Zoo, Flora — paternity tests showed Flora was both mother and father. Egg counts differ between sources
+      (8 / 11 / 25), so the script gives no number'
+    reference: https://www.chesterzoo.org/news/flora/
+documentary_metadata:
+  title: '-'
+  description: '-'
+  tags: []
+  hashtags: []
+  thumbnail_text: '-'
+shorts:
+- hook: This baby dragon has no father.
+  fact: In 2006, a female at a British zoo laid eggs. But no male had been near her. Then the eggs hatched. DNA showed the
+    babies came only from their mother. Half her chromosomes doubled up to make each one. And every single baby was a boy.
+    Scientists think this helps a female stranded alone on an island. She can still start a family.
+  cta: That's how a baby dragon ends up with no father.
+  visual_queries:
+  - Varanus komodoensis
+  on_screen_texts: []
+  beats:
+  - text: This baby dragon has no father.
+    visual: hook
+  - text: In 2006, a female at a British zoo laid eggs.
+    visual: zoo
+  - text: But no male had been near her.
+    visual: nomale
+  - text: Then the eggs hatched.
+    visual: hatch
+  - text: DNA showed the babies came only from their mother.
+    visual: dna
+  - text: Half her chromosomes doubled up to make each one.
+    visual: chromo
+  - text: And every single baby was a boy.
+    visual: boys
+  - text: Scientists think this helps a female stranded alone on an island.
+    visual: island
+  - text: She can still start a family.
+    visual: family
+  - text: That's how a baby dragon ends up with no father.
+    visual: loop
+shorts_metadata:
+- title: 'This Baby Dragon Has No Father 🐉 #shorts #komododragon #indonesia'
+  description: 'In 2006, a Komodo dragon at a British zoo laid eggs, even though no male had been near her. The eggs hatched,
+    and DNA tests showed the babies came only from their mother: half her chromosomes doubled up to make each one, and
+    every baby was a boy. Scientists think this lets a female stranded alone on an island still start a family.
+    Animation: BioNiche. Follow BioNiche for more weird animals.'
+  tags:
+  - komodo dragon
+  - Varanus komodoensis
+  - virgin birth
+  - parthenogenesis
+  - Indonesia
+  - weird animals
+  hashtags:
+  - '#shorts'
+  - '#komododragon'
+  - '#indonesia'
+  thumbnail_text: NO DAD NEEDED
+pinned_comment: 'Could a virgin birth happen in the wild too? 🐉 YES or NO — tell us below!'
+curated: {}

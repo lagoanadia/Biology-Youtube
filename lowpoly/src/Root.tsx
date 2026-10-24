@@ -1,3 +1,5 @@
+import { KomodoThumb } from "./komodo/KomodoThumb";
+import { KomodoShort } from "./komodo/KomodoShort";
 import { Composition, Still } from "remotion";
 import { CombJellyThumb } from "./combjelly/CombJellyThumb";
 import { OctopusShort } from "./octopus/OctopusShort";
@@ -206,6 +208,17 @@ export const RemotionRoot: React.FC = () => (
       calculateMetadata={loadTimeline}
     />
     <Still id="StarMoleThumb" component={StarMoleThumb} width={1080} height={1920} />
+    <Composition
+      id="Komodo"
+      component={KomodoShort}
+      width={1080}
+      height={1920}
+      fps={FPS}
+      durationInFrames={900}
+      defaultProps={{ timelineFile: "komodo-virgin-birth/timeline.json" } satisfies ShortProps}
+      calculateMetadata={loadTimeline}
+    />
+    <Still id="KomodoThumb" component={KomodoThumb} width={1080} height={1920} />
     <Still id="Lab" component={Lab} width={1920} height={1080} defaultProps={{ model: "siphon" }} />
     <Still id="BlobfishLab" component={BlobfishLab} width={1920} height={1080} />
     <Still id="CombJellyThumb" component={CombJellyThumb} width={1080} height={1920} />
