@@ -1,0 +1,94 @@
+# Low-poly short, POV format test (owner idea 2026-10-24): the viewer IS the kangaroo's ancestor.
+# `visual` = scene id in lowpoly/src/kangaroo/KangarooShort.tsx. No spoken CTA; the last beat loops to the first.
+id: kangaroo-pov-evolution
+language: en
+documentary:
+  topic: 'POV: you are the kangaroo''s tiny forest ancestor — Australia dries out, hopping evolves (elastic tendons), why
+    no other big hoppers, jellybean-sized joeys, pouch and paused embryos (low-poly short)'
+  working_title: '-'
+  category: animal
+  subcategory: marsupials
+  hook_type: historia
+  species:
+  - Osphranter rufus
+  scenes:
+  - narration: '-'
+    visual_query: '-'
+    on_screen_text: '-'
+    key_fact: false
+  sources:
+  - title: 'Flinders University VAMP, Macropodidae (kangaroos & wallabies) — ancestors were small, vaguely possum-like
+      herbivores/omnivores that hopped and bounded through the rainforests of late Oligocene-early Miocene Australia (28-20
+      Ma); central and western Australia dried in the mid-late Miocene (15-10 Ma)'
+    reference: https://sites.flinders.edu.au/vamp/fossils/vertebrate-fossils/marsupials/macropodidae-family-kangaroos-wallabies/
+  - title: 'Couzens & Prideaux (2018) Science 362:72 — kangaroo diversification tracked grassland expansion (Pliocene); it is
+      still debated exactly why hopping started, so the script does not claim a cause'
+    reference: https://m.phys.org/news/2018-10-kangaroo-evolution.html
+  - title: 'Dawson & Taylor (1973) Energetic cost of locomotion in kangaroos, Nature — red kangaroos hopping 9-22 km/h did not
+      increase oxygen use; energy stored in hindlimb tendons; supported by eLife 2024 (posture raises tendon energy storage)'
+    reference: https://elifesciences.org/articles/96437
+  - title: 'Scientific Reports (2025) / hopping-mammal literature — other hopping mammals range from ~4 g (pygmy jerboa) to
+      ~3.5 kg (springhare); male red kangaroos reach ~90 kg'
+    reference: https://link.springer.com/10.1038/s41598-025-29939-7
+  - title: 'Australian Museum, Red Kangaroo — newborn is the size of a jellybean and climbs into the pouch immediately;
+      females can delay the next birth until the previous joey has left the pouch (embryonic diapause)'
+    reference: https://australianmuseum.net.au/red-kangaroo
+documentary_metadata:
+  title: '-'
+  description: '-'
+  tags: []
+  hashtags: []
+  thumbnail_text: '-'
+shorts:
+- hook: You're a tiny kangaroo ancestor, and your forest is disappearing.
+  fact: You climb and hop through the rainforest. But Australia slowly dries out. Your trees turn into open grassland. Your
+    descendants become expert hoppers. Springy tendons store energy, so speed costs almost nothing. Everywhere else,
+    hoppers stay tiny. Your babies are born jellybean-sized. They crawl alone into your pouch to grow. You can even pause
+    the next baby until the pouch is free.
+  cta: That's how a tiny forest hopper became the kangaroo.
+  visual_queries:
+  - kangaroo
+  on_screen_texts: []
+  beats:
+  - text: You're a tiny kangaroo ancestor, and your forest is disappearing.
+    visual: hook
+  - text: You climb and hop through the rainforest.
+    visual: forest
+  - text: But Australia slowly dries out.
+    visual: dry
+  - text: Your trees turn into open grassland.
+    visual: grass
+  - text: Your descendants become expert hoppers.
+    visual: evolve
+  - text: Springy tendons store energy, so speed costs almost nothing.
+    visual: spring
+  - text: Everywhere else, hoppers stay tiny.
+    visual: tiny
+  - text: Your babies are born jellybean-sized.
+    visual: jellybean
+  - text: They crawl alone into your pouch to grow.
+    visual: pouch
+  - text: You can even pause the next baby until the pouch is free.
+    visual: pause
+  - text: That's how a tiny forest hopper became the kangaroo.
+    visual: loop
+shorts_metadata:
+- title: 'POV: You''re the Kangaroo''s Ancestor 🦘 #shorts #kangaroo #australia'
+  description: 'You''re a small, possum-like animal hopping through Australia''s rainforest millions of years ago. Then the
+    continent dries out and your trees turn into grassland. Your descendants become expert hoppers: springy tendons store
+    energy, so going faster costs almost nothing. Their babies are born the size of a jellybean, crawl into the pouch, and
+    the next one can even be paused until the pouch is free. Animation: BioNiche. Follow BioNiche for more weird animals.'
+  tags:
+  - kangaroo
+  - kangaroo evolution
+  - red kangaroo
+  - marsupial
+  - joey
+  - Australia
+  hashtags:
+  - '#shorts'
+  - '#kangaroo'
+  - '#australia'
+  thumbnail_text: POV KANGAROO ANCESTOR
+pinned_comment: 'POV videos: yes or no? 🦘 Which animal''s ancestor should you be next?'
+curated: {}

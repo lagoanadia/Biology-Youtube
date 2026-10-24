@@ -1,3 +1,5 @@
+import { KangarooThumb } from "./kangaroo/KangarooThumb";
+import { KangarooShort } from "./kangaroo/KangarooShort";
 import { KomodoThumb } from "./komodo/KomodoThumb";
 import { KomodoShort } from "./komodo/KomodoShort";
 import { Composition, Still } from "remotion";
@@ -219,6 +221,17 @@ export const RemotionRoot: React.FC = () => (
       calculateMetadata={loadTimeline}
     />
     <Still id="KomodoThumb" component={KomodoThumb} width={1080} height={1920} />
+    <Composition
+      id="Kangaroo"
+      component={KangarooShort}
+      width={1080}
+      height={1920}
+      fps={FPS}
+      durationInFrames={900}
+      defaultProps={{ timelineFile: "kangaroo-pov-evolution/timeline.json" } satisfies ShortProps}
+      calculateMetadata={loadTimeline}
+    />
+    <Still id="KangarooThumb" component={KangarooThumb} width={1080} height={1920} />
     <Still id="Lab" component={Lab} width={1920} height={1080} defaultProps={{ model: "siphon" }} />
     <Still id="BlobfishLab" component={BlobfishLab} width={1920} height={1080} />
     <Still id="CombJellyThumb" component={CombJellyThumb} width={1080} height={1920} />

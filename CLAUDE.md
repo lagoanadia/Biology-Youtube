@@ -442,3 +442,8 @@ push waves). Helpers: `lib/lowpoly.ts` (rng, facet, taperedTube, pop/glide easin
 - ✅ Owner picked **Kokoro `am_michael`** for the documentary. `voice.provider='kokoro'`, `voice_en='am_michael'`,
   `rate='-3%'` (→ speed 0.97), `broadcast_eq=True`. `tts._synth_kokoro` maps Kokoro tokens to TOKEN_RE words
   (all 8 chapters align 1:1). Render overrides: `doc_sentence_pause=0.3, doc_lead=1.5, doc_lead_intro=2.0, doc_tail=1.2`.
+
+### 2026-10-24: Kangaroo POV short delivered (format test)
+- `shorts/en/kangaroo-pov-evolution.yaml` + `lowpoly/src/kangaroo/` (`Kangaroo`, `KangarooThumb`), model `lowpoly/src/models/Kangaroo.tsx` (`Kangaroo{evo 0→1 ancestor→red kangaroo, hop, spring, pouch}`, `Joey`, `Jellybean`).
+- POV recipe: hook line "You're a ___, and ___" + over-the-shoulder camera behind the animal (frame 0 = loop end); every beat in 2nd person ("your forest", "your babies"); end question asks if POV should continue. Compare its retention with Komodo before using POV for the whole queue.
+- Watch out: Jungle trees sit at negative z, so a camera looking toward +z sees empty space — rotate the forest group by π.

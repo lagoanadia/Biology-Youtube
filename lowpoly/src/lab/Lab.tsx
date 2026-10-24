@@ -13,10 +13,17 @@ import { StarMole } from "../models/StarMole";
 import { Trunk } from "../env/Jungle";
 import { BlueWhale, GiantSiphon } from "../models/GiantSiphon";
 import { DragonEgg, Komodo } from "../models/Komodo";
+import { Jellybean, Joey, Kangaroo } from "../models/Kangaroo";
 
 type View = { pos: V3; look?: V3; bg?: string; node: React.ReactNode };
 
 const MODELS: Record<string, View[]> = {
+  kangaroo: [
+    { pos: [1.4, 0.35, 0.9], look: [0, 0.12, 0], bg: "#7fb07a", node: <Kangaroo t={1} evo={0} /> },
+    { pos: [2.2, 0.6, 1.6], look: [0, 0.35, 0], bg: "#d9b48a", node: <Kangaroo t={1} evo={0.5} /> },
+    { pos: [4.2, 1.1, 1.6], look: [0, 0.8, 0], bg: "#d9b48a", node: <Kangaroo t={1} evo={1} pouch={1} /> },
+    { pos: [0.35, 0.25, 0.5], look: [0, 0.05, 0], bg: "#e8c9a8", node: <><group scale={0.12}><Joey t={1} crawl={1} /></group><group position={[0.22, 0, 0]} scale={0.12}><Jellybean /></group></> },
+  ],
   komodo: [
     { pos: [3.4, 0.9, -0.3], look: [0, 0.15, -0.4], bg: "#c9b48a", node: <Komodo t={1} tongue={1} /> },
     { pos: [1.6, 0.6, 2.4], look: [0, 0.2, 0.4], bg: "#c9b48a", node: <Komodo t={1.1} tongue={1} lift={0.5} /> },
