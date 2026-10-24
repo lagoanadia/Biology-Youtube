@@ -447,3 +447,19 @@ push waves). Helpers: `lib/lowpoly.ts` (rng, facet, taperedTube, pop/glide easin
 - `shorts/en/kangaroo-pov-evolution.yaml` + `lowpoly/src/kangaroo/` (`Kangaroo`, `KangarooThumb`), model `lowpoly/src/models/Kangaroo.tsx` (`Kangaroo{evo 0→1 ancestor→red kangaroo, hop, spring, pouch}`, `Joey`, `Jellybean`).
 - POV recipe: hook line "You're a ___, and ___" + over-the-shoulder camera behind the animal (frame 0 = loop end); every beat in 2nd person ("your forest", "your babies"); end question asks if POV should continue. Compare its retention with Komodo before using POV for the whole queue.
 - Watch out: Jungle trees sit at negative z, so a camera looking toward +z sees empty space — rotate the forest group by π.
+
+### 2026-10-24: POV batch (snail, electric eel, big cats, seahorse, barn owl, buffalo, horned lizard)
+All seven delivered as POV shorts (`shorts/en/*-pov.yaml`, code in `lowpoly/src/<animal>/`). New reusable pieces:
+- Models: `Snail` (land + `pond`), `Eel` + `Electrocyte`, `BigCat{kind: tiger|leopard|jaguar|puma|cheetah|ancestor}` + `Turtle`,
+  `Seahorse` (pouch/xray/eggs), `Owl` + `OwlChick` + `Nest`, `Buffalo{lie, raise, gaze, bull}`, `HornedLizard` + `Coyote`.
+- Envs: `Museum` (room, cards, basin), `Reef` (seagrass; keeps |x|<0.75 clear for the actors), `Barn` (night loft).
+- `scripts/stills_grid.py <frames_dir> <out.jpg> [cols]` = contact sheet of `--frames` stills.
+Lessons (each cost a re-render):
+- Cameras ALWAYS start too close. In 9:16 the visible width is only ≈0.35 × distance, so a 1.5 m animal side-on needs ≈5 m.
+  Prefer 3/4 views (animal yawed ~±1 rad from the camera) over side-on or head-on (head-on cats look like bears).
+- `sceneAt()` returns `s` in SECONDS since the scene start and `u` in 0..1 — use `u` for anything that should span the scene.
+- `--frames` must be < the composition length (speech + 2 s) or the whole still batch fails.
+- Over-the-shoulder POV only reads when the animal's silhouette is clear from behind (kangaroo, cats, lizard). For upright
+  or round animals (seahorse, snail shell) use a face-to-face or 3/4 hook instead.
+- Thumbnail text: max ~9 characters per line at size 140, otherwise it wraps to 3 lines.
+- A Chrome "Target closed" crash mid-render happened once on the laptop; just re-run (the render commands now retry once).
