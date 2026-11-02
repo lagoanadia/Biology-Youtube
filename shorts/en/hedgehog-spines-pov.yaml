@@ -1,0 +1,92 @@
+# Low-poly short, POV + "more educational" format (owner 2026-11-02: "no son educativos … no tienen que ser super
+# difíciles pero tampoco tan simples"; hedgehog: where did the spikes come from, why, what were the ancestors).
+# `visual` = scene id in lowpoly/src/hedgehog/HedgehogShort.tsx. No spoken CTA; the last beat loops to the first.
+id: hedgehog-spines-pov
+language: en
+documentary:
+  topic: 'POV: you are the hedgehog''s furry ancestor — small slow night insect-eater, hair is keratin, stiffer hairs
+    survive bites (natural selection), hairs become spines, orbicularis drawstring muscle rolls you into a ball, moonrats
+    (closest relatives) kept their fur, porcupines and echidnas evolved spines independently (low-poly short)'
+  working_title: '-'
+  category: animal
+  subcategory: mammals
+  hook_type: historia
+  species:
+  - Erinaceus europaeus
+  scenes:
+  - narration: '-'
+    visual_query: '-'
+    on_screen_text: '-'
+    key_fact: false
+  sources:
+  - title: 'Vincent & Owers (1986) J. Zool. — hedgehog spines are modified hairs: tubes of alpha-keratin with internal
+      stringers and septa (light and buckle-resistant)'
+    reference: https://zslpublications.onlinelibrary.wiley.com/doi/10.1111/j.1469-7998.1986.tb03605.x
+  - title: 'Gymnure (Wikipedia, Galericinae) — moonrats/gymnures are the sister group of hedgehogs within Erinaceidae and
+      do not have spines (soft fur), so the spines evolved in the hedgehog branch'
+    reference: https://en.wikipedia.org/wiki/Gymnure
+  - title: 'Pro Igel / ANL Bayern — the purse-string muscle (M. orbicularis) runs along the edge of the spiny skin and
+      pulls it over head and tail like a drawstring; hedgehogs roll up in under a second'
+    reference: https://www.pro-igel.de/spiny-coat/?lang=en
+  - title: 'IFAW + Univ. Geneva evo-devo thesis — spines evolved independently in hedgehogs, tenrecs, porcupines, echidnas
+      and spiny mice (convergent evolution, different developmental routes)'
+    reference: https://www.ifaw.org/international/journal/animals-spines-quills
+documentary_metadata:
+  title: '-'
+  description: '-'
+  tags: []
+  hashtags: []
+  thumbnail_text: '-'
+shorts:
+- hook: You're the hedgehog's ancestor, and you're defenseless.
+  fact: You eat bugs at night, and you can't outrun anything. But hair is made of keratin, like your nails. Babies with
+    stiffer hairs hurt to bite, so they survive more. Over generations, the hairs get thicker and sharper, until they're
+    spines. A ring of muscle pulls your skin tight like a drawstring. Now you're a spiky ball. Your cousins, the moonrats,
+    kept their fur. Porcupines and echidnas evolved spines on their own.
+  cta: And it all started as fur.
+  visual_queries:
+  - hedgehog
+  on_screen_texts: []
+  beats:
+  - text: You're the hedgehog's ancestor, and you're defenseless.
+    visual: hook
+  - text: You eat bugs at night, and you can't outrun anything.
+    visual: hunt
+  - text: But hair is made of keratin, like your nails.
+    visual: keratin
+  - text: Babies with stiffer hairs hurt to bite, so they survive more.
+    visual: babies
+  - text: Over generations, the hairs get thicker and sharper, until they're spines.
+    visual: spines
+  - text: A ring of muscle pulls your skin tight like a drawstring.
+    visual: muscle
+  - text: Now you're a spiky ball.
+    visual: ball
+  - text: Your cousins, the moonrats, kept their fur.
+    visual: moonrat
+  - text: Porcupines and echidnas evolved spines on their own.
+    visual: convergent
+  - text: And it all started as fur.
+    visual: loop
+shorts_metadata:
+- title: 'POV: You''re the Hedgehog Before It Had Spikes 🦔 #shorts #hedgehog'
+  description: 'Hedgehog spines are hair. Their ancestors were small, furry insect-eaters that hunted at night and could
+    not outrun predators. Hair is made of keratin, and babies with stiffer hairs were harder to bite, so they survived
+    more often. Over many generations those hairs became thick, sharp spines, and a ring of muscle under the skin evolved
+    to pull it closed like a drawstring bag, turning the hedgehog into a spiky ball. Their closest living relatives, the
+    moonrats, still have fur, and porcupines and echidnas evolved spines completely separately. Animation: BioNiche.
+    Follow BioNiche for more weird animals.'
+  tags:
+  - hedgehog
+  - hedgehog spines
+  - hedgehog evolution
+  - convergent evolution
+  - moonrat
+  - natural selection
+  hashtags:
+  - '#shorts'
+  - '#hedgehog'
+  - '#evolution'
+  thumbnail_text: SPIKES WERE HAIR
+pinned_comment: 'Hedgehog or porcupine: who has the better spikes? 🦔'
+curated: {}

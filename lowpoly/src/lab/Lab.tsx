@@ -21,10 +21,17 @@ import { Nest, Owl } from "../models/Owl";
 import { Seahorse } from "../models/Seahorse";
 import { BigCat, Turtle } from "../models/BigCat";
 import { Eel, Electrocyte } from "../models/Eel";
+import { Hedgehog } from "../models/Hedgehog";
 
 type View = { pos: V3; look?: V3; bg?: string; node: React.ReactNode };
 
 const MODELS: Record<string, View[]> = {
+  hedgehog: [
+    { pos: [1.1, 0.5, 1.0], look: [0, 0.14, 0], bg: "#5a6a4a", node: <Hedgehog t={1} /> },
+    { pos: [1.4, 0.3, -0.2], look: [0, 0.14, 0], bg: "#5a6a4a", node: <Hedgehog t={1} kind="ancestor" /> },
+    { pos: [1.1, 0.5, 1.0], look: [0, 0.18, 0], bg: "#5a6a4a", node: <><Hedgehog t={1} curl={1} xray={0.8} /></> },
+    { pos: [2.4, 0.9, 2.4], look: [0, 0.2, 0], bg: "#5a6a4a", node: <><group position={[-0.6, 0, 0]}><Hedgehog t={1} kind="moonrat" /></group><Hedgehog t={1} kind="echidna" /><group position={[0.8, 0, -0.3]}><Hedgehog t={1} kind="porcupine" /></group></> },
+  ],
   lizard: [
     { pos: [0.6, 0.5, 0.7], look: [0, 0.05, 0], bg: "#d9b48a", node: <HornedLizard t={1} /> },
     { pos: [0.0, 0.9, 0.2], look: [0, 0, 0], bg: "#d9b48a", node: <HornedLizard t={1} puff={1} /> },

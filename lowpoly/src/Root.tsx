@@ -1,3 +1,5 @@
+import { HedgehogThumb } from "./hedgehog/HedgehogThumb";
+import { HedgehogShort } from "./hedgehog/HedgehogShort";
 import { LizardThumb } from "./lizard/LizardThumb";
 import { LizardShort } from "./lizard/LizardShort";
 import { BuffaloThumb } from "./buffalo/BuffaloThumb";
@@ -323,6 +325,17 @@ export const RemotionRoot: React.FC = () => (
       calculateMetadata={loadTimeline}
     />
     <Still id="LizardThumb" component={LizardThumb} width={1080} height={1920} />
+    <Composition
+      id="Hedgehog"
+      component={HedgehogShort}
+      width={1080}
+      height={1920}
+      fps={FPS}
+      durationInFrames={900}
+      defaultProps={{ timelineFile: "hedgehog-spines-pov/timeline.json" } satisfies ShortProps}
+      calculateMetadata={loadTimeline}
+    />
+    <Still id="HedgehogThumb" component={HedgehogThumb} width={1080} height={1920} />
     <Still id="Lab" component={Lab} width={1920} height={1080} defaultProps={{ model: "siphon" }} />
     <Still id="BlobfishLab" component={BlobfishLab} width={1920} height={1080} />
     <Still id="CombJellyThumb" component={CombJellyThumb} width={1080} height={1920} />
